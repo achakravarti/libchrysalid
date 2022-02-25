@@ -21,6 +21,36 @@ TODO
 
 ## ⚖️  License 
 
+<table align="center">
+<thead>
+<tr>
+<th>Can</th>
+<th>Cannot</th>
+<th>Must</th>
+<tbody>
+<tr>
+<td>Commercial Use</td>
+<td>Liability</td>
+<td>Include Copyright notice</td>
+</tr>
+<tr>
+<td>Modification</td>
+<td>Warranty</td>
+<td>Include License text</td>
+</tr>
+<tr>
+<td>Distribution</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>Private Use</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
 ©️  Copyright 2022 Abhishek Chakravarti <abhishek@taranjali.org>
 
 Redistribution and use in source and binary forms, with or without modification,
