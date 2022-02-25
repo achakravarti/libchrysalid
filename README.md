@@ -1,14 +1,26 @@
 <h1 align="center">
 <img width=12.5% src="https://github.com/achakravarti/libchrysalis/blob/setup/init-readme/doc/img/logo.png">
-libchrysalis&mdash;<b>C</b> <b>H</b>elper <b>R</b>outines
+<br>
+libchrysalis
 </h1>
 <p align="center">
-`libchrysalis` provides common helper routines that are useful in the
-development of C applications.
+<tt>libchrysalis</tt> is a <b>lib</b>rary providing <b>c</b>ommon <b>h</b>elper
+<b>r</b>outines that facilitate development of applications in the C language.
+<br><br>
+Portable across POSIX, well-tested and documented
 </p>
 
 
 ## ⚡️ Quick Start
+
+### 🛠️  DIY
+TODO
+
+### 🐳  Docker
+TODO
+
+## ⚖️  License 
+TODO
 
 
 ## Logo
