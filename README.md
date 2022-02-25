@@ -7,14 +7,19 @@ libchrysalis
 <tt>libchrysalis</tt> is a <b>lib</b>rary providing <b>c</b>ommon <b>h</b>elper
 <b>r</b>outines that facilitate development of applications in the C language.
 <br><br>
-Portable across POSIX, well-tested and documented
+Aims to be portable, well-tested and documented.
 </p>
 
 
 ## ⚡️ Quick Start
 
 ### 🛠️  DIY
-TODO
+
+```
+./configure
+make
+make test
+```
 
 ### 🐳  Docker
 TODO
@@ -28,7 +33,8 @@ TODO
 |✅ Modification   |              |
 |✅ Distribution   |              | 
 
-Copyright &copy; 2022 Abhishek Chakravarti &lt;abhishek@taranjali.org&gt;
+Copyright &copy; 2022 Abhishek Chakravarti
+&lt;abhishek@taranjali.org&gt;
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
