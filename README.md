@@ -24,7 +24,7 @@ TODO
 <table align="center" border="0">
 <tbody>
 <tr>
-<td>✅  &#9989; Commercial use</td>
+<td>✅ Commercial use</td>
 <td>❌  Liability</td>
 <td>📢  Copyright notice</td>
 </tr>
