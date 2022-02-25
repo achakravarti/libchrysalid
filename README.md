@@ -24,22 +24,22 @@ TODO
 <table align="center" border="0">
 <tbody>
 <tr>
-<td>✅  Commercial use</td>
+<td>✅  &#9989; Commercial use</td>
 <td>❌  Liability</td>
 <td>📢  Copyright notice</td>
 </tr>
 <tr>
-<td>✅  Private use</td>
+<td>✅  &#9989; Private use</td>
 <td>❌  Warranty</td>
 <td>📢  License text</td>
 </tr>
 <tr>
-<td>✅  Modification</td>
+<td>✅  &#9989; Modification</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td>✅  Distribution</td>
+<td>✅  &#9989; Distribution</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
