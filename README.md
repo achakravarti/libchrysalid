@@ -1,4 +1,6 @@
-<p align="center"><img width=50% src="doc/img/Logo.png"></p>
+<p align="center">
+<img width=12.5% src="https://github.com/achakravarti/libchrysalis/blob/setup/init-readme/doc/img/logo.png">
+</p>
 
 # libchrysalis
 
