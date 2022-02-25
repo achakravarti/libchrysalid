@@ -22,36 +22,31 @@ TODO
 ## ⚖️  License 
 
 <table align="center" border="0">
-<thead>
-<tr>
-<th>Can</th>
-<th>Cannot</th>
-<th>Must</th>
 <tbody>
 <tr>
-<td>✅  Commercial Use</td>
+<td>✅  Commercial use</td>
 <td>❌  Liability</td>
-<td>🔔  Include Copyright notice</td>
+<td>📢  Copyright notice</td>
+</tr>
+<tr>
+<td>✅  Private use</td>
+<td>❌  Warranty</td>
+<td>📢  License text</td>
 </tr>
 <tr>
 <td>✅  Modification</td>
-<td>❌  Warranty</td>
-<td>🔔  Include License text</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr>
 <td>✅  Distribution</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
-<tr>
-<td>✅  Private use</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
 </tbody>
 </table>
 
-©️  Copyright 2022 Abhishek Chakravarti <abhishek@taranjali.org>
+Copyright &copy; 2022 Abhishek Chakravarti &lt;abhishek@taranjali.org&gt;
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
