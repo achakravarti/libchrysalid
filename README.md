@@ -21,7 +21,7 @@ TODO
 
 ## ⚖️  License 
 
-<table align="center">
+<table align="center" border="0">
 <thead>
 <tr>
 <th>Can</th>
@@ -29,22 +29,22 @@ TODO
 <th>Must</th>
 <tbody>
 <tr>
-<td>Commercial Use</td>
-<td>Liability</td>
-<td>Include Copyright notice</td>
+<td>✅  Commercial Use</td>
+<td>❌  Liability</td>
+<td>🔔  Include Copyright notice</td>
 </tr>
 <tr>
-<td>Modification</td>
-<td>Warranty</td>
-<td>Include License text</td>
+<td>✅  Modification</td>
+<td>❌  Warranty</td>
+<td>🔔  Include License text</td>
 </tr>
 <tr>
-<td>Distribution</td>
+<td>✅  Distribution</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td>Private Use</td>
+<td>✅  Private use</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
