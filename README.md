@@ -25,21 +25,21 @@ TODO
 <tbody>
 <tr>
 <td>✅ Commercial use</td>
-<td>❌  Liability</td>
-<td>📢  Copyright notice</td>
+<td>❌ Liability</td>
+<td>📢 Copyright notice</td>
 </tr>
 <tr>
-<td>✅  &#9989; Private use</td>
-<td>❌  Warranty</td>
-<td>📢  License text</td>
+<td>✅ Private use</td>
+<td>❌ Warranty</td>
+<td>📢 License text</td>
 </tr>
 <tr>
-<td>✅  &#9989; Modification</td>
+<td>✅ Modification</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td>✅  &#9989; Distribution</td>
+<td>✅ Distribution</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
