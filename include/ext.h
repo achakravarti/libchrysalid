@@ -10,7 +10,26 @@ extern "C" {
 
 
 /**
- ** ^ C_NONULL: Hints a parameter as non-null.
+ ** NAME
+ **     C_NONULL - hints a parameter as non-null
+ **
+ ** SYNOPSIS
+ **     #include <libchrysalis/ext.h>
+ **
+ **     #define C_NONULL __attribute__((nonull))
+ **
+ ** DESCRIPTION
+ **
+ ** RETURN VALUE
+ **     No value is returned.
+ **
+ ** SOURCE
+ **     libchrysalis/base/ext.h
+ **
+ ** EXAMPLES
+ **
+ ** SEE ALSO
+ **     C_HOT(3)
  **/
 #define C_NONULL __attribute__((nonnull))
 
