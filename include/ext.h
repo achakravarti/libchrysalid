@@ -48,16 +48,16 @@ extern "C" {
  *      }
  *
  * NOTES
- *      1. The `__attribute__((nonnull))` decorator optionally allows you to
- *         specify the 1-based index of the function parameters that are to be
- *         considered non-null; C_NONULL doesn't do this both for the sake of
- *         brevity and also because we consider null pointer parameters to be a
- *         code smell.
- *      2. Clang allows the `__attribute__((nonnull))` decorator to be applied
- *         directly to a function parameter, but GCC does not. Therefore,
- *         C_NONULL may be used to mark specific function parameters when
- *         compiled with Clang; however, it is better not to do so in the
- *         interest of portability.
+ *      - The `__attribute__((nonnull))` decorator optionally allows you to
+ *        specify the 1-based index of the function parameters that are to be
+ *        considered non-null; C_NONULL doesn't do this both for the sake of
+ *        brevity and also because we consider null pointer parameters to be a
+ *        code smell.
+ *      - Clang allows the `__attribute__((nonnull))` decorator to be applied
+ *        directly to a function parameter, but GCC does not. Therefore,
+ *        C_NONULL may be used to mark specific function parameters when
+ *        compiled with Clang; however, it is better not to do so in the
+ *        interest of portability.
  *
  * SEE ALSO
  *      - web GCC (11.2.0:6.33.1)
@@ -113,10 +113,10 @@ extern "C" {
  *      }
  *
  * NOTES
- *      1. C_HOT is ignored by GCC if the `-fprofile-use` flag is used during
- *         compilation.
- *      2. Although Clang recognises the `__attribute__((hot)) decorator, it
- *         drops it silently; however, there is a proposal to implement this.
+ *      - C_HOT is ignored by GCC if the `-fprofile-use` flag is used during
+ *        compilation.
+ *      - Although Clang recognises the `__attribute__((hot)) decorator, it
+ *        drops it silently; however, there is a proposal to implement this.
  *
  * SEE ALSO
  *      - ref C_COLD
