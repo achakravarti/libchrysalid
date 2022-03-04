@@ -70,7 +70,7 @@ extern "C" {
 #       define C_NONULL __attribute__((nonnull))
 #else
 #       define C_NONULL
-#       if !(defined C_SUPPRESS_EXTENSION_WARNINGS
+#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
 #               warning "C_NONULL has no effect in current compiler"
 #       endif
 #endif
@@ -127,12 +127,76 @@ extern "C" {
  *      - web llvm-dev@lists.llvm.org
  *        [https://lists.llvm.org/pipermail/llvm-dev/2020-December/147104.html]
  **/
-#define C_HOT __attribute__((hot))
+#if (defined __GNUC__ || defined __clang__)
+#       define C_HOT __attribute__((hot))
+#else
+#       define C_HOT
+#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "C_HOT has no effect in current compiler"
+#       endif
+#endif
 
-/**
- ** ^ C_COLD: Marks a function as cold.
+
+/** [base:ext:cold]
+ * NAME
+ *      C_COLD - hints a function as cold
+ *
+ * SYNOPSIS
+ *      #include "libchrysalis/chrysalis.h"
+ *
+ *      #define C_COLD __attribute__((hot))
+ *
+ * DESCRIPTION
+ *      The C_COLD macro is used to hint that a function is cold, i.e. it is
+ *      unlikely to called. Functions that are marked with C_COLD are optimised
+ *      by the compiler for size rather than speed, and are placed into a
+ *      special cold section in order to improve locality of code with other
+ *      cold functions. Exception handlers are good candidates for marking with
+ *      C_COLD.
+ *
+ *      This macro uses the non-standard `__attribute__((cold))` decorator, and
+ *      is available for both GCC and Clang. On other compilers, the default
+ *      behaviour of this macro is to degrade safely to a no-op with a suitable
+ *      warning message. If you don't want this warning message to be displayed,
+ *      then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile time.
+ *
+ * FILES
+ *      C_COLD is defined in /usr/local/libchrysalis/include/ext.h.
+ *
+ * EXAMPLES
+ *      C_COLD int foo(char *, int *);  // standard declaration
+ *      void bar(float *) C_COLD;       // alternate declaration
+ *     
+ *      // can also be applied on definitions
+ *      C_COLD static int foobar(char *foo, char c)
+ *      {
+ *              c = *foo;
+ *              return (int) c;
+ *      }
+ *
+ * NOTES
+ *      - C_COLD is ignored by GCC if the `-fprofile-use` flag is used during
+ *        compilation.
+ *      - Unlike the case of C_HOT, Clang does _not_ silently drop this macro.
+ *
+ * SEE ALSO
+ *      - ref C_HOT
+ *        [base:ext:hot]
+ *      - web GCC (11.2.0:6.33.1)
+ *        [https://gcc.gnu.org/onlinedocs/gcc-11.2.0/gcc
+ *              /Common-Function-Attributes.html#Common-Function-Attributes]
+ *      - web llvm-dev@lists.llvm.org
+ *        [https://lists.llvm.org/pipermail/llvm-dev/2020-December/147104.html]
  **/
-#define C_COLD __attribute__((cold))
+#if (defined __GNUC__ || defined __clang__)
+#       define C_COLD __attribute__((cold))
+#else
+#       define C_COLD
+#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "C_COLD has no effect in current compiler"
+#       endif
+#endif
+
 
 /**
  ** ^ C_PURE: Marks a variable as pure.
