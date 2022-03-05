@@ -9,17 +9,17 @@ extern "C" {
 #endif
 
 
-/** [base:ext:nonull]
+/** [base:ext:safep]
  * NAME
- *      C_NONULL - hints a function has no null parameters
+ *      C_SAFEP - hints a function has no null parameters
  *
  * SYNOPSIS
  *      #include "libchrysalis/chrysalis.h"
  *
- *      #define C_NONULL __attribute__((nonull))
+ *      #define C_SAFEP __attribute__((nonull))
  *
  * DESCRIPTION
- *      The C_NONULL macro indicates that _all_ pointer parameters of a function
+ *      The C_SAFEP macro indicates that _all_ pointer parameters of a function
  *      are required to be non-null. A warning is issued if a null pointer is
  *      passed to any of the parameters of such a function. This macro has no
  *      effect on non-pointer parameters, and so must be used to decorate
@@ -34,14 +34,14 @@ extern "C" {
  *      then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile time.
  *
  * FILES
- *      C_NONULL is defined in /usr/local/libchrysalis/include/ext.h.
+ *      C_SAFEP is defined in /usr/local/libchrysalis/include/ext.h.
  *
  * EXAMPLES
- *      C_NONULL int foo(char *, int *);    // standard declaration
- *      void bar(float *) C_NONULL;         // alternate declaration
+ *      C_SAFEP int foo(char *, int *);     // standard declaration
+ *      void bar(float *) C_SAFEP;          // alternate declaration
  *     
  *      // can also be applied on definitions
- *      C_NONULL static int foobar(char *foo, char c)
+ *      C_SAFEP static int foobar(char *foo, char c)
  *      {
  *              c = *foo;
  *              return (int) c;
@@ -55,7 +55,7 @@ extern "C" {
  *        code smell.
  *      - Clang allows the `__attribute__((nonnull))` decorator to be applied
  *        directly to a function parameter, but GCC does not. Therefore,
- *        C_NONULL may be used to mark specific function parameters when
+ *        C_SAFEP may be used to mark specific function parameters when
  *        compiled with Clang; however, it is better not to do so in the
  *        interest of portability.
  *
@@ -67,9 +67,9 @@ extern "C" {
  *        [https://clang.llvm.org/docs/AttributeReference.html]
  **/
 #if (defined __GNUC__ || defined __clang__)
-#       define C_NONULL __attribute__((nonnull))
+#       define C_SAFEP __attribute__((nonnull))
 #else
-#       define C_NONULL
+#       define C_SAFEP
 #       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
 #               warning "C_NONULL has no effect in current compiler"
 #       endif
@@ -144,7 +144,7 @@ extern "C" {
  * SYNOPSIS
  *      #include "libchrysalis/chrysalis.h"
  *
- *      #define C_COLD __attribute__((hot))
+ *      #define C_COLD __attribute__((cold))
  *
  * DESCRIPTION
  *      The C_COLD macro is used to hint that a function is cold, i.e. it is
@@ -201,7 +201,11 @@ extern "C" {
 /**
  ** ^ C_PURE: Marks a variable as pure.
  **/
-#define C_PURE __attribute__((pure))
+#define C_STABLE __attribute__((pure))
+
+
+#define C_IMMUTABLE __attribute__((pure))
+
 
 /**
  ** ^ C_TLOCAL: Marks a variable as thread local.
