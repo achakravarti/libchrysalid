@@ -5,7 +5,7 @@
 
 # NAME
 
-`libchrysalis` `C_PSAFE` - hints a function has no null parameters
+`C_PSAFE` - hints a function has no null parameters
 
 
 # SYNOPSIS
@@ -42,7 +42,7 @@ you don't want this warning message to be displayed, then define the macro
 : Symbolic link to */usr/local/src/libchrysalis/include/base/ext.h*; required by
 client code to correctly resolve `#include <libchrysalis/api.h>`.
 
-*/usr/local/libchrysalis/doc/base/c_psafe.md*
+*/usr/local/src/libchrysalis/doc/base/c_psafe.md*
 : Markdown documentation in man layout.
 
 */usr/local/man/man3/libchrysalis:C_PSAFE.3.gz*

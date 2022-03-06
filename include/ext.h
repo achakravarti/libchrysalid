@@ -48,7 +48,7 @@ extern "C" {
 #endif
 
 
-/* Define C_PSAFE macro; see libchrysalis/doc/base/C_PSAFE.7.md for
+/* Define C_PSAFE macro; see libchrysalis/docs/base/C_PSAFE.7.md for
  * documentation.
  */
 #if (defined __GNUC__ || defined __clang__)
@@ -61,50 +61,9 @@ extern "C" {
 #endif
 
 
-/** [base:ext:rsafe]
- * NAME
- *      C_RSAFE - hints a function never returns a null pointer
- *
- * SYNOPSIS
- *      #include "libchrysalis/api.h"
- *
- *      #define C_RSAFE
- *
- * DESCRIPTION
- *      The `C_RSAFE` macro hints that a function will never return a null
- *      pointer. When a function is marked with this macro, the compiler can
- *      make suitable optimisations for that function. The `C_RSAFE` macro may
- *      only be applied to functions that return a pointer type; a compiler
- *      warning will be issued if applied to functions returning other types.
- *
- *      This macro uses the non-standard `__attribute__((returns_nonnull))`
- *      decorator, and is available for both GCC and Clang. On other compilers,
- *      the default behaviour of this macro is to degrade safely to a no-op with
- *      a suitable warning message. If you don't want this warning message to be
- *      displayed, then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at
- *      compile time.
- *
- * FILES
- *      `C_RSAFE` is defined in /usr/local/libchrysalis/include/ext.h.
- *
- * EXAMPLE
- *      C_RSAFE int *foo(char *, int *);    // standard declaration
- *      void *bar(float *) C_PSAFE;         // alternate declaration
- *     
- *      // can also be applied on definitions
- *      C_RSAFE static int *foobar(char *foo, char c)
- *      {
- *              *foo = c;
- *              return (int) c;
- *      }
- *
- * SEE ALSO
- *      - ref C_PSAFE
- *        [base:ext:psafe]
- *      - web GCC (11.2.0:6.33.1)
- *        [https://gcc.gnu.org/onlinedocs/gcc-11.2.0/gcc
- *              /Common-Function-Attributes.html#Common-Function-Attributes]
- **/
+/* Define C_RSAFE macro; see libchrysalis/docs/base/C_RSAFE.7.md for
+ * documentation.
+ */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_RSAFE __attribute__((returns_nonnull))
 #else

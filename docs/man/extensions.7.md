@@ -50,7 +50,7 @@ warning messages to emitted, then define the symbolic constant
 : Symbolic link to */usr/local/src/libchrysalis/include/base/ext.h*; required by
 client code to correctly resolve `#include <libchrysalis/api.h>`.
 
-*/usr/local/src/libchrysalis/doc/base/ext.h*
+*/usr/local/src/libchrysalis/doc/base/extensions.md*
 : Markdown documentation in man layout.
 
 */usr/local/man/man7/libchrysalis:extensions.7.gz*
