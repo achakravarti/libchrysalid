@@ -4,26 +4,17 @@ MAN_IDIR=docs/man
 # Output directory of generated man pages.
 MAN_ODIR=build/docs/man
 
+MAN_3DIR=/usr/local/man/man3
+MAN_7DIR=/usr/local/man/man7
+
 # Source Markdown files for man pages
 MAN_SRC!=find $(MAN_IDIR)/ -type f -name '*.md' | sort
 
 # Generated man pages from Markdown source files.
 MAN_PG=$(MAN_SRC:$(MAN_IDIR)/%.md=$(MAN_ODIR)/%)
 
-
-#DOC_PREFIX = libchrysalis
-#DOC_ODIR = build/docs
-
-
-#docs:
-	#pandoc docs/base/extensions.7.md -s -t man -o $(DOC_ODIR)/$(DOC_PREFIX):extensions.7
-	#pandoc docs/base/C_PSAFE.3.md -s -t man -o $(DOC_ODIR)/$(DOC_PREFIX):C_PSAFE.3
-	#sudo mkdir -p /usr/local/man/man3 /usr/local/man/man7
-	#sudo cp $(DOC_ODIR)/$(DOC_PREFIX):extensions.7 /usr/local/man/man7/$(DOC_PREFIX):extensions.7
-	#sudo cp $(DOC_ODIR)/$(DOC_PREFIX):C_PSAFE.3 /usr/local/man/man3/$(DOC_PREFIX):C_PSAFE.3
-	#sudo gzip -f /usr/local/man/man7/$(DOC_PREFIX):extensions.7
-	#sudo gzip -f /usr/local/man/man3/$(DOC_PREFIX):C_PSAFE.3
-	#sudo mandb
+# Man page title namespace
+MAN_NS=libchrysalis
 
 
 docs: $(MAN_PG)
@@ -37,6 +28,27 @@ clean:
 	rm -f $(MAN_ODIR)/man3/*
 	rm -f $(MAN_ODIR)/man7/*
 
+install: $(MAN_PG)
+	sudo mkdir -p $(MAN_3DIR)
+	sudo mkdir -p $(MAN_7DIR)
+	sudo rm -f $(MAN_3DIR)/$(MAN_NS)*
+	sudo rm -f $(MAN_7DIR)/$(MAN_NS)*
+	cd $(MAN_ODIR)/man3;							\
+	for f in *.3;								\
+		do sudo cp -v -- "$$f" "$(MAN_3DIR)/$(MAN_NS):$$f";		\
+	done
+	cd $(MAN_ODIR)/man7;							\
+	for f in *.7;								\
+		do sudo cp -v -- "$$f" "$(MAN_7DIR)/$(MAN_NS):$$f";		\
+	done
+	for f in $(MAN_3DIR)/$(MAN_NS)*;					\
+		do sudo gzip -f "$$f";						\
+	done
+	for f in $(MAN_7DIR)/$(MAN_NS)*;					\
+		do sudo gzip -f "$$f";						\
+	done
+	sudo mandb
+
 .PHONY:
-	clean docs
+	clean docs install
 
