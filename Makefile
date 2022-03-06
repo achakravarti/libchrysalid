@@ -49,6 +49,11 @@ install: $(MAN_PG)
 	done
 	sudo mandb
 
+uninstall: $(MAN_3DIR) $(MAN_7DIR)
+	sudo rm -f $(MAN_3DIR)/$(MAN_NS)*
+	sudo rm -f $(MAN_7DIR)/$(MAN_NS)*
+	sudo mandb
+
 .PHONY:
-	clean docs install
+	clean docs install uninstall
 
