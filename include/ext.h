@@ -202,7 +202,7 @@ extern "C" {
 #define C_STABLE __attribute__((pure))
 
 
-#define C_IMMUTABLE __attribute__((pure))
+#define C_IMMUTABLE __attribute__((const))
 
 
 /**
