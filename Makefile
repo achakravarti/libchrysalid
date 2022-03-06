@@ -4,7 +4,10 @@ MAN_IDIR=docs/man
 # Output directory of generated man pages.
 MAN_ODIR=build/docs/man
 
+# System directory for section 3 man pages.
 MAN_3DIR=/usr/local/man/man3
+
+# System directory for section 7 man pages.
 MAN_7DIR=/usr/local/man/man7
 
 # Source Markdown files for man pages
@@ -25,19 +28,19 @@ $(MAN_ODIR)/%: $(MAN_IDIR)/%.md
 	pandoc $< -s -t man -o $@
 
 clean:
-	rm -f $(MAN_ODIR)/man3/*
-	rm -f $(MAN_ODIR)/man7/*
+	rm -f $(MAN_ODIR)/*
+	rm -f $(MAN_ODIR)/*
 
 install: $(MAN_PG)
 	sudo mkdir -p $(MAN_3DIR)
 	sudo mkdir -p $(MAN_7DIR)
 	sudo rm -f $(MAN_3DIR)/$(MAN_NS)*
 	sudo rm -f $(MAN_7DIR)/$(MAN_NS)*
-	cd $(MAN_ODIR)/man3;							\
+	cd $(MAN_ODIR);								\
 	for f in *.3;								\
 		do sudo cp -v -- "$$f" "$(MAN_3DIR)/$(MAN_NS):$$f";		\
 	done
-	cd $(MAN_ODIR)/man7;							\
+	cd $(MAN_ODIR);								\
 	for f in *.7;								\
 		do sudo cp -v -- "$$f" "$(MAN_7DIR)/$(MAN_NS):$$f";		\
 	done
