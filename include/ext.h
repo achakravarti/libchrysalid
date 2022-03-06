@@ -36,7 +36,7 @@ extern "C" {
  * FILES
  *      `C_PSAFE` is defined in /usr/local/libchrysalis/include/ext.h.
  *
- * EXAMPLES
+ * EXAMPLE
  *      C_PSAFE int foo(char *, int *);     // standard declaration
  *      void bar(float *) C_PSAFE;          // alternate declaration
  *     
@@ -107,7 +107,7 @@ extern "C" {
  * FILES
  *      `C_RSAFE` is defined in /usr/local/libchrysalis/include/ext.h.
  *
- * EXAMPLES
+ * EXAMPLE
  *      C_RSAFE int *foo(char *, int *);    // standard declaration
  *      void *bar(float *) C_PSAFE;         // alternate declaration
  *     
@@ -160,7 +160,7 @@ extern "C" {
  * FILES
  *      `C_HOT` is defined in /usr/local/libchrysalis/include/ext.h.
  *
- * EXAMPLES
+ * EXAMPLE
  *      C_HOT int foo(char *, int *);   // standard declaration
  *      void bar(float *) C_HOT;        // alternate declaration
  *     
@@ -222,7 +222,7 @@ extern "C" {
  * FILES
  *      `C_COLD` is defined in /usr/local/libchrysalis/include/ext.h.
  *
- * EXAMPLES
+ * EXAMPLE
  *      C_COLD int foo(char *, int *);  // standard declaration
  *      void bar(float *) C_COLD;       // alternate declaration
  *     
@@ -306,8 +306,7 @@ extern "C" {
  * FILES
  *      `C_LIKELY` is defined in /usr/local/libchrysalis/include/ext.h.
  *
- * EXAMPLES
- *     
+ * EXAMPLE
  *      int foobar(char *foo, char c)
  *      {
  *              if (C_LIKELY (foo != NULL)) {
@@ -324,8 +323,8 @@ extern "C" {
  *        have the contrary effect of degrading performance.
  *
  * SEE ALSO
- *      - ref C_LIKELY()
- *        [base:ext:likely]
+ *      - ref C_UNLIKELY()
+ *        [base:ext:unlikely]
  *      - web Kernel Newbies
  *        [https://kernelnewbies.org/FAQ/LikelyUnlikely]
  *      - web GCC Online Docs
@@ -339,14 +338,71 @@ extern "C" {
 #       define C_LIKELY(_P_) _P_
 #       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
 #               warning "C_LIKELY() has no effect in current compiler"
+#       endif
 #endif
 
 
-/**
- ** ^ C_UNLIKEY(): Marks predicate as unlikely to be true.
- ** > _P_: Boolean predicate to evaluate.
+/** [base:ext:unlikely]
+ * NAME
+ *      C_UNLIKELY() - hints predicate as unlikely to be true
+ *
+ * SYNOPSIS
+ *      #include "libchrysalis/chrysalis.h"
+ *
+ *      #define C_UNLIKELY(_P_)
+ *
+ * DESCRIPTION
+ *      The `C_UNLIKELY()` macro provides a branch prediction hint to the
+ *      compiler, indicating that a predicate expression `_P_` is UNlikely to be
+ *      true. `_P_` is expected to be an integral predicate expression that
+ *      evaluates to a Boolean value.
+ *
+ *      This macro uses the non-standard `__builtin_expect()` macro, and is
+ *      available for both GCC and Clang. On other compilers, the default
+ *      behaviour of this macro is to degrade safely to a no-op with a suitable
+ *      warning message. If you don't want this warning message to be displayed,
+ *      then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile time.
+ *
+ * RETURN VALUE
+ *      The Boolean value which the predicate `_P_` evaluates to is returned.
+ *
+ * FILES
+ *      `C_UNLIKELY` is defined in /usr/local/libchrysalis/include/ext.h.
+ *
+ * EXAMPLE
+ *      int foobar(char *foo, char c)
+ *      {
+ *              if (C_LIKELY (foo != NULL)) {
+ *                      *foo = c;
+ *                      return (int) c;
+ *              }
+ *
+ *              return -1;
+ *      }
+ *
+ * NOTES
+ *      - This macro is inspired by the `unlikely()` macro in the Linux kernel.
+ *      - Marking a predicate as likely with `C_UNLIKELY()` when it is not so
+ *        will have the contrary effect of degrading performance.
+ *
+ * SEE ALSO
+ *      - ref C_LIKELY()
+ *        [base:ext:likely]
+ *      - web Kernel Newbies
+ *        [https://kernelnewbies.org/FAQ/LikelyUnlikely]
+ *      - web GCC Online Docs
+ *        [https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html
+ *      - web LLVM Documentation
+ *        [https://llvm.org/docs/BranchWeightMetadata.html]
  **/
-#define C_UNLIKELY(_P_) __builtin_expect(!!(_P_), 0)
+#if (defined __GNUC__ || defined __clang__)
+#       define C_UNLIKELY(_P_) __builtin_expect(!!(_P_), 0)
+#else
+#       define C_LIKELY(_P_) _P_
+#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "C_LIKELY() has no effect in current compiler"
+#       endif
+#endif
 
 
 /* Close C++ compatibility wrapper. */
