@@ -1,3 +1,70 @@
+/** [base:ext]
+ * NAME
+ *      Extensions - commonly used compiler extensions
+ *
+ * SYNOPSIS
+ *      #include <libchrysalis/api.h>
+ * 
+ *      #define C_PSAFE
+ *      #define C_RSAFE
+ *      #define C_HOT
+ *      #define C_COLD
+ *      #define C_STABLE
+ *      #define C_IMMUTABLE
+ *      #define C_TLOCAL
+ *      #define C_AUTO
+ *      #define C_LIKELY(_P_)
+ *      #define C_UNLIKELY(_P_)
+ *
+ * DESCRIPTION
+ *      The *Extensions* component is part of the *Base* module of
+ *      `libchrysalis`. This component defines the compiler extensions are often
+ *      useful for optimising code. Optimisation can be both in terms of
+ *      performance and desirable features which are otherwise not availabe in
+ *      the C standards.
+ *
+ *      These extensions are defined as macros relying on non-standard features
+ *      provided by the GCC and Clang compilers, and as such are only available
+ *      for use when these two compilers are used. On other compilers, these
+ *      extension macros degrade safely to a no-op with an appropriate warning
+ *      message. If you don't want these warning messages to emitted, then
+ *      define the symbolic constant `C_SUPPRESS_EXTENSION_WARNINGS` at compile
+ *      time
+ *
+ * FILES
+ *      The extension macros are defined entirely within the
+ *      /usr/local/libchrysalis/include/base/ext.h header file.
+ *
+ * CONFORMING TO
+ *      - C99
+ *      - C11
+ *      - GCC
+ *      - Clang
+ *
+ * SEE ALSO:
+ *      - ref C_PSAFE
+ *        [base:ext:psafe]
+ *      - ref C_RSAFE
+ *        [base:ext:rsafe]
+ *      - ref C_HOT
+ *        [base:ext:hot]
+ *      - ref C_COLD
+ *        [base:ext:cold]
+ *      - ref C_STABLE
+ *        [base:ext:stable]
+ *      - ref C_IMMUTABLE
+ *        [base:ext:immutable]
+ *      - ref C_TLOCAL
+ *        [base:ext:tlocal]
+ *      - ref C_AUTO
+ *        [base:ext:auto]
+ *      - ref C_LIKELY()
+ *        [base:ext:likely]
+ *      - ref C_UNLIKELY()
+ *        [base:ext:unlikely]
+ **/
+
+
 /* Start header guard. */
 #ifndef __LIBCHRYSALIS_INCLUDE_EXT_H_INCLUDED__
 #define __LIBCHRYSALIS_INCLUDE_EXT_H_INCLUDED__
@@ -14,9 +81,9 @@ extern "C" {
  *      C_PSAFE - hints a function has no null parameters
  *
  * SYNOPSIS
- *      #include "libchrysalis/chrysalis.h"
+ *      #include "libchrysalis/api.h"
  *
- *      #define C_PSAFE __attribute__((nonull))
+ *      #define C_PSAFE
  *
  * DESCRIPTION
  *      The `C_PSAFE` macro indicates that _all_ pointer parameters of a
@@ -86,9 +153,9 @@ extern "C" {
  *      C_RSAFE - hints a function never returns a null pointer
  *
  * SYNOPSIS
- *      #include "libchrysalis/chrysalis.h"
+ *      #include "libchrysalis/api.h"
  *
- *      #define C_RSAFE __attribute__((returns_nonnull))
+ *      #define C_RSAFE
  *
  * DESCRIPTION
  *      The `C_RSAFE` macro hints that a function will never return a null
@@ -140,9 +207,9 @@ extern "C" {
  *      C_HOT - hints a function as hot
  *
  * SYNOPSIS
- *      #include "libchrysalis/chrysalis.h"
+ *      #include "libchrysalis/api.h"
  *
- *      #define C_HOT __attribute__((hot))
+ *      #define C_HOT
  *
  * DESCRIPTION
  *      The `C_HOT` macro is used to hint that a function is hot, i.e. it is
@@ -201,9 +268,9 @@ extern "C" {
  *      C_COLD - hints a function as cold
  *
  * SYNOPSIS
- *      #include "libchrysalis/chrysalis.h"
+ *      #include "libchrysalis/api.h"
  *
- *      #define C_COLD __attribute__((cold))
+ *      #define C_COLD
  *
  * DESCRIPTION
  *      The `C_COLD` macro is used to hint that a function is cold, i.e. it is
@@ -284,7 +351,7 @@ extern "C" {
  *      C_LIKELY() - hints predicate as likely to be true
  *
  * SYNOPSIS
- *      #include "libchrysalis/chrysalis.h"
+ *      #include "libchrysalis/api.h"
  *
  *      #define C_LIKELY(_P_)
  *
@@ -347,7 +414,7 @@ extern "C" {
  *      C_UNLIKELY() - hints predicate as unlikely to be true
  *
  * SYNOPSIS
- *      #include "libchrysalis/chrysalis.h"
+ *      #include "libchrysalis/api.h"
  *
  *      #define C_UNLIKELY(_P_)
  *
