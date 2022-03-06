@@ -1,3 +1,6 @@
 # Tags file
 tags
 
+# Build output
+build/
+
