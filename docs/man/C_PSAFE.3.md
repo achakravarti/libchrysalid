@@ -35,11 +35,18 @@ you don't want this warning message to be displayed, then define the macro
 
 # FILES
 
-*/usr/local/libchrysalis/include/base/ext.h*
-:	Definition of `C_PSAFE` macro.
+*/usr/local/src/libchrysalis/include/base/ext.h*
+: Definition of `C_PSAFE` macro.
+
+*/usr/local/include/libchrysalis/base/ext.h*
+: Symbolic link to */usr/local/src/libchrysalis/include/base/ext.h*; required by
+client code to correctly resolve `#include <libchrysalis/api.h>`.
 
 */usr/local/libchrysalis/doc/base/c_psafe.md*
-:	Markdown documentation in man layout.
+: Markdown documentation in man layout.
+
+*/usr/local/man/man3/libchrysalis:C_PSAFE.3.gz*
+: Man page documentation (this page).
 
 
 # EXAMPLES
