@@ -42,7 +42,7 @@ you don't want this warning message to be displayed, then define the macro
 :	Markdown documentation in man layout.
 
 
-# EXAMPLE
+# EXAMPLES
 
 ```
 C_PSAFE int foo(char *, int *);     /* standard declaration */
@@ -78,6 +78,12 @@ C99, C11, GCC, Clang.
 - Clang also provides the non-standard attribute `_Nonnull`, which is
   semantically identical to `__attribute__((nonnull))`; however, GCC
   does not support this.
+
+
+# COPYRIGHT
+
+`libchrysalis` along with its documentation are released under the BSD 2-Clause
+License.
 
 
 # SEE ALSO

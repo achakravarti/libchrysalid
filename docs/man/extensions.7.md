@@ -55,6 +55,12 @@ warning messages to emitted, then define the symbolic constant
 C99, C11, GCC, Clang.
 
 
+# COPYRIGHT
+
+`libchrysalis` along with its documentation are released under the BSD 2-Clause
+License.
+
+
 # SEE ALSO:
 
 **libchrysalis:C_PSAFE(3)**, **libchrysalis:C_RSAFE(3)**,
