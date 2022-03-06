@@ -43,7 +43,7 @@ extern "C" {
  *      // can also be applied on definitions
  *      C_PSAFE static int foobar(char *foo, char c)
  *      {
- *              c = *foo;
+ *              *foo = c;
  *              return (int) c;
  *      }
  *
@@ -114,7 +114,7 @@ extern "C" {
  *      // can also be applied on definitions
  *      C_RSAFE static int *foobar(char *foo, char c)
  *      {
- *              c = *foo;
+ *              *foo = c;
  *              return (int) c;
  *      }
  *
@@ -167,7 +167,7 @@ extern "C" {
  *      // can also be applied on definitions
  *      C_HOT static int foobar(char *foo, char c)
  *      {
- *              c = *foo;
+ *              *foo = c;
  *              return (int) c;
  *      }
  *
@@ -220,7 +220,7 @@ extern "C" {
  *      then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile time.
  *
  * FILES
- *      C_COLD is defined in /usr/local/libchrysalis/include/ext.h.
+ *      `C_COLD` is defined in /usr/local/libchrysalis/include/ext.h.
  *
  * EXAMPLES
  *      C_COLD int foo(char *, int *);  // standard declaration
@@ -229,7 +229,7 @@ extern "C" {
  *      // can also be applied on definitions
  *      C_COLD static int foobar(char *foo, char c)
  *      {
- *              c = *foo;
+ *              *foo = c;
  *              return (int) c;
  *      }
  *
@@ -279,11 +279,67 @@ extern "C" {
 #define C_AUTO(_T_) __attribute__((cleanup(_T_##_free))) _T_
 
 
-/**
- ** ^ C_LIKEY(): Marks predicate as likely to be true.
- ** > _P_: Boolean predicate to evaluate.
+/** [base:ext:likely]
+ * NAME
+ *      C_LIKELY() - hints predicate as likely to be true
+ *
+ * SYNOPSIS
+ *      #include "libchrysalis/chrysalis.h"
+ *
+ *      #define C_LIKELY(_P_)
+ *
+ * DESCRIPTION
+ *      The `C_LIKELY()` macro provides a branch prediction hint to the
+ *      compiler, indicating that a predicate expression `_P_` is likely to be
+ *      true. `_P_` is expected to be an integral predicate expression that
+ *      evaluates to a Boolean value.
+ *
+ *      This macro uses the non-standard `__builtin_expect()` macro, and is
+ *      available for both GCC and Clang. On other compilers, the default
+ *      behaviour of this macro is to degrade safely to a no-op with a suitable
+ *      warning message. If you don't want this warning message to be displayed,
+ *      then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile time.
+ *
+ * RETURN VALUE
+ *      The Boolean value which the predicate `_P_` evaluates to is returned.
+ *
+ * FILES
+ *      `C_LIKELY` is defined in /usr/local/libchrysalis/include/ext.h.
+ *
+ * EXAMPLES
+ *     
+ *      int foobar(char *foo, char c)
+ *      {
+ *              if (C_LIKELY (foo != NULL)) {
+ *                      *foo = c;
+ *                      return (int) c;
+ *              }
+ *
+ *              return -1;
+ *      }
+ *
+ * NOTES
+ *      - This macro is inspired by the `likely()` macro in the Linux kernel.
+ *      - Marking a predicate as likely with `C_LIKELY()` when it is not so will
+ *        have the contrary effect of degrading performance.
+ *
+ * SEE ALSO
+ *      - ref C_LIKELY()
+ *        [base:ext:likely]
+ *      - web Kernel Newbies
+ *        [https://kernelnewbies.org/FAQ/LikelyUnlikely]
+ *      - web GCC Online Docs
+ *        [https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html
+ *      - web LLVM Documentation
+ *        [https://llvm.org/docs/BranchWeightMetadata.html]
  **/
-#define C_LIKELY(_P_) __builtin_expect(!!(_P_), 1)
+#if (defined __GNUC__ || defined __clang__)
+#       define C_LIKELY(_P_) __builtin_expect(!!(_P_), 1)
+#else
+#       define C_LIKELY(_P_) _P_
+#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "C_LIKELY() has no effect in current compiler"
+#endif
 
 
 /**
