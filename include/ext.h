@@ -1,68 +1,40 @@
-/** [base:ext]
- * NAME
- *      Extensions - commonly used compiler extensions
+/*******************************************************************************
+ * SPDX-License-Identifier: BSD-2-Clause
  *
- * SYNOPSIS
- *      #include <libchrysalis/api.h>
- * 
- *      #define C_PSAFE
- *      #define C_RSAFE
- *      #define C_HOT
- *      #define C_COLD
- *      #define C_STABLE
- *      #define C_IMMUTABLE
- *      #define C_TLOCAL
- *      #define C_AUTO
- *      #define C_LIKELY(_P_)
- *      #define C_UNLIKELY(_P_)
+ * libchrysalis/base/ext.h - commonly used compiler extensions
+ * Copyright (c) 2022 Abhishek Chakravarti
+ * See libchrysalis/doc/base/libchrysalis:extensions.7.md for documentation.
  *
- * DESCRIPTION
- *      The *Extensions* component is part of the *Base* module of
- *      `libchrysalis`. This component defines the compiler extensions are often
- *      useful for optimising code. Optimisation can be both in terms of
- *      performance and desirable features which are otherwise not availabe in
- *      the C standards.
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *      These extensions are defined as macros relying on non-standard features
- *      provided by the GCC and Clang compilers, and as such are only available
- *      for use when these two compilers are used. On other compilers, these
- *      extension macros degrade safely to a no-op with an appropriate warning
- *      message. If you don't want these warning messages to emitted, then
- *      define the symbolic constant `C_SUPPRESS_EXTENSION_WARNINGS` at compile
- *      time
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
  *
- * FILES
- *      The extension macros are defined entirely within the
- *      /usr/local/libchrysalis/include/base/ext.h header file.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
  *
- * CONFORMING TO
- *      - C99
- *      - C11
- *      - GCC
- *      - Clang
+ * 3. Neither the name of the copyright holder nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software 
+ *    without specific prior written permission.
  *
- * SEE ALSO:
- *      - ref C_PSAFE
- *        [base:ext:psafe]
- *      - ref C_RSAFE
- *        [base:ext:rsafe]
- *      - ref C_HOT
- *        [base:ext:hot]
- *      - ref C_COLD
- *        [base:ext:cold]
- *      - ref C_STABLE
- *        [base:ext:stable]
- *      - ref C_IMMUTABLE
- *        [base:ext:immutable]
- *      - ref C_TLOCAL
- *        [base:ext:tlocal]
- *      - ref C_AUTO
- *        [base:ext:auto]
- *      - ref C_LIKELY()
- *        [base:ext:likely]
- *      - ref C_UNLIKELY()
- *        [base:ext:unlikely]
- **/
+ * 4. Redistributions of any form whatsoever must retain the following
+ *    acknowledgment: 'This product includes software developed by "Montão AB"
+ *    (https://montao.github.io/).'
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *******************************************************************************/
 
 
 /* Start header guard. */
