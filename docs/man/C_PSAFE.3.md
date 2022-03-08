@@ -100,3 +100,10 @@ License.
 /Common-Function-Attributes.html#Common-Function-Attributes)*,
 *[Clang Documentation](https://clang.llvm.org/docs/AttributeReference.html)*
 
+
+# COLOPHON
+
+This page is part of release 0.0.1 of the `libchrysalis` project. The latest
+version of this project can be found on
+[GitHub](https://github.com/achakravarti/libchrysalis).
+

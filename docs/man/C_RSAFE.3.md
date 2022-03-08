@@ -79,3 +79,10 @@ License.
 **libchrysalis:C_PSAFE(3)**, 
 *[GCC Online Docs](https://gcc.gnu.org/onlinedocs/gcc-11.2.0/gcc
 
+
+# COLOPHON
+
+This page is part of release 0.0.1 of the `libchrysalis` project. The latest
+version of this project can be found on
+[GitHub](https://github.com/achakravarti/libchrysalis).
+

@@ -76,3 +76,10 @@ License.
 **libchrysalis:C_TLOCAL(3)**, **libchrysalis:C_AUTO(3)**,
 **libchrysalis:C_LIKELY(3)**, **libchrysalis:C_UNLIKELY(3)**
 
+
+# COLOPHON
+
+This page is part of release 0.0.1 of the `libchrysalis` project. The latest
+version of this project can be found on
+[GitHub](https://github.com/achakravarti/libchrysalis).
+

@@ -90,3 +90,10 @@ License.
 *[LLVM Development Mailing List](https://lists.llvm.org/pipermail/llvm-dev/
 2020-December/147104.html)*
 
+
+# COLOPHON
+
+This page is part of release 0.0.1 of the `libchrysalis` project. The latest
+version of this project can be found on
+[GitHub](https://github.com/achakravarti/libchrysalis).
+
