@@ -48,8 +48,8 @@ extern "C" {
 #endif
 
 
-/* Define C_PSAFE macro; see libchrysalis/docs/base/C_PSAFE.7.md for
- * documentation.
+/* Define C_PSAFE macro; see libchrysalis/docs/base/C_PSAFE.7.md for a detailed
+ * description.
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_PSAFE __attribute__((nonnull))
@@ -61,8 +61,8 @@ extern "C" {
 #endif
 
 
-/* Define C_RSAFE macro; see libchrysalis/docs/base/C_RSAFE.7.md for
- * documentation.
+/* Define C_RSAFE macro; see libchrysalis/docs/base/C_RSAFE.7.md for a detailed
+ * description.
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_RSAFE __attribute__((returns_nonnull))
@@ -74,57 +74,9 @@ extern "C" {
 #endif
 
 
-/** [base:ext:hot]
- * NAME
- *      C_HOT - hints a function as hot
- *
- * SYNOPSIS
- *      #include "libchrysalis/api.h"
- *
- *      #define C_HOT
- *
- * DESCRIPTION
- *      The `C_HOT` macro is used to hint that a function is hot, i.e. it is
- *      called often. When C_HOT is applied to a function, the compiler _may_
- *      optimise it more aggressively, reordering the function so that it
- *      appears in a special section with other hot functions so as to improve
- *      locality.
- *
- *      This macro uses the non-standard `__attribute__((hot))` decorator, and
- *      is available for both GCC and Clang. On other compilers, the default
- *      behaviour of this macro is to degrade safely to a no-op with a suitable
- *      warning message. If you don't want this warning message to be displayed,
- *      then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile time.
- *
- * FILES
- *      `C_HOT` is defined in /usr/local/libchrysalis/include/ext.h.
- *
- * EXAMPLE
- *      C_HOT int foo(char *, int *);   // standard declaration
- *      void bar(float *) C_HOT;        // alternate declaration
- *     
- *      // can also be applied on definitions
- *      C_HOT static int foobar(char *foo, char c)
- *      {
- *              *foo = c;
- *              return (int) c;
- *      }
- *
- * NOTES
- *      - `C_HOT` is ignored by GCC if the `-fprofile-use` flag is used during
- *        compilation.
- *      - Although Clang recognises the `__attribute__((hot)) decorator, it
- *        drops it silently; however, there is a proposal to implement this.
- *
- * SEE ALSO
- *      - ref C_COLD
- *        [base:ext:cold]
- *      - web GCC (11.2.0:6.33.1)
- *        [https://gcc.gnu.org/onlinedocs/gcc-11.2.0/gcc
- *              /Common-Function-Attributes.html#Common-Function-Attributes]
- *      - web llvm-dev@lists.llvm.org
- *        [https://lists.llvm.org/pipermail/llvm-dev/2020-December/147104.html]
- **/
+/* Define C_HOT macro; see libchrysalis/docs/base/C_HOT.7.md for a detailed
+ * description.
+ */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_HOT __attribute__((hot))
 #else
