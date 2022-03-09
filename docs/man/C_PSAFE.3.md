@@ -89,8 +89,10 @@ C99, C11, GCC, Clang.
 
 # COPYRIGHT
 
+Copyright &copy; 2022 Abhishek Chakravarti `<abhishek@taranjali.org>`
+
 `libchrysalis` along with its documentation are released under the BSD 2-Clause
-License.
+License. See **libchrysalis:license(7)** for the full license text.
 
 
 # SEE ALSO
