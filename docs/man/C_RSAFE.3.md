@@ -1,5 +1,5 @@
 % LIBCHRYSALIS:C_RSAFE(3) libchrysalis 0.0.1
-% Abhishek Chakravarti
+%
 % 2022
 
 
