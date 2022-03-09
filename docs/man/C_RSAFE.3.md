@@ -83,6 +83,6 @@ License.
 # COLOPHON
 
 This page is part of release 0.0.1 of the `libchrysalis` project. The latest
-version of this project can be found on
+version of this project can be found at
 [GitHub](https://github.com/achakravarti/libchrysalis).
 
