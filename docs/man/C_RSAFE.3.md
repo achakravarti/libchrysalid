@@ -25,11 +25,12 @@ optimisations for that function. The `C_RSAFE` macro may only be applied to
 functions that return a pointer type; a compiler warning will be issued if
 applied to functions returning other types.
 
-This macro uses the non-standard `__attribute__((returns_nonnull))` decorator,
-and is available for both GCC and Clang. On other compilers, the default
-behaviour of this macro is to degrade safely to a no-op with a suitable warning
-message. If you don't want this warning message to be displayed, then define the
-macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile time.
+This macro uses the non-standard `__attribute__((returns_nonnull))` decorator
+[@gcc:function-attributes], and is available for both GCC and Clang. On other
+compilers, the default behaviour of this macro is to degrade safely to a no-op
+with a suitable warning message. If you don't want this warning message to be
+displayed, then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile
+time.
 
 
 # FILES
@@ -79,7 +80,6 @@ License. See **libchrysalis:license(7)** for the full license text.
 # SEE ALSO
 
 **libchrysalis:C_PSAFE(3)**, 
-*[GCC Online Docs](https://gcc.gnu.org/onlinedocs/gcc-11.2.0/gcc
 
 
 # COLOPHON

@@ -25,7 +25,7 @@ docs: $(MAN_PG)
 $(MAN_PG): $(MAN_SRC)
 
 $(MAN_ODIR)/%: $(MAN_IDIR)/%.md
-	pandoc $< -s -t man -o $@
+	pandoc $< --bibliography=docs/references.bib --citeproc -s -t man -o $@
 
 clean:
 	rm -f $(MAN_ODIR)/*

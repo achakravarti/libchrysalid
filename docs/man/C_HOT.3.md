@@ -24,11 +24,12 @@ often. When `C_HOT` is applied to a function, the compiler _may_ optimise it
 more aggressively, reordering the function so that it appears in a special
 section with other hot functions so as to improve locality.
 
-This macro uses the non-standard `__attribute__((hot))` decorator, and is
-available for both GCC and Clang. On other compilers, the default behaviour of
-this macro is to degrade safely to a no-op with a suitable warning message. If
-you don't want this warning message to be displayed, then define the macro
-`C_SUPPRESS_EXTENSION_WARNINGS` at compile time.
+This macro uses the non-standard `__attribute__((hot))` decorator
+[@gcc:function-attributes], and is available for both GCC and Clang. On other
+compilers, the default behaviour of this macro is to degrade safely to a no-op
+with a suitable warning message. If you don't want this warning message to be
+displayed, then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile
+time.
 
 
 # FILES
@@ -71,9 +72,10 @@ C99, C11, GCC, Clang.
 # NOTES
 
 - `C_HOT` is ignored by GCC if the `-fprofile-use` flag is used during
-  compilation.
+  compilation [@gcc:function-attributes].
 - Although Clang recognises the `__attribute__((hot))` decorator, it drops it
-  silently; however, there is a proposal to implement this.
+  silently; however, there is a proposal to implement this
+  [@llvm-dev:hot-cold-attributes].
 
 
 # COPYRIGHT
@@ -86,11 +88,7 @@ License. See **libchrysalis:license(7)** for the full license text.
 
 # SEE ALSO
 
-**libchrysalis:C_COLD(3)**,
-*[GCC Online Docs](https://gcc.gnu.org/onlinedocs/gcc-11.2.0/gcc
-/Common-Function-Attributes.html#Common-Function-Attributes)*,
-*[LLVM Development Mailing List](https://lists.llvm.org/pipermail/llvm-dev/
-2020-December/147104.html)*
+**libchrysalis:C_COLD(3)**
 
 
 # COLOPHON

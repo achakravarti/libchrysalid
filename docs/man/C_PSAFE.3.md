@@ -26,11 +26,12 @@ parameters, and so must be used to decorate functions with at least one pointer
 parameter. A warning is issued if this macro is used to decorate a function
 without any pointer parameters.
 
-This macro uses the non-standard `__attribute__((nonnull))` decorator, and is
-available for both GCC and Clang. On other compilers, the default behaviour of
-this macro is to degrade safely to a no-op with a suitable warning message. If
-you don't want this warning message to be displayed, then define the macro
-`C_SUPPRESS_EXTENSION_WARNINGS` at compile time.
+This macro uses the non-standard `__attribute__((nonnull))` decorator
+[@gcc:function-attributes], and is available for both GCC and Clang. On other
+compilers, the default behaviour of this macro is to degrade safely to a no-op
+with a suitable warning message. If you don't want this warning message to be
+displayed, then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile
+time.
 
 
 # FILES
@@ -74,17 +75,17 @@ C99, C11, GCC, Clang.
   specify the 1-based index of the function parameters that are to be
   considered non-null; `C_PSAFE` doesn't do this both for the sake of
   brevity and also because we consider null pointer parameters to be a
-  code smell.
+  code smell [@gcc:function-attributes].
 
 - Clang allows the `__attribute__((nonnull))` decorator to be applied
   directly to a function parameter, but GCC does not. Therefore,
   `C_PSAFE` may be used to mark specific function parameters when
   compiled with Clang; however, it is better not to do so in the
-  interest of portability.
+  interest of portability [@clang:attributes].
 
 - Clang also provides the non-standard attribute `_Nonnull`, which is
   semantically identical to `__attribute__((nonnull))`; however, GCC
-  does not support this.
+  does not support this [@clang:attributes].
 
 
 # COPYRIGHT
@@ -97,10 +98,7 @@ License. See **libchrysalis:license(7)** for the full license text.
 
 # SEE ALSO
 
-**libchrysalis:C_RSAFE(3)**, 
-*[GCC Online Docs](https://gcc.gnu.org/onlinedocs/gcc-11.2.0/gcc
-/Common-Function-Attributes.html#Common-Function-Attributes)*,
-*[Clang Documentation](https://clang.llvm.org/docs/AttributeReference.html)*
+**libchrysalis:C_RSAFE(3)**
 
 
 # COLOPHON
