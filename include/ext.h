@@ -37,19 +37,18 @@
  *******************************************************************************/
 
 
-/* Start header guard. */
 #ifndef __LIBCHRYSALIS_INCLUDE_EXT_H_INCLUDED__
 #define __LIBCHRYSALIS_INCLUDE_EXT_H_INCLUDED__
 
 
-/* Open C++ compatibility wrapper. */
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 
-/* Define C_PSAFE macro; see libchrysalis/docs/base/C_PSAFE.7.md for a detailed
- * description.
+/*
+ * C_PSAFE - hints a function has no null parameters
+ * Ref: libchrysalis/docs/base/C_PSAFE.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_PSAFE __attribute__((nonnull))
@@ -61,8 +60,9 @@ extern "C" {
 #endif
 
 
-/* Define C_RSAFE macro; see libchrysalis/docs/base/C_RSAFE.7.md for a detailed
- * description.
+/*
+ * C_RSAFE - hints a function never returns a null pointer
+ * Ref: libchrysalis/docs/base/C_RSAFE.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_RSAFE __attribute__((returns_nonnull))
@@ -74,8 +74,9 @@ extern "C" {
 #endif
 
 
-/* Define C_HOT macro; see libchrysalis/docs/base/C_HOT.7.md for a detailed
- * description.
+/*
+ * C_HOT - hints a function as hot
+ * Ref: libchrysalis/docs/base/C_HOT.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_HOT __attribute__((hot))
@@ -87,8 +88,9 @@ extern "C" {
 #endif
 
 
-/* C_COLD - hints a function as cold
- * See libchrysalis/docs/base/C_COLD.7.md for a detailed description.
+/*
+ * C_COLD - hints a function as cold
+ * Ref: libchrysalis/docs/base/C_COLD.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_COLD __attribute__((cold))
@@ -100,25 +102,31 @@ extern "C" {
 #endif
 
 
-/**
- ** ^ C_PURE: Marks a variable as pure.
- **/
+/*
+ * C_STABLE - marks a function as stable
+ * Ref: libchrysalis/docs/base/C_STABLE.3.md
+ */
 #define C_STABLE __attribute__((pure))
 
 
+/*
+ * C_IMMUTABLE - marks a function as immutable
+ * Ref: libchrysalis/docs/base/C_IMMUTABLE.3.md
+ */
 #define C_IMMUTABLE __attribute__((const))
 
 
-/**
- ** ^ C_TLOCAL: Marks a variable as thread local.
- **/
+/*
+ * C_TLOCAL - marks a file scope variable as thread local
+ * Ref: libchrysalis/docs/base/C_TLOCAL.3.md
+ */
 #define C_TLOCAL __thread
 
 
-/**
- ** ^ C_AUTO(): Marks an automatic heap pointer.
- ** > _T_: Pointer type.
- **/
+/*
+ * C_AUTO - marks an automatic heap pointer
+ * Ref: libchrysalis/docs/base/C_AUTO.3.md
+ */
 #define C_AUTO(_T_) __attribute__((cleanup(_T_##_free))) _T_
 
 
@@ -248,11 +256,9 @@ extern "C" {
 #endif
 
 
-/* Close C++ compatibility wrapper. */
 #ifdef __cplusplus
 }
 #endif
 
-/* Close header guard. */
 #endif  /* !__LIBCHRYSALIS_INCLUDE_EXT_H_INCLUDED__ */
 
