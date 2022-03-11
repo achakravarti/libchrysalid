@@ -2,6 +2,7 @@
 #include "../include/heap.h"
 #include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 c_heap *
@@ -18,9 +19,7 @@ c_heap_copy(const c_heap *ctx)
 c_heap *
 c_heap_clone(const c_heap *ctx)
 {
-        // TODO
-        (void) ctx;
-        return NULL;
+        return c_heap_vtable_(ctx)->clone(ctx);
 }
 
 
@@ -152,6 +151,29 @@ c_heap_cast_(void *ctx)
 
 
 c_heap *
+clone(const c_heap *ctx)
+{
+        size_t sz = c_heap_sz(ctx);
+        c_heap *cp = c_heap_std_new(sz, 1);
+        memcpy(cp, ctx, sz);
+        
+        return cp;
+}
+
+
+static const struct c_heap_vtable_ g_vt = {
+        .clone          = &clone,
+        .clone_aligned  = NULL,
+        .free_cbk       = NULL,
+        .cmp            = NULL,
+        .sz_total       = NULL,
+        .resize         = NULL,
+        .resize_aligned = NULL,
+        .str            = NULL
+};
+
+
+c_heap *
 c_heap_std_new(size_t sz, size_t n)
 {
         size_t tsz = (sz * n) + C_HEAP_METASZ_;
@@ -159,7 +181,7 @@ c_heap_std_new(size_t sz, size_t n)
 
         c_heap_sz_set_(ctx, sz * n);
         c_heap_refc_set_(ctx, 1);
-        c_heap_vtable_set_(ctx, NULL);
+        c_heap_vtable_set_(ctx, &g_vt);
 
         return c_heap_cast_(ctx);
 }
