@@ -30,6 +30,7 @@ $(MAN_ODIR)/%: $(MAN_IDIR)/%.md
 clean:
 	rm -f $(MAN_ODIR)/*
 	rm -f $(MAN_ODIR)/*
+	rm -f build/heap
 
 install: $(MAN_PG)
 	sudo mkdir -p $(MAN_3DIR)
@@ -57,6 +58,11 @@ uninstall: $(MAN_3DIR) $(MAN_7DIR)
 	sudo rm -f $(MAN_7DIR)/$(MAN_NS)*
 	sudo mandb
 
+examples: build/heap
+
+build/heap:
+	gcc -Wall -Wextra -g -fPIC src/heap.c examples/heap.c -o build/heap
+
 .PHONY:
-	clean docs install uninstall
+	clean docs install uninstall examples
 

@@ -8,6 +8,7 @@ c_heap *
 c_heap_copy(const c_heap *ctx)
 {
         // TODO
+        (void) ctx;
         return NULL;
 }
 
@@ -16,6 +17,7 @@ c_heap *
 c_heap_clone(const c_heap *ctx)
 {
         // TODO
+        (void) ctx;
         return NULL;
 }
 
@@ -24,6 +26,8 @@ c_heap *
 c_heap_clone_aligned(const c_heap *ctx, size_t align)
 {
         // TODO
+        (void) ctx;
+        (void) align;
         return NULL;
 }
 
@@ -31,6 +35,7 @@ c_heap_clone_aligned(const c_heap *ctx, size_t align)
 void
 c_heap_free(c_heap **ctx)
 {
+        (void) ctx;
 }
 
 
@@ -38,6 +43,8 @@ enum c_cmp
 c_heap_cmp(const c_heap *ctx, c_heap *cmp)
 {
         // TODO
+        (void) ctx;
+        (void) cmp;
         return 0;
 }
 
@@ -45,8 +52,7 @@ c_heap_cmp(const c_heap *ctx, c_heap *cmp)
 size_t
 c_heap_sz(const c_heap *ctx)
 {
-        // TODO
-        return 0;
+        return ((size_t *) ctx)[-2];
 }
 
 
@@ -54,6 +60,7 @@ size_t
 c_heap_sz_total(const c_heap *ctx)
 {
         // TODO
+        (void) ctx;
         return 0;
 }
 
@@ -61,8 +68,7 @@ c_heap_sz_total(const c_heap *ctx)
 size_t
 c_heap_refc(const c_heap *ctx)
 {
-        // TODO
-        return 0;
+        return ((size_t *) ctx)[-1];
 }
 
 
@@ -70,6 +76,8 @@ bool
 c_heap_aligned(const c_heap *ctx, size_t align)
 {
         // TODO
+        (void) ctx;
+        (void) align;
         return false;
 }
 
@@ -77,12 +85,19 @@ c_heap_aligned(const c_heap *ctx, size_t align)
 void
 c_heap_resize(c_heap **ctx, size_t newsz)
 {
+        // TODO
+        (void) ctx;
+        (void) newsz;
 }
 
 
 void
 c_heap_resize_aligned(c_heap **ctx, size_t newsz, size_t align)
 {
+        // TODO
+        (void) ctx;
+        (void) newsz;
+        (void) align;
 }
 
 
@@ -90,6 +105,7 @@ const char *
 c_heap_str(const c_heap *ctx)
 {
         // TODO
+        (void) ctx;
         return "";
 }
 
@@ -132,7 +148,7 @@ c_heap_refc_set_(void *ctx, size_t refc)
 c_heap *
 c_heap_cast_(void *ctx)
 {
-        return (c_heap *) &(ctx[3]);
+        return (c_heap *) &(((size_t *) ctx)[3]);
 }
 
 
