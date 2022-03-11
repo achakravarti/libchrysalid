@@ -12,7 +12,64 @@ extern "C" {
 
 enum c_cmp { C_CMP_LT = -1, C_CMP_EQ, C_CMP_GT };
 
-typedef struct c_heap c_heap;
+
+typedef struct c_heap_ c_heap;
+
+
+extern c_heap *
+c_heap_copy(const c_heap *);
+
+
+extern c_heap *
+c_heap_clone(const c_heap *);
+
+
+extern c_heap *
+c_heap_clone_aligned(const c_heap *, size_t);
+
+
+extern void
+c_heap_free(c_heap **);
+
+
+extern enum c_cmp
+c_heap_cmp(const c_heap *, c_heap *);
+
+
+extern size_t
+c_heap_sz(const c_heap *);
+
+
+extern size_t
+c_heap_sz_total(const c_heap *);
+
+
+extern size_t
+c_heap_refc(const c_heap *);
+
+
+extern bool
+c_heap_aligned(const c_heap *, size_t);
+
+
+extern void
+c_heap_resize(c_heap **, size_t);
+
+
+extern void
+c_heap_resize_aligned(c_heap **, size_t, size_t);
+
+
+extern const char *
+str(const c_heap *);
+
+
+
+struct c_heap_ {
+        void                            *bfr;
+        const struct c_heap_vtable_     *vtable;
+        void                             (*free_cbk)(struct c_heap_ *);
+};
 
 
 struct c_heap_vtable_ {
@@ -29,6 +86,8 @@ struct c_heap_vtable_ {
         void             (*resize_aligned)(c_heap **, size_t, size_t);
         const char      *(*str)(const c_heap *);
 };
+
+
 
 
 #ifdef __cplusplus
