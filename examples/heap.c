@@ -18,11 +18,7 @@ int main(void)
         printf("refc = %lu\n", c_heap_refc(i));
         
         int *k = c_heap_clone(j);
-        printf("k = %d\n", *k);
-        printf("sz = %lu\n", c_heap_sz(k));
-        printf("refc = %lu\n", c_heap_refc(k));
-        printf("refc = %lu\n", c_heap_refc(j));
-        printf("refc = %lu\n", c_heap_refc(i));
+        printf("%s\n", c_heap_str(k));
 
         return 0;
 }

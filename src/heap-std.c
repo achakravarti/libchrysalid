@@ -2,6 +2,7 @@
 #include "../include/heap.h"
 #include <stddef.h>
 #include <string.h>
+#include <stdlib.h>
 
 
 #ifdef __FreeBSD__
@@ -131,7 +132,7 @@ const char *
 str(const c_heap *ctx)
 {
         static char bfr[1024];
-        sprintf("address = %p, data sz = %lu, total data size = %lu,"
+        sprintf(bfr, "address = %p, data sz = %lu, total data size = %lu,"
                         " refc = %lu", (void *) c_heap_head_(ctx),
                         c_heap_sz(ctx), c_heap_sz_total(ctx), 
                         c_heap_refc(ctx));
@@ -148,6 +149,22 @@ c_heap_std_new(size_t sz, size_t n)
         size_t tsz = (sz * n) + C_HEAP_METASZ_;
         size_t *ctx = calloc(1, tsz);
 
+        c_heap_sz_set_(ctx, sz * n);
+        c_heap_refc_set_(ctx, 1);
+        c_heap_vtable_set_(ctx, &g_vt);
+
+        return c_heap_cast_(ctx);
+}
+
+
+c_heap *
+c_heap_std_new_aligned(size_t sz, size_t n, size_t align)
+{
+        size_t *ctx;
+        size_t tsz = (sz * n) + C_HEAP_METASZ_;
+        (void) posix_memalign((void **) &ctx, align, tsz);
+
+        memset(ctx, 0, tsz);
         c_heap_sz_set_(ctx, sz * n);
         c_heap_refc_set_(ctx, 1);
         c_heap_vtable_set_(ctx, &g_vt);
