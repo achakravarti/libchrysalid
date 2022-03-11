@@ -36,11 +36,8 @@ c_heap_free(c_heap **ctx)
         size_t *h;
 
         if (C_LIKELY (ctx && (h = (size_t *) *ctx))) {
-                if (!(--h[-1])) {
-                        const struct c_heap_vtable_ *vt = c_heap_vtable_(h);
-                        vt->free_cbk(h);
-                        vt->free(&h[-3]);
-                }
+                if (!(--h[-1])) 
+                        c_heap_vtable_(h)->free(&h[-3]);
 
                 *ctx = NULL;
         }
@@ -160,7 +157,6 @@ static const struct c_heap_vtable_ g_vt = {
         .clone          = &clone,
         .clone_aligned  = NULL,
         .free           = free,
-        .free_cbk       = NULL,
         .cmp            = NULL,
         .sz_total       = NULL,
         .resize         = NULL,

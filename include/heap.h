@@ -133,7 +133,6 @@ struct c_heap_vtable_ {
         c_heap          *(*clone)(const c_heap *);
         c_heap          *(*clone_aligned)(const c_heap *, size_t);
         void             (*free)(void *);
-        c_heap_free_cbk *free_cbk;
         enum c_cmp       (*cmp)(const c_heap *, c_heap *);
         size_t           (*sz_total)(const c_heap *);
         void             (*resize)(c_heap **, size_t);
@@ -205,28 +204,12 @@ c_heap_std_new(size_t, size_t);
 
 
 /*
- * c_heap_std_new_freecbk - stdlib allocator with free callback
- * Ref: libchrysalis/docs/c_heap_std.3.md
- */
-extern c_heap *
-c_heap_std_new_freecbk(size_t, size_t, c_heap_free_cbk *);
-
-
-/*
  * c_heap_std_new_aligned - stdlib allocator with alignment
  * Ref: libchrysalis/docs/c_heap_std.3.md
  */
 extern c_heap *
 c_heap_std_new_aligned(size_t, size_t, size_t);
 
-
-/*
- * c_heap_std_new_aligned_freecbk - stdlib allocator with alignment and free
- *                                  callback
- * Ref: libchrysalis/docs/c_heap_std.3.md
- */
-extern c_heap *
-c_heap_std_new_aligned_freecbk(size_t, size_t, size_t, c_heap_free_cbk *);
 
 
 
