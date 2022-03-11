@@ -78,7 +78,7 @@ c_heap_sz_total(const c_heap *);
 
 /*
  * c_heap_sz_refc - get reference count of heap buffer
- * Ref: libchrysalis/docs/man/c_heap_sz.3.md
+ * Ref: libchrysalis/docs/man/c_heap_refc.3.md
  */
 extern size_t
 c_heap_refc(const c_heap *);
