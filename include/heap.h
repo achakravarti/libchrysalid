@@ -133,7 +133,7 @@ struct c_heap_vtable_ {
         c_heap          *(*clone)(const c_heap *);
         c_heap          *(*clone_aligned)(const c_heap *, size_t);
         void             (*free)(void *);
-        enum c_cmp       (*cmp)(const c_heap *, c_heap *);
+        enum c_cmp       (*cmp)(const c_heap *, const c_heap *);
         size_t           (*sz_total)(const c_heap *);
         void             (*resize)(c_heap **, size_t);
         void             (*resize_aligned)(c_heap **, size_t, size_t);

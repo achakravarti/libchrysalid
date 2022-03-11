@@ -153,11 +153,18 @@ clone(const c_heap *ctx)
 }
 
 
+static enum c_cmp
+cmp(const c_heap *ctx, const c_heap *cmp)
+{
+        return ctx == cmp ? C_CMP_EQ : memcmp(ctx, cmp, c_heap_sz(ctx));
+}
+
+
 static const struct c_heap_vtable_ g_vt = {
         .clone          = &clone,
         .clone_aligned  = NULL,
-        .free           = free,
-        .cmp            = NULL,
+        .free           = &free,
+        .cmp            = &cmp,
         .sz_total       = NULL,
         .resize         = NULL,
         .resize_aligned = NULL,
