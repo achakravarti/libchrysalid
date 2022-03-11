@@ -7,9 +7,11 @@
 c_heap *
 c_heap_copy(const c_heap *ctx)
 {
-        // TODO
-        (void) ctx;
-        return NULL;
+        c_heap *cp = (c_heap *) ctx;
+        ((size_t *) cp)[-1]++;
+
+        return cp;
+
 }
 
 
