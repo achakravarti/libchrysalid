@@ -146,6 +146,12 @@ struct c_heap_vtable_ {
 
 
 /*
+ * C_HEAP_METASZ_ - size of heap buffer metadata
+ * Ref: libchrysalis/docs/man/C_HEAP_METASZ_.3.md
+ */
+#define C_HEAP_METASZ_ (sizeof(size_t) * 3)
+
+/*
  * c_heap_head_ - gets head of heap buffer
  * Ref: libchrysalis/docs/man/c_heap_head_.3.md
  */
@@ -166,7 +172,7 @@ c_heap_vtable_(const c_heap *);
  * Ref: libchrysalis/docs/man/c_heap_vtable_.3.md
  */
 extern void
-c_heap_vtable_set_(c_heap *, const struct c_heap_vtable_ *);
+c_heap_vtable_set_(void *, const struct c_heap_vtable_ *);
 
 
 /*
@@ -174,7 +180,7 @@ c_heap_vtable_set_(c_heap *, const struct c_heap_vtable_ *);
  * Ref: libchrysalis/docs/man/c_heap_sz.3.md
  */
 extern void
-c_heap_sz_set_(c_heap *, size_t);
+c_heap_sz_set_(void *, size_t);
 
 
 /*
@@ -182,7 +188,15 @@ c_heap_sz_set_(c_heap *, size_t);
  * Ref: libchrysalis/docs/man/c_heap_refc.3.md
  */
 extern void
-c_heap_refc_set_(c_heap *, size_t);
+c_heap_refc_set_(void *, size_t);
+
+
+/*
+ * c_heap_cast_ - casts raw heap buffer to c_heap pointer
+ * Ref: libchrysalis/docs/c_heap_std.3.md
+ */
+extern c_heap *
+c_heap_cast_(void *);
 
 
 /*

@@ -1,6 +1,7 @@
 #include "../include/ext.h"
 #include "../include/heap.h"
 #include <stdint.h>
+#include <stdlib.h>
 
 
 c_heap *
@@ -108,22 +109,43 @@ c_heap_vtable_(const c_heap *ctx)
 
 
 void
-c_heap_vtable_set_(c_heap *ctx, const struct c_heap_vtable_ *vt)
+c_heap_vtable_set_(void *ctx, const struct c_heap_vtable_ *vt)
 {
-        ((size_t *) ctx)[-3] = (uintptr_t) vt;
+        ((size_t *) ctx)[0] = (uintptr_t) vt;
 }
 
 
 void
-c_heap_sz_set_(c_heap *ctx, size_t sz)
+c_heap_sz_set_(void *ctx, size_t sz)
 {
-        ((size_t *) ctx)[-2] = sz;
+        ((size_t *) ctx)[1] = sz;
 }
 
 
 void
-c_heap_refc_set_(c_heap *ctx, size_t refc)
+c_heap_refc_set_(void *ctx, size_t refc)
 {
-        ((size_t *) ctx)[-1] = refc;
+        ((size_t *) ctx)[2] = refc;
+}
+
+
+c_heap *
+c_heap_cast_(void *ctx)
+{
+        return (c_heap *) &(ctx[3]);
+}
+
+
+c_heap *
+c_heap_std_new(size_t sz, size_t n)
+{
+        size_t tsz = (sz * n) + C_HEAP_METASZ_;
+        size_t *ctx = calloc(1, tsz);
+
+        c_heap_sz_set_(ctx, sz * n);
+        c_heap_refc_set_(ctx, 1);
+        c_heap_vtable_set_(ctx, NULL);
+
+        return c_heap_cast_(ctx);
 }
 
