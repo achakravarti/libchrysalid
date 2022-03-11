@@ -26,27 +26,31 @@ c_heap_clone(const c_heap *ctx)
 c_heap *
 c_heap_clone_aligned(const c_heap *ctx, size_t align)
 {
-        // TODO
-        (void) ctx;
-        (void) align;
-        return NULL;
+        return c_heap_vtable_(ctx)->clone_aligned(ctx, align);
 }
 
 
 void
 c_heap_free(c_heap **ctx)
 {
-        (void) ctx;
+        size_t *h;
+
+        if (C_LIKELY (ctx && (h = (size_t *) *ctx))) {
+                if (!(--h[-1])) {
+                        const struct c_heap_vtable_ *vt = c_heap_vtable_(h);
+                        vt->free_cbk(h);
+                        vt->free(&h[-3]);
+                }
+
+                *ctx = NULL;
+        }
 }
 
 
 enum c_cmp
 c_heap_cmp(const c_heap *ctx, c_heap *cmp)
 {
-        // TODO
-        (void) ctx;
-        (void) cmp;
-        return 0;
+        return c_heap_vtable_(ctx)->cmp(ctx, cmp);
 }
 
 
@@ -60,9 +64,7 @@ c_heap_sz(const c_heap *ctx)
 size_t
 c_heap_sz_total(const c_heap *ctx)
 {
-        // TODO
-        (void) ctx;
-        return 0;
+        return c_heap_vtable_(ctx)->sz_total(ctx);
 }
 
 
@@ -83,28 +85,21 @@ c_heap_aligned(const c_heap *ctx, size_t align)
 void
 c_heap_resize(c_heap **ctx, size_t newsz)
 {
-        // TODO
-        (void) ctx;
-        (void) newsz;
+        c_heap_vtable_(*ctx)->resize(ctx, newsz);
 }
 
 
 void
 c_heap_resize_aligned(c_heap **ctx, size_t newsz, size_t align)
 {
-        // TODO
-        (void) ctx;
-        (void) newsz;
-        (void) align;
+        c_heap_vtable_(*ctx)->resize_aligned(ctx, newsz, align);
 }
 
 
 const char *
 c_heap_str(const c_heap *ctx)
 {
-        // TODO
-        (void) ctx;
-        return "";
+        return c_heap_vtable_(ctx)->str(ctx);
 }
 
 
@@ -150,7 +145,7 @@ c_heap_cast_(void *ctx)
 }
 
 
-c_heap *
+static c_heap *
 clone(const c_heap *ctx)
 {
         size_t sz = c_heap_sz(ctx);
@@ -164,6 +159,7 @@ clone(const c_heap *ctx)
 static const struct c_heap_vtable_ g_vt = {
         .clone          = &clone,
         .clone_aligned  = NULL,
+        .free           = free,
         .free_cbk       = NULL,
         .cmp            = NULL,
         .sz_total       = NULL,
