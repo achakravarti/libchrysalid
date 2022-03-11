@@ -189,7 +189,7 @@ c_heap_refc_set_(c_heap *, size_t);
  * c_heap_std_new - allocate new heap buffer using stdlib
  * Ref: libchrysalis/docs/c_heap_std.3.md
  */
-c_heap *
+extern c_heap *
 c_heap_std_new(size_t, size_t);
 
 
@@ -197,7 +197,7 @@ c_heap_std_new(size_t, size_t);
  * c_heap_std_new_freecbk - stdlib allocator with free callback
  * Ref: libchrysalis/docs/c_heap_std.3.md
  */
-c_heap *
+extern c_heap *
 c_heap_std_new_freecbk(size_t, size_t, c_heap_freecbk *);
 
 
@@ -205,7 +205,7 @@ c_heap_std_new_freecbk(size_t, size_t, c_heap_freecbk *);
  * c_heap_std_new_aligned - stdlib allocator with alignment
  * Ref: libchrysalis/docs/c_heap_std.3.md
  */
-c_heap *
+extern c_heap *
 c_heap_std_new_aligned(size_t, size_t, size_t);
 
 
@@ -214,7 +214,7 @@ c_heap_std_new_aligned(size_t, size_t, size_t);
  *                                  callback
  * Ref: libchrysalis/docs/c_heap_std.3.md
  */
-c_heap *
+extern c_heap *
 c_heap_std_new_aligned_freecbk(size_t, size_t, size_t, c_heap_freecbk *);
 
 
