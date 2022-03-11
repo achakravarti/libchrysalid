@@ -77,10 +77,7 @@ c_heap_refc(const c_heap *ctx)
 bool
 c_heap_aligned(const c_heap *ctx, size_t align)
 {
-        // TODO
-        (void) ctx;
-        (void) align;
-        return false;
+        return !((uintptr_t) c_heap_head_(ctx) & (align -1));
 }
 
 

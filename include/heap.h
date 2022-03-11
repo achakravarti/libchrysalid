@@ -130,14 +130,11 @@ typedef void (c_heap_freecbk)(c_heap *);
  * Ref: libchrysalis/docs/man/c_heap_vtable_.3.md
  */
 struct c_heap_vtable_ {
-        //c_heap          *(*copy)(const c_heap *);
         c_heap          *(*clone)(const c_heap *);
         c_heap          *(*clone_aligned)(const c_heap *, size_t);
         c_heap_freecbk *free_cbk;
         enum c_cmp       (*cmp)(const c_heap *, c_heap *);
-        //size_t           (*sz)(const c_heap *);
         size_t           (*sz_total)(const c_heap *);
-        //size_t           (*refc)(const c_heap *);
         //bool             (*aligned)(const c_heap *, size_t);
         void             (*resize)(c_heap **, size_t);
         void             (*resize_aligned)(c_heap **, size_t, size_t);
