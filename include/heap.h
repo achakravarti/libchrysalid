@@ -15,14 +15,14 @@ enum c_cmp { C_CMP_LT = -1, C_CMP_EQ, C_CMP_GT };
 
 /*
  * c_heap - dynamic memory buffer
- * Ref:  libchrysalis/docs/c_heap.3.md
+ * Ref:  libchrysalis/docs/man/c_heap.3.md
  */
 typedef void c_heap;
 
 
 /*
  * c_heap_copy - create shallow copy of heap buffer
- * Ref: libchrysalis/docs/c_heap_copy.3.md
+ * Ref: libchrysalis/docs/man/c_heap_copy.3.md
  */
 extern c_heap *
 c_heap_copy(const c_heap *);
@@ -30,7 +30,7 @@ c_heap_copy(const c_heap *);
 
 /*
  * c_heap_clone - create deep copy of heap buffer
- * Ref: libchrysalis/docs/c_heap_clone.3.md
+ * Ref: libchrysalis/docs/man/c_heap_clone.3.md
  */
 extern c_heap *
 c_heap_clone(const c_heap *);
@@ -38,7 +38,7 @@ c_heap_clone(const c_heap *);
 
 /*
  * c_heap_clone - clone heap buffer aligned to byte offset
- * Ref: libchrysalis/docs/c_heap_clone.3.md
+ * Ref: libchrysalis/docs/man/c_heap_clone.3.md
  */
 extern c_heap *
 c_heap_clone_aligned(const c_heap *, size_t);
@@ -46,7 +46,7 @@ c_heap_clone_aligned(const c_heap *, size_t);
 
 /*
  * c_heap_void - release heap memory buffer
- * Ref: libchrysalis/docs/c_heap_free.3.md
+ * Ref: libchrysalis/docs/man/c_heap_free.3.md
  */
 extern void
 c_heap_free(c_heap **);
@@ -54,7 +54,7 @@ c_heap_free(c_heap **);
 
 /*
  * c_heap_void - compare two heap buffers
- * Ref: libchrysalis/docs/c_heap_cmp.3.md
+ * Ref: libchrysalis/docs/man/c_heap_cmp.3.md
  */
 extern enum c_cmp
 c_heap_cmp(const c_heap *, c_heap *);
@@ -62,7 +62,7 @@ c_heap_cmp(const c_heap *, c_heap *);
 
 /*
  * c_heap_sz - get allocated size of heap buffer
- * Ref: libchrysalis/docs/c_heap_sz.3.md
+ * Ref: libchrysalis/docs/man/c_heap_sz.3.md
  */
 extern size_t
 c_heap_sz(const c_heap *);
@@ -70,7 +70,7 @@ c_heap_sz(const c_heap *);
 
 /*
  * c_heap_sz_total - get total size of heap buffer
- * Ref: libchrysalis/docs/c_heap_sz.3.md
+ * Ref: libchrysalis/docs/man/c_heap_sz.3.md
  */
 extern size_t
 c_heap_sz_total(const c_heap *);
@@ -78,7 +78,7 @@ c_heap_sz_total(const c_heap *);
 
 /*
  * c_heap_sz_refc - get reference count of heap buffer
- * Ref: libchrysalis/docs/c_heap_sz.3.md
+ * Ref: libchrysalis/docs/man/c_heap_sz.3.md
  */
 extern size_t
 c_heap_refc(const c_heap *);
@@ -86,7 +86,7 @@ c_heap_refc(const c_heap *);
 
 /*
  * c_heap_sz_aligned - check alignment of heap buffer
- * Ref: libchrysalis/docs/c_heap_aligned.3.md
+ * Ref: libchrysalis/docs/man/c_heap_aligned.3.md
  */
 extern bool
 c_heap_aligned(const c_heap *, size_t);
@@ -94,7 +94,7 @@ c_heap_aligned(const c_heap *, size_t);
 
 /*
  * c_heap_resize - resize heap buffer
- * Ref: libchrysalis/docs/c_heap_resize.3.md
+ * Ref: libchrysalis/docs/man/c_heap_resize.3.md
  */
 extern void
 c_heap_resize(c_heap **, size_t);
@@ -102,7 +102,7 @@ c_heap_resize(c_heap **, size_t);
 
 /*
  * c_heap_resize_aligned - resize heap buffer aligned to byte offset
- * Ref: libchrysalis/docs/c_heap_resize.3.md
+ * Ref: libchrysalis/docs/man/c_heap_resize.3.md
  */
 extern void
 c_heap_resize_aligned(c_heap **, size_t, size_t);
@@ -110,7 +110,7 @@ c_heap_resize_aligned(c_heap **, size_t, size_t);
 
 /*
  * c_heap_str - get string representation of heap buffer
- * Ref: libchrysalis/docs/c_heap_resize.3.md
+ * Ref: libchrysalis/docs/man/c_heap_resize.3.md
  */
 extern const char *
 c_heap_str(const c_heap *);
