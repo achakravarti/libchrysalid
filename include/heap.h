@@ -118,9 +118,17 @@ c_heap_str(const c_heap *);
 
 
 
+/*
+ * c_heap_freecbk - callback to release heap buffer
+ * Ref: libchrysalis/docs/man/c_heap_freecbk.3.md
+ */
 typedef void (c_heap_freecbk)(c_heap *);
 
 
+/*
+ * c_heap_vtable_ - v-table for heap interface
+ * Ref: libchrysalis/docs/man/c_heap_vtable_.3.md
+ */
 struct c_heap_vtable_ {
         //c_heap          *(*copy)(const c_heap *);
         c_heap          *(*clone)(const c_heap *);
@@ -137,20 +145,42 @@ struct c_heap_vtable_ {
 };
 
 
+/*
+ * c_heap_head_ - gets head of heap buffer
+ * Ref: libchrysalis/docs/man/c_heap_head_.3.md
+ */
 extern size_t *
 c_heap_head_(const c_heap *);
 
 
+/*
+ * c_heap_vtable_ - gets v-table of heap buffer
+ * Ref: libchrysalis/docs/man/c_heap_vtable_.3.md
+ */
 extern const struct c_heap_vtable_ *
 c_heap_vtable_(const c_heap *);
 
+
+/*
+ * c_heap_vtable_set_ - sets v-table of heap buffer
+ * Ref: libchrysalis/docs/man/c_heap_vtable_.3.md
+ */
 extern void
 c_heap_vtable_set_(c_heap *, const struct c_heap_vtable_ *);
 
 
+/*
+ * c_heap_sz_set_ - sets size of heap buffer
+ * Ref: libchrysalis/docs/man/c_heap_sz.3.md
+ */
 extern void
 c_heap_sz_set_(c_heap *, size_t);
 
+
+/*
+ * c_heap_refc_set_ - sets reference count of heap buffer
+ * Ref: libchrysalis/docs/man/c_heap_refc.3.md
+ */
 extern void
 c_heap_refc_set_(c_heap *, size_t);
 
