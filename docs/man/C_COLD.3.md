@@ -36,18 +36,18 @@ time.
 
 # FILES
 
-*/usr/local/src/libchrysalis/include/base/ext.h*
+*/usr/local/src/libchrysalis/include/ext.h*
 : Definition of `C_COLD` macro.
 
-*/usr/local/include/libchrysalis/base/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/base/ext.h*; required by
+*/usr/local/include/libchrysalis/ext.h*
+: Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
 client code to correctly resolve `#include <libchrysalis/api.h>`.
 
-*/usr/local/src/libchrysalis/doc/base/c_cold.md*
+*/usr/local/src/libchrysalis/doc/man/C_COLD.3.md*
 : Markdown documentation in man layout.
 
-*/usr/local/man/man3/libchrysalis:C_HOT.3.gz*
-: Man page documentation (this page).
+*/usr/local/man/man3/libchrysalis:C_COLD.3.gz*
+: Man page documentation.
 
  
 # EXAMPLES

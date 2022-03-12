@@ -28,7 +28,7 @@ TODO
 : Definition of `C_STABLE` macro.
 
 */usr/local/include/libchrysalis/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/base/ext.h*; required by
+: Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
 client code to correctly resolve `#include <libchrysalis/api.h>`.
 
 */usr/local/src/libchrysalis/doc/man/C_STABLE.3.md*
