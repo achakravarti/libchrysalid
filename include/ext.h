@@ -48,7 +48,7 @@ extern "C" {
 
 /*
  * C_PSAFE - hints a function has no null parameters
- * Ref: libchrysalis/docs/base/C_PSAFE.3.md
+ * Ref: libchrysalis/docs/man/C_PSAFE.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_PSAFE __attribute__((nonnull))
@@ -62,7 +62,7 @@ extern "C" {
 
 /*
  * C_RSAFE - hints a function never returns a null pointer
- * Ref: libchrysalis/docs/base/C_RSAFE.3.md
+ * Ref: libchrysalis/docs/man/C_RSAFE.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_RSAFE __attribute__((returns_nonnull))
@@ -76,7 +76,7 @@ extern "C" {
 
 /*
  * C_HOT - hints a function as hot
- * Ref: libchrysalis/docs/base/C_HOT.3.md
+ * Ref: libchrysalis/docs/man/C_HOT.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_HOT __attribute__((hot))
@@ -90,7 +90,7 @@ extern "C" {
 
 /*
  * C_COLD - hints a function as cold
- * Ref: libchrysalis/docs/base/C_COLD.3.md
+ * Ref: libchrysalis/docs/man/C_COLD.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_COLD __attribute__((cold))
@@ -104,85 +104,36 @@ extern "C" {
 
 /*
  * C_STABLE - marks a function as stable
- * Ref: libchrysalis/docs/base/C_STABLE.3.md
+ * Ref: libchrysalis/docs/man/C_STABLE.3.md
  */
 #define C_STABLE __attribute__((pure))
 
 
 /*
  * C_IMMUTABLE - marks a function as immutable
- * Ref: libchrysalis/docs/base/C_IMMUTABLE.3.md
+ * Ref: libchrysalis/docs/man/C_IMMUTABLE.3.md
  */
 #define C_IMMUTABLE __attribute__((const))
 
 
 /*
  * C_TLOCAL - marks a file scope variable as thread local
- * Ref: libchrysalis/docs/base/C_TLOCAL.3.md
+ * Ref: libchrysalis/docs/man/C_TLOCAL.3.md
  */
 #define C_TLOCAL __thread
 
 
 /*
  * C_AUTO - marks an automatic heap pointer
- * Ref: libchrysalis/docs/base/C_AUTO.3.md
+ * Ref: libchrysalis/docs/man/C_AUTO.3.md
  */
 #define C_AUTO(_T_) __attribute__((cleanup(_T_##_free))) _T_
 
 
-/** [base:ext:likely]
- * NAME
- *      C_LIKELY() - hints predicate as likely to be true
- *
- * SYNOPSIS
- *      #include "libchrysalis/api.h"
- *
- *      #define C_LIKELY(_P_)
- *
- * DESCRIPTION
- *      The `C_LIKELY()` macro provides a branch prediction hint to the
- *      compiler, indicating that a predicate expression `_P_` is likely to be
- *      true. `_P_` is expected to be an integral predicate expression that
- *      evaluates to a Boolean value.
- *
- *      This macro uses the non-standard `__builtin_expect()` macro, and is
- *      available for both GCC and Clang. On other compilers, the default
- *      behaviour of this macro is to degrade safely to a no-op with a suitable
- *      warning message. If you don't want this warning message to be displayed,
- *      then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile time.
- *
- * RETURN VALUE
- *      The Boolean value which the predicate `_P_` evaluates to is returned.
- *
- * FILES
- *      `C_LIKELY` is defined in /usr/local/libchrysalis/include/ext.h.
- *
- * EXAMPLE
- *      int foobar(char *foo, char c)
- *      {
- *              if (C_LIKELY (foo != NULL)) {
- *                      *foo = c;
- *                      return (int) c;
- *              }
- *
- *              return -1;
- *      }
- *
- * NOTES
- *      - This macro is inspired by the `likely()` macro in the Linux kernel.
- *      - Marking a predicate as likely with `C_LIKELY()` when it is not so will
- *        have the contrary effect of degrading performance.
- *
- * SEE ALSO
- *      - ref C_UNLIKELY()
- *        [base:ext:unlikely]
- *      - web Kernel Newbies
- *        [https://kernelnewbies.org/FAQ/LikelyUnlikely]
- *      - web GCC Online Docs
- *        [https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html
- *      - web LLVM Documentation
- *        [https://llvm.org/docs/BranchWeightMetadata.html]
- **/
+/*
+ * C_LIKELY - hints predicate as likely to be true
+ * Ref: libchrysalis/docs/man/C_LIKELY.3.md
+ */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_LIKELY(_P_) __builtin_expect(!!(_P_), 1)
 #else
@@ -193,59 +144,10 @@ extern "C" {
 #endif
 
 
-/** [base:ext:unlikely]
- * NAME
- *      C_UNLIKELY() - hints predicate as unlikely to be true
- *
- * SYNOPSIS
- *      #include "libchrysalis/api.h"
- *
- *      #define C_UNLIKELY(_P_)
- *
- * DESCRIPTION
- *      The `C_UNLIKELY()` macro provides a branch prediction hint to the
- *      compiler, indicating that a predicate expression `_P_` is UNlikely to be
- *      true. `_P_` is expected to be an integral predicate expression that
- *      evaluates to a Boolean value.
- *
- *      This macro uses the non-standard `__builtin_expect()` macro, and is
- *      available for both GCC and Clang. On other compilers, the default
- *      behaviour of this macro is to degrade safely to a no-op with a suitable
- *      warning message. If you don't want this warning message to be displayed,
- *      then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile time.
- *
- * RETURN VALUE
- *      The Boolean value which the predicate `_P_` evaluates to is returned.
- *
- * FILES
- *      `C_UNLIKELY` is defined in /usr/local/libchrysalis/include/ext.h.
- *
- * EXAMPLE
- *      int foobar(char *foo, char c)
- *      {
- *              if (C_LIKELY (foo != NULL)) {
- *                      *foo = c;
- *                      return (int) c;
- *              }
- *
- *              return -1;
- *      }
- *
- * NOTES
- *      - This macro is inspired by the `unlikely()` macro in the Linux kernel.
- *      - Marking a predicate as likely with `C_UNLIKELY()` when it is not so
- *        will have the contrary effect of degrading performance.
- *
- * SEE ALSO
- *      - ref C_LIKELY()
- *        [base:ext:likely]
- *      - web Kernel Newbies
- *        [https://kernelnewbies.org/FAQ/LikelyUnlikely]
- *      - web GCC Online Docs
- *        [https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html
- *      - web LLVM Documentation
- *        [https://llvm.org/docs/BranchWeightMetadata.html]
- **/
+/*
+ * C_UNLIKELY - hints predicate as unlikely to be true
+ * Ref: libchrysalis/docs/man/C_UNLIKELY.3.md
+ */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_UNLIKELY(_P_) __builtin_expect(!!(_P_), 0)
 #else
