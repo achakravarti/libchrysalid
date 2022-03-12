@@ -25,16 +25,16 @@ TODO
 # FILES
 
 */usr/local/src/libchrysalis/ext.h*
-: Definition of `C_STABLE` macro.
+: Definition of `C_IMMUTABLE` macro.
 
 */usr/local/include/libchrysalis/ext.h*
 : Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
 client code to correctly resolve `#include <libchrysalis/api.h>`.
 
-*/usr/local/src/libchrysalis/doc/man/C_STABLE.3.md*
+*/usr/local/src/libchrysalis/doc/man/C_IMMUTABLE.3.md*
 : Markdown documentation in man layout.
 
-*/usr/local/man/man3/libchrysalis:C_STABLE.3.gz*
+*/usr/local/man/man3/libchrysalis:C_IMMUTABLE.3.gz*
 : Man page documentation.
 
 
