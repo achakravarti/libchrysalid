@@ -98,7 +98,7 @@ License. See **libchrysalis:license(7)** for the full license text.
 
 # SEE ALSO
 
-**libchrysalis:C_RSAFE(3)**
+**libchrysalis:extensions(7)**, **libchrysalis:C_RSAFE(3)**
 
 
 # COLOPHON

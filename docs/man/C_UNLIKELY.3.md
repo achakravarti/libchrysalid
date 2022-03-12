@@ -91,7 +91,7 @@ License. See **libchrysalis:license(7)** for the full license text.
 
 # SEE ALSO
 
-**libchrysalis:C_LIKELY(3)**
+**libchrysalis:extensions(7)**, **libchrysalis:C_LIKELY(3)**
 
 
 # COLOPHON
