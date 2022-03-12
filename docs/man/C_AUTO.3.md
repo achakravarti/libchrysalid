@@ -3,12 +3,12 @@
 % 2022
 
 
-# NAME
+# Name {#sec:C_AUTO:name}
 
 `C_AUTO` - marks an automatic heap pointer
 
 
-# SYNOPSIS
+# Synopsis {#sec:C_AUTO:synopsis}
 
 ```
 #include "libchrysalis/api.h"
@@ -17,12 +17,12 @@
 ```
 
 
-# DESCRIPTION
+# DESCRIPTION {#sec:C_AUTO:description}
 
 TODO
 
 
-# FILES
+# FILES {#sec:C_AUTO:files}
 
 */usr/local/src/libchrysalis/ext.h*
 : Definition of `C_AUTO` macro.
@@ -38,20 +38,20 @@ client code to correctly resolve `#include <libchrysalis/api.h>`.
 : Man page documentation.
 
 
-# EXAMPLES
+# EXAMPLES {#sec:C_AUTO:examples}
 
 TODO
 
 
-# CONFORMING TO
+# CONFORMING TO {#sec:C_AUTO:conforming-to}
 
 C99, C11, GCC, Clang.
 
 
-# NOTES
+# NOTES {#sec:C_AUTO:notes}
 
 
-# COPYRIGHT
+# COPYRIGHT {#sec:C_AUTO:copyright}
 
 Copyright &copy; 2022 Abhishek Chakravarti `<abhishek@taranjali.org>`
 
@@ -59,12 +59,12 @@ Copyright &copy; 2022 Abhishek Chakravarti `<abhishek@taranjali.org>`
 License. See **libchrysalis:license(7)** for the full license text.
 
 
-# SEE ALSO
+# SEE ALSO {#sec:C_AUTO:see-also}
 
 **libchrysalis:extensions(7)**
 
 
-# COLOPHON
+# COLOPHON {#sec:C_AUTO:colophon}
 
 This page is part of release 0.0.1 of the `libchrysalis` project. The latest
 version of this project can be found at
