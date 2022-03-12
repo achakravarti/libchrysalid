@@ -32,6 +32,11 @@ displayed, then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile
 time.
 
 
+# RETURN VALUE
+
+The Boolean value which the predicate `_P_` evaluates to is returned.
+
+
 # FILES
 
 */usr/local/src/libchrysalis/ext.h*
