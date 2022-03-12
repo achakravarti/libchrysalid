@@ -19,7 +19,17 @@
 
 # DESCRIPTION
 
-TODO
+The `C_LIKELY()` macro provides a branch prediction hint to the compiler,
+indicating that a predicate expression `_P_` is likely to be true. `_P_` is
+expected to be an integral predicate expression that evaluates to a Boolean
+value.
+
+This macro uses the non-standard `__builtin_expect()` macro
+[@gcc:other-builtins], and is available for both GCC and Clang. On other
+compilers, the default behaviour of this macro is to degrade safely to a no-op
+with a suitable warning message. If you don't want this warning message to be
+displayed, then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile
+time.
 
 
 # FILES
@@ -40,7 +50,17 @@ client code to correctly resolve `#include <libchrysalis/api.h>`.
 
 # EXAMPLES
 
-TODO
+```
+int foobar(char *foo, char c)
+{
+	if (C_LIKELY (foo != NULL)) {
+		*foo = c;
+		return (int) c;
+	}
+ 
+	return -1;
+}
+```
 
 
 # CONFORMING TO
@@ -49,6 +69,11 @@ C99, C11, GCC, Clang.
 
 
 # NOTES
+ 
+- This macro is inspired by the `likely()` macro in the Linux kernel
+  [@kernel-newbies:likely-unlikely].
+- Marking a predicate as likely with `C_LIKELY()` when it is not so will
+  have the contrary effect of degrading performance.
 
 
 # COPYRIGHT
