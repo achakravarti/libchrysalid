@@ -1,13 +1,9 @@
 include(`macros.m4')
 
 
-
-
 __NAME__ {#sec:C_AUTO:name}
 
 `C_AUTO` - marks an automatic heap pointer
-
-
 
 
 __SYNOPSIS__ {#sec:C_AUTO:synopsis}
@@ -19,13 +15,9 @@ __SYNOPSIS__ {#sec:C_AUTO:synopsis}
 ```
 
 
-
-
 __DESCRIPTION__ {#sec:C_AUTO:description}
 
 TODO
-
-
 
 
 __FILES__ {#sec:C_AUTO:files}
@@ -46,13 +38,9 @@ ifdef(<<<MAN>>>,
 <<<: Man page documentation.>>>)
 
 
-
-
 __EXAMPLES__ {#sec:C_AUTO:examples}
 
 TODO
-
-
 
 
 __CONFORMINGTO__ {#sec:C_AUTO:conforming-to}
@@ -60,18 +48,12 @@ __CONFORMINGTO__ {#sec:C_AUTO:conforming-to}
 C99, C11, GCC, Clang.
 
 
-
-
 __NOTES__ {#sec:C_AUTO:notes}
 
 TODO
 
 
-
-
 __COPYRIGHT__
-
-
 
 
 __SEEALSO__ {#sec:C_AUTO:see-also}
@@ -79,8 +61,6 @@ __SEEALSO__ {#sec:C_AUTO:see-also}
 ifdef(<<<MAN>>>,
 <<<**libchrysalis:extensions(7)**>>>,
 <<<Section X.X.X>>>)
-
-
 
 
 __COLOPHON__
