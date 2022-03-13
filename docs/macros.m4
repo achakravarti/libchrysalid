@@ -31,27 +31,25 @@ ifdef(`MAN',
 	`define(__SEEALSO__, `# SEE ALSO')',
 	`define(__SEEALSO__, `## See Also')')dnl
 
-changequote(!!, ||)
+changequote(<!, !>)
 
-ifdef(!!MAN||,
-	!!define(__COLOPHON__, 
-	!!# COLOPHON
+ifdef(<!MAN!>,
+	<!define(__COLOPHON__, 
+	<!# COLOPHON
 
 	This page is part of release 0.0.1 of the libchrysalis project.
 	The latest version of this project can be found at
-	[GitHub](https://github.com/achakravarti/libchrysalis).||)||,
-	!!define(__COLOPHON__, !!||)||)dnl
+	[GitHub](https://github.com/achakravarti/libchrysalis).!>)!>,
+	<!define(__COLOPHON__, <!!>)!>)dnl
 
-ifdef(!!MAN||,
-	!!define(__COPYRIGHT__, 
-	!!# COPYRIGHT
+ifdef(<!MAN!>,
+	<!define(__COPYRIGHT__, 
+	<!# COPYRIGHT
 
 	Copyright &copy; 2022 Abhishek Chakravarti `<abhishek@taranjali.org>`
 
 	`libchrysalis` along with its documentation are released under the BSD
 	2-Clause License. See **libchrysalis:license(7)** for the full License
-	text.||)||,
-	!!define(__COPYRIGHT__, !!||)||)dnl
-
-changequote()
+	text.!>)!>,
+	<!define(__COPYRIGHT__, <!!>)!>)dnl
 

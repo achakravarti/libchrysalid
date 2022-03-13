@@ -3,6 +3,8 @@ include(`macros.m4')
 
 __NAME__ {#sec:C_AUTO:name}
 
+`C_AUTO` - marks an automatic heap pointer
+
 
 __SYNOPSIS__ {#sec:C_AUTO:synopsis}
 
