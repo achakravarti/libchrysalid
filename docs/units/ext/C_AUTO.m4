@@ -1,6 +1,12 @@
 include(`macros.m4')
 
 
+ifdef(<<<MAN>>>,
+<<<% LIBCHRYSALIS:C_AUTO(3) libchrysalis 0.0.1
+%
+% 2022>>>)
+
+
 __NAME__ {#sec:C_AUTO:name}
 
 `C_AUTO` - marks an automatic heap pointer
