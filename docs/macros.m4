@@ -52,4 +52,6 @@ ifdef(!!MAN||,
 	2-Clause License. See **libchrysalis:license(7)** for the full License
 	text.||)||,
 	!!define(__COPYRIGHT__, !!||)||)dnl
+
 changequote()
+
