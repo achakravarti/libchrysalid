@@ -7,12 +7,12 @@ ifdef(<<<MAN>>>,
 % 2022>>>)
 
 
-__NAME__ {#sec:C_AUTO:name}
+__NAME__(<<<C_AUTO>>>)
 
 `C_AUTO` - marks an automatic heap pointer
 
 
-__SYNOPSIS__ {#sec:C_AUTO:synopsis}
+__SYNOPSIS__(<<<C_AUTO>>>)
 
 ```
 #include "libchrysalis/api.h"
@@ -21,12 +21,12 @@ __SYNOPSIS__ {#sec:C_AUTO:synopsis}
 ```
 
 
-__DESCRIPTION__ {#sec:C_AUTO:description}
+__DESCRIPTION__(<<<C_AUTO>>>)
 
 TODO
 
 
-__FILES__ {#sec:C_AUTO:files}
+__FILES__(<<<C_AUTO>>>)
 
 */usr/local/src/libchrysalis/ext.h*
 : Definition of `C_AUTO` macro.
@@ -44,17 +44,17 @@ ifdef(<<<MAN>>>,
 <<<: Man page documentation.>>>)
 
 
-__EXAMPLES__ {#sec:C_AUTO:examples}
+__EXAMPLES__(<<<C_AUTO>>>)
 
 TODO
 
 
-__CONFORMINGTO__ {#sec:C_AUTO:conforming-to}
+__CONFORMINGTO__(<<<C_AUTO>>>)
 
 C99, C11, GCC, Clang.
 
 
-__NOTES__ {#sec:C_AUTO:notes}
+__NOTES__(<<<C_AUTO>>>)
 
 TODO
 
@@ -62,7 +62,7 @@ TODO
 __COPYRIGHT__
 
 
-__SEEALSO__ {#sec:C_AUTO:see-also}
+__SEEALSO__(<<<C_AUTO>>>)
 
 ifdef(<<<MAN>>>,
 <<<**libchrysalis:extensions(7)**>>>,

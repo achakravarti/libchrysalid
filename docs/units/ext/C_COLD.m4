@@ -7,12 +7,12 @@ ifdef(<<<MAN>>>,
 % 2022>>>)
 
 
-__NAME__ {#sec:C_COLD:name}
+__NAME__(<<<C_COLD>>>)
 
 `C_COLD` - hints a function as cold
 
 
-__SYNOPSIS__ {#sec:C_COLD:synopsis}
+__SYNOPSIS__(<<<C_COLD>>>)
 
 ```
 #include "libchrysalis/api.h"
@@ -21,7 +21,7 @@ __SYNOPSIS__ {#sec:C_COLD:synopsis}
 ```
 
 
-__DESCRIPTION__ {#sec:C_COLD:description}
+__DESCRIPTION__(<<<C_COLD>>>)
 
 The `C_COLD` macro is used to hint that a function is cold, i.e. it is
 unlikely to called. Functions that are marked with `C_COLD` are
@@ -38,7 +38,7 @@ displayed, then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile
 time.
 
 
-__FILES__ {#sec:C_COLD:files}
+__FILES__(<<<C_COLD>>>)
 
 */usr/local/src/libchrysalis/include/ext.h*
 : Definition of `C_COLD` macro.
@@ -56,7 +56,7 @@ ifdef(<<<MAN>>>,
 <<<: Man page documentation.>>>)
 
 
-__EXAMPLES__ {#sec:C_COLD:examples}
+__EXAMPLES__(<<<C_COLD>>>)
 
 ```
 C_COLD int foo(char *, int *);  /* standard declaration */
@@ -71,12 +71,12 @@ C_COLD static int foobar(char *foo, char c)
 ```
 
 
-__CONFORMINGTO__ {#sec:C_COLD:conforming-to}
+__CONFORMINGTO__(<<<C_COLD>>>)
 
 C99, C11, GCC, Clang.
 
 
-__NOTES__ {#sec:C_COLD:notes}
+__NOTES__(<<<C_COLD>>>)
 
 - `C_COLD` is ignored by GCC if the `-fprofile-use` flag is used during
   compilation [@gcc:function-attributes].
@@ -87,7 +87,7 @@ __NOTES__ {#sec:C_COLD:notes}
 __COPYRIGHT__
 
 
-__SEEALSO__ {#sec:C_COLD:see-also}
+__SEEALSO__(<<<C_COLD>>>)
 
 ifdef(<<<MAN>>>,
 <<<**libchrysalis:extensions(7)**, **libchrysalis:C_COLD(3)**>>>,

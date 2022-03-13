@@ -36,56 +36,56 @@ dnl __NAME__ - macro expanding to the name section heading
 
 ifdef(`MAN',
 `define(__NAME__, `# NAME')',
-`define(__NAME__, `## Name')')dnl
+`define(__NAME__, `## Name {sec:$1:name}')')dnl
 
 
 dnl __SYNOPSIS__ - macro expanding to the synopsis section heading
 
 ifdef(`MAN',
 `define(__SYNOPSIS__, `# SYNOPSIS')',
-`define(__SYNOPSIS__, `## Synopsis')')dnl
+`define(__SYNOPSIS__, `## Synopsis {sec:$1:synopsis}')')dnl
 
 
 dnl __DESCRIPTION__ - macro expanding to the Description section heading
 
 ifdef(`MAN',
 `define(__DESCRIPTION__, `# DESCRIPTION')',
-`define(__DESCRIPTION__, `## Description')')dnl
+`define(__DESCRIPTION__, `## Description {sec:$1:description}')')dnl
 
 
 dnl __FILES__ - macro expanding to the Files section heading
 
 ifdef(`MAN',
 `define(__FILES__, `# FILES')',
-`define(__FILES__, `## Files')')dnl
+`define(__FILES__, `## Files {sec:$1:files}')')dnl
 
 
 dnl __EXAMPLES__ - macro expanding to the Examples section heading
 
 ifdef(`MAN',
 `define(__EXAMPLES__, `# EXAMPLES')',
-`define(__EXAMPLES__, `## Examples')')dnl
+`define(__EXAMPLES__, `## Examples {sec:$1:examples}')')dnl
 
 
 dnl __CONFORMINGTO__ - macro expanding to the Conforming To section heading
 
 ifdef(`MAN',
 `define(__CONFORMINGTO__, `# CONFORMING TO')',
-`define(__CONFORMINGTO__, `## Conforming To')')dnl
+`define(__CONFORMINGTO__, `## Conforming To {sec:$1:conforming-to}')')dnl
 
 
 dnl __NOTES__ - macro expanding to the Notes section heading
 
 ifdef(`MAN',
 `define(__NOTES__, `# NOTES')',
-`define(__NOTES__, `## Notes')')dnl
+`define(__NOTES__, `## Notes {sec:$1:notes}')')dnl
 
 
 dnl __SEEALSO__ - macro expanding to the See Also section heading
 
 ifdef(`MAN',
 `define(__SEEALSO__, `# SEE ALSO')',
-`define(__SEEALSO__, `## See Also')')dnl
+`define(__SEEALSO__, `## See Also {sec:$1:see-also}')')dnl
 
 
 dnl Override default quoting
