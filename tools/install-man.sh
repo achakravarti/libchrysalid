@@ -2,6 +2,7 @@
 
 
 sudo mkdir -p /usr/local/man/man3
+sudo rm -f /usr/local/man/man3/libchrysalis:*
 
 
 __man3=$(find build/docs/ -type f -name "*.3.gz")

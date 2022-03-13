@@ -2,9 +2,11 @@ include(`macros.m4')
 
 
 ifdef(<<<MAN>>>,
-<<<% LIBCHRYSALIS:C_AUTO(3) libchrysalis 0.0.1
+<<<
+% LIBCHRYSALIS:C_AUTO(3) libchrysalis 0.0.1
 %
-% 2022>>>)
+% 2022
+>>>)
 
 
 __NAME__(<<<C_AUTO>>>)
