@@ -118,3 +118,11 @@ Copyright &copy; 2022 Abhishek Chakravarti `<abhishek@taranjali.org>`
 text.>>>)>>>,
 <<<define(__COPYRIGHT__, <<<>>>)>>>)dnl
 
+
+dnl __CITATIONS__ - macro expanding to the Citations section
+
+ifdef(<<<MAN>>>,
+<<<define(__CITATIONS__, 
+<<<# CITATIONS>>>)>>>,
+<<<define(__CITATIONS__, <<<>>>)>>>)dnl
+

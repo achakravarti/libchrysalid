@@ -95,3 +95,6 @@ ifdef(<<<MAN>>>,
 
 __COLOPHON__
 
+
+__CITATIONS__
+
