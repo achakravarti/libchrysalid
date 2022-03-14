@@ -90,7 +90,7 @@ __COPYRIGHT__
 __SEEALSO__(<<<C_COLD>>>)
 
 ifdef(<<<MAN>>>,
-<<<**libchrysalis:extensions(7)**, **libchrysalis:C_COLD(3)**>>>,
+<<<**libchrysalis:extensions(7)**, **libchrysalis:C_HOT(3)**>>>,
 <<<TODO>>>)
 
 
