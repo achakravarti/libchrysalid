@@ -49,7 +49,7 @@ client code to correctly resolve `#include <libchrysalis/api.h>`.
 : *m4* template for documentation.
 
 */usr/local/man/man3/libchrysalis:C_HOT.3.gz*
-ifdef(<<<MAN>>>,
+__SWITCHMX__(
 <<<: Man page documentation (this page).>>>,
 <<<: Man page documentation.>>>)
 
@@ -88,7 +88,7 @@ __COPYRIGHT__
 
 __SEEALSO__(<<<C_HOT>>>)
 
-ifdef(<<<MAN>>>,
+__SWITCHMX__(
 <<<**libchrysalis:extensions(7)**, **libchrysalis:C_HOT(3)**>>>,
 <<<TODO>>>)
 

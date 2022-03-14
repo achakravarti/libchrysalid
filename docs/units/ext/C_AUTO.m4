@@ -41,7 +41,7 @@ client code to correctly resolve `#include <libchrysalis/api.h>`.
 : *m4* template for documentation.
 
 */usr/local/man/man3/libchrysalis:C_AUTO.3.gz*
-ifdef(<<<MAN>>>,
+__SWITCHMX__(
 <<<: Man page documentation (this page).>>>,
 <<<: Man page documentation.>>>)
 
@@ -66,7 +66,7 @@ __COPYRIGHT__
 
 __SEEALSO__(<<<C_AUTO>>>)
 
-ifdef(<<<MAN>>>,
+__SWITCHMX__(
 <<<**libchrysalis:extensions(7)**>>>,
 <<<Section X.X.X>>>)
 

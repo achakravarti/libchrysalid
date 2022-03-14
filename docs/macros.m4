@@ -32,6 +32,12 @@ dnl defined macros within double underscores so that they are easily
 dnl identifiable and do not accidentally cause conflicts with the main text.
 
 
+dnl __SWITCHMX__ - macro expanding conditionally between man and other formats
+
+define(`__SWITCHMX__',
+ifdef(`MAN', $1, $2))dnl
+
+
 dnl __NAME__ - macro expanding to the name section heading
 
 ifdef(`MAN',
