@@ -120,21 +120,42 @@ extern "C" {
  * C_IMMUTABLE - marks a function as immutable
  * Ref: libchrysalis/docs/man/C_IMMUTABLE.3.md
  */
-#define C_IMMUTABLE __attribute__((const))
+#if (defined __GNUC__ || defined __clang__)
+#       define C_IMMUTABLE __attribute__((const))
+#else
+#       define C_IMMUTABLE
+#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "C_IMMUTABLE has no effect in current compiler"
+#       endif
+#endif
 
 
 /*
  * C_TLOCAL - marks a file scope variable as thread local
  * Ref: libchrysalis/docs/man/C_TLOCAL.3.md
  */
-#define C_TLOCAL __thread
+#if (defined __GNUC__ || defined __clang__)
+#       define C_TLOCAL __thread
+#else
+#       define C_TLOCAL
+#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "C_TLOCAL has no effect in current compiler"
+#       endif
+#endif
 
 
 /*
  * C_AUTO - marks an automatic heap pointer
  * Ref: libchrysalis/docs/man/C_AUTO.3.md
  */
-#define C_AUTO(_T_) __attribute__((cleanup(_T_##_free))) _T_
+#if (defined __GNUC__ || defined __clang__)
+#       define C_AUTO(_T_) __attribute__((cleanup(_T_##_free))) _T_
+#else
+#       define C_AUTO
+#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "C_AUTO has no effect in current compiler"
+#       endif
+#endif
 
 
 /*
