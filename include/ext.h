@@ -106,7 +106,14 @@ extern "C" {
  * C_STABLE - marks a function as stable
  * Ref: libchrysalis/docs/man/C_STABLE.3.md
  */
-#define C_STABLE __attribute__((pure))
+#if (defined __GNUC__ || defined __clang__)
+#       define C_STABLE __attribute__((pure))
+#else
+#       define C_STABLE
+#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "C_STABLE has no effect in current compiler"
+#       endif
+#endif
 
 
 /*
