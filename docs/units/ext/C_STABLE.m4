@@ -1,14 +1,18 @@
-% LIBCHRYSALIS:C_STABLE(3) libchrysalis 0.0.1
+include(`macros.m4')
+
+
+ifdef(<<<MAN>>>,
+<<<% LIBCHRYSALIS:C_STABLE(3) libchrysalis 0.0.1
 %
-% 2022
+% 2022>>>)
 
 
-# NAME
+__NAME__(<<<C_STABLE>>>)
 
 `C_STABLE` - marks a function as stable
 
 
-# SYNOPSIS
+__SYNOPSIS__(<<<C_STABLE>>>)
 
 ```
 #include "libchrysalis/api.h"
@@ -17,7 +21,7 @@
 ```
 
 
-# DESCRIPTION
+__DESCRIPTION__(<<<C_STABLE>>>)
 
 The `C_STABLE` macro is used to mark a function as being stable. In
 *libchrysalis*, we consider a function to be stable if it has the following
@@ -43,24 +47,25 @@ when there are repeated calls to the function with the same arguments
 will lead to a compiler diagnostic to be emitted [@gcc:function-attributes].
 
 
-# FILES
+__FILES__(<<<C_STABLE>>>)
 
-*/usr/local/src/libchrysalis/ext.h*
+*/usr/local/src/libchrysalis/include/ext.h*
 : Definition of `C_STABLE` macro.
 
 */usr/local/include/libchrysalis/ext.h*
 : Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
 client code to correctly resolve `#include <libchrysalis/api.h>`.
 
-*/usr/local/src/libchrysalis/doc/man/C_STABLE.3.md*
-: Markdown documentation in man layout.
+*/usr/local/src/libchrysalis/doc/units/ext/C_STABLE.m4*
+: *m4* template for documentation.
 
 */usr/local/man/man3/libchrysalis:C_STABLE.3.gz*
-: Man page documentation.
+__SWITCHMX__(
+<<<: Man page documentation (this page).>>>,
+<<<: Man page documentation.>>>)
 
 
-# EXAMPLES
-
+__EXAMPLES__(<<<C_STABLE>>>)
 
 ```
 
@@ -83,12 +88,12 @@ static C_STABLE bool check_not_empty(char *str)
 ```
 
 
-# CONFORMING TO
+__CONFORMINGTO__(<<<C_STABLE>>>)
 
 GCC, Clang.
 
 
-# NOTES
+__NOTES__(<<<C_STABLE>>>)
 
 - The `C_STABLE` macro is defined in terms of the non-standard
   `__attribute__((pure))` attribute available on GCC and Clang
@@ -103,22 +108,18 @@ GCC, Clang.
   [@pgsql:volatility].
 
 
-# COPYRIGHT
-
-Copyright &copy; 2022 Abhishek Chakravarti `<abhishek@taranjali.org>`
-
-`libchrysalis` along with its documentation are released under the BSD 2-Clause
-License. See **libchrysalis:license(7)** for the full license text.
+__COPYRIGHT__
 
 
-# SEE ALSO
+__SEEALSO__(<<<C_STABLE>>>)
 
-**libchrysalis:extensions(7)** **libchrysalis:immutable(3)**
+__SWITCHMX__(
+<<<**libchrysalis:extensions(7)**, **libchrysalis:C_IMMUTABLE(3)**>>>,
+<<<TODO>>>)
 
 
-# COLOPHON
+__COLOPHON__
 
-This page is part of release 0.0.1 of the `libchrysalis` project. The latest
-version of this project can be found at
-[GitHub](https://github.com/achakravarti/libchrysalis).
+
+__CITATIONS__
 
