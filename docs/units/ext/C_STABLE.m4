@@ -28,7 +28,7 @@ The `C_STABLE` macro is used to mark a function as being stable. In
 properties:
 
   1. It has no side effects, i.e. it does not modify any static variables,
-     non-local variables, reference arguments or input streams
+     non-local variables, reference arguments or input streams.
   2. It returns the same value when repeatedly called with the same arguments,
      provided the arguments point to the same memory locations.
 
