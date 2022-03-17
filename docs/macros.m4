@@ -59,6 +59,13 @@ ifdef(`MAN',
 `define(__DESCRIPTION__, `## Description {sec:$1:description}')')dnl
 
 
+dnl __RETURN__ - macro expanding to the Return Value section heading
+
+ifdef(`MAN',
+`define(__RETURN__, `# RETURN VALUE')',
+`define(__RETURN__, `## Return Value {sec:$1:return-value}')')dnl
+
+
 dnl __FILES__ - macro expanding to the Files section heading
 
 ifdef(`MAN',
