@@ -43,6 +43,7 @@ warning messages to emitted, then define the symbolic constant
 
 # FILES
 
+<<<<<<< HEAD
 */usr/local/src/libchrysalis/include/base/ext.h*
 : Extension macro definitions.
 
@@ -55,6 +56,20 @@ client code to correctly resolve `#include <libchrysalis/api.h>`.
 
 */usr/local/man/man7/libchrysalis:extensions.7.gz*
 : Installed man page documentation (this page).
+=======
+*/usr/local/src/libchrysalis/include/ext.h*
+: Extension macro definitions.
+
+*/usr/local/include/libchrysalis/ext.h*
+: Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
+client code to correctly resolve `#include <libchrysalis/api.h>`.
+
+*/usr/local/src/libchrysalis/doc/man/extensions.7.md*
+: Markdown documentation in man layout.
+
+*/usr/local/man/man7/libchrysalis:extensions.7.gz*
+: Installed man page documentation.
+>>>>>>> main
 
 
 # CONFORMING TO

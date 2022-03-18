@@ -1,14 +1,18 @@
-% LIBCHRYSALIS:C_HOT(3) libchrysalis 0.0.1
-% 
-% 2022
- 
-
-# NAME
-
-`C_HOT` - hints a function as hot
+include(`macros.m4')
 
 
-# SYNOPSIS
+ifdef(<<<MAN>>>,
+<<<% LIBCHRYSALIS:C_HOT(3) libchrysalis 0.0.1
+%
+% 2022>>>)
+
+
+__NAME__(<<<C_HOT>>>)
+
+`C_COLD` - hints a function as cold
+
+
+__SYNOPSIS__(<<<C_HOT>>>)
 
 ```
 #include "libchrysalis/api.h"
@@ -17,7 +21,7 @@
 ```
 
 
-# DESCRIPTION
+__DESCRIPTION__(<<<C_HOT>>>)
 
 The `C_HOT` macro is used to hint that a function is hot, i.e. it is called
 often. When `C_HOT` is applied to a function, the compiler _may_ optimise it
@@ -32,22 +36,8 @@ displayed, then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile
 time.
 
 
-# FILES
+__FILES__(<<<C_HOT>>>)
 
-<<<<<<< HEAD
-*/usr/local/src/libchrysalis/include/base/ext.h*
-: Definition of `C_HOT` macro.
-
-*/usr/local/include/libchrysalis/base/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/base/ext.h*; required by
-client code to correctly resolve `#include <libchrysalis/api.h>`.
-
-*/usr/local/src/libchrysalis/doc/base/c_hot.md*
-: Markdown documentation in man layout.
-
-*/usr/local/man/man3/libchrysalis:C_HOT.3.gz*
-: Man page documentation (this page).
-=======
 */usr/local/src/libchrysalis/include/ext.h*
 : Definition of `C_HOT` macro.
 
@@ -55,15 +45,16 @@ client code to correctly resolve `#include <libchrysalis/api.h>`.
 : Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
 client code to correctly resolve `#include <libchrysalis/api.h>`.
 
-*/usr/local/src/libchrysalis/doc/man/C_HOT.3.md*
-: Markdown documentation in man layout.
+*/usr/local/share/doc/libchrysalis/units/ext/C_HOT.m4*
+: *m4* template for documentation.
 
-*/usr/local/man/man3/libchrysalis:C_HOT.3.gz*
-: Man page documentation.
->>>>>>> main
- 
+*/usr/local/share/man/man3/libchrysalis:C_HOT.3.gz*
+__SWITCHMX__(
+<<<: Man page documentation (this page).>>>,
+<<<: Man page documentation.>>>)
 
-# EXAMPLES
+
+__EXAMPLES__(<<<C_HOT>>>)
 
 ```
 C_HOT int foo(char *, int *);   /* standard declaration */
@@ -78,13 +69,12 @@ C_HOT static int foobar(char *foo, char c)
 ```
 
 
-# CONFORMING TO
+__CONFORMINGTO__(<<<C_HOT>>>)
 
-C99, C11, GCC, Clang.
+GCC 11.2, Clang 13.0.1.
 
 
-
-# NOTES
+__NOTES__(<<<C_HOT>>>)
 
 - `C_HOT` is ignored by GCC if the `-fprofile-use` flag is used during
   compilation [@gcc:function-attributes].
@@ -93,26 +83,18 @@ C99, C11, GCC, Clang.
   [@llvm-dev:hot-cold-attributes].
 
 
-# COPYRIGHT
-
-Copyright &copy; 2022 Abhishek Chakravarti `<abhishek@taranjali.org>`
-
-`libchrysalis` along with its documentation are released under the BSD 2-Clause
-License. See **libchrysalis:license(7)** for the full license text.
+__COPYRIGHT__
 
 
-# SEE ALSO
+__SEEALSO__(<<<C_HOT>>>)
 
-<<<<<<< HEAD
-**libchrysalis:C_COLD(3)**
-=======
-**libchrysalis:extensions(7)**, **libchrysalis:C_COLD(3)**
->>>>>>> main
+__SWITCHMX__(
+<<<**libchrysalis:extensions(7)**, **libchrysalis:C_HOT(3)**>>>,
+<<<TODO>>>)
 
 
-# COLOPHON
+__COLOPHON__
 
-This page is part of release 0.0.1 of the `libchrysalis` project. The latest
-version of this project can be found at
-[GitHub](https://github.com/achakravarti/libchrysalis).
+
+__CITATIONS__
 

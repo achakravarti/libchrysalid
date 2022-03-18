@@ -1,14 +1,18 @@
-% LIBCHRYSALIS:C_COLD(3) libchrysalis 0.0.1
-%
-% 2022
- 
+include(`macros.m4')
 
-# NAME
+
+ifdef(<<<MAN>>>,
+<<<% LIBCHRYSALIS:C_COLD(3) libchrysalis 0.0.1
+%
+% 2022>>>)
+
+
+__NAME__(<<<C_COLD>>>)
 
 `C_COLD` - hints a function as cold
 
 
-# SYNOPSIS
+__SYNOPSIS__(<<<C_COLD>>>)
 
 ```
 #include "libchrysalis/api.h"
@@ -17,7 +21,7 @@
 ```
 
 
-# DESCRIPTION
+__DESCRIPTION__(<<<C_COLD>>>)
 
 The `C_COLD` macro is used to hint that a function is cold, i.e. it is
 unlikely to called. Functions that are marked with `C_COLD` are
@@ -34,22 +38,8 @@ displayed, then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile
 time.
 
 
-# FILES
+__FILES__(<<<C_COLD>>>)
 
-<<<<<<< HEAD
-*/usr/local/src/libchrysalis/include/base/ext.h*
-: Definition of `C_COLD` macro.
-
-*/usr/local/include/libchrysalis/base/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/base/ext.h*; required by
-client code to correctly resolve `#include <libchrysalis/api.h>`.
-
-*/usr/local/src/libchrysalis/doc/base/c_cold.md*
-: Markdown documentation in man layout.
-
-*/usr/local/man/man3/libchrysalis:C_HOT.3.gz*
-: Man page documentation (this page).
-=======
 */usr/local/src/libchrysalis/include/ext.h*
 : Definition of `C_COLD` macro.
 
@@ -57,15 +47,16 @@ client code to correctly resolve `#include <libchrysalis/api.h>`.
 : Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
 client code to correctly resolve `#include <libchrysalis/api.h>`.
 
-*/usr/local/src/libchrysalis/doc/man/C_COLD.3.md*
-: Markdown documentation in man layout.
+*/usr/local/share/doc/libchrysalis/units/ext/C_COLD.m4*
+: *m4* template for documentation.
 
-*/usr/local/man/man3/libchrysalis:C_COLD.3.gz*
-: Man page documentation.
->>>>>>> main
+*/usr/local/share/man/man3/libchrysalis:C_COLD.3.gz*
+__SWITCHMX__(
+<<<: Man page documentation (this page).>>>,
+<<<: Man page documentation.>>>)
 
- 
-# EXAMPLES
+
+__EXAMPLES__(<<<C_COLD>>>)
 
 ```
 C_COLD int foo(char *, int *);  /* standard declaration */
@@ -80,12 +71,12 @@ C_COLD static int foobar(char *foo, char c)
 ```
 
 
-# CONFORMING TO
+__CONFORMINGTO__(<<<C_COLD>>>)
 
-C99, C11, GCC, Clang.
+GCC 11.2, Clang 13.0.1.
 
- 
-# NOTES
+
+__NOTES__(<<<C_COLD>>>)
 
 - `C_COLD` is ignored by GCC if the `-fprofile-use` flag is used during
   compilation [@gcc:function-attributes].
@@ -93,26 +84,18 @@ C99, C11, GCC, Clang.
   [@llvm-dev:hot-cold-attributes].
 
 
-# COPYRIGHT
-
-Copyright &copy; 2022 Abhishek Chakravarti `<abhishek@taranjali.org>`
-
-`libchrysalis` along with its documentation are released under the BSD 2-Clause
-License. See **libchrysalis:license(7)** for the full license text.
+__COPYRIGHT__
 
 
-# SEE ALSO
+__SEEALSO__(<<<C_COLD>>>)
 
-<<<<<<< HEAD
-**libchrysalis:C_COLD(3)**
-=======
-**libchrysalis:extensions(7)**, **libchrysalis:C_COLD(3)**
->>>>>>> main
+__SWITCHMX__(
+<<<**libchrysalis:extensions(7)**, **libchrysalis:C_HOT(3)**>>>,
+<<<TODO>>>)
 
 
-# COLOPHON
+__COLOPHON__
 
-This page is part of release 0.0.1 of the `libchrysalis` project. The latest
-version of this project can be found at
-[GitHub](https://github.com/achakravarti/libchrysalis).
+
+__CITATIONS__
 

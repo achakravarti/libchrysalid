@@ -35,6 +35,7 @@ time.
 
 # FILES
 
+<<<<<<< HEAD
 */usr/local/src/libchrysalis/include/base/ext.h*
 : Definition of `C_RSAFE` macro.
 
@@ -47,6 +48,20 @@ client code to correctly resolve `#include <libchrysalis/api.h>`.
 
 */usr/local/man/man3/libchrysalis:C_RSAFE.3.gz*
 : Man page documentation (this page).
+=======
+*/usr/local/src/libchrysalis/include/ext.h*
+: Definition of `C_RSAFE` macro.
+
+*/usr/local/include/libchrysalis/ext.h*
+: Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
+client code to correctly resolve `#include <libchrysalis/api.h>`.
+
+*/usr/local/src/libchrysalis/doc/man/C_RSAFE.3.md*
+: Markdown documentation in man layout.
+
+*/usr/local/man/man3/libchrysalis:C_RSAFE.3.gz*
+: Man page documentation.
+>>>>>>> main
 
 
 # EXAMPLES
@@ -79,7 +94,11 @@ License. See **libchrysalis:license(7)** for the full license text.
 
 # SEE ALSO
 
+<<<<<<< HEAD
 **libchrysalis:C_PSAFE(3)**, 
+=======
+**libchrysalis:extensions(7)**, **libchrysalis:C_PSAFE(3)**
+>>>>>>> main
 
 
 # COLOPHON

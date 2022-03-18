@@ -1,14 +1,18 @@
-% LIBCHRYSALIS:C_PSAFE(3) libchrysalis 0.0.1
+include(`macros.m4')
+
+
+ifdef(<<<MAN>>>,
+<<<% LIBCHRYSALIS:C_PSAFE(3) libchrysalis 0.0.1
 %
-% 2022
+% 2022>>>)
 
 
-# NAME
+__NAME__(<<<C_PSAFE>>>)
 
 `C_PSAFE` - hints a function has no null parameters
 
 
-# SYNOPSIS
+__SYNOPSIS__(<<<C_PSAFE>>>)
 
 ```
 #include "libchrysalis/api.h"
@@ -16,10 +20,10 @@
 #define C_PSAFE
 ```
 
- 
-# DESCRIPTION
 
-The `C_PSAFE` macro indicates that _all_ pointer parameters of a function are
+__DESCRIPTION__(<<<C_PSAFE>>>)
+
+The `C_PSAFE` macro indicates that *all* pointer parameters of a function are
 required to be non-null. A warning is issued if a null pointer is passed to any
 of the parameters of such a function. This macro has no effect on non-pointer
 parameters, and so must be used to decorate functions with at least one pointer
@@ -34,22 +38,8 @@ displayed, then define the macro `C_SUPPRESS_EXTENSION_WARNINGS` at compile
 time.
 
 
-# FILES
+__FILES__(<<<C_PSAFE>>>)
 
-<<<<<<< HEAD
-*/usr/local/src/libchrysalis/include/base/ext.h*
-: Definition of `C_PSAFE` macro.
-
-*/usr/local/include/libchrysalis/base/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/base/ext.h*; required by
-client code to correctly resolve `#include <libchrysalis/api.h>`.
-
-*/usr/local/src/libchrysalis/doc/base/c_psafe.md*
-: Markdown documentation in man layout.
-
-*/usr/local/man/man3/libchrysalis:C_PSAFE.3.gz*
-: Man page documentation (this page).
-=======
 */usr/local/src/libchrysalis/include/ext.h*
 : Definition of `C_PSAFE` macro.
 
@@ -57,15 +47,16 @@ client code to correctly resolve `#include <libchrysalis/api.h>`.
 : Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
 client code to correctly resolve `#include <libchrysalis/api.h>`.
 
-*/usr/local/src/libchrysalis/doc/man/C_PSAFE.3.md*
-: Markdown documentation in man layout.
+*/usr/local/share/doc/libchrysalis/units/ext/C_PSAFE.m4*
+: *m4* template for documentation.
 
-*/usr/local/man/man3/libchrysalis:C_PSAFE.3.gz*
-: Man page documentation.
->>>>>>> main
+*/usr/local/share/man/man3/libchrysalis:C_PSAFE.3.gz*
+__SWITCHMX__(
+<<<: Man page documentation (this page).>>>,
+<<<: Man page documentation.>>>)
 
 
-# EXAMPLES
+__EXAMPLES__(<<<C_PSAFE>>>)
 
 ```
 C_PSAFE int foo(char *, int *);     /* standard declaration */
@@ -79,12 +70,13 @@ C_PSAFE static int foobar(char *foo, char c)
 }
 ```
 
-# CONFORMING TO
 
-C99, C11, GCC, Clang.
+__CONFORMINGTO__(<<<C_PSAFE>>>)
+
+GCC 11.2, Clang 13.0.1.
 
 
-# NOTES
+__NOTES__(<<<C_PSAFE>>>)
 
 - The `__attribute__((nonnull))` decorator optionally allows you to
   specify the 1-based index of the function parameters that are to be
@@ -103,26 +95,18 @@ C99, C11, GCC, Clang.
   does not support this [@clang:attributes].
 
 
-# COPYRIGHT
-
-Copyright &copy; 2022 Abhishek Chakravarti `<abhishek@taranjali.org>`
-
-`libchrysalis` along with its documentation are released under the BSD 2-Clause
-License. See **libchrysalis:license(7)** for the full license text.
+__COPYRIGHT__
 
 
-# SEE ALSO
+__SEEALSO__(<<<C_PSAFE>>>)
 
-<<<<<<< HEAD
-**libchrysalis:C_RSAFE(3)**
-=======
-**libchrysalis:extensions(7)**, **libchrysalis:C_RSAFE(3)**
->>>>>>> main
+__SWITCHMX__(
+<<<**libchrysalis:extensions(7)**, **libchrysalis:C_RSAFE(3)**>>>,
+<<<TODO>>>)
 
 
-# COLOPHON
+__COLOPHON__
 
-This page is part of release 0.0.1 of the `libchrysalis` project. The latest
-version of this project can be found at
-[GitHub](https://github.com/achakravarti/libchrysalis).
+
+__CITATIONS__
 
