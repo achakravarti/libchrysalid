@@ -31,6 +31,7 @@ clean:
 	rm -f $(MAN_ODIR)/*
 	rm -f $(MAN_ODIR)/*
 	rm -f build/heap
+	rm -rf build/docs/*
 
 install: $(MAN_PG)
 	sudo mkdir -p $(MAN_3DIR)
