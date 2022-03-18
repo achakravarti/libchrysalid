@@ -131,20 +131,6 @@ extern "C" {
 
 
 /*
- * C_TLOCAL - marks a file scope variable as thread local
- * Ref: libchrysalis/docs/man/C_TLOCAL.3.md
- */
-#if (defined __GNUC__ || defined __clang__)
-#       define C_TLOCAL __thread
-#else
-#       define C_TLOCAL
-#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
-#               warning "C_TLOCAL has no effect in current compiler"
-#       endif
-#endif
-
-
-/*
  * C_AUTO - marks an automatic heap pointer
  * Ref: libchrysalis/docs/man/C_AUTO.3.md
  */
