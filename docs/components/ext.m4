@@ -53,10 +53,10 @@ __FILES__(<<<Extensions>>>)
 : Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
 client code to correctly resolve `#include <libchrysalis/api.h>`.
 
-*/usr/local/share/doc/libchrysalis/components/ext.m4
+*/usr/local/share/doc/libchrysalis/components/ext.m4*
 : *m4* template for documentation.
 
-*/usr/local/man/man7/libchrysalis:extensions.7.gz*
+*/usr/local/share/man/man7/libchrysalis:extensions.7.gz*
 __SWITCHMX__(
 <<<: Man page documentation (this page).>>>,
 <<<: Man page documentation.>>>)

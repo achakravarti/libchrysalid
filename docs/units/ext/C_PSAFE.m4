@@ -47,10 +47,10 @@ __FILES__(<<<C_PSAFE>>>)
 : Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
 client code to correctly resolve `#include <libchrysalis/api.h>`.
 
-*/usr/local/src/libchrysalis/doc/units/ext/C_PSAFE.m4*
+*/usr/local/share/doc/libchrysalis/units/ext/C_PSAFE.m4*
 : *m4* template for documentation.
 
-*/usr/local/man/man3/libchrysalis:C_PSAFE.3.gz*
+*/usr/local/share/man/man3/libchrysalis:C_PSAFE.3.gz*
 __SWITCHMX__(
 <<<: Man page documentation (this page).>>>,
 <<<: Man page documentation.>>>)
