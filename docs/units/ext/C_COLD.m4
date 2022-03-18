@@ -73,7 +73,7 @@ C_COLD static int foobar(char *foo, char c)
 
 __CONFORMINGTO__(<<<C_COLD>>>)
 
-C99, C11, GCC, Clang.
+GCC 11.2, Clang 13.0.1.
 
 
 __NOTES__(<<<C_COLD>>>)

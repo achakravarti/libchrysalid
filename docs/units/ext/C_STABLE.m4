@@ -90,7 +90,7 @@ static C_STABLE bool check_not_empty(char *str)
 
 __CONFORMINGTO__(<<<C_STABLE>>>)
 
-GCC, Clang.
+GCC 11.2, Clang 13.0.1.
 
 
 __NOTES__(<<<C_STABLE>>>)

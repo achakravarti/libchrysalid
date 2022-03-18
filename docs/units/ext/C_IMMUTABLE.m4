@@ -92,7 +92,7 @@ static C_IMMUTABLE bool check_negative(int x)
 
 __CONFORMINGTO__(<<<C_IMMUTABLE>>>)
 
-GCC, Clang.
+GCC 11.2, Clang 13.0.1.
 
 
 __NOTES__(<<<C_IMMUTABLE>>>)

@@ -101,7 +101,7 @@ int main(void)
 
 __CONFORMINGTO__(<<<C_AUTO>>>)
 
-C99, C11, GCC, Clang.
+GCC 11.2, Clang 13.0.1.
 
 
 __NOTES__(<<<C_AUTO>>>)

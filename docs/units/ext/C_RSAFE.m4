@@ -65,7 +65,7 @@ C_RSAFE static int *foobar(char *foo, char c)
 
 __CONFORMINGTO__(<<<C_RSAFE>>>)
 
-GCC, Clang.
+GCC 11.2, Clang 13.0.1.
 
 
 __NOTES__(<<<C_RSAFE>>>)
