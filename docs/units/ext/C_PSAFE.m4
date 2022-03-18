@@ -2,7 +2,7 @@ include(`macros.m4')
 
 
 ifdef(<<<MAN>>>,
-<<<% LIBCHRYSALIS:C_IMMUTABLE(3) libchrysalis 0.0.1
+<<<% LIBCHRYSALIS:C_PSAFE(3) libchrysalis 0.0.1
 %
 % 2022>>>)
 
@@ -98,7 +98,7 @@ __NOTES__(<<<C_PSAFE>>>)
 __COPYRIGHT__
 
 
-__SEEALSO__(<<<C_IMMUTABLE>>>)
+__SEEALSO__(<<<C_PSAFE>>>)
 
 __SWITCHMX__(
 <<<**libchrysalis:extensions(7)**, **libchrysalis:C_RSAFE(3)**>>>,
