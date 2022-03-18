@@ -137,7 +137,7 @@ extern "C" {
 #if (defined __GNUC__ || defined __clang__)
 #       define C_AUTO(_T_) __attribute__((cleanup(_T_##_free))) _T_
 #else
-#       define C_AUTO
+#       define C_AUTO(_T_)
 #       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
 #               warning "C_AUTO has no effect in current compiler"
 #       endif
