@@ -15,11 +15,29 @@ Aims to be portable, well-tested and documented.
 
 ### 🛠️  DIY
 
+Make sure you have the following available:
+  - A POSIX-compliant OS
+  - A POSIX-compliant shell
+  - Git
+  - make
+
+Fire up your terminal emulator, and type the following commands in the shell:
+
 ```
-./configure
-make
-make test
+$ git@github.com:achakravarti/libchrysalis.git
+$ cd libchrysalis
+$ ./configure	# required, generates Makefile
+$ make		# required, builds libchrysalis
+$ make check	# optional, runs unit tests
+$ make man 	# optional, builds man page documentation
+$ make example 	# optional, builds example programs
+$ make install	# required, installs libchrysalis and optional components
 ```
+
+If you want to remove `libchrysalis` and its optional components, simply run
+either of the following:
+  - `make uninstall` from the `libchrysalis` project directory, or
+  - `uninstall-libchrysalis`
 
 ### 🐳  Docker
 TODO
