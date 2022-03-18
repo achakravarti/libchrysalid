@@ -77,7 +77,7 @@ __SWITCHMX__(
 **libchrysalis:C_HOT(3)**, **libchrysalis:C_IMMUTABLE(3)**,
 **libchrysalis:C_LIKELY(3)**, **libchrysalis:C_PSAFE(3)**,
 **libchrysalis:C_RSAFE(3)**, **libchrysalis:C_STABLE(3)**,
-**libchrysalis:C_UNLIKELY(3)**>>,
+**libchrysalis:C_UNLIKELY(3)**>>>,
 <<<TODO>>>)
 
 
