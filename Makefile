@@ -1,69 +1,40 @@
-# Source directory of man page markdown files.
-MAN_IDIR=docs/man
+# Build directory
+BUILD_DIR=build
 
-# Output directory of generated man pages.
-MAN_ODIR=build/docs/man
-
-# System directory for section 3 man pages.
-MAN_3DIR=/usr/local/man/man3
-
-# System directory for section 7 man pages.
-MAN_7DIR=/usr/local/man/man7
-
-# Source Markdown files for man pages
-MAN_SRC!=find $(MAN_IDIR)/ -type f -name '*.md' | sort
-
-# Generated man pages from Markdown source files.
-MAN_PG=$(MAN_SRC:$(MAN_IDIR)/%.md=$(MAN_ODIR)/%)
-
-# Man page title namespace
-MAN_NS=libchrysalis
+# Generated man pages
+MAN_PAGES!=find $(BUILD_DIR) -type f -name \'*.gz\'
 
 
-docs: $(MAN_PG)
+# Target to build man pages
+man: $(MAN_PAGES)
 
-$(MAN_PG): $(MAN_SRC)
-
-$(MAN_ODIR)/%: $(MAN_IDIR)/%.md
-	pandoc $< --bibliography=docs/references.bib --citeproc -s -t man -o $@
-
+# Target to clean build directory
 clean:
-	rm -f $(MAN_ODIR)/*
-	rm -f $(MAN_ODIR)/*
-	rm -f build/heap
-	rm -rf build/docs/*
+	rm -rfv build/*
 
-install: $(MAN_PG)
-	sudo mkdir -p $(MAN_3DIR)
-	sudo mkdir -p $(MAN_7DIR)
-	sudo rm -f $(MAN_3DIR)/$(MAN_NS)*
-	sudo rm -f $(MAN_7DIR)/$(MAN_NS)*
-	cd $(MAN_ODIR);								\
-	for f in *.3;								\
-		do sudo cp -v -- "$$f" "$(MAN_3DIR)/$(MAN_NS):$$f";		\
-	done
-	cd $(MAN_ODIR);								\
-	for f in *.7;								\
-		do sudo cp -v -- "$$f" "$(MAN_7DIR)/$(MAN_NS):$$f";		\
-	done
-	for f in $(MAN_3DIR)/$(MAN_NS)*;					\
-		do sudo gzip -f "$$f";						\
-	done
-	for f in $(MAN_7DIR)/$(MAN_NS)*;					\
-		do sudo gzip -f "$$f";						\
-	done
-	sudo mandb
+# Target to install components
+install: $(MAN_PAGES)
+	tools/install-man.sh
 
-uninstall: $(MAN_3DIR) $(MAN_7DIR)
-	sudo rm -f $(MAN_3DIR)/$(MAN_NS)*
-	sudo rm -f $(MAN_7DIR)/$(MAN_NS)*
-	sudo mandb
+# Target to uninstall components
+uninstall:
+	tools/uninstall-man.sh
 
+# Target to build example programs
 examples: build/heap
 
+
+# Rule to build pages
+$(MAN_PAGES):
+	tools/build-man.sh
+
+# Rule to build heap example program
 build/heap:
 	gcc -Wall -Wextra -g -fPIC src/heap.c examples/heap.c -o build/heap
 
+
+
+# Phony targets
 .PHONY:
-	clean docs install uninstall examples
+	clean man install uninstall examples
 
