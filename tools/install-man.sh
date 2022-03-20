@@ -17,7 +17,7 @@ sudo mkdir -p $__man/man3
 sudo mkdir -p $__man/man7
 
 
-# Remove previous man paguxe documentation
+# Remove previous man pages documentation
 sudo rm -f $__man/man3/libchrysalis:*
 sudo rm -f $__man/man7/libchrysalis:*
 
