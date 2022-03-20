@@ -1,40 +1,50 @@
 # Build directory
 BUILD_DIR=build
 
-# Generated man pages
-MAN_PAGES!=find $(BUILD_DIR) -type f -name \'*.gz\'
 
+#################################################################################
+# MAN PAGE TARGETS
+#################################################################################
 
-# Target to build man pages
-man: $(MAN_PAGES)
+MAN_SRC!=find docs/components -type f -name '*.m4'
+MAN_BIN=$(MAN_SRC:%.m4=$(BUILD_DIR)/%.7.gz)
 
-# Target to clean build directory
-clean:
-	rm -rfv build/*
+.PHONY: man
+man: $(MAN_BIN)
 
-# Target to install components
-install: $(MAN_PAGES)
-	tools/install-man.sh
-
-# Target to uninstall components
-uninstall:
-	tools/uninstall-man.sh
-
-# Target to build example programs
-examples: build/heap
-
-
-# Rule to build pages
-$(MAN_PAGES):
+$(MAN_BIN):
 	tools/build-man.sh
 
-# Rule to build heap example program
+
+#################################################################################
+# EXAMPLE TARGETS
+#################################################################################
+
+.PHONY: examples
+examples: build/heap
+
 build/heap:
 	gcc -Wall -Wextra -g -fPIC src/heap.c examples/heap.c -o build/heap
 
 
+#################################################################################
+# (UN)INSTALL TARGETS
+#################################################################################
 
-# Phony targets
-.PHONY:
-	clean man install uninstall examples
+.PHONY: install
+install: $(MAN_BIN)
+	tools/install-man.sh
+
+.PHONY: uninstall
+uninstall:
+	tools/uninstall-man.sh
+
+
+#################################################################################
+# CLEAN TARGETS
+#################################################################################
+
+.PHONY: clean
+clean:
+	rm -rfv build/*
 
