@@ -17,3 +17,7 @@ fi
 sudo rm -f $__man/man3/libchrysalis:*
 sudo rm -f $__man/man7/libchrysalis:*
 
+
+# Update man database
+sudo mandb
+
