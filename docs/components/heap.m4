@@ -47,40 +47,50 @@ c_heap *c_heap_new_aligned(size_t, size_t, size_t);
 ```
 
 
-__DESCRIPTION__(<<<Extensions>>>)
+__DESCRIPTION__(<<<Heap>>>)
 
-The *Extensions* component of `libchrysalis` defines the compiler extensions
-that are often useful for optimising code. Optimisation can be both in terms of
-performance and desirable features which are otherwise not availabe in the C11
-standard.
+The *Heap* component of *libchrysalis* provides an interface to manage heap
+memory. The Heap component is adopts the bridge pattern, providing a uniform
+abstract interface for client code. Different implementations of the abstract
+interface (referred to as *adapters*) can be selected at runtime as required. As
+of now, *libchrysalis* provides only an adapter for the standard library
+*malloc*, but there are plans in future to support both *Jemalloc* and a custom
+memory pool.
 
-These extensions are defined as macros relying on non-standard features provided
-by the GCC and Clang compilers, and as such are only available for use when
-these two compilers are used. On other compilers, these extension macros degrade
-safely to a no-op with an appropriate warning message. If you don't want these
-warning messages to emitted, then define the symbolic constant
-`C_SUPPRESS_EXTENSION_WARNINGS` at compile time.
+The Heap component also provides an interface for client code to implement its
+own adapter if required. This can be done by setting the v-table which is used
+by the heap abstract interface. See **libchrysalis:c_heap_vtable_(3)** and
+**libchrysalis:c_heap_vtable_set_(3)** for more details on how to do so.
 
 
-__FILES__(<<<Extensions>>>)
+__FILES__(<<<Heap>>>)
 
-*/usr/local/src/libchrysalis/include/ext.h*
-: Extension macro definitions.
+*/usr/local/src/libchrysalis/include/heap.h*
+: Heap interface declaration.
 
-*/usr/local/include/libchrysalis/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
+*/usr/local/include/libchrysalis/heap.h*
+: Symbolic link to */usr/local/src/libchrysalis/include/heap.h*; required by
 client code to correctly resolve `#include <libchrysalis/api.h>`.
 
-*/usr/local/share/doc/libchrysalis/components/ext.m4*
+*/usr/local/src/libchrysalis/src/heap.c*
+: Heap abstract interface definition.
+
+*/usr/local/src/libchrysalis/src/heap.c*
+: Heap abstract interface definition.
+
+*/usr/local/src/libchrysalis/src/heap-std.c*
+: Definition of standard malloc adapter.
+
+*/usr/local/share/doc/libchrysalis/components/heap.m4*
 : *m4* template for documentation.
 
-*/usr/local/share/man/man7/libchrysalis:extensions.7.gz*
+*/usr/local/share/man/man7/libchrysalis:heap.7.gz*
 __SWITCHMX__(
 <<<: Man page documentation (this page).>>>,
 <<<: Man page documentation.>>>)
 
 
-__CONFORMINGTO__(<<<Extensions>>>)
+__CONFORMINGTO__(<<<Heap>>>)
 
 GCC 11.2, Clang 13.0.1.
 
@@ -88,14 +98,29 @@ GCC 11.2, Clang 13.0.1.
 __COPYRIGHT__
 
 
-__SEEALSO__(<<<C_IMMUTABLE>>>)
+__SEEALSO__(<<<Heap>>>)
 
 __SWITCHMX__(
-<<<**libchrysalis:C_AUTO(3)**, **libchrysalis:C_COLD(3)**,
-**libchrysalis:C_HOT(3)**, **libchrysalis:C_IMMUTABLE(3)**,
-**libchrysalis:C_LIKELY(3)**, **libchrysalis:C_PSAFE(3)**,
-**libchrysalis:C_RSAFE(3)**, **libchrysalis:C_STABLE(3)**,
-**libchrysalis:C_UNLIKELY(3)**>>>,
+<<<
+**libchrysalis:c_heap(3)**,
+**libchrysalis:c_heap_free_cbk(3)**,
+**libchrysalis:c_heap_new(3)**,
+**libchrysalis:c_heap_copy(3)**,
+**libchrysalis:c_heap_clone(3)**,
+**libchrysalis:c_heap_free(3)**,
+**libchrysalis:c_heap_sz(3)**,
+**libchrysalis:c_heap_refc(3)**
+**libchrysalis:c_heap_aligned(3)**
+**libchrysalis:c_heap_str(3)**
+**libchrysalis:c_heap_vtable_(3)**,
+**libchrysalis:C_HEAP_METASZ_(3)**,
+**libchrysalis:c_heap_head_(3)**
+**libchrysalis:c_heap_vtable_(3)**
+**libchrysalis:c_heap_vtable_set_(3)**
+**libchrysalis:c_heap_sz_set_(3)**
+**libchrysalis:c_heap_refc_set_(3)**
+**libchrysalis:c_heap_refc_cast_(3)**
+>>>,
 <<<TODO>>>)
 
 
