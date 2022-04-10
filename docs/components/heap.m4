@@ -81,6 +81,9 @@ client code to correctly resolve `#include <libchrysalis/api.h>`.
 */usr/local/src/libchrysalis/src/heap-std.c*
 : Definition of standard malloc adapter.
 
+*/usr/local/src/libchrysalis/examples/heap.c*
+: Examples of usage
+
 */usr/local/share/doc/libchrysalis/components/heap.m4*
 : *m4* template for documentation.
 

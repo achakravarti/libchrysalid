@@ -3,6 +3,7 @@
 
 # Create build subdirectories
 mkdir -p build/docs/units/ext
+mkdir -p build/docs/units/heap
 mkdir -p build/docs/components
 
 
@@ -19,11 +20,11 @@ for x in $__units; do
 	m4 -DMAN -I docs/ "$x" > "build/$x.md"
 	sed -i '/./,$!d' "build/$x.md" # remove blank lines from beginning
 
-	pandoc "build/$x.md" 							\
+	pandoc "build/$x.md" 								\
 		--bibliography=docs/references.bib 				\
-		--citeproc 							\
-		-s 								\
-		-t man 								\
+		--citeproc 										\
+		-s 												\
+		-t man 											\
 		-o "build/docs/units/ext/libchrysalis:$__filename.3"
 
 	gzip -f "build/docs/units/ext/libchrysalis:$__filename.3"
