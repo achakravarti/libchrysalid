@@ -7,12 +7,12 @@ ifdef(<<<MAN>>>,
 % 2022>>>)
 
 
-__NAME__(<<<Extensions>>>)
+__NAME__(<<<Heap>>>)
 
 Extensions Component - commonly used compiler extensions
 
 
-__SYNOPSIS__(<<<Extensions>>>)
+__SYNOPSIS__(<<<Heap>>>)
 
 ```
 #include <libchrysalis/api.h>

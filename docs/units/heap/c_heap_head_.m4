@@ -7,12 +7,12 @@ ifdef(<<<MAN>>>,
 % 2022>>>)
 
 
-__NAME__(<<<C_IMMUTABLE>>>)
+__NAME__(<<<c_heap_head_>>>)
 
-`C_IMMUTABLE` - marks a function as immutable
+`c_heap_head_` - marks a function as immutable
 
 
-__SYNOPSIS__(<<<C_IMMUTABLE>>>)
+__SYNOPSIS__(<<<c_heap_head_>>>)
 
 ```
 #include "libchrysalis/api.h"
