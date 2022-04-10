@@ -9,7 +9,7 @@ ifdef(<<<MAN>>>,
 
 __NAME__(<<<Heap>>>)
 
-Extensions Component - commonly used compiler extensions
+Heap Component - heap memory management
 
 
 __SYNOPSIS__(<<<Heap>>>)
@@ -17,15 +17,33 @@ __SYNOPSIS__(<<<Heap>>>)
 ```
 #include <libchrysalis/api.h>
 
-#define C_AUTO
-#define C_COLD
-#define C_HOT
-#define C_IMMUTABLE
-#define C_LIKELY(_P_)
-#define C_PSAFE
-#define C_RSAFE
-#define C_STABLE
-#define C_UNLIKELY(_P_)
+typedef void c_heap;
+typedef void (c_heap_free_cbk)(c_heap *);
+struct c_heap_vtable_;
+
+#define C_HEAP_METASZ_ (sizeof(size_t) * 3)
+
+c_heap *c_heap_copy(const c_heap *);
+c_heap *c_heap_clone(const c_heap *);
+c_heap * c_heap_clone_aligned(const c_heap *, size_t);
+void c_heap_free(c_heap **);
+enum c_cmp c_heap_cmp(const c_heap *, c_heap *);
+size_t c_heap_sz(const c_heap *);
+size_t c_heap_sz_total(const c_heap *);
+size_t c_heap_refc(const c_heap *);
+bool c_heap_aligned(const c_heap *, size_t);
+void c_heap_resize(c_heap **, size_t);
+void c_heap_resize_aligned(c_heap **, size_t, size_t);
+const char *c_heap_str(const c_heap *);
+
+size_t *c_heap_head_(const c_heap *);
+const struct c_heap_vtable_ *c_heap_vtable_(const c_heap *);
+void c_heap_vtable_set_(void *, const struct c_heap_vtable_ *);
+void c_heap_sz_set_(void *, size_t);
+void c_heap_refc_set_(void *, size_t);
+c_heap *c_heap_cast_(void *);
+c_heap *c_heap_new(size_t, size_t);
+c_heap *c_heap_new_aligned(size_t, size_t, size_t);
 ```
 
 
