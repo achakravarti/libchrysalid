@@ -2,7 +2,7 @@ include(`macros.m4')
 
 
 ifdef(<<<MAN>>>,
-<<<% LIBCHRYSALIS:C_IMMUTABLE(3) libchrysalis 0.0.1
+<<<% LIBCHRYSALIS:C_HEAP_COPY(3) libchrysalis 0.0.1
 %
 % 2022>>>)
 

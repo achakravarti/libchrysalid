@@ -2,7 +2,7 @@ include(`macros.m4')
 
 
 ifdef(<<<MAN>>>,
-<<<% LIBCHRYSALIS:EXTENSIONS(7) libchrysalis 0.0.1
+<<<% LIBCHRYSALIS:HEAP(7) libchrysalis 0.0.1
 %
 % 2022>>>)
 
