@@ -1,12 +1,12 @@
 
-dnl The libchrysalis documentation of individual units (types, constants, macros
+dnl The libchrysalid documentation of individual units (types, constants, macros
 dnl and functions) follows the man pages layout, and is generated in three
 dnl different formats: man page, HTML and PDF. The man page and HTML formats are
 dnl individual standalone pages, whereas the PDF page is part of the larger
 dnl technical reference manual, which is an amalgamation of the documentation
 dnl for all the units, along with other details.
 dnl
-dnl Since the libchrysalis documentation has multiple formats, the pandoc tool
+dnl Since the libchrysalid documentation has multiple formats, the pandoc tool
 dnl is used to generate these formats from a common Markdown template. Howoever,
 dnl there are certain customisations that need to be made to the Markdown
 dnl template according to the output format. For example, the Copyright and
@@ -112,9 +112,9 @@ ifdef(<<<MAN>>>,
 <<<define(__COLOPHON__, 
 <<<# COLOPHON
 
-This page is part of release 0.0.1 of the libchrysalis project.
+This page is part of release 0.0.1 of the libchrysalid project.
 The latest version of this project can be found at
-[GitHub](https://github.com/achakravarti/libchrysalis).>>>)>>>,
+[GitHub](https://github.com/achakravarti/libchrysalid).>>>)>>>,
 <<<define(__COLOPHON__, <<<>>>)>>>)dnl
 
 
@@ -126,8 +126,8 @@ ifdef(<<<MAN>>>,
 
 Copyright &copy; 2022 Abhishek Chakravarti `<abhishek@taranjali.org>`
 
-`libchrysalis` along with its documentation are released under the BSD
-2-Clause License. See **libchrysalis:license(7)** for the full License
+`libchrysalid` along with its documentation are released under the BSD
+2-Clause License. See **libchrysalid:license(7)** for the full License
 text.>>>)>>>,
 <<<define(__COPYRIGHT__, <<<>>>)>>>)dnl
 

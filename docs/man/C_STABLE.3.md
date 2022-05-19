@@ -1,4 +1,4 @@
-% LIBCHRYSALIS:C_STABLE(3) libchrysalis 0.0.1
+% LIBCHRYSALID:C_STABLE(3) libchrysalid 0.0.1
 %
 % 2022
 
@@ -11,7 +11,7 @@
 # SYNOPSIS
 
 ```
-#include "libchrysalis/api.h"
+#include "libchrysalid/api.h"
 
 #define C_STABLE
 ```
@@ -20,7 +20,7 @@
 # DESCRIPTION
 
 The `C_STABLE` macro is used to mark a function as being stable. In
-*libchrysalis*, we consider a function to be stable if it has the following
+*libchrysalid*, we consider a function to be stable if it has the following
 properties:
 
   1. It has no side effects, i.e. it does not modify any static variables,
@@ -45,17 +45,17 @@ will lead to a compiler diagnostic to be emitted [@gcc:function-attributes].
 
 # FILES
 
-*/usr/local/src/libchrysalis/ext.h*
+*/usr/local/src/libchrysalid/ext.h*
 : Definition of `C_STABLE` macro.
 
-*/usr/local/include/libchrysalis/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
-client code to correctly resolve `#include <libchrysalis/api.h>`.
+*/usr/local/include/libchrysalid/ext.h*
+: Symbolic link to */usr/local/src/libchrysalid/include/ext.h*; required by
+client code to correctly resolve `#include <libchrysalid/api.h>`.
 
-*/usr/local/src/libchrysalis/doc/man/C_STABLE.3.md*
+*/usr/local/src/libchrysalid/doc/man/C_STABLE.3.md*
 : Markdown documentation in man layout.
 
-*/usr/local/man/man3/libchrysalis:C_STABLE.3.gz*
+*/usr/local/man/man3/libchrysalid:C_STABLE.3.gz*
 : Man page documentation.
 
 
@@ -107,18 +107,18 @@ GCC, Clang.
 
 Copyright &copy; 2022 Abhishek Chakravarti `<abhishek@taranjali.org>`
 
-`libchrysalis` along with its documentation are released under the BSD 2-Clause
-License. See **libchrysalis:license(7)** for the full license text.
+`libchrysalid` along with its documentation are released under the BSD 2-Clause
+License. See **libchrysalid:license(7)** for the full license text.
 
 
 # SEE ALSO
 
-**libchrysalis:extensions(7)** **libchrysalis:immutable(3)**
+**libchrysalid:extensions(7)** **libchrysalid:immutable(3)**
 
 
 # COLOPHON
 
-This page is part of release 0.0.1 of the `libchrysalis` project. The latest
+This page is part of release 0.0.1 of the `libchrysalid` project. The latest
 version of this project can be found at
-[GitHub](https://github.com/achakravarti/libchrysalis).
+[GitHub](https://github.com/achakravarti/libchrysalid).
 

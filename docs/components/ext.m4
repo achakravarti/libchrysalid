@@ -2,7 +2,7 @@ include(`macros.m4')
 
 
 ifdef(<<<MAN>>>,
-<<<% LIBCHRYSALIS:EXTENSIONS(7) libchrysalis 0.0.1
+<<<% LIBCHRYSALID:EXTENSIONS(7) libchrysalid 0.0.1
 %
 % 2022>>>)
 
@@ -15,7 +15,7 @@ Extensions Component - commonly used compiler extensions
 __SYNOPSIS__(<<<Extensions>>>)
 
 ```
-#include <libchrysalis/api.h>
+#include <libchrysalid/api.h>
  
 #define C_AUTO
 #define C_COLD
@@ -31,7 +31,7 @@ __SYNOPSIS__(<<<Extensions>>>)
 
 __DESCRIPTION__(<<<Extensions>>>)
 
-The *Extensions* component of `libchrysalis` defines the compiler extensions
+The *Extensions* component of `libchrysalid` defines the compiler extensions
 that are often useful for optimising code. Optimisation can be both in terms of
 performance and desirable features which are otherwise not availabe in the C11
 standard.
@@ -46,17 +46,17 @@ warning messages to emitted, then define the symbolic constant
 
 __FILES__(<<<Extensions>>>)
 
-*/usr/local/src/libchrysalis/include/ext.h*
+*/usr/local/src/libchrysalid/include/ext.h*
 : Extension macro definitions.
 
-*/usr/local/include/libchrysalis/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
-client code to correctly resolve `#include <libchrysalis/api.h>`.
+*/usr/local/include/libchrysalid/ext.h*
+: Symbolic link to */usr/local/src/libchrysalid/include/ext.h*; required by
+client code to correctly resolve `#include <libchrysalid/api.h>`.
 
-*/usr/local/share/doc/libchrysalis/components/ext.m4*
+*/usr/local/share/doc/libchrysalid/components/ext.m4*
 : *m4* template for documentation.
 
-*/usr/local/share/man/man7/libchrysalis:extensions.7.gz*
+*/usr/local/share/man/man7/libchrysalid:extensions.7.gz*
 __SWITCHMX__(
 <<<: Man page documentation (this page).>>>,
 <<<: Man page documentation.>>>)
@@ -73,11 +73,11 @@ __COPYRIGHT__
 __SEEALSO__(<<<C_IMMUTABLE>>>)
 
 __SWITCHMX__(
-<<<**libchrysalis:C_AUTO(3)**, **libchrysalis:C_COLD(3)**,
-**libchrysalis:C_HOT(3)**, **libchrysalis:C_IMMUTABLE(3)**,
-**libchrysalis:C_LIKELY(3)**, **libchrysalis:C_PSAFE(3)**,
-**libchrysalis:C_RSAFE(3)**, **libchrysalis:C_STABLE(3)**,
-**libchrysalis:C_UNLIKELY(3)**>>,
+<<<**libchrysalid:C_AUTO(3)**, **libchrysalid:C_COLD(3)**,
+**libchrysalid:C_HOT(3)**, **libchrysalid:C_IMMUTABLE(3)**,
+**libchrysalid:C_LIKELY(3)**, **libchrysalid:C_PSAFE(3)**,
+**libchrysalid:C_RSAFE(3)**, **libchrysalid:C_STABLE(3)**,
+**libchrysalid:C_UNLIKELY(3)**>>,
 <<<TODO>>>)
 
 

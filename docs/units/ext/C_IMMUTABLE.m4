@@ -2,7 +2,7 @@ include(`macros.m4')
 
 
 ifdef(<<<MAN>>>,
-<<<% LIBCHRYSALIS:C_IMMUTABLE(3) libchrysalis 0.0.1
+<<<% LIBCHRYSALID:C_IMMUTABLE(3) libchrysalid 0.0.1
 %
 % 2022>>>)
 
@@ -15,7 +15,7 @@ __NAME__(<<<C_IMMUTABLE>>>)
 __SYNOPSIS__(<<<C_IMMUTABLE>>>)
 
 ```
-#include "libchrysalis/api.h"
+#include "libchrysalid/api.h"
 
 #define C_IMMUTABLE
 ```
@@ -24,7 +24,7 @@ __SYNOPSIS__(<<<C_IMMUTABLE>>>)
 __DESCRIPTION__(<<<C_IMMUTABLE>>>)
 
 The `C_IMMUTABLE` macro is used to mark a function as being immutable. In
-*libchrysalis*, we consider a function to be immutable if it has the following
+*libchrysalid*, we consider a function to be immutable if it has the following
 properties:
 
   1. It has no side effects, i.e. it does not modify any static variables,
@@ -32,7 +32,7 @@ properties:
   2. It returns the same value when repeatedly called with the same arguments.
 
 Immutable functions can therefore be considered to be strictly pure functions,
-unlike the case of weakly pure functions (which *libchrysalis* refers to as
+unlike the case of weakly pure functions (which *libchrysalid* refers to as
 *stable* and are marked with the `C_STABLE` macro) [@wiki:pure-function]. A good
 example of an immutable function is `abs` since it always returns the same value
 for the same argument.
@@ -51,17 +51,17 @@ will lead to a compiler diagnostic to be emitted [@gcc:function-attributes].
 
 __FILES__(<<<C_IMMUTABLE>>>)
 
-*/usr/local/src/libchrysalis/include/ext.h*
+*/usr/local/src/libchrysalid/include/ext.h*
 : Definition of `C_IMMUTABLE` macro.
 
-*/usr/local/include/libchrysalis/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
-client code to correctly resolve `#include <libchrysalis/api.h>`.
+*/usr/local/include/libchrysalid/ext.h*
+: Symbolic link to */usr/local/src/libchrysalid/include/ext.h*; required by
+client code to correctly resolve `#include <libchrysalid/api.h>`.
 
-*/usr/local/share/doc/libchrysalis/units/ext/C_IMMUTABLE.m4*
+*/usr/local/share/doc/libchrysalid/units/ext/C_IMMUTABLE.m4*
 : *m4* template for documentation.
 
-*/usr/local/share/man/man3/libchrysalis:C_IMMUTABLE.3.gz*
+*/usr/local/share/man/man3/libchrysalid:C_IMMUTABLE.3.gz*
 __SWITCHMX__(
 <<<: Man page documentation (this page).>>>,
 <<<: Man page documentation.>>>)
@@ -116,7 +116,7 @@ __COPYRIGHT__
 __SEEALSO__(<<<C_IMMUTABLE>>>)
 
 __SWITCHMX__(
-<<<**libchrysalis:extensions(7)**, **libchrysalis:C_STABLE(3)**>>>,
+<<<**libchrysalid:extensions(7)**, **libchrysalid:C_STABLE(3)**>>>,
 <<<TODO>>>)
 
 

@@ -14,7 +14,7 @@ for x in $__units; do
 		--citeproc \
 		-s \
 		-t man \
-		-o "build/docs/units/ext/libchrysalis:$__filename.3"
-	gzip -f "build/docs/units/ext/libchrysalis:$__filename.3"
+		-o "build/docs/units/ext/libchrysalid:$__filename.3"
+	gzip -f "build/docs/units/ext/libchrysalid:$__filename.3"
 done
 
