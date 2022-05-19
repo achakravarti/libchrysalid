@@ -1,9 +1,9 @@
 /*******************************************************************************
  * SPDX-License-Identifier: BSD-2-Clause
  *
- * libchrysalis/base/ext.h - commonly used compiler extensions
+ * libchrysalid/base/ext.h - commonly used compiler extensions
  * Copyright (c) 2022 Abhishek Chakravarti
- * See libchrysalis/doc/base/libchrysalis:extensions.7.md for documentation.
+ * See libchrysalid/doc/base/libchrysalid:extensions.7.md for documentation.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -37,8 +37,8 @@
  *******************************************************************************/
 
 
-#ifndef __LIBCHRYSALIS_INCLUDE_EXT_H_INCLUDED__
-#define __LIBCHRYSALIS_INCLUDE_EXT_H_INCLUDED__
+#ifndef __LIBCHRYSALID_INCLUDE_EXT_H_INCLUDED__
+#define __LIBCHRYSALID_INCLUDE_EXT_H_INCLUDED__
 
 
 #ifdef __cplusplus
@@ -48,7 +48,7 @@ extern "C" {
 
 /*
  * C_PSAFE - hints a function has no null parameters
- * Ref: libchrysalis/docs/man/C_PSAFE.3.md
+ * Ref: libchrysalid/docs/man/C_PSAFE.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_PSAFE __attribute__((nonnull))
@@ -62,7 +62,7 @@ extern "C" {
 
 /*
  * C_RSAFE - hints a function never returns a null pointer
- * Ref: libchrysalis/docs/man/C_RSAFE.3.md
+ * Ref: libchrysalid/docs/man/C_RSAFE.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_RSAFE __attribute__((returns_nonnull))
@@ -76,7 +76,7 @@ extern "C" {
 
 /*
  * C_HOT - hints a function as hot
- * Ref: libchrysalis/docs/man/C_HOT.3.md
+ * Ref: libchrysalid/docs/man/C_HOT.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_HOT __attribute__((hot))
@@ -90,7 +90,7 @@ extern "C" {
 
 /*
  * C_COLD - hints a function as cold
- * Ref: libchrysalis/docs/man/C_COLD.3.md
+ * Ref: libchrysalid/docs/man/C_COLD.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_COLD __attribute__((cold))
@@ -104,7 +104,7 @@ extern "C" {
 
 /*
  * C_STABLE - marks a function as stable
- * Ref: libchrysalis/docs/man/C_STABLE.3.md
+ * Ref: libchrysalid/docs/man/C_STABLE.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_STABLE __attribute__((pure))
@@ -118,7 +118,7 @@ extern "C" {
 
 /*
  * C_IMMUTABLE - marks a function as immutable
- * Ref: libchrysalis/docs/man/C_IMMUTABLE.3.md
+ * Ref: libchrysalid/docs/man/C_IMMUTABLE.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_IMMUTABLE __attribute__((const))
@@ -132,7 +132,7 @@ extern "C" {
 
 /*
  * C_AUTO - marks an automatic heap pointer
- * Ref: libchrysalis/docs/man/C_AUTO.3.md
+ * Ref: libchrysalid/docs/man/C_AUTO.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_AUTO(_T_) __attribute__((cleanup(_T_##_free))) _T_
@@ -146,7 +146,7 @@ extern "C" {
 
 /*
  * C_LIKELY - hints predicate as likely to be true
- * Ref: libchrysalis/docs/man/C_LIKELY.3.md
+ * Ref: libchrysalid/docs/man/C_LIKELY.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_LIKELY(_P_) __builtin_expect(!!(_P_), 1)
@@ -160,7 +160,7 @@ extern "C" {
 
 /*
  * C_UNLIKELY - hints predicate as unlikely to be true
- * Ref: libchrysalis/docs/man/C_UNLIKELY.3.md
+ * Ref: libchrysalid/docs/man/C_UNLIKELY.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
 #       define C_UNLIKELY(_P_) __builtin_expect(!!(_P_), 0)
@@ -176,5 +176,4 @@ extern "C" {
 }
 #endif
 
-#endif  /* !__LIBCHRYSALIS_INCLUDE_EXT_H_INCLUDED__ */
-
+#endif  /* !__LIBCHRYSALID_INCLUDE_EXT_H_INCLUDED__ */

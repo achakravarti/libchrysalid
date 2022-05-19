@@ -3,7 +3,7 @@ include(`macros.m4')
 
 ifdef(<<<MAN>>>,
 <<<
-% LIBCHRYSALIS:C_AUTO(3) libchrysalis 0.0.1
+% LIBCHRYSALID:C_AUTO(3) libchrysalid 0.0.1
 %
 % 2022
 >>>)
@@ -17,7 +17,7 @@ __NAME__(<<<C_AUTO>>>)
 __SYNOPSIS__(<<<C_AUTO>>>)
 
 ```
-#include "libchrysalis/api.h"
+#include "libchrysalid/api.h"
 
 #define C_AUTO(_T_)
 ```
@@ -45,17 +45,17 @@ a concrete example.
 
 __FILES__(<<<C_AUTO>>>)
 
-*/usr/local/src/libchrysalis/ext.h*
+*/usr/local/src/libchrysalid/ext.h*
 : Definition of `C_AUTO` macro.
 
-*/usr/local/include/libchrysalis/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
-client code to correctly resolve `#include <libchrysalis/api.h>`.
+*/usr/local/include/libchrysalid/ext.h*
+: Symbolic link to */usr/local/src/libchrysalid/include/ext.h*; required by
+client code to correctly resolve `#include <libchrysalid/api.h>`.
 
-*/usr/local/share/doc/libchrysalis/units/ext/C_AUTO.m4*
+*/usr/local/share/doc/libchrysalid/units/ext/C_AUTO.m4*
 : *m4* template for documentation.
 
-*/usr/local/share/man/man3/libchrysalis:C_AUTO.3.gz*
+*/usr/local/share/man/man3/libchrysalid:C_AUTO.3.gz*
 __SWITCHMX__(
 <<<: Man page documentation (this page).>>>,
 <<<: Man page documentation.>>>)
@@ -120,7 +120,7 @@ __COPYRIGHT__
 __SEEALSO__(<<<C_AUTO>>>)
 
 __SWITCHMX__(
-<<<**libchrysalis:extensions(7)**, **libchrysalis:C_HEAP(3)**>>>,
+<<<**libchrysalid:extensions(7)**, **libchrysalid:C_HEAP(3)**>>>,
 <<<Section X.X.X>>>)
 
 

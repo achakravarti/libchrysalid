@@ -17,7 +17,7 @@ MAN_SRC!=find $(MAN_IDIR)/ -type f -name '*.md' | sort
 MAN_PG=$(MAN_SRC:$(MAN_IDIR)/%.md=$(MAN_ODIR)/%)
 
 # Man page title namespace
-MAN_NS=libchrysalis
+MAN_NS=libchrysalid
 
 
 docs: $(MAN_PG)

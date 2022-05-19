@@ -2,7 +2,7 @@ include(`macros.m4')
 
 
 ifdef(<<<MAN>>>,
-<<<% LIBCHRYSALIS:C_RSAFE(3) libchrysalis 0.0.1
+<<<% LIBCHRYSALID:C_RSAFE(3) libchrysalid 0.0.1
 %
 % 2022>>>)
 
@@ -15,7 +15,7 @@ __NAME__(<<<C_RSAFE>>>)
 __SYNOPSIS__(<<<C_RSAFE>>>)
 
 ```
-#include "libchrysalis/api.h"
+#include "libchrysalid/api.h"
 
 #define C_RSAFE
 ```
@@ -32,17 +32,17 @@ applied to functions returning other types.
 
 __FILES__(<<<C_RSAFE>>>)
 
-*/usr/local/src/libchrysalis/include/ext.h*
+*/usr/local/src/libchrysalid/include/ext.h*
 : Definition of `C_RSAFE` macro.
 
-*/usr/local/include/libchrysalis/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
-client code to correctly resolve `#include <libchrysalis/api.h>`.
+*/usr/local/include/libchrysalid/ext.h*
+: Symbolic link to */usr/local/src/libchrysalid/include/ext.h*; required by
+client code to correctly resolve `#include <libchrysalid/api.h>`.
 
-*/usr/local/share/doc/libchrysalis/units/ext/C_RSAFE.m4*
+*/usr/local/share/doc/libchrysalid/units/ext/C_RSAFE.m4*
 : *m4* template for documentation.
 
-*/usr/local/share/man/man3/libchrysalis:C_RSAFE.3.gz*
+*/usr/local/share/man/man3/libchrysalid:C_RSAFE.3.gz*
 __SWITCHMX__(
 <<<: Man page documentation (this page).>>>,
 <<<: Man page documentation.>>>)
@@ -84,7 +84,7 @@ __COPYRIGHT__
 __SEEALSO__(<<<C_RSAFE>>>)
 
 __SWITCHMX__(
-<<<**libchrysalis:extensions(7)**, **libchrysalis:C_PSAFE(3)**>>>,
+<<<**libchrysalid:extensions(7)**, **libchrysalid:C_PSAFE(3)**>>>,
 <<<TODO>>>)
 
 

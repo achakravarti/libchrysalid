@@ -1,10 +1,10 @@
 <h1 align="center">
-<img width=12.5% src="https://github.com/achakravarti/libchrysalis/blob/setup/init-readme/doc/img/logo.png">
+<img width=12.5% src="https://github.com/achakravarti/libchrysalid/blob/setup/init-readme/doc/img/logo.png">
 <br>
-libchrysalis
+libchrysalid
 </h1>
 <p align="center">
-<tt>libchrysalis</tt> is a <b>lib</b>rary providing <b>c</b>ommon <b>h</b>elper
+<tt>libchrysalid</tt> is a <b>lib</b>rary providing <b>c</b>ommon <b>h</b>elper
 <b>r</b>outines that facilitate development of applications in the C language.
 <br><br>
 Aims to be portable, well-tested and documented.
@@ -24,31 +24,31 @@ Make sure you have the following available:
 Fire up your terminal emulator, and type the following commands in the shell:
 
 ```
-$ git@github.com:achakravarti/libchrysalis.git
-$ cd libchrysalis
+$ git@github.com:achakravarti/libchrysalid.git
+$ cd libchrysalid
 $ ./configure	# required, generates Makefile
-$ make		# required, builds libchrysalis
+$ make		# required, builds libchrysalid
 $ make check	# optional, runs unit tests
 $ make man 	# optional, builds man page documentation
 $ make example 	# optional, builds example programs
-$ make install	# required, installs libchrysalis and optional components
+$ make install	# required, installs libchrysalid and optional components
 ```
 
-The `libchrysalis` components are installed according to the standard POSIX file
+The `libchrysalid` components are installed according to the standard POSIX file
 system hierarchy. You can find the installed components at the following
 locations:
   - */usr/local/bin/*
-  - */usr/local/include/libchrysalis/*
+  - */usr/local/include/libchrysalid/*
   - */usr/local/lib/*
-  - */usr/local/src/libchrysalis/*
-  - */usr/local/share/doc/libchrysalis/*
-  - */usr/local/share/examples/libchrysalis/*
+  - */usr/local/src/libchrysalid/*
+  - */usr/local/share/doc/libchrysalid/*
+  - */usr/local/share/examples/libchrysalid/*
   - */usr/local/share/man/*
 
-If you want to remove `libchrysalis` and its optional components, simply run
+If you want to remove `libchrysalid` and its optional components, simply run
 either of the following:
-  - `make uninstall` from the `libchrysalis` project directory, or
-  - `/usr/local/bin/uninstall-libchrysalis`
+  - `make uninstall` from the `libchrysalid` project directory, or
+  - `/usr/local/bin/uninstall-libchrysalid`
 
 ### 🐳  Docker
 TODO

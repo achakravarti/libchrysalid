@@ -2,7 +2,7 @@ include(`macros.m4')
 
 
 ifdef(<<<MAN>>>,
-<<<% LIBCHRYSALIS:C_HOT(3) libchrysalis 0.0.1
+<<<% LIBCHRYSALID:C_HOT(3) libchrysalid 0.0.1
 %
 % 2022>>>)
 
@@ -15,7 +15,7 @@ __NAME__(<<<C_HOT>>>)
 __SYNOPSIS__(<<<C_HOT>>>)
 
 ```
-#include "libchrysalis/api.h"
+#include "libchrysalid/api.h"
 
 #define C_HOT
 ```
@@ -38,17 +38,17 @@ time.
 
 __FILES__(<<<C_HOT>>>)
 
-*/usr/local/src/libchrysalis/include/ext.h*
+*/usr/local/src/libchrysalid/include/ext.h*
 : Definition of `C_HOT` macro.
 
-*/usr/local/include/libchrysalis/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
-client code to correctly resolve `#include <libchrysalis/api.h>`.
+*/usr/local/include/libchrysalid/ext.h*
+: Symbolic link to */usr/local/src/libchrysalid/include/ext.h*; required by
+client code to correctly resolve `#include <libchrysalid/api.h>`.
 
-*/usr/local/share/doc/libchrysalis/units/ext/C_HOT.m4*
+*/usr/local/share/doc/libchrysalid/units/ext/C_HOT.m4*
 : *m4* template for documentation.
 
-*/usr/local/share/man/man3/libchrysalis:C_HOT.3.gz*
+*/usr/local/share/man/man3/libchrysalid:C_HOT.3.gz*
 __SWITCHMX__(
 <<<: Man page documentation (this page).>>>,
 <<<: Man page documentation.>>>)
@@ -89,7 +89,7 @@ __COPYRIGHT__
 __SEEALSO__(<<<C_HOT>>>)
 
 __SWITCHMX__(
-<<<**libchrysalis:extensions(7)**, **libchrysalis:C_HOT(3)**>>>,
+<<<**libchrysalid:extensions(7)**, **libchrysalid:C_HOT(3)**>>>,
 <<<TODO>>>)
 
 

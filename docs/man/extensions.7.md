@@ -1,17 +1,17 @@
-% LIBCHRYSALIS:EXTENSIONS(7) libchrysalis 0.0.1
+% LIBCHRYSALID:EXTENSIONS(7) libchrysalid 0.0.1
 %
 % 2022
 
 
 # NAME
 
-`libchrysalis` Extensions - commonly used compiler extensions
+`libchrysalid` Extensions - commonly used compiler extensions
 
 
 # SYNOPSIS
 
 ```
-#include <libchrysalis/api.h>
+#include <libchrysalid/api.h>
  
 #define C_PSAFE
 #define C_RSAFE
@@ -28,7 +28,7 @@
 
 # DESCRIPTION
 
-The **Extensions** component is part of the **Base** module of `libchrysalis`.
+The **Extensions** component is part of the **Base** module of `libchrysalid`.
 This component defines the compiler extensions are often useful for optimising
 code. Optimisation can be both in terms of performance and desirable features
 which are otherwise not availabe in the C standards.
@@ -43,17 +43,17 @@ warning messages to emitted, then define the symbolic constant
 
 # FILES
 
-*/usr/local/src/libchrysalis/include/ext.h*
+*/usr/local/src/libchrysalid/include/ext.h*
 : Extension macro definitions.
 
-*/usr/local/include/libchrysalis/ext.h*
-: Symbolic link to */usr/local/src/libchrysalis/include/ext.h*; required by
-client code to correctly resolve `#include <libchrysalis/api.h>`.
+*/usr/local/include/libchrysalid/ext.h*
+: Symbolic link to */usr/local/src/libchrysalid/include/ext.h*; required by
+client code to correctly resolve `#include <libchrysalid/api.h>`.
 
-*/usr/local/src/libchrysalis/doc/man/extensions.7.md*
+*/usr/local/src/libchrysalid/doc/man/extensions.7.md*
 : Markdown documentation in man layout.
 
-*/usr/local/man/man7/libchrysalis:extensions.7.gz*
+*/usr/local/man/man7/libchrysalid:extensions.7.gz*
 : Installed man page documentation.
 
 
@@ -66,22 +66,22 @@ C99, C11, GCC, Clang.
 
 Copyright &copy; 2022 Abhishek Chakravarti `<abhishek@taranjali.org>`
 
-`libchrysalis` along with its documentation are released under the BSD 2-Clause
-License. See **libchrysalis:license(7)** for the full license text.
+`libchrysalid` along with its documentation are released under the BSD 2-Clause
+License. See **libchrysalid:license(7)** for the full license text.
 
 
 # SEE ALSO:
 
-**libchrysalis:C_PSAFE(3)**, **libchrysalis:C_RSAFE(3)**,
-**libchrysalis:C_HOT(3)**, **libchrysalis:C_COLD(3)**,
-**libchrysalis:C_STABLE(3)**, **libchrysalis:C_IMMUTABLE(3)**,
-**libchrysalis:C_TLOCAL(3)**, **libchrysalis:C_AUTO(3)**,
-**libchrysalis:C_LIKELY(3)**, **libchrysalis:C_UNLIKELY(3)**
+**libchrysalid:C_PSAFE(3)**, **libchrysalid:C_RSAFE(3)**,
+**libchrysalid:C_HOT(3)**, **libchrysalid:C_COLD(3)**,
+**libchrysalid:C_STABLE(3)**, **libchrysalid:C_IMMUTABLE(3)**,
+**libchrysalid:C_TLOCAL(3)**, **libchrysalid:C_AUTO(3)**,
+**libchrysalid:C_LIKELY(3)**, **libchrysalid:C_UNLIKELY(3)**
 
 
 # COLOPHON
 
-This page is part of release 0.0.1 of the `libchrysalis` project. The latest
+This page is part of release 0.0.1 of the `libchrysalid` project. The latest
 version of this project can be found at
-[GitHub](https://github.com/achakravarti/libchrysalis).
+[GitHub](https://github.com/achakravarti/libchrysalid).
 
