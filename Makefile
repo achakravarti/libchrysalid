@@ -20,6 +20,14 @@ MAN_PG=$(MAN_SRC:$(MAN_IDIR)/%.md=$(MAN_ODIR)/%)
 MAN_NS=libchrysalid
 
 
+tests: build/test
+	build/test
+
+build/test: src/hptr.c tests/hptr.c
+	mkdir -p build
+	clang src/hptr.c tests/hptr.c -lcriterion -o build/test
+
+
 docs: $(MAN_PG)
 
 $(MAN_PG): $(MAN_SRC)

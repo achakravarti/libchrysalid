@@ -1,4 +1,4 @@
-/*******************************************************************************
+/*
  * SPDX-License-Identifier: BSD-2-Clause
  *
  * libchrysalid/base/ext.h - commonly used compiler extensions
@@ -34,13 +34,15 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
- *******************************************************************************/
+ */
 
 
+/* Header guard */
 #ifndef __LIBCHRYSALID_INCLUDE_EXT_H_INCLUDED__
 #define __LIBCHRYSALID_INCLUDE_EXT_H_INCLUDED__
 
 
+/* C++ compatibility */
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -51,11 +53,11 @@ extern "C" {
  * Ref: libchrysalid/docs/man/C_PSAFE.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
-#       define C_PSAFE __attribute__((nonnull))
+#       define CY_PSAFE __attribute__((nonnull))
 #else
-#       define C_PSAFE
-#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
-#               warning "C_PSAFE has no effect in current compiler"
+#       define CY_PSAFE
+#       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "CY_PSAFE has no effect in current compiler"
 #       endif
 #endif
 
@@ -65,11 +67,11 @@ extern "C" {
  * Ref: libchrysalid/docs/man/C_RSAFE.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
-#       define C_RSAFE __attribute__((returns_nonnull))
+#       define CY_RSAFE __attribute__((returns_nonnull))
 #else
-#       define C_RSAFE
-#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
-#               warning "C_RSAFE has no effect in current compiler"
+#       define CY_RSAFE
+#       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "CY_RSAFE has no effect in current compiler"
 #       endif
 #endif
 
@@ -79,11 +81,11 @@ extern "C" {
  * Ref: libchrysalid/docs/man/C_HOT.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
-#       define C_HOT __attribute__((hot))
+#       define CY_HOT __attribute__((hot))
 #else
-#       define C_HOT
-#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
-#               warning "C_HOT has no effect in current compiler"
+#       define CY_HOT
+#       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "CY_HOT has no effect in current compiler"
 #       endif
 #endif
 
@@ -93,11 +95,11 @@ extern "C" {
  * Ref: libchrysalid/docs/man/C_COLD.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
-#       define C_COLD __attribute__((cold))
+#       define CY_COLD __attribute__((cold))
 #else
-#       define C_COLD
-#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
-#               warning "C_COLD has no effect in current compiler"
+#       define CY_COLD
+#       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "CY_COLD has no effect in current compiler"
 #       endif
 #endif
 
@@ -107,11 +109,11 @@ extern "C" {
  * Ref: libchrysalid/docs/man/C_STABLE.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
-#       define C_STABLE __attribute__((pure))
+#       define CY_STABLE __attribute__((pure))
 #else
-#       define C_STABLE
-#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
-#               warning "C_STABLE has no effect in current compiler"
+#       define CY_STABLE
+#       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "CY_STABLE has no effect in current compiler"
 #       endif
 #endif
 
@@ -121,11 +123,11 @@ extern "C" {
  * Ref: libchrysalid/docs/man/C_IMMUTABLE.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
-#       define C_IMMUTABLE __attribute__((const))
+#       define CY_IMMUTABLE __attribute__((const))
 #else
-#       define C_IMMUTABLE
-#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
-#               warning "C_IMMUTABLE has no effect in current compiler"
+#       define CY_IMMUTABLE
+#       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "CY_IMMUTABLE has no effect in current compiler"
 #       endif
 #endif
 
@@ -135,11 +137,11 @@ extern "C" {
  * Ref: libchrysalid/docs/man/C_AUTO.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
-#       define C_AUTO(_T_) __attribute__((cleanup(_T_##_free))) _T_
+#       define CY_AUTO(_T_) __attribute__((cleanup(_T_##_free))) _T_
 #else
-#       define C_AUTO
-#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
-#               warning "C_AUTO has no effect in current compiler"
+#       define CY_AUTO
+#       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "CY_AUTO has no effect in current compiler"
 #       endif
 #endif
 
@@ -149,11 +151,11 @@ extern "C" {
  * Ref: libchrysalid/docs/man/C_LIKELY.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
-#       define C_LIKELY(_P_) __builtin_expect(!!(_P_), 1)
+#       define CY_LIKELY(_P_) __builtin_expect(!!(_P_), 1)
 #else
-#       define C_LIKELY(_P_) _P_
-#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
-#               warning "C_LIKELY() has no effect in current compiler"
+#       define CY_LIKELY(_P_) _P_
+#       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "CY_LIKELY() has no effect in current compiler"
 #       endif
 #endif
 
@@ -163,17 +165,20 @@ extern "C" {
  * Ref: libchrysalid/docs/man/C_UNLIKELY.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
-#       define C_UNLIKELY(_P_) __builtin_expect(!!(_P_), 0)
+#       define CY_UNLIKELY(_P_) __builtin_expect(!!(_P_), 0)
 #else
-#       define C_LIKELY(_P_) _P_
-#       if (!defined C_SUPPRESS_EXTENSION_WARNINGS)
-#               warning "C_LIKELY() has no effect in current compiler"
+#       define CY_LIKELY(_P_) _P_
+#       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "CY_LIKELY() has no effect in current compiler"
 #       endif
 #endif
 
 
+/* C++ compatibility */
 #ifdef __cplusplus
 }
 #endif
 
-#endif  /* !__LIBCHRYSALID_INCLUDE_EXT_H_INCLUDED__ */
+
+/* Header guard */
+#endif
