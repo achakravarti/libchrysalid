@@ -13,6 +13,7 @@ pandoc "build/docs/man/heap.md" \
     --bibliography=docs/references.bib \
     --citeproc \
     -s \
+    -f markdown \
     -t man \
     -o "build/docs/man/libchrysalid:heap.3"
 

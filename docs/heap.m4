@@ -7,3 +7,28 @@ ifdef(<<<MAN>>>,
 %
 % 2022
 >>>)
+
+
+# TYPES
+include(<<<build/docs/type_cy_hptr_t.md>>>)
+
+
+# CONSTANTS
+
+
+# MACROS
+
+
+# FUNCTIONS
+
+
+# TEST
+
+
+__COPYRIGHT__
+
+
+__COLOPHON__
+
+
+__CITATIONS__
