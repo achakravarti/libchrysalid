@@ -101,6 +101,34 @@ ifdef(`MAN',
 `define(__SEEALSO__, `## See Also {sec:$1:see-also}')')dnl
 
 
+dnl __SCENARIO__ - macro expanding to the Scenario section heading
+
+ifdef(`MAN',
+`define(__SCENARIO__, `# SCENARIO')',
+`define(__SCENARIO__, `## Scenario {sec:$1:scenario}')')dnl
+
+
+dnl __GIVEN__ - macro expanding to the Given section heading
+
+ifdef(`MAN',
+`define(__GIVEN__, `# GIVEN')',
+`define(__GIVEN__, `## Given {sec:$1:given}')')dnl
+
+
+dnl __WHEN__ - macro expanding to the When section heading
+
+ifdef(`MAN',
+`define(__WHEN__, `# WHEN')',
+`define(__WHEN__, `## When {sec:$1:when}')')dnl
+
+
+dnl __THEN__ - macro expanding to the Then section heading
+
+ifdef(`MAN',
+`define(__THEN__, `# THEN')',
+`define(__THEN__, `## Then {sec:$1:then}')')dnl
+
+
 dnl Override default quoting
 
 changequote(<<<, >>>)
