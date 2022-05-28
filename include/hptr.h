@@ -140,7 +140,8 @@ extern CY_HOT void               cy_hptr_free(cy_hptr_t *[static 1]);
 
 /* Prototypes for accessor functions  */
 extern bool          cy_hptr_aligned(const cy_hptr_t [static 1], size_t);
-extern size_t        cy_hptr_refc(const cy_hptr_t [static 1]); extern size_t        cy_hptr_sz(const cy_hptr_t [static 1]);
+extern size_t        cy_hptr_refc(const cy_hptr_t [static 1]);
+extern size_t        cy_hptr_sz(const cy_hptr_t [static 1]);
 extern const char   *cy_hptr_str(const cy_hptr_t [static 1]);
 
 
