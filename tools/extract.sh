@@ -16,12 +16,27 @@ for FILE in $IN_FILES; do
 
     for TAG in $TAGS; do
         # Generate m4 documentation snippet file path for TAG
-        OUT_FILE="build/docs/$(echo "$TAG" | tr ':' '_' | tr -d '%').m4"
+        M4="build/docs/$(echo "$TAG" | tr ':' '_' | tr -d '%').m4"
+        MD="build/docs/$(echo "$TAG" | tr ':' '_' | tr -d '%').md"
+
+        # Extract documentation context from TAG
+        DOC_CTX=$(echo "$TAG" | cut -d ':' -f 2)
 
         # Prepare pattern to extract documentation for TAG
         DOC_PAT="/$TAG/,/$END_MARKER/{/$TAG/!{/$END_MARKER/!p;};}"
 
         # Extract documentation into snippet files
-        sed -n "$DOC_PAT" "$FILE" | cut -c 4- > "$OUT_FILE"
+        sed -n "$DOC_PAT" "$FILE" | cut -c 4- > "$M4"
+
+        # Expand dcoumentation markers into macros
+        sed -i "s/__NAME__/__NAME__(<<<$DOC_CTX>>>)/g" "$M4"
+        sed -i "s/__SYNOPSIS__/__SYNOPSIS__(<<<$DOC_CTX>>>)/g" "$M4"
+        sed -i "s/__DESCRIPTION__/__DESCRIPTION__(<<<$DOC_CTX>>>)/g" "$M4"
+        sed -i "s/__NOTES__/__NOTES__(<<<$DOC_CTX>>>)/g" "$M4"
+        sed -i "s/__RETURN__/__RETURN__(<<<$DOC_CTX>>>)/g" "$M4"
+        sed -i "s/__SCENARIO__/__SCENARIO__(<<<$DOC_CTX>>>)/g" "$M4"
+        sed -i "s/__GIVEN__/__GIVEN__(<<<$DOC_CTX>>>)/g" "$M4"
+        sed -i "s/__WHEN__/__WHEN__(<<<$DOC_CTX>>>)/g" "$M4"
+        sed -i "s/__THEN__/__THEN__(<<<$DOC_CTX>>>)/g" "$M4"
     done
 done
