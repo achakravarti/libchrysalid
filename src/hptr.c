@@ -71,14 +71,14 @@
  *      ```
  *
  * __DESCRIPTION__
- * :    The *HEAD_INDEX* symbolic constant represents the index at which the
+ * :    The `HEAD_INDEX` symbolic constant represents the index at which the
  *      head segment (relative to itself) starts in a heap pointer instance.
  *      This symbolic constant is used by the implementation of the heap pointer
  *      interface and is **not** part of the interface.
  *
  * __NOTES__
  * :    The head segment of a heap pointer instance is located in the first
- *      *uintptr_t* of the instance; hence, relative to itself, it has an index
+ *      `uintptr_t` of the instance; hence, relative to itself, it has an index
  *      of **0**.
  */
 #define HEAD_INDEX      0
@@ -94,14 +94,14 @@
  *      ```
  *
  * __DESCRIPTION__
- * :    The *HEAD_OFFSET* symbolic constant represents the *uintptr_t* offset of
+ * :    The `HEAD_OFFSET` symbolic constant represents the `uintptr_t` offset of
  *      the head segment from the body of a heap pointer instance. This constant
  *      is used internally by the heap pointer implementation and is **not**
  *      part of the interface.
  *
  * __NOTES__
- * :    Since the head segment of a heap pointer instance is one *uintptr_t*
- *      **before** the body segment, the *HEAD_OFFSET* symbolic constant is
+ * :    Since the head segment of a heap pointer instance is one `uintptr_t`
+ *      **before** the body segment, the `HEAD_OFFSET` symbolic constant is
  *      defined as **-1**.
  */
 #define HEAD_OFFSET     -1
@@ -117,16 +117,16 @@
  *      ```
  *
  * __DESCRIPTION__
- * :    The *HEAD_SZ* symbolic constant represents the size of the head segment
+ * :    The `HEAD_SZ` symbolic constant represents the size of the head segment
  *      of a heap pointer instance that contains the reference count metadata.
  *      This constant is used internally by the heap pointer implementation and
  *      is **not** part of the interface.
  *
  * __NOTES__
- * :    By design, the heap pointer type has the capacity to track *size_t*
- *      number of references. Therefore, one *size_t* is sufficient to hold the
- *      reference counts. Accordingly, the *HEAD_SZ* constant is defined as the
- *      size of *uintptr_t* (which is equivalent to *size_t* but better conveys
+ * :    By design, the heap pointer type has the capacity to track `size_t`
+ *      number of references. Therefore, one `size_t` is sufficient to hold the
+ *      reference counts. Accordingly, the `HEAD_SZ` constant is defined as the
+ *      size of `uintptr_t` (which is equivalent to `size_t` but better conveys
  *      its context as a pointer type).
  *
  */
@@ -143,13 +143,13 @@
  *      ```
  *
  * __DESCRIPTION__
- * :    The *BODY_INDEX* symbolic constant represents the index of the body
+ * :    The `BODY_INDEX` symbolic constant represents the index of the body
  *      segment (relative to head segment) in a heap pointer instance.  This
  *      symbolic constant is implementation-specific and is **not** part of the
  *      heap pointer interface.
  *
  * __NOTES__
- * :    The body segment starts one *uintptr_t* after the head segment of a heap
+ * :    The body segment starts one `uintptr_t` after the head segment of a heap
  *      pointer instance; hence, relative to the head segment, the body segment
  *      has an index of **1**.
  */
@@ -248,7 +248,7 @@
  *      pointer interface.
  *
  * __NOTES__
- * :    The `REFC_DECREMENT()` macro receives *ctx* as heap pointer that is
+ * :    The `REFC_DECREMENT()` macro receives `ctx` as heap pointer that is
  *      pointing to the body segment, and so needs to operate on the reference
  *      count metadata on the offset.
  */
@@ -295,7 +295,7 @@
  *      interface.
  *
  * __NOTES__
- * :    The `CAST_BODY()` macro receives *ctx* as a heap pointer instance that
+ * :    The `CAST_BODY()` macro receives `ctx` as a heap pointer instance that
  *      points to the head segment; hence, the body segment starts at the body
  *      index relative to the head of `ctx`.
  */
