@@ -10,6 +10,7 @@ ifdef(<<<MAN>>>,
 
 
 # TYPES
+## Type cy_hptr_t
 include(<<<build/docs/type_cy_hptr_t.md>>>)
 
 

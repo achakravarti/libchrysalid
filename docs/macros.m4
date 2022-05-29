@@ -41,21 +41,21 @@ ifdef(`MAN', $1, $2))dnl
 dnl __NAME__ - macro expanding to the name section heading
 
 ifdef(`MAN',
-`define(__NAME__, `# NAME')',
+`define(__NAME__, `*NAME*')',
 `define(__NAME__, `## Name {sec:$1:name}')')dnl
 
 
 dnl __SYNOPSIS__ - macro expanding to the synopsis section heading
 
 ifdef(`MAN',
-`define(__SYNOPSIS__, `# SYNOPSIS')',
+`define(__SYNOPSIS__, `*SYNOPSIS*$2')',
 `define(__SYNOPSIS__, `## Synopsis {sec:$1:synopsis}')')dnl
 
 
 dnl __DESCRIPTION__ - macro expanding to the Description section heading
 
 ifdef(`MAN',
-`define(__DESCRIPTION__, `# DESCRIPTION')',
+`define(__DESCRIPTION__, `*DESCRIPTION*')',
 `define(__DESCRIPTION__, `## Description {sec:$1:description}')')dnl
 
 
@@ -90,7 +90,7 @@ ifdef(`MAN',
 dnl __NOTES__ - macro expanding to the Notes section heading
 
 ifdef(`MAN',
-`define(__NOTES__, `# NOTES')',
+`define(__NOTES__, `*NOTES*')',
 `define(__NOTES__, `## Notes {sec:$1:notes}')')dnl
 
 
