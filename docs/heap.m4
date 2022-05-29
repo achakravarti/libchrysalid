@@ -18,6 +18,18 @@ include(<<<build/docs/type_cy_hptr_t.md>>>)
 ## Constant CY_HPTR_REFC_MAX
 include(<<<build/docs/const_CY_HPTR_REFC_MAX.md>>>)
 
+## Constant HEAD_INDEX
+include(<<<build/docs/const_hptr_HEAD_INDEX.md>>>)
+
+## Constant HEAD_OFFSET
+include(<<<build/docs/const_hptr_HEAD_OFFSET.md>>>)
+
+## Constant HEAD_SZ
+include(<<<build/docs/const_hptr_HEAD_SZ.md>>>)
+
+## Constant BODY_INDEX
+include(<<<build/docs/const_hptr_BODY_INDEX.md>>>)
+
 
 # MACROS
 
