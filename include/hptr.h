@@ -61,7 +61,7 @@ extern "C" {
 
 /*                                                               %type:cy_hptr_t
  * __NAME__
- * :     `cy_hptr_t` - pointer to heap memory buffer
+ * :    `cy_hptr_t` - pointer to heap memory buffer
  *
  * __SYNOPSIS__
  * :    ```
@@ -112,21 +112,23 @@ typedef uintptr_t   cy_hptr_t;
 
 /*                                                       %const:CY_HPTR_REFC_MAX
  * __NAME__
- *      CY_HPTR_REFC_MAX - maximum number of reference counts
+ * :    `CY_HPTR_REFC_MAX` - maximum number of reference counts
  *
  * __SYNOPSIS__
+ * :    ```
  *      #include <libchrysalid/api.h>
  *      #define CY_HPTR_REFC_MAX UINTPTR_MAX
+ *      ```
  *
  * __DESCRIPTION__
- *      The *CY_HPTR_REFC_MAX* symbolic constant represents the maximum number
+ * :    The *CY_HPTR_REFC_MAX* symbolic constant represents the maximum number
  *      of references a heap pointer can have. This constant has been provided
  *      so that client code can check whether or not the current reference count
  *      of a heap pointer instance (as determined through *cy_hptr_refc()*) is
  *      within bounds.
  *
  * __NOTES__
- *      Since reference counts are *size_t* values held inside a single
+ * :    Since reference counts are *size_t* values held inside a single
  *      *uinptr_t*, the maximum number of reference counts is *UINTPTR_MAX*.
  *
  */

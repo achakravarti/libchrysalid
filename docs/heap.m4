@@ -15,6 +15,8 @@ include(<<<build/docs/type_cy_hptr_t.md>>>)
 
 
 # CONSTANTS
+## Constant CY_HPTR_REFC_MAX
+include(<<<build/docs/const_CY_HPTR_REFC_MAX.md>>>)
 
 
 # MACROS
