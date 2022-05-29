@@ -32,6 +32,26 @@ include(<<<build/docs/const_hptr_BODY_INDEX.md>>>)
 
 
 # MACROS
+## Macro REFC_INIT()
+include(<<<build/docs/macro_hptr_REFC_INIT.md>>>)
+
+## Macro REFC_CURRENT()
+include(<<<build/docs/macro_hptr_REFC_CURRENT.md>>>)
+
+## Macro REFC_INCREMENT()
+include(<<<build/docs/macro_hptr_REFC_INCREMENT.md>>>)
+
+## Macro REFC_DECREMENT()
+include(<<<build/docs/macro_hptr_REFC_DECREMENT.md>>>)
+
+## Macro CAST_HEAD()
+include(<<<build/docs/macro_hptr_CAST_HEAD.md>>>)
+
+## Macro CAST_BODY()
+include(<<<build/docs/macro_hptr_CAST_BODY.md>>>)
+
+## Macro ALIGN_VALID()
+include(<<<build/docs/macro_hptr_ALIGN_VALID.md>>>)
 
 
 # FUNCTIONS

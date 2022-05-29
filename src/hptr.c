@@ -135,7 +135,7 @@
 
 /*                                                        %const:hptr:BODY_INDEX
  * __NAME__
- *      `BODY_INDEX` - index of body segment
+ * :    `BODY_INDEX` - index of body segment
  *
  * __SYNOPSIS__
  * :    ```
@@ -161,152 +161,166 @@
 /* Macros  */
 
 
-/*
+/*                                                         %macro:hptr:REFC_INIT
  * __NAME__
- *      REFC_INIT() - initialises reference count
+ * :    `REFC_INIT()` - initialises reference count
  *
  * __SYNOPSIS__
+ * :    ```
  *      #define REFC_INIT(ctx)
+ *      ```
  *
  * __DESCRIPTION__
- *      The *REFC_INIT()* macro initialises the reference count of a new heap
- *      pointer instance *ctx* by setting it to 1. This macro is used internally
+ * :    The `REFC_INIT()` macro initialises the reference count of a new heap
+ *      pointer instance `ctx` by setting it to 1. This macro is used internally
  *      by the heap pointer implemnetation and is **not** part of the interface.
  *
  * __NOTES__
- *      The *REFC_INIT()* macro is called by the *cy_hptr_new()* family of
+ * :    The `REFC_INIT()` macro is called by the `cy_hptr_new()` family of
  *      factory functions immediately after allocating a heap pointer instance.
  *      Since heap pointer instances point to the head segment immediately after
- *      allocation, the *REFC_INIT()* operates directly on the head segment of
- *      the heap pointer instance *ctx*.
+ *      allocation, the `REFC_INIT()` operates directly on the head segment of
+ *      the heap pointer instance `ctx`.
  */
 #define REFC_INIT(ctx)      ctx[HEAD_INDEX] = 1
 
 
-/*
+/*                                                      %macro:hptr:REFC_CURRENT
  * __NAME__
- *      REFC_CURRENT() - gets current reference count
+ * :    `REFC_CURRENT()` - gets current reference count
  *
  * __SYNOPSIS__
+ * :    ```
  *      #define REFC_CURRENT(ctx)
+ *      ```
  *
  * __DESCRIPTION__
- *      The *REFC_CURRENT()* macro expands to the current reference count of a
- *      heap pointer instance *ctx* that is pointing to the body segment.  This
+ * :    The `REFC_CURRENT()` macro expands to the current reference count of a
+ *      heap pointer instance `ctx` that is pointing to the body segment.  This
  *      macro is implementation-specific and is **not** meant to be part of the
  *      heap pointer interface.
  *
  * __NOTES__
- *      Since *REFC_CURRENT()* receives *ctx* as a heap pointer pointing to the
+ * :    Since `REFC_CURRENT()` receives `ctx` as a heap pointer pointing to the
  *      body segement, the reference count metadata needs to be extracted from
  *      the offset.
  */
 #define REFC_CURRENT(ctx)   ctx[HEAD_OFFSET]
 
 
-/*
+/*                                                    %macro:hptr:REFC_INCREMENT
  * __NAME__
- *      REFC_INCREMENT() - increments reference count
+ * :    `REFC_INCREMENT()` - increments reference count
  *
  * __SYNOPSIS__
+ * :    ```
  *      #define REFC_INCREMENT(ctx)
+ *      ```
  *
  * __DESCRIPTION__
- *      The *REFC_INCREMENT()* macro is used to increment the current reference
- *      count of a heap pointer instance *ctx* that is pointing to the body
+ * :    The `REFC_INCREMENT()` macro is used to increment the current reference
+ *      count of a heap pointer instance `ctx` that is pointing to the body
  *      segment. This macro is used only internally and is **not** meant to be
  *      part of the heap pointer interface.
  *
  * __NOTES__
- *      Since *ctx* is passed to *REFC_CURRENT()* as a heap pointer pointing to
+ *      Since `ctx` is passed to `REFC_CURRENT()` as a heap pointer pointing to
  *      the body segment, the reference count metadata needs to be manipulated
  *      at the offset to the body.
  */
 #define REFC_INCREMENT(ctx)     ctx[HEAD_OFFSET]++
 
 
-/*
+/*                                                    %macro:hptr:REFC_DECREMENT
  * __NAME__
- *      REFC_DECREMENT() - decrements reference count
+ * :    `REFC_DECREMENT()` - decrements reference count
  *
  * __SYNOPSIS__
+ * :    ```
  *      #define REFC_DECREMENT(ctx)
+ *      ```
  *
  * __DESCRIPTION__
- *      The *REFC_DECREMENT()* macro decrements the current reference count of a
- *      heap pointer instance *ctx* that is pointing to the body segment.
- *      This macro is the opposite of the *REFC_INCREMENT()* macro, and like the
+ * :    The `REFC_DECREMENT()` macro decrements the current reference count of a
+ *      heap pointer instance `ctx` that is pointing to the body segment.
+ *      This macro is the opposite of the `REFC_INCREMENT()` macro, and like the
  *      latter, is implementation-specific and so **not** part of the heap
  *      pointer interface.
  *
  * __NOTES__
- *      The *REFC_DECREMENT()* macro receives *ctx* as heap pointer that is
+ * :    The `REFC_DECREMENT()` macro receives *ctx* as heap pointer that is
  *      pointing to the body segment, and so needs to operate on the reference
  *      count metadata on the offset.
  */
 #define REFC_DECREMENT(ctx)     ctx[HEAD_OFFSET]--
 
 
-/*
+/*                                                         %macro:hptr:CAST_HEAD
  * __NAME__
- *      CAST_HEAD() - casts head of heap pointer instance
+ * :    `CAST_HEAD()` - casts head of heap pointer instance
  *
  * __SYNOPSIS__
+ * :    ```
  *      #define CAST_HEAD(ctx)
+ *      ```
  *
  * __DESCRIPTION__
- *      The *CAST_HEAD()* macro casts a heap pointer instance *ctx* to a *void
- *      ** pointer pointing to the head segment of the instance. This function
+ * :    The `CAST_HEAD()` macro casts a heap pointer instance `ctx` to a `void
+ *      *` pointer pointing to the head segment of the instance. This function
  *      is implementation-specific and **not** part of the heap pointer
  *      interface.
  *
  * __NOTES__
- *      The *CAST_HEAD()* macro receives *ctx* as a heap pointer instance that
+ * :    The `CAST_HEAD()` macro receives `ctx` as a heap pointer instance that
  *      points to the body segment. Hence, the head segment lies in the offset
- *      before *ctx*.
+ *      before `ctx`.
  */
-#define CAST_HEAD(ctx) (void *) &ctx[HEAD_OFFSET]
+#define CAST_HEAD(ctx)      (void *) &ctx[HEAD_OFFSET]
 
 
-/*
+/*                                                         %macro:hptr:CAST_BODY
  * __NAME__
- *      CAST_BODY() - casts body of heap pointer instance
+ * :    `CAST_BODY()` - casts body of heap pointer instance
  *
  * __SYNOPSIS__
+ * :    ```
  *      #define CAST_BODY(ctx)
+ *      ```
  *
  * __DESCRIPTION__
- *      The *CAST_BODY()* macro is similar to the *CAST_HEAD()* macro, except
- *      that the casting to *void ** is done on the body segment of a heap
- *      pointer instance *ctx*. Like its sibling, the *CAST_BODY()* macro is
+ * :    The `CAST_BODY()` macro is similar to the `CAST_HEAD()` macro, except
+ *      that the casting to `void *` is done on the body segment of a heap
+ *      pointer instance `ctx`. Like its sibling, the `CAST_BODY()` macro is
  *      specific to the heap pointer implementation and is **not** part of the
  *      interface.
  *
  * __NOTES__
- *      The *CAST_BODY()* macro receives *ctx* as a heap pointer instance that
+ * :    The `CAST_BODY()` macro receives *ctx* as a heap pointer instance that
  *      points to the head segment; hence, the body segment starts at the body
- *      index relative to the head of *ctx*.
+ *      index relative to the head of `ctx`.
  */
-#define CAST_BODY(ctx) (void *) &ctx[BODY_INDEX]
+#define CAST_BODY(ctx)      (void *) &ctx[BODY_INDEX]
 
 
-/*
+/*                                                       %macro:hptr:ALIGN_VALID
  * __NAME__
- *      ALIGN_VALID() - checks if alignment is valid
+ * :    `ALIGN_VALID()` - checks if alignment is valid
  *
  * __SYNOPSIS__
+ * :    ```
  *      #define ALIGN_VALID(aln)
+ *      ```
  *
  * __DESCRIPTION__
- *      The *ALIGN_VALID()* macro checks whether a given *size_t* alignment
- *      *aln* is valid. This macro expands to either *true* or *false* depending
+ * :    The `ALIGN_VALID()` macro checks whether a given `size_t` alignment
+ *      `aln` is valid. This macro expands to either `true` or `false` depending
  *      on whether or not the alignment is valid. This macro is **not** part of
  *      the heap pointer interface as it is used only by the implementation.
  *
  * __NOTES__
- *      Internally, *cy_hptr_new_aligned()* uses *posix_memalign()*, which
+ * :    Internally, `cy_hptr_new_aligned()` uses `posix_memalign()`, which
  *      requires that the alignment be a power of 2 that is a multiple of the
- *      size of *void **.  Accordingly, the *ALIGN_VALID()* macro checks for
+ *      size of `void *`.  Accordingly, the `ALIGN_VALID()` macro checks for
  *      this condition.
  */
 #define ALIGN_VALID(aln)    (aln && !(aln & (aln - 1)) \
