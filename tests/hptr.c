@@ -54,25 +54,23 @@
 
 /*                                                             %type:hptr:test_t
  * __NAME__
- *      *test_t* - test data structure
+ *      {{test_t}} - test data structure
  *
  * __SYNOPSIS__
- *      ```
  *      typedef struct {
  *              int      x;
  *              float    y;
  *              int     *px;
  *              float   *py;
  *      } test_t;
- *      ```
  *
  * __DESCRIPTION__
- *      The *test_t* type is a test data structure simulating a real abstract
+ *      The {{test_t}} type is a test data structure simulating a real abstract
  *      data type. This type is used by the heap pointer tests and is **not**
  *      part of the heap pointer interface.
  *
- *      The *test_t* type has four fields, two of which are scalar (*x* and
- *      *y*), and the other two being pointers to the scalar fields. These
+ *      The {{test_t}} type has four fields, two of which are scalar ({{x}} and
+ *      {{y}}), and the other two being pointers to the scalar fields. These
  *      fields have no inherent meaning except that of representing the fields
  *      of an ADT in production code.
  */

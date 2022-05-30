@@ -68,6 +68,18 @@ __NOTES__(<<<cy_hptr_t>>>)
 : include(<<<build/docs/type_cy_hptr_t.notes>>>)
 
 
+## Type test_t
+
+__NAME__(<<<test_t>>>)
+: include(<<<build/docs/type_hptr_test_t.name>>>)
+
+__SYNOPSIS__(<<<test_t>>>)
+: include(<<<build/docs/type_hptr_test_t.synopsis>>>)
+
+__DESCRIPTION__(<<<cy_hptr_t>>>)
+: include(<<<build/docs/type_hptr_test_t.description>>>)
+
+
 # CONSTANTS
 
 
