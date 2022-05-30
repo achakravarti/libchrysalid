@@ -61,7 +61,7 @@ extern "C" {
 
 /*                                                               %type:cy_hptr_t
  * __NAME__
- * :    `cy_hptr_t` - pointer to heap memory buffer
+ * :    {{cy_hptr_t}} - pointer to heap memory buffer
  *
  * __SYNOPSIS__
  * :    ```
@@ -70,39 +70,39 @@ extern "C" {
  *      ```
  *
  * __DESCRIPTION__
- * :    The `cy_hptr_t` abstract data type represents a buffer in the heap
- *      memory.  It is the primary data type of the heap interface, and is
- *      manipulated by all functions of the interface. The `cy_hptr_t` type
- *      includes additional metadata for reference counting, but this is opaque
- *      to the client code.
+ * :    The {{cy_hptr_t}} abstract data type represents a buffer in the heap
+ * memory.  It is the primary data type of the heap interface, and is
+ * manipulated by all functions of the interface. The {{cy_hptr_t}} type
+ * includes additional metadata for reference counting, but this is opaque to
+ * the client code.
  *
- *      The `cy_hptr_t` type has been typedef'd to `uintptr_t` and not `void *`
- *      in order to distinguish that it is simply not any other heap pointer
- *      returned by `malloc()` and friends, and also because the implementation
- *      operates on it as `uintptr_t` bytes. As a consequence, it is necessary
- *      to explicitly cast to a pointer to `cy_hptr_t` when using its interface;
- *      it is hoped that this makes the code much more explicit and helps avoid
- *      subtle bugs.
+ *     The {{cy_hptr_t}} type has been typedef'd to {{uintptr_t}} and not {{void
+ * *}} in order to distinguish that it is simply not any other heap pointer
+ * returned by {{malloc()}} and friends, and also because the implementation
+ * operates on it as {{uintptr_t}} bytes. As a consequence, it is necessary to
+ * explicitly cast to a pointer to {{cy_hptr_t}} when using its interface; it is
+ * hoped that this makes the code much more explicit and helps avoid subtle
+ * bugs.
  *
- *      Since the `cy_hptr_t` type tracks its reference count, it allows for
- *      shallow copying; this is often desirable for performance reasons.
+ *     Since the {{cy_hptr_t}} type tracks its reference count, it allows for
+ * shallow copying; this is often desirable for performance reasons.
  *
  * __NOTES__
- * :    Internally, the `cy_hptr_t` type is manipulated as an array of
- *      `uintptr_t` bytes partitioned into a head and body segment. The head
- *      segment is a single `uintptr_t` that is padded in front of the body
- *      segment containting the actual data.
+ * :     Internally, the {{cy_hptr_t}} type is manipulated as an array of
+ * {{uintptr_t}} bytes partitioned into a head and body segment. The head
+ * segment is a single {{uintptr_t}} that is padded in front of the body segment
+ * containting the actual data.
  *
- *      The heap pointer instances returned by the `cy_hptr_t` interface point
- *      to the body segment; for this reason these functions are shown as
- *      returning `void *` and not `cy_hptr_t *`. Consequently, these pointers
- *      can be used transparently just like any other heap memory buffer
- *      returned by `malloc()` and friends.
+ *     The heap pointer instances returned by the {{cy_hptr_t}} interface point
+ * to the body segment; for this reason these functions are shown as returning
+ * {{void *}} and not {{cy_hptr_t *}}. Consequently, these pointers can be used
+ * transparently just like any other heap memory buffer returned by {{malloc()}}
+ * and friends.
  *
- *      Since the reference count is held in the head segment, `cy_hptr_t`
- *      instances can track `size_t` (which is equivalent to `uintptr_t`) number
- *      of references; anything beyond this is considered to be an abnormal
- *      situation and leads to an abort.
+ *     Since the reference count is held in the head segment, {{cy_hptr_t}}
+ * instances can track {{size_t}} (which is equivalent to {{uintptr_t}}) number
+ * of references; anything beyond this is considered to be an abnormal situation
+ * and leads to an abort.
  */
 typedef uintptr_t   cy_hptr_t;
 
