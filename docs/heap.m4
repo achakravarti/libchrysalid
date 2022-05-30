@@ -51,48 +51,60 @@ _FILES_(<<<hptr>>>)
 
 
 # TYPES
+
 ## Type cy_hptr_t
-include(<<<build/docs/type_cy_hptr_t.md>>>)
+
+__NAME__(<<<cy_hptr_t>>>)
+: include(<<<build/docs/type_cy_hptr_t.name>>>)
+
+__SYNOPSIS__(<<<cy_hptr_t>>>)
+: include(<<<build/docs/type_cy_hptr_t.synopsis>>>)
+
+__DESCRIPTION__(<<<cy_hptr_t>>>)
+: include(<<<build/docs/type_cy_hptr_t.description>>>)
+
+__NOTES__(<<<cy_hptr_t>>>)
+: include(<<<build/docs/type_cy_hptr_t.notes>>>)
 
 
 # CONSTANTS
 ## Constant CY_HPTR_REFC_MAX
-include(<<<build/docs/const_CY_HPTR_REFC_MAX.md>>>)
+dnl include(<<<build/docs/const_CY_HPTR_REFC_MAX.md>>>)
 
 ## Constant HEAD_INDEX
-include(<<<build/docs/const_hptr_HEAD_INDEX.md>>>)
+dnl include(<<<build/docs/const_hptr_HEAD_INDEX.md>>>)
 
 ## Constant HEAD_OFFSET
-include(<<<build/docs/const_hptr_HEAD_OFFSET.md>>>)
+dnl include(<<<build/docs/const_hptr_HEAD_OFFSET.md>>>)
 
 ## Constant HEAD_SZ
-include(<<<build/docs/const_hptr_HEAD_SZ.md>>>)
+dnl include(<<<build/docs/const_hptr_HEAD_SZ.md>>>)
 
 ## Constant BODY_INDEX
-include(<<<build/docs/const_hptr_BODY_INDEX.md>>>)
+dnl include(<<<build/docs/const_hptr_BODY_INDEX.md>>>)
 
 
 # MACROS
 ## Macro REFC_INIT()
-include(<<<build/docs/macro_hptr_REFC_INIT.md>>>)
+dnl include(<<<build/docs/macro_hptr_REFC_INIT.md>>>)
 
 ## Macro REFC_CURRENT()
-include(<<<build/docs/macro_hptr_REFC_CURRENT.md>>>)
+dnl include(<<<build/docs/macro_hptr_REFC_CURRENT.md>>>)
 
 ## Macro REFC_INCREMENT()
-include(<<<build/docs/macro_hptr_REFC_INCREMENT.md>>>)
+dnl include(<<<build/docs/macro_hptr_REFC_INCREMENT.md>>>)
 
 ## Macro REFC_DECREMENT()
-include(<<<build/docs/macro_hptr_REFC_DECREMENT.md>>>)
+dnl include(<<<build/docs/macro_hptr_REFC_DECREMENT.md>>>)
 
 ## Macro CAST_HEAD()
-include(<<<build/docs/macro_hptr_CAST_HEAD.md>>>)
+dnl include(<<<build/docs/macro_hptr_CAST_HEAD.md>>>)
 
 ## Macro CAST_BODY()
-include(<<<build/docs/macro_hptr_CAST_BODY.md>>>)
+dnl include(<<<build/docs/macro_hptr_CAST_BODY.md>>>)
 
 ## Macro ALIGN_VALID()
-include(<<<build/docs/macro_hptr_ALIGN_VALID.md>>>)
+dnl include(<<<build/docs/macro_hptr_ALIGN_VALID.md>>>)
 
 
 # FUNCTIONS
