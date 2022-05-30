@@ -52,6 +52,7 @@ _FILES_(<<<hptr>>>)
 
 # TYPES
 
+
 ## Type cy_hptr_t
 
 __NAME__(<<<cy_hptr_t>>>)
@@ -68,8 +69,22 @@ __NOTES__(<<<cy_hptr_t>>>)
 
 
 # CONSTANTS
+
+
 ## Constant CY_HPTR_REFC_MAX
-dnl include(<<<build/docs/const_CY_HPTR_REFC_MAX.md>>>)
+
+__NAME__(<<<CY_HPTR_REFC_MAX>>>)
+: include(<<<build/docs/const_CY_HPTR_REFC_MAX.name>>>)
+
+__SYNOPSIS__(<<<CY_HPTR_REFC_MAX>>>)
+: include(<<<build/docs/const_CY_HPTR_REFC_MAX.synopsis>>>)
+
+__DESCRIPTION__(<<<CY_HPTR_REFC_MAX>>>)
+: include(<<<build/docs/const_CY_HPTR_REFC_MAX.description>>>)
+
+__NOTES__(<<<CY_HPTR_REFC_MAX>>>)
+: include(<<<build/docs/const_CY_HPTR_REFC_MAX.notes>>>)
+
 
 ## Constant HEAD_INDEX
 dnl include(<<<build/docs/const_hptr_HEAD_INDEX.md>>>)
