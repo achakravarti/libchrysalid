@@ -6,7 +6,42 @@ ifdef(<<<MAN>>>,
 % LIBCHRYSALID:HEAP(3) libchrysalid 0.0.1
 %
 % 2022
+
+
+# NAME
+Heap - heap memory management interface
+
+
+# DESCRIPTION
+TODO
 >>>)
+
+
+_FILES_(<<<hptr>>>)
+
+| *libchrysalid/include/hptr.h*
+| */usr/local/include/libchrysalid/hptr.h*
+|        Heap pointer interface.
+
+| *libchrysalid/src/hptr.c*
+| */usr/local/src/libchrysalid/hptr.c*
+|        Heap pointer implementation.
+
+| *libchrysalid/tests/hptr.c*
+| */usr/local/local/src/libchrysalid/tests/hptr.c*
+|        Heap pointer tests.
+
+| *libchrysalid/docs/heap.m4*
+| */usr/local/share/doc/libchrysalid/hptr.m4*
+|        Heap pointer `m4` documentation template.
+
+| *libchrysalid/build/docs/man/heap.md*
+| */usr/local/share/doc/libchrysalid/hptr.m4*
+|        Generated markdown documentation for man page.
+
+| */usr/local/share/man/man3/libchrysalid:heap.3.gz*
+|        __SWITCHMX__(<<<Man page documentation (this page).>>>,
+<<<Man page documnetation.>>>)
 
 
 # TYPES

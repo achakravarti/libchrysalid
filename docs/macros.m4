@@ -38,39 +38,39 @@ define(`__SWITCHMX__',
 ifdef(`MAN', $1, $2))dnl
 
 
-dnl __NAME__ - macro expanding to the name section heading
+dnl __NAME__ - macro expanding to the name subsection heading
 
 ifdef(`MAN',
 `define(__NAME__, `*NAME*')',
 `define(__NAME__, `## Name {sec:$1:name}')')dnl
 
 
-dnl __SYNOPSIS__ - macro expanding to the synopsis section heading
+dnl __SYNOPSIS__ - macro expanding to the synopsis subsection heading
 
 ifdef(`MAN',
 `define(__SYNOPSIS__, `*SYNOPSIS*$2')',
 `define(__SYNOPSIS__, `## Synopsis {sec:$1:synopsis}')')dnl
 
 
-dnl __DESCRIPTION__ - macro expanding to the Description section heading
+dnl __DESCRIPTION__ - macro expanding to the Description subsection heading
 
 ifdef(`MAN',
 `define(__DESCRIPTION__, `*DESCRIPTION*')',
 `define(__DESCRIPTION__, `## Description {sec:$1:description}')')dnl
 
 
-dnl __RETURN__ - macro expanding to the Return Value section heading
+dnl __RETURN__ - macro expanding to the Return Value subsection heading
 
 ifdef(`MAN',
-`define(__RETURN__, `# RETURN VALUE')',
+`define(__RETURN__, `*RETURN VALUE*')',
 `define(__RETURN__, `## Return Value {sec:$1:return-value}')')dnl
 
 
-dnl __FILES__ - macro expanding to the Files section heading
+dnl _FILES_ - macro expanding to the Files section heading
 
 ifdef(`MAN',
-`define(__FILES__, `# FILES')',
-`define(__FILES__, `## Files {sec:$1:files}')')dnl
+`define(_FILES_, `# FILES')',
+`define(_FILES_, `## Files {sec:$1:files}')')dnl
 
 
 dnl __EXAMPLES__ - macro expanding to the Examples section heading
