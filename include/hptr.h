@@ -61,16 +61,14 @@ extern "C" {
 
 /*                                                               %type:cy_hptr_t
  * __NAME__
- * :    {{cy_hptr_t}} - pointer to heap memory buffer
+ *     {{cy_hptr_t}} - pointer to heap memory buffer
  *
  * __SYNOPSIS__
- * :    ```
- *      #include <libchrysalid/api.h>
- *      typedef uintptr_t cy_hptr_t;
- *      ```
+ *     #include <libchrysalid/api.h>
+ *     typedef uintptr_t cy_hptr_t;
  *
  * __DESCRIPTION__
- * :    The {{cy_hptr_t}} abstract data type represents a buffer in the heap
+ *     The {{cy_hptr_t}} abstract data type represents a buffer in the heap
  * memory.  It is the primary data type of the heap interface, and is
  * manipulated by all functions of the interface. The {{cy_hptr_t}} type
  * includes additional metadata for reference counting, but this is opaque to
@@ -88,7 +86,7 @@ extern "C" {
  * shallow copying; this is often desirable for performance reasons.
  *
  * __NOTES__
- * :     Internally, the {{cy_hptr_t}} type is manipulated as an array of
+ *      Internally, the {{cy_hptr_t}} type is manipulated as an array of
  * {{uintptr_t}} bytes partitioned into a head and body segment. The head
  * segment is a single {{uintptr_t}} that is padded in front of the body segment
  * containting the actual data.
