@@ -3,13 +3,19 @@ include(`macros.m4')
 
 ifdef(<<<MAN>>>,
 <<<
-% LIBCHRYSALID:HEAP(3) libchrysalid 0.0.1
+% LIBCHRYSALID:HPTR(3) libchrysalid 0.0.1
 %
 % 2022
 
 
 # NAME
-Heap - heap memory management interface
+hptr - heap pointer component
+
+
+# SYNOPSIS
+```
+#include <libchrysalid/api.h>
+```
 
 
 # DESCRIPTION
