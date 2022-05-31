@@ -52,32 +52,31 @@ _FILES_(<<<hptr>>>)
 
 # TYPES
 
-
 ## Type cy_hptr_t
 
 __NAME__(<<<cy_hptr_t>>>)
-: include(<<<build/docs/type_cy_hptr_t.name>>>)
+: include(<<<type_cy_hptr_t.name>>>)
 
 __SYNOPSIS__(<<<cy_hptr_t>>>)
-: include(<<<build/docs/type_cy_hptr_t.synopsis>>>)
+: include(<<<type_cy_hptr_t.synopsis>>>)
 
 __DESCRIPTION__(<<<cy_hptr_t>>>)
-: include(<<<build/docs/type_cy_hptr_t.description>>>)
+: include(<<<type_cy_hptr_t.description>>>)
 
 __NOTES__(<<<cy_hptr_t>>>)
-: include(<<<build/docs/type_cy_hptr_t.notes>>>)
+: include(<<<type_cy_hptr_t.notes>>>)
 
 
 ## Type test_t
 
 __NAME__(<<<test_t>>>)
-: include(<<<build/docs/type_hptr_test_t.name>>>)
+: include(<<<type_hptr_test_t.name>>>)
 
 __SYNOPSIS__(<<<test_t>>>)
-: include(<<<build/docs/type_hptr_test_t.synopsis>>>)
+: include(<<<type_hptr_test_t.synopsis>>>)
 
 __DESCRIPTION__(<<<cy_hptr_t>>>)
-: include(<<<build/docs/type_hptr_test_t.description>>>)
+: include(<<<type_hptr_test_t.description>>>)
 
 
 # CONSTANTS
@@ -86,16 +85,16 @@ __DESCRIPTION__(<<<cy_hptr_t>>>)
 ## Constant CY_HPTR_REFC_MAX
 
 __NAME__(<<<CY_HPTR_REFC_MAX>>>)
-: include(<<<build/docs/const_CY_HPTR_REFC_MAX.name>>>)
+: include(<<<const_CY_HPTR_REFC_MAX.name>>>)
 
 __SYNOPSIS__(<<<CY_HPTR_REFC_MAX>>>)
-: include(<<<build/docs/const_CY_HPTR_REFC_MAX.synopsis>>>)
+: include(<<<const_CY_HPTR_REFC_MAX.synopsis>>>)
 
 __DESCRIPTION__(<<<CY_HPTR_REFC_MAX>>>)
-: include(<<<build/docs/const_CY_HPTR_REFC_MAX.description>>>)
+: include(<<<const_CY_HPTR_REFC_MAX.description>>>)
 
 __NOTES__(<<<CY_HPTR_REFC_MAX>>>)
-: include(<<<build/docs/const_CY_HPTR_REFC_MAX.notes>>>)
+: include(<<<const_CY_HPTR_REFC_MAX.notes>>>)
 
 
 ## Constant HEAD_INDEX
