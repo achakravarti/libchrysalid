@@ -226,5 +226,36 @@ define(<<<__const_html__>>>, <<<
 >>>)dnl
 
 ifdef(<<<MAN>>>, <<<define(__const__, <<<__const_man__($1, $2)>>>)>>>,
-<<<ifdef(<<<PDF>>>, <<<define(__type__, <<<__const_pdf__($1, $2)>>>)>>>,
-<<<define(__const__, <<<__type_html__($1, $2)>>>)>>>)>>>)dnl
+<<<ifdef(<<<PDF>>>, <<<define(__const__, <<<__const_pdf__($1, $2)>>>)>>>,
+<<<define(__const__, <<<__const_html__($1, $2)>>>)>>>)>>>)dnl
+
+
+dnl __macro__
+
+define(<<<__macro_man__>>>, <<<
+## Macro $1()
+
+sinclude(<<<macro_$2.name.head>>>)
+: sinclude(<<<macro_$2.name>>>)
+
+sinclude(<<<macro_$2.synopsis.head>>>)
+: sinclude(<<<macro_$2.synopsis>>>)
+
+sinclude(<<<macro_$2.description.head>>>)
+: sinclude(<<<macro_$2.description>>>)
+
+sinclude(<<<macro_$2.notes.head>>>)
+: sinclude(<<<macro_$2.notes>>>)
+>>>)dnl
+
+define(<<<__macro_pdf__>>>, <<<
+## TODO FOR PDF: $1
+>>>)dnl
+
+define(<<<__macro_html__>>>, <<<
+## TODO FOR HTML: $1
+>>>)dnl
+
+ifdef(<<<MAN>>>, <<<define(__macro__, <<<__macro_man__($1, $2)>>>)>>>,
+<<<ifdef(<<<PDF>>>, <<<define(__macro__, <<<__macro_pdf__($1, $2)>>>)>>>,
+<<<define(__macro__, <<<__macro_html__($1, $2)>>>)>>>)>>>)dnl

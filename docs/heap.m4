@@ -71,109 +71,20 @@ __const__(<<<BODY_INDEX>>>, <<<hptr_BODY_INDEX>>>)
 
 
 # MACROS
-## Macro REFC_INIT()
 
-__NAME__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_REFC_INIT.name>>>)
+__macro__(<<<REFC_INIT>>>, <<<hptr_REFC_INIT>>>)
 
-__SYNOPSIS__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_REFC_INIT.synopsis>>>)
+__macro__(<<<REFC_CURRENT>>>, <<<hptr_REFC_CURRENT>>>)
 
-__DESCRIPTION__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_REFC_INIT.description>>>)
+__macro__(<<<REFC_INCREMENT>>>, <<<hptr_REFC_INCREMENT>>>)
 
-__NOTES__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_REFC_INIT.notes>>>)
+__macro__(<<<REFC_DECREMENT>>>, <<<hptr_REFC_DECREMENT>>>)
 
+__macro__(<<<CAST_HEAD>>>, <<<hptr_CAST_HEAD>>>)
 
-## Macro REFC_CURRENT()
+__macro__(<<<CAST_BODY>>>, <<<hptr_CAST_BODY>>>)
 
-__NAME__(<<<HPTR_REFC_CURRENT>>>)
-: include(<<<build/docs/macro_hptr_REFC_CURRENT.name>>>)
-
-__SYNOPSIS__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_REFC_CURRENT.synopsis>>>)
-
-__DESCRIPTION__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_REFC_CURRENT.description>>>)
-
-__NOTES__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_REFC_CURRENT.notes>>>)
-
-
-## Macro REFC_INCREMENT()
-
-__NAME__(<<<HPTR_REFC_INCREMENT>>>)
-: include(<<<build/docs/macro_hptr_REFC_INCREMENT.name>>>)
-
-__SYNOPSIS__(<<<HPTR_REFC_INCREMENT>>>)
-: include(<<<build/docs/macro_hptr_REFC_INCREMENT.synopsis>>>)
-
-__DESCRIPTION__(<<<HPTR_REFC_INCREMENT>>>)
-: include(<<<build/docs/macro_hptr_REFC_INCREMENT.description>>>)
-
-__NOTES__(<<<HPTR_REFC_INCREMENT>>>)
-: include(<<<build/docs/macro_hptr_REFC_INCREMENT.notes>>>)
-
-
-## Macro REFC_DECREMENT()
-
-__NAME__(<<<HPTR_REFC_CURRENT>>>)
-: include(<<<build/docs/macro_hptr_REFC_DECREMENT.name>>>)
-
-__SYNOPSIS__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_REFC_DECREMENT.synopsis>>>)
-
-__DESCRIPTION__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_REFC_DECREMENT.description>>>)
-
-__NOTES__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_REFC_DECREMENT.notes>>>)
-
-
-## Macro CAST_HEAD()
-
-__NAME__(<<<HPTR_REFC_CURRENT>>>)
-: include(<<<build/docs/macro_hptr_CAST_HEAD.name>>>)
-
-__SYNOPSIS__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_CAST_HEAD.synopsis>>>)
-
-__DESCRIPTION__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_CAST_HEAD.description>>>)
-
-__NOTES__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_CAST_HEAD.notes>>>)
-
-
-## Macro CAST_BODY()
-
-__NAME__(<<<HPTR_REFC_CURRENT>>>)
-: include(<<<build/docs/macro_hptr_CAST_BODY.name>>>)
-
-__SYNOPSIS__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_CAST_BODY.synopsis>>>)
-
-__DESCRIPTION__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_CAST_BODY.description>>>)
-
-__NOTES__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_CAST_BODY.notes>>>)
-
-
-## Macro ALIGN_VALID()
-
-__NAME__(<<<HPTR_REFC_CURRENT>>>)
-: include(<<<build/docs/macro_hptr_ALIGN_VALID.name>>>)
-
-__SYNOPSIS__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_ALIGN_VALID.synopsis>>>)
-
-__DESCRIPTION__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_ALIGN_VALID.description>>>)
-
-__NOTES__(<<<HPTR_REFC_INIT>>>)
-: include(<<<build/docs/macro_hptr_ALIGN_VALID.notes>>>)
+__macro__(<<<ALIGN_VALID>>>, <<<hptr_ALIGN_VALID>>>)
 
 
 # FUNCTIONS
