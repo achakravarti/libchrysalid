@@ -110,6 +110,8 @@ __func__(<<<cy_hptr_str>>>, <<<cy_hptr_str>>>)
 
 __test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_positive_size>>>)
 
+__test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_zero_size>>>)
+
 
 __COPYRIGHT__
 

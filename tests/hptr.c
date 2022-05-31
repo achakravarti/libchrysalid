@@ -126,19 +126,19 @@ Test(cy_hptr_new, positive_size)
 
 /*                                                   %test:cy_hptr_new:zero_size
  * __SCENARIO__
- *      *cy_hptr_new()* returns a valid heap pointer instance for a size value
+ *      {{cy_hptr_new()}} returns a valid heap pointer instance for a size value
  *      of zero
  *
  * __GIVEN__
- *      - a sample test data structure *test_t*
- *      - *cy_hptr_new()* is called to create an instance of *test_t*
+ *      - a sample test data structure {{test_t}}
+ *      - {{cy_hptr_new()}} is called to create an instance of {{test_t}}
  *
  * __WHEN__
- *      - *sz* == 0
+ *      - {{sz}} == 0
  *
  * __THEN__
  *      - a non-null heap pointer instance is returned
- *      - the instance has a size at least that of `size_t`
+ *      - the instance has a size at least that of {{size_t}}
  *      - the instance has a reference count of 1
  *      - the instance has all its data bytes set to 0
  */

@@ -295,10 +295,14 @@ ifdef(<<<MAN>>>, <<<define(__func__, <<<__func_man__($1, $2)>>>)>>>,
 <<<define(__func__, <<<__func_html__($1, $2)>>>)>>>)>>>)dnl
 
 
+dnl https://unix.stackexchange.com/questions/280532/
+define(<<<_counter>>>, <<<0>>>)dnl
+define(<<<_count>>>, <<<define(<<<_counter>>>, eval(_counter+1))_counter>>>)dnl
+
 dnl __test__
 
 define(<<<__test_man__>>>, <<<
-## Test #1 for $1()
+## Test #>>>_count <<<for $1()
 
 sinclude(<<<test_$2.scenario.head>>>)
 : sinclude(<<<test_$2.scenario>>>)
