@@ -1,5 +1,26 @@
 #!/bin/sh
 
+
+# Extract section documentation into own body and heading files
+# Heading file is created only if body file is not empty
+# Documentation is between /* __XXX__ and the next * __ markers
+# $1 is section name, such as NAME, SYNOPSIS, DESCRIPTION, NOTES, etc.
+# $2 is temporary documentation file
+extract_section()
+{
+        START_MARK="/* __$1__"
+        END_MARK="/* __"
+        EXTRACT_PAT="$START_MARK/,$END_MARK/{$START_MARK/!{$END_MARK/!p;};}"
+        EXTRACT_FILE="$2.$(echo "$1" | tr '[:upper:]' '[:lower:]')"
+
+        sed -n "$EXTRACT_PAT" "$2" | cut -c 3- > "$EXTRACT_FILE"
+
+        if [ -s "$EXTRACT_FILE" ]; then
+                echo "*$1*" > "$EXTRACT_FILE.head"
+        fi
+}
+
+
 END_MARKER="*\/"
 
 # Ensure build/docs directory exists
@@ -35,27 +56,12 @@ for FILE in $IN_FILES; do
         # Mark end of documentation
         echo "* __" >> "$TMP"
 
-        # Extract __NAME__ into own file
-        NAME_PAT="/* __NAME__/,/* __/{/* __NAME__/!{/* __/!p;};}"
-        sed -n "$NAME_PAT" "$TMP" | cut -c 3- > "$TMP.name"
-
-        # Extract __SYNOPSIS__ into own file
-        SYN_PAT="/* __SYNOPSIS__/,/* __/{/* __SYNOPSIS__/!{/* __/!p;};}"
-        echo '    ```' > "$TMP.synopsis"
-        sed -n "$SYN_PAT" "$TMP" | cut -c 3- >> "$TMP.synopsis"
-        echo '    ```' >> "$TMP.synopsis"
-
-        # Extract __NOTES__ into own file
-        NOTES_PAT="/* __NOTES__/,/* __/{/* __NOTES__/!{/* __/!p;};}"
-        sed -n "$NOTES_PAT" "$TMP" | cut -c 3- > "$TMP.notes"
-
-        # Extract __DESCRIPTION__ into own file
-        DESC_PAT="/* __DESCRIPTION__/,/* __/{/* __DESCRIPTION__/!{/* __/!p;};}"
-        sed -n "$DESC_PAT" "$TMP" | cut -c 3- > "$TMP.description"
-
-        # Extract __RETURN__ into own file
-        RET_PAT="/* __RETURN__/,/* __/{/* __RETURN__/!{/* __/!p;};}"
-        sed -n "$RET_PAT" "$TMP" | cut -c 3- > "$TMP.return"
+        # Extract sections in $TMP to own head and body files
+        extract_section "NAME" "$TMP"
+        extract_section "SYNOPSIS" "$TMP"
+        extract_section "DESCRIPTION" "$TMP"
+        extract_section "RETURN" "$TMP"
+        extract_section "NOTES" "$TMP"
 
         # Expand dcoumentation markers into macros
         #sed -i "s/__NAME__/__NAME__(<<<$DOC_CTX>>>)/g" "$M4"

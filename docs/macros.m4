@@ -173,16 +173,16 @@ dnl __type__
 define(<<<__type_man__>>>, <<<
 ## Type $2
 
-*NAME*
+sinclude(<<<type_$2.name.head>>>)
 : sinclude(<<<type_$2.name>>>)
 
-*SYNOPSIS*
+sinclude(<<<type_$2.synopsis.head>>>)
 : sinclude(<<<type_$2.synopsis>>>)
 
-*DESCRIPTION*
+sinclude(<<<type_$2.description.head>>>)
 : sinclude(<<<type_$2.description>>>)
 
-*NOTES*
+sinclude(<<<type_$2.notes.head>>>)
 : sinclude(<<<type_$2.notes>>>)
 >>>)dnl
 

@@ -13,6 +13,9 @@ sed -i '/./,$!d' "build/docs/man/heap.md"
 sed -i 's/{{/`/g' "build/docs/man/heap.md"
 sed -i 's/}}/`/g' "build/docs/man/heap.md"
 
+# Replace vestigial lines containing single colon and space as a result
+# of processing empty body files
+sed -i '/^: $/d' "build/docs/man/heap.md"
 
 # Generate man page
 pandoc "build/docs/man/heap.md" \
