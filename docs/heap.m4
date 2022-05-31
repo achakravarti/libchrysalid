@@ -106,7 +106,9 @@ __func__(<<<cy_hptr_sz>>>, <<<cy_hptr_sz>>>)
 __func__(<<<cy_hptr_str>>>, <<<cy_hptr_str>>>)
 
 
-# TEST
+# TESTS
+
+__test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_positive_size>>>)
 
 
 __COPYRIGHT__

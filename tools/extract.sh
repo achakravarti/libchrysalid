@@ -68,6 +68,10 @@ for FILE in $IN_FILES; do
         extract_section "DESCRIPTION" "$TMP"
         extract_section "RETURN" "$TMP"
         extract_section "NOTES" "$TMP"
+        extract_section "SCENARIO" "$TMP"
+        extract_section "GIVEN" "$TMP"
+        extract_section "WHEN" "$TMP"
+        extract_section "THEN" "$TMP"
 
         # Expand dcoumentation markers into macros
         #sed -i "s/__NAME__/__NAME__(<<<$DOC_CTX>>>)/g" "$M4"

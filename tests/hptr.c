@@ -92,19 +92,19 @@ static bool     test_yeq(const test_t[static 1], float);
 
 /*                                               %test:cy_hptr_new:positive_size
  * __SCENARIO__
- *      *cy_hptr_new()* returns a valid heap pointer instance for a positive
+ *      {{cy_hptr_new()}} returns a valid heap pointer instance for a positive
  *      size value
  *
  * __GIVEN__
- *      - a sample test data structure *test_t*
- *      - *cy_hptr_new()* is called to create an instance of *test_t*
+ *      - a sample test data structure {{test_t}}
+ *      - {{cy_hptr_new()}} is called to create an instance of {{test_t}}
  *
  * __WHEN__
- *      - *sz* == size of *test_t*
+ *      - {{sz}} == size of {{test_t}}
  *
  * __THEN__
  *      - a non-null heap pointer instance is returned
- *      - the instance has a size at least that of *test_t*
+ *      - the instance has a size at least that of {{test_t}}
  *      - the instance has a reference count of 1
  *      - the instance has all its data bytes set to 0
  */

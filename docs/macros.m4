@@ -293,3 +293,34 @@ define(<<<__func_html__>>>, <<<
 ifdef(<<<MAN>>>, <<<define(__func__, <<<__func_man__($1, $2)>>>)>>>,
 <<<ifdef(<<<PDF>>>, <<<define(__func__, <<<__func_pdf__($1, $2)>>>)>>>,
 <<<define(__func__, <<<__func_html__($1, $2)>>>)>>>)>>>)dnl
+
+
+dnl __test__
+
+define(<<<__test_man__>>>, <<<
+## Test #1 for $1()
+
+sinclude(<<<test_$2.scenario.head>>>)
+: sinclude(<<<test_$2.scenario>>>)
+
+sinclude(<<<test_$2.given.head>>>)
+: sinclude(<<<test_$2.given>>>)
+
+sinclude(<<<test_$2.when.head>>>)
+: sinclude(<<<test_$2.when>>>)
+
+sinclude(<<<test_$2.then.head>>>)
+: sinclude(<<<test_$2.then>>>)
+>>>)dnl
+
+define(<<<__test_pdf__>>>, <<<
+## TODO FOR PDF: $1
+>>>)dnl
+
+define(<<<__test_html__>>>, <<<
+## TODO FOR HTML: $1
+>>>)dnl
+
+ifdef(<<<MAN>>>, <<<define(__test__, <<<__test_man__($1, $2)>>>)>>>,
+<<<ifdef(<<<PDF>>>, <<<define(__test__, <<<__test_pdf__($1, $2)>>>)>>>,
+<<<define(__test__, <<<__test_html__($1, $2)>>>)>>>)>>>)dnl
