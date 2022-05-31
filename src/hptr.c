@@ -309,13 +309,13 @@
 static size_t   align_fix(size_t);
 
 
-/*
+/*                                                             %func:cy_hptr_new
  * __NAME__
  *      {{cy_hptr_new()}} - allocates heap pointer instance
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrysalid.h>
- *      void *cy_hptr_new(size_t sz)
+ *      extern CY_HOT CY_RSAFE void *cy_hptr_new(size_t sz);
  *
  * __DESCRIPTION__
  *      The {{cy_hptr_new()}} function allocates a new instance of the
@@ -353,37 +353,36 @@ void *cy_hptr_new(size_t sz)
 }
 
 
-/*
+/*                                                     %func:cy_hptr_new_aligned
  * __NAME__
- *      *cy_hptr_new_aligned() - allocates aligned heap pointer instance
+ *      {{cy_hptr_new_aligned()}} - allocates aligned heap pointer instance
  *
  * __SYNOPSIS__
- *      ```
  *      #include <libchrysalid/libchrysalid.h>
- *      void *cy_hptr_new_aligned(size_t sz, size_t aln)
- *      ```
+ *      extern CY_HOT CY_RSAFE void *cy_hptr_new_aligned(size_t sz, size_t aln);
  *
  * __DESCRIPTION__
- *      The *cy_hptr_new_aligned()* function is similar to the *cy_hptr_new()*
- *      function except that in addition to returning a heap pointer instance of
- *      a given size *sz* it is also aligned to the boundary specified by *aln*.
- *      The alignment boundary must be a power of two that is a multiple of the
- *      native size of *void ** pointers; if not, *aln* is automatically rounded
- *      up to the nearest valid boundary.
+ *      The {{cy_hptr_new_aligned()}} function is similar to the
+ *      {{cy_hptr_new()}} function except that in addition to returning a heap
+ *      pointer instance of a given size {{sz}} it is also aligned to the
+ *      boundary specified by {{aln}}.  The alignment boundary must be a power
+ *      of two that is a multiple of the native size of {{void *}} pointers; if
+ *      not, {{aln}} is automatically rounded up to the nearest valid boundary.
  *
  * __RETURN__
- *      This function returns a *void ** pointer to the usable segment of a
+ *      This function returns a {{void *}} pointer to the usable segment of a
  *      newly allocated heap pointer instance that is of the requested size and
  *      aligned to the requested boundary. The returned pointer is guaranteed
  *      not to be null.
  *
  * __NOTES__
- *      Just as in the case of *cy_hptr_new()*, the *cy_hptr_new_aligned()*
+ *      Just as in the case of {{cy_hptr_new()}}, the {{cy_hptr_new_aligned()}}
  *      function sets all bytes of the body segment to 0 and the head segment to
- *      1. It does so using a combination of *posix_memalign()* and *memset()*
- *      instead of *calloc()* as in the case of *cy_hptr_new()*. In case of an
- *      allocation failure, the current behaviour is to abort with a failure
- *      message, but this may change in future.
+ *      1. It does so using a combination of {{posix_memalign()}} and
+ *      {{memset()}} instead of {{calloc()}} as in the case of
+ *      {{cy_hptr_new()}}. In case of an allocation failure, the current
+ *      behaviour is to abort with a failure message, but this may change in
+ *      future.
  */
 void *cy_hptr_new_aligned(size_t sz, size_t aln)
 {
@@ -408,33 +407,31 @@ void *cy_hptr_new_aligned(size_t sz, size_t aln)
 }
 
 
-/*
+/*                                                            %func:cy_hptr_copy
  * __NAME__
- *      *cy_hptr_copy() - copies heap pointer instance
+ *      {{cy_hptr_copy()}} - copies heap pointer instance
  *
  * __SYNOPSIS__
- *      __MCODE__(
  *      #include <libchrysalid/libchrysalid.h>
- *      void *cy_hptr_copy(cy_hptr_t ctx[static 1])
- *      )
+ *      extern CY_HOT CY_RSAFE void *cy_hptr_copy(cy_hptr_t ctx[static 1]);
  *
  * __DESCRIPTION__
- *      The *cy_hptr_copy()* function creates a shallow copy of an existing heap
- *      pointer instance *ctx*, internally keeping track of the reference count.
- *      Shallow copies provide a performance gain since they avoid the cost of
- *      repeated allocation; however, care must be taken to ensure that they are
- *      not modified accidentally.
+ *      The {{cy_hptr_copy()}} function creates a shallow copy of an existing
+ *      heap pointer instance {{ctx}}, internally keeping track of the reference
+ *      count.  Shallow copies provide a performance gain since they avoid the
+ *      cost of repeated allocation; however, care must be taken to ensure that
+ *      they are not modified accidentally.
  *
  * __RETURN__
- *      The *cy_hptr_copy()* function returns a shallow copy of the contextual
- *      heap pointer instance *ctx* passed to it. This function is guaranteed to
- *      return a pointer to the same address as *ctx*.
+ *      The {{cy_hptr_copy()}} function returns a shallow copy of the contextual
+ *      heap pointer instance {{ctx}} passed to it. This function is guaranteed
+ *      to return a pointer to the same address as {{ctx}}.
  *
  * __NOTES__
- *      The *cy_hptr_copy()* function simply increments the reference count of
- *      *ctx* and returns a copy of the pointer. A check is made to ensure that
- *      the maximum number of reference counts has not been reached, the current
- *      behaviour being to abort in such a case.
+ *      The {{cy_hptr_copy()}} function simply increments the reference count of
+ *      {{ctx}} and returns a copy of the pointer. A check is made to ensure
+ *      that the maximum number of reference counts has not been reached, the
+ *      current behaviour being to abort in such a case.
  */
 void *cy_hptr_copy(cy_hptr_t ctx[static 1])
 {
@@ -448,30 +445,27 @@ void *cy_hptr_copy(cy_hptr_t ctx[static 1])
 }
 
 
-/*
+/*                                                            %func:cy_hptr_free
  * __NAME__
- *      *cy_hptr_free() - releases heap pointer instance
+ *      {{cy_hptr_free()}} - releases heap pointer instance
  *
  * __SYNOPSIS__
- *      ```
  *      #include <libchrysalid/libchrysalid.h>
- *      void cy_hptr_free(cy_hptr_t *ctx[static 1])
- *      ```
+ *      extern CY_HOT void cy_hptr_free(cy_hptr_t *ctx[static 1]);
  *
  * __DESCRIPTION__
- *      The *cy_hptr_free()* function releases the heap memory allocated to a
- *      heap pointer instance *ctx*. The heap pointer instance pointed to by
- *      *ctx* is expected to be valid, but in case it is invalid then a safe
+ *      The {{cy_hptr_free()}} function releases the heap memory allocated to a
+ *      heap pointer instance {{ctx}}. The heap pointer instance pointed to by
+ *      {{ctx}} is expected to be valid, but in case it is invalid then a safe
  *      no-op occurs. After release, the heap pointer instance pointed to by
- *      *ctx* is set to NULL in order to indicate that it is no longer usable.
+ *      {{ctx}} is set to NULL in order to indicate that it is no longer usable.
  *
  * __NOTES__
- *      If *ctx* is a shallow copy, then its reference count is decremented
+ *      If {{ctx}} is a shallow copy, then its reference count is decremented
  *      rather that it being actually released; this is however opaque to the
  *      client code. From the perspective of the client code, there is no
- *      difference whether *ctx* points to a single instance or a shallow copy
- *      since in both cases the pointer to the heap instance is set to *NULL*.
- *
+ *      difference whether {{ctx}} points to a single instance or a shallow copy
+ *      since in both cases the pointer to the heap instance is set to {{NULL}}.
  */
 void cy_hptr_free(cy_hptr_t *ctx[static 1])
 {
@@ -488,31 +482,29 @@ void cy_hptr_free(cy_hptr_t *ctx[static 1])
 }
 
 
-/*
+/*                                                         %func:cy_hptr_aligned
  * __NAME__
- *      *cy_hptr_aligned() - checks alignment of heap pointer instance
+ *      {{cy_hptr_aligned()}} - checks alignment of heap pointer instance
  *
  * __SYNOPSIS__
- *      ```
  *      #include <libchrysalid/libchrysalid.h>
- *      bool cy_hptr_aligned(const cy_hptr_t ctx[static 1], size_t aln)
- *      ```
+ *      extern bool cy_hptr_aligned(const cy_hptr_t ctx[static 1], size_t aln);
  *
  * __DESCRIPTION__
- *      The *cy_hptr_aligned() function determines whether a given heap pointer
- *      instance *ctx* is aligned to a given alignment *aln*. The value of *aln*
- *      must be a power of 2 that is a multiple of the native size of *void **
- *      pointers; if not, then the alignment is considered invalid and this
- *      function will return *false*.
+ *      The {{cy_hptr_aligned()}} function determines whether a given heap
+ *      pointer instance {{ctx}} is aligned to a given alignment {{aln}}. The
+ *      value of {{aln}} must be a power of 2 that is a multiple of the native
+ *      size of {{void *}} pointers; if not, then the alignment is considered
+ *      invalid and this function will return {{false}}.
  *
  * __RETURN__
- *      This function returns one of the following *bool* values depending on
+ *      This function returns one of the following {{bool}} values depending on
  *      the result of the alignment computation:
- *        - *true* if *ctx* is aligned to *aln*
- *        - *flase* if *ctx* is not aligned to *aln*
+ *        - {{true}} if {{ctx}} is aligned to {{aln}}
+ *        - {{false}} if {{ctx}} is not aligned to {{aln}}
  *
  * __NOTES__
- *      Since *ctx* points to the body segment, we need to first determine the
+ *      Since {{ctx}} points to the body segment, we need to first determine the
  *      address of its segment before performing the bitwise operation that
  *      checks for alignment.
  */
@@ -525,24 +517,22 @@ bool cy_hptr_aligned(const cy_hptr_t ctx[static 1], size_t aln)
 }
 
 
-/*
+/*                                                            %func:cy_hptr_refc
  * __NAME__
- *      *cy_hptr_refc() - gets reference count of heap pointer instance
+ *      {{cy_hptr_refc()}} - gets reference count of heap pointer instance
  *
  * __SYNOPSIS__
- *      ```
  *      #include <libchrysalid/libchrysalid.h>
- *      size_t cy_hptr_refc(const cy_hptr_t ctx[static 1])
- *      ```
+ *      extern size_t cy_hptr_refc(const cy_hptr_t ctx[static 1]);
  *
  * __DESCRIPTION__
- *      The *cy_hptr_refc()* function gets the current reference count of a heap
- *      pointer instance *ctx*. If *ctx* does not have any copies, then 1 is
- *      returned; if otherwise, then *n + 1* is returned where *n* is the number
- *      of cunrrent shallow copies.
+ *      The {{cy_hptr_refc()}} function gets the current reference count of a
+ *      heap pointer instance {{ctx}}. If {{ctx}} does not have any copies, then
+ *      1 is returned; if otherwise, then *n + 1* is returned where *n* is the
+ *      number of cunrrent shallow copies.
  *
  * __RETURN__
- *      This function returns the current reference count of *ctx*, which is
+ *      This function returns the current reference count of {{ctx}}, which is
  *      guaranteed to be greater than or equal to 1.
  */
 size_t cy_hptr_refc(const cy_hptr_t ctx[static 1])
@@ -551,36 +541,34 @@ size_t cy_hptr_refc(const cy_hptr_t ctx[static 1])
 }
 
 
-/*
+/*                                                              %func:cy_hptr_sz
  * __NAME__
- *      *cy_hptr_sz() - gets size of heap pointer instance
+ *      {{cy_hptr_sz()}} - gets size of heap pointer instance
  *
  * __SYNOPSIS__
- *      ```
  *      #include <libchrysalid/libchrysalid.h>
- *      size_t cy_hptr_sz(const cy_hptr_t ctx[static 1])
- *      ```
+ *      extern size_t cy_hptr_sz(const cy_hptr_t ctx[static 1]);
  *
  * __DESCRIPTION__
- *      The *cy_hptr_sz()* function determines the allocated size of a heap
- *      pointer instance *ctx*. This value is always greater than the orignally
- *      requested size since it accounts for additional metadata and alignment
- *      issues.
+ *      The {{cy_hptr_sz()}} function determines the allocated size of a heap
+ *      pointer instance {{ctx}}. This value is always greater than the
+ *      orignally requested size since it accounts for additional metadata and
+ *      alignment issues.
  *
  * __RETURN__
- *      This function returns the total allocated size of *ctx*.
+ *      This function returns the total allocated size in bytes of {{ctx}}.
  *
  * __NOTES__
  *      The total allocated size is determined through the implementation
- *      specific *malloc_size()* and *malloc_usable_size()* functions. The
+ *      specific {{malloc_size()}} and {{malloc_usable_size()}} functions. The
  *      former is available on Apple platforms, whereas the latter is available
  *      for Linux/FreeBSD. There is no guarantee that both of these functions
  *      return the same value.
  *
- *      At the very least, the total size returned by *cy_hptr_sz()* is greater
- *      than the requested size by *HEAD_SZ*, and more so if alignment and CPU
- *      byte ordering issues are taken into consideration by the underlying
- *      *malloc()* implementation.
+ *      At the very least, the total size returned by {{cy_hptr_sz()}} is
+ *      greater than the requested size by {{HEAD_SZ}}, and more so if alignment
+ *      and CPU byte ordering issues are taken into consideration by the
+ *      underlying {{malloc()}} implementation.
  */
 size_t cy_hptr_sz(const cy_hptr_t ctx[static 1])
 {
@@ -592,20 +580,19 @@ size_t cy_hptr_sz(const cy_hptr_t ctx[static 1])
 }
 
 
-/*
+/*                                                             %func:cy_hptr_str
  * __NAME__
  *      *cy_hptr_str() - gets string representation of heap pointer instance
  *
  * __SYNOPSIS__
- *      ```
  *      #include <libchrysalid/libchrysalid.h>
- *      const char *cy_hptr_str(const cy_hptr_t ctx[static 1])
- *      ```
+ *      extern const char *cy_hptr_str(const cy_hptr_t ctx[static 1]);
  *
  * __DESCRIPTION__
- *      The *cy_hptr_str()* function gets the string representation of a given
- *      heap pointer instance *ctx*. This function has been providced mainly for
- *      debugging purporses, and includes the following information about *ctx*:
+ *      The {{cy_hptr_str()}} function gets the string representation of a given
+ *      heap pointer instance {{ctx}}. This function has been providced mainly
+ *      for debugging purporses, and includes the following information about
+ *      {{ctx}}:
  *        - the address of its head segment,
  *        - the address of its body segment,
  *        - its usable size in bytes, and
@@ -613,7 +600,7 @@ size_t cy_hptr_sz(const cy_hptr_t ctx[static 1])
  *
  * __RETURN__
  *      This function returns an immutable string containing relevant diagnostic
- *      information about *ctx*.
+ *      information about {{ctx}}.
  *
  * __NOTES__
  *      The returned string does not contain information regarding alignment
@@ -637,37 +624,38 @@ const char *cy_hptr_str(const cy_hptr_t ctx[static 1])
 /* Support functions */
 
 
-/*
+/*                                                          %func:hptr:align_fix
  * __NAME__
- *      *align_fix()* - fixes alignment
+ *      {{align_fix()}} - fixes alignment
  *
  * __SYNOPSIS__
- *      __CODE__(static size_t align_fix(size_t aln);)
+ *      static size_t align_fix(size_t aln);
  *
  * __DESCRIPTION__
- *      The *align_fix()* support function fixes a bad alignment value *aln* by
- *      rounding it up to the nearest valid value. This function is used only
+ *      The {{align_fix()}} support function fixes a bad alignment value {{aln}}
+ *      by rounding it up to the nearest valid value. This function is used only
  *      internally by the heap pointer implementation and is **not** part of the
  *      interface.
  *
  * __RETURN__
  *      This function returns an alignment that is rounded up to the nearest
- *      valid alignment of *aln*.
+ *      valid alignment of {{aln}}.
  *
  * __NOTES__
- *      The *align_fix()* function returns an alignment that is rounded up to
+ *      The {{align_fix() function returns an alignment that is rounded up to
  *      the nearest power of two that is also a multiple of the native size of a
- *      *void ** pointer; this is as per the requirements of *posix_memalign()*.
+ *      {{void *}} pointer; this is as per the requirements of
+ *      {{posix_memalign()}}.
  *
- *      The *align_fix()* function is meant to be used only with invalid values
- *      of *aln*; hence no check is made to determine whether or not *aln* is
- *      valid in the first case.
+ *      The {{align_fix()}} function is meant to be used only with invalid
+ *      values of {{aln}}; hence no check is made to determine whether or not
+ *      {{aln}} is valid in the first case.
  *
- *      The case of negative values of *aln* are especially problematic since
+ *      The case of negative values of {{aln}} are especially problematic since
  *      fixing them with the current algorithm leads to an invalid alignment of
  *      0; hence, and additional check is made to ensure that this function
- *      returns at least the size of a *void ** pointer (which is guaranteed to
- *      be a power of 2 through a compile-time assertion).
+ *      returns at least the size of a {{void *}} pointer (which is guaranteed
+ *      to be a power of 2 through a compile-time assertion).
  */
 size_t align_fix(size_t aln)
 {

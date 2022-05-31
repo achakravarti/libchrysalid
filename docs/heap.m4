@@ -89,6 +89,22 @@ __macro__(<<<ALIGN_VALID>>>, <<<hptr_ALIGN_VALID>>>)
 
 # FUNCTIONS
 
+__func__(<<<cy_hptr_new>>>, <<<cy_hptr_new>>>)
+
+__func__(<<<cy_hptr_new_aligned>>>, <<<cy_hptr_new_aligned>>>)
+
+__func__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy>>>)
+
+__func__(<<<cy_hptr_free>>>, <<<cy_hptr_free>>>)
+
+__func__(<<<cy_hptr_aligned>>>, <<<cy_hptr_aligned>>>)
+
+__func__(<<<cy_hptr_refc>>>, <<<cy_hptr_refc>>>)
+
+__func__(<<<cy_hptr_sz>>>, <<<cy_hptr_sz>>>)
+
+__func__(<<<cy_hptr_str>>>, <<<cy_hptr_str>>>)
+
 
 # TEST
 

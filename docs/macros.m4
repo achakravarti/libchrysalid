@@ -275,6 +275,9 @@ sinclude(<<<func_$2.synopsis.head>>>)
 sinclude(<<<func_$2.description.head>>>)
 : sinclude(<<<func_$2.description>>>)
 
+sinclude(<<<func_$2.return.head>>>)
+: sinclude(<<<func_$2.return>>>)
+
 sinclude(<<<func_$2.notes.head>>>)
 : sinclude(<<<func_$2.notes>>>)
 >>>)dnl

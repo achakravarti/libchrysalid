@@ -13,7 +13,13 @@ extract_section()
         EXTRACT_PAT="$START_MARK/,$END_MARK/{$START_MARK/!{$END_MARK/!p;};}"
         EXTRACT_FILE="$2.$(echo "$1" | tr '[:upper:]' '[:lower:]')"
 
-        sed -n "$EXTRACT_PAT" "$2" | cut -c 3- > "$EXTRACT_FILE"
+        if [ "$1" = "SYNOPSIS" ]; then
+                echo '    ```' > "$EXTRACT_FILE"
+                sed -n "$EXTRACT_PAT" "$2" | cut -c 3- >> "$EXTRACT_FILE"
+                echo '    ```' >> "$EXTRACT_FILE"
+        else
+                sed -n "$EXTRACT_PAT" "$2" | cut -c 3- > "$EXTRACT_FILE"
+        fi
 
         if [ -s "$EXTRACT_FILE" ]; then
                 echo "*$1*" > "$EXTRACT_FILE.head"
