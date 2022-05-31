@@ -20,8 +20,8 @@
  *    without specific prior written permission.
  *
  * 4. Redistributions of any form whatsoever must retain the following
- *    acknowledgment: 'This product includes software developed by "Montão AB"
- *    (https://montao.github.io/).'
+ *    acknowledgment: "This product includes software developed by Abhishek
+ *    Chakravarti (abhishek@taranjali.org)."
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
@@ -311,34 +311,32 @@ static size_t   align_fix(size_t);
 
 /*
  * __NAME__
- *      *cy_hptr_new() - allocates heap pointer instance
+ *      {{cy_hptr_new()}} - allocates heap pointer instance
  *
  * __SYNOPSIS__
- *      ```
  *      #include <libchrysalid/libchrysalid.h>
  *      void *cy_hptr_new(size_t sz)
- *      ```
  *
  * __DESCRIPTION__
- *      The *cy_hptr_new()* function allocates a new instance of the *cy_hptr_t*
- *      type on the heap memory, returning a pointer to the usable segment of
- *      the instance. The size of the allocated instance is specified through
- *      the *sz* parameter, which is expected to be positive *size_t* value. In
- *      case a size of 0 is passed, then *sz* is automatically set to the native
- *      size of *size_t*.
+ *      The {{cy_hptr_new()}} function allocates a new instance of the
+ *      {{cy_hptr_t}} type on the heap memory, returning a pointer to the usable
+ *      segment of the instance. The size of the allocated instance is specified
+ *      through the {{sz}} parameter, which is expected to be positive
+ *      {{size_t}} value. In case a size of 0 is passed, then {{sz}} is
+ *      automatically set to the native size of {{size_t}}.
  *
  * __RETURN__
- *      The *cy_hptr_new()* function returns a *void ** pointer pointing to the
- *      body segment of a newly allocated *cy_hptr_t* instance that is of the
- *      requested size. The returned pointer is guaranteed not to be null.
+ *      The {{cy_hptr_new()}} function returns a {{void *}} pointer pointing to
+ *      the body segment of a newly allocated {{cy_hptr_t}} instance that is of
+ *      the requested size. The returned pointer is guaranteed not to be null.
  *
  * __NOTES__
- *      The *cy_hptr_new()* function uses *calloc()* for allocation to ensure
- *      that all the the bytes of the body segment are set to 0. In contrast,
- *      the head segment holds a value of 1, which is the reference count of the
- *      instanct at initialisation. In case of an allocation failure, the
- *      behaviour is to abort with a failure message, but this may change in
- *      future.
+ *      The {{cy_hptr_new()}} function uses {{calloc()}} for allocation to
+ *      ensure that all the the bytes of the body segment are set to 0. In
+ *      contrast, the head segment holds a value of 1, which is the reference
+ *      count of the instanct at initialisation. In case of an allocation
+ *      failure, the behaviour is to abort with a failure message, but this may
+ *      change in future.
  */
 void *cy_hptr_new(size_t sz)
 {
