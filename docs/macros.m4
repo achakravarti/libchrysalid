@@ -171,7 +171,7 @@ ifdef(<<<MAN>>>,
 dnl __type__
 
 define(<<<__type_man__>>>, <<<
-## Type $2
+## Type $1
 
 sinclude(<<<type_$2.name.head>>>)
 : sinclude(<<<type_$2.name>>>)
@@ -197,3 +197,34 @@ define(<<<__type_html__>>>, <<<
 ifdef(<<<MAN>>>, <<<define(__type__, <<<__type_man__($1, $2)>>>)>>>,
 <<<ifdef(<<<PDF>>>, <<<define(__type__, <<<__type_pdf__($1, $2)>>>)>>>,
 <<<define(__type__, <<<__type_html__($1, $2)>>>)>>>)>>>)dnl
+
+
+dnl __const__
+
+define(<<<__const_man__>>>, <<<
+## Constant $1
+
+sinclude(<<<const_$2.name.head>>>)
+: sinclude(<<<const_$2.name>>>)
+
+sinclude(<<<const_$2.synopsis.head>>>)
+: sinclude(<<<const_$2.synopsis>>>)
+
+sinclude(<<<const_$2.description.head>>>)
+: sinclude(<<<const_$2.description>>>)
+
+sinclude(<<<const_$2.notes.head>>>)
+: sinclude(<<<const_$2.notes>>>)
+>>>)dnl
+
+define(<<<__const_pdf__>>>, <<<
+## TODO FOR PDF: $1
+>>>)dnl
+
+define(<<<__const_html__>>>, <<<
+## TODO FOR HTML: $1
+>>>)dnl
+
+ifdef(<<<MAN>>>, <<<define(__const__, <<<__const_man__($1, $2)>>>)>>>,
+<<<ifdef(<<<PDF>>>, <<<define(__type__, <<<__const_pdf__($1, $2)>>>)>>>,
+<<<define(__const__, <<<__type_html__($1, $2)>>>)>>>)>>>)dnl

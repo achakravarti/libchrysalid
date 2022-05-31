@@ -59,80 +59,15 @@ __type__(<<<test_t>>>, <<<hptr_test_t>>>)
 
 # CONSTANTS
 
+__const__(<<<CY_HPTR_REFC_MAX>>>, <<<CY_HPTR_REFC_MAX>>>)
 
-## Constant CY_HPTR_REFC_MAX
+__const__(<<<HEAD_INDEX>>>, <<<hptr_HEAD_INDEX>>>)
 
-__NAME__(<<<CY_HPTR_REFC_MAX>>>)
-: include(<<<const_CY_HPTR_REFC_MAX.name>>>)
+__const__(<<<HEAD_OFFSET>>>, <<<hptr_HEAD_OFFSET>>>)
 
-__SYNOPSIS__(<<<CY_HPTR_REFC_MAX>>>)
-: include(<<<const_CY_HPTR_REFC_MAX.synopsis>>>)
+__const__(<<<HEAD_SZ>>>, <<<hptr_HEAD_SZ>>>)
 
-__DESCRIPTION__(<<<CY_HPTR_REFC_MAX>>>)
-: include(<<<const_CY_HPTR_REFC_MAX.description>>>)
-
-__NOTES__(<<<CY_HPTR_REFC_MAX>>>)
-: include(<<<const_CY_HPTR_REFC_MAX.notes>>>)
-
-
-## Constant HEAD_INDEX
-
-__NAME__(<<<HPTR_HEAD_INDEX>>>)
-: include(<<<build/docs/const_hptr_HEAD_INDEX.name>>>)
-
-__SYNOPSIS__(<<<HPTR_HEAD_INDEX>>>)
-: include(<<<build/docs/const_hptr_HEAD_INDEX.synopsis>>>)
-
-__DESCRIPTION__(<<<HPTR_HEAD_INDEX>>>)
-: include(<<<build/docs/const_hptr_HEAD_INDEX.description>>>)
-
-__NOTES__(<<<HPTR_HEAD_INDEX>>>)
-: include(<<<build/docs/const_hptr_HEAD_INDEX.notes>>>)
-
-
-## Constant HEAD_OFFSET
-
-__NAME__(<<<HPTR_HEAD_OFFSET>>>)
-: include(<<<build/docs/const_hptr_HEAD_OFFSET.name>>>)
-
-__SYNOPSIS__(<<<HPTR_HEAD_OFFSET>>>)
-: include(<<<build/docs/const_hptr_HEAD_OFFSET.synopsis>>>)
-
-__DESCRIPTION__(<<<HPTR_HEAD_OFFSET>>>)
-: include(<<<build/docs/const_hptr_HEAD_OFFSET.description>>>)
-
-__NOTES__(<<<HPTR_HEAD_OFFSET>>>)
-: include(<<<build/docs/const_hptr_HEAD_OFFSET.notes>>>)
-
-
-## Constant HEAD_SZ
-
-__NAME__(<<<HPTR_HEAD_SZ>>>)
-: include(<<<build/docs/const_hptr_HEAD_SZ.name>>>)
-
-__SYNOPSIS__(<<<HPTR_HEAD_SZ>>>)
-: include(<<<build/docs/const_hptr_HEAD_SZ.synopsis>>>)
-
-__DESCRIPTION__(<<<HPTR_HEAD_SZ>>>)
-: include(<<<build/docs/const_hptr_HEAD_SZ.description>>>)
-
-__NOTES__(<<<HPTR_HEAD_SZ>>>)
-: include(<<<build/docs/const_hptr_HEAD_SZ.notes>>>)
-
-
-## Constant BODY_INDEX
-
-__NAME__(<<<HPTR_BODY_INDEX>>>)
-: include(<<<build/docs/const_hptr_BODY_INDEX.name>>>)
-
-__SYNOPSIS__(<<<HPTR_BODY_INDEX>>>)
-: include(<<<build/docs/const_hptr_BODY_INDEX.synopsis>>>)
-
-__DESCRIPTION__(<<<HPTR_BODY_INDEX>>>)
-: include(<<<build/docs/const_hptr_BODY_INDEX.description>>>)
-
-__NOTES__(<<<HPTR_BODY_INDEX>>>)
-: include(<<<build/docs/const_hptr_BODY_INDEX.notes>>>)
+__const__(<<<BODY_INDEX>>>, <<<hptr_BODY_INDEX>>>)
 
 
 # MACROS
