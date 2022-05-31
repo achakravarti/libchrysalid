@@ -167,3 +167,33 @@ ifdef(<<<MAN>>>,
 <<<# CITATIONS>>>)>>>,
 <<<define(__CITATIONS__, <<<>>>)>>>)dnl
 
+
+dnl __type__
+
+define(<<<__type_man__>>>, <<<
+## Type $2
+
+*NAME*
+: sinclude(<<<type_$2.name>>>)
+
+*SYNOPSIS*
+: sinclude(<<<type_$2.synopsis>>>)
+
+*DESCRIPTION*
+: sinclude(<<<type_$2.description>>>)
+
+*NOTES*
+: sinclude(<<<type_$2.notes>>>)
+>>>)dnl
+
+define(<<<__type_pdf__>>>, <<<
+## TODO FOR PDF: $1
+>>>)dnl
+
+define(<<<__type_html__>>>, <<<
+## TODO FOR HTML: $1
+>>>)dnl
+
+ifdef(<<<MAN>>>, <<<define(__type__, <<<__type_man__($1, $2)>>>)>>>,
+<<<ifdef(<<<PDF>>>, <<<define(__type__, <<<__type_pdf__($1, $2)>>>)>>>,
+<<<define(__type__, <<<__type_html__($1, $2)>>>)>>>)>>>)dnl

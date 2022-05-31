@@ -52,31 +52,9 @@ _FILES_(<<<hptr>>>)
 
 # TYPES
 
-## Type cy_hptr_t
+__type__(<<<cy_hptr_t>>>, <<<cy_hptr_t>>>)
 
-__NAME__(<<<cy_hptr_t>>>)
-: include(<<<type_cy_hptr_t.name>>>)
-
-__SYNOPSIS__(<<<cy_hptr_t>>>)
-: include(<<<type_cy_hptr_t.synopsis>>>)
-
-__DESCRIPTION__(<<<cy_hptr_t>>>)
-: include(<<<type_cy_hptr_t.description>>>)
-
-__NOTES__(<<<cy_hptr_t>>>)
-: include(<<<type_cy_hptr_t.notes>>>)
-
-
-## Type test_t
-
-__NAME__(<<<test_t>>>)
-: include(<<<type_hptr_test_t.name>>>)
-
-__SYNOPSIS__(<<<test_t>>>)
-: include(<<<type_hptr_test_t.synopsis>>>)
-
-__DESCRIPTION__(<<<cy_hptr_t>>>)
-: include(<<<type_hptr_test_t.description>>>)
+__type__(<<<test_t>>>, <<<hptr_test_t>>>)
 
 
 # CONSTANTS
