@@ -259,3 +259,34 @@ define(<<<__macro_html__>>>, <<<
 ifdef(<<<MAN>>>, <<<define(__macro__, <<<__macro_man__($1, $2)>>>)>>>,
 <<<ifdef(<<<PDF>>>, <<<define(__macro__, <<<__macro_pdf__($1, $2)>>>)>>>,
 <<<define(__macro__, <<<__macro_html__($1, $2)>>>)>>>)>>>)dnl
+
+
+dnl __func__
+
+define(<<<__func_man__>>>, <<<
+## Function $1()
+
+sinclude(<<<func_$2.name.head>>>)
+: sinclude(<<<func_$2.name>>>)
+
+sinclude(<<<func_$2.synopsis.head>>>)
+: sinclude(<<<func_$2.synopsis>>>)
+
+sinclude(<<<func_$2.description.head>>>)
+: sinclude(<<<func_$2.description>>>)
+
+sinclude(<<<func_$2.notes.head>>>)
+: sinclude(<<<func_$2.notes>>>)
+>>>)dnl
+
+define(<<<__func_pdf__>>>, <<<
+## TODO FOR PDF: $1
+>>>)dnl
+
+define(<<<__func_html__>>>, <<<
+## TODO FOR HTML: $1
+>>>)dnl
+
+ifdef(<<<MAN>>>, <<<define(__func__, <<<__func_man__($1, $2)>>>)>>>,
+<<<ifdef(<<<PDF>>>, <<<define(__func__, <<<__func_pdf__($1, $2)>>>)>>>,
+<<<define(__func__, <<<__func_html__($1, $2)>>>)>>>)>>>)dnl

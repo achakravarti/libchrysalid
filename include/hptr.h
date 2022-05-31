@@ -126,7 +126,6 @@ typedef uintptr_t   cy_hptr_t;
  * __NOTES__
  *      Since reference counts are {{size_t}} values held inside a single
  *      {{uinptr_t}}, the maximum number of reference counts is {{UINTPTR_MAX}}.
- *
  */
 #define CY_HPTR_REFC_MAX    UINTPTR_MAX
 
