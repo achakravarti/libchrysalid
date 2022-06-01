@@ -684,15 +684,15 @@ Test(cy_hptr_copy, multiple_aligned)
 
 /*                                            %test:cy_hptr_free:hnd_to_null_ptr
  * __SCENARIO__
- *      *cy_hptr_free()* results in a safe no-op if passed a handle to a null
+ *      {{cy_hptr_free()}} results in a safe no-op if passed a handle to a null
  *      pointer
  *
  * __GIVEN__
  *      - a handle to a null pointer
- *      - *cy_hptr_free()* is called
+ *      - {{cy_hptr_free()}} is called
  *
  * __WHEN__
- *      - *ctx* == handle to null pointer
+ *      - {{ctx}} == handle to null pointer
  *
  * __THEN__
  *      - a safe no-op occurs
@@ -706,14 +706,14 @@ Test(cy_hptr_free, hnd_to_null_ptr)
 
 /*                                                     %test:cy_hptr_free:single
  * __SCENARIO__
- *      *cy_hptr_free()* releases the memory of a single heap pointer instance
+ *      {{cy_hptr_free()}} releases the memory of a single heap pointer instance
  *
  * __GIVEN__
  *      - a heap pointer instance
- *      - *cy_hptr_free()* is called
+ *      - {{cy_hptr_free()}} is called
  *
  * __WHEN__
- *      - *ctx* == handle to heap pointer instance
+ *      - {{ctx}} == handle to heap pointer instance
  *
  * __THEN__
  *      - the instance is released and set to NULL
@@ -728,16 +728,16 @@ Test(cy_hptr_free, single)
 
 /*                                           %test:cy_hptr_free:copies_preserved
  * __SCENARIO__
- *      *cy_hptr_free()* does not affect shallow copies when releasing the
+ *      {{cy_hptr_free()}} does not affect shallow copies when releasing the
  *      memory of a heap pointer instance
  *
  * __GIVEN__
  *      - a heap pointer instance
  *      - two shallow copies of the instance
- *      - *cy_hptr_free()* is called only for the source instance
+ *      - {{cy_hptr_free()}} is called only for the source instance
  *
  * __WHEN__
- *      - *ctx* == handle to heap pointer instance
+ *      - {{ctx}} == handle to heap pointer instance
  *
  * __THEN__
  *      - the instance is released and set to NULL
@@ -778,16 +778,16 @@ Test(cy_hptr_free, copies_preserved)
 
 /*                                         %test:cy_hptr_free:copies_all_release
  * __SCENARIO__
- *      *cy_hptr_free()* releases a heap pointer instance and its shallow copies
- *      when invoked for each of them.
+ *      {{cy_hptr_free()}} releases a heap pointer instance and its shallow
+ *      copies when invoked for each of them.
  *
  * __GIVEN__
  *      - a heap pointer instance
  *      - two shallow copies of the instance
- *      - *cy_hptr_free()* is called on the instance and its copies
+ *      - {{cy_hptr_free()}} is called on the instance and its copies
  *
  * __WHEN__
- *      - *ctx* == handle to heap pointer instance / shallow copy
+ *      - {{ctx}} == handle to heap pointer instance / shallow copy
  *
  * __THEN__
  *      - the instance is released and set to NULL
@@ -812,15 +812,15 @@ Test(cy_hptr_free, multiple_copies_all_release)
 
 /*                                             %test:cy_hptr_free:single_aligned
  * __SCENARIO__
- *      *cy_hptr_free()* releases the memory of a single aligned heap pointer
+ *      {{cy_hptr_free()}} releases the memory of a single aligned heap pointer
  *      instance
  *
  * __GIVEN__
  *      - a heap pointer instance aligned to 16 bits
- *      - *cy_hptr_free()* is called
+ *      - {{cy_hptr_free()}} is called
  *
  * __WHEN__
- *      - *ctx* == handle to aligned heap pointer instance
+ *      - {{ctx}} == handle to aligned heap pointer instance
  *
  * __THEN__
  *      - the instance is released and set to NULL
@@ -835,16 +835,16 @@ Test(cy_hptr_free, single_aligned)
 
 /*                                   %test:cy_hptr_free:aligned_copies_preserved
  * __SCENARIO__
- *      *cy_hptr_free()* does not affect shallow copies when releasing the
+ *      {{cy_hptr_free()}} does not affect shallow copies when releasing the
  *      memory of an aligned heap pointer instance
  *
  * __GIVEN__
  *      - a heap pointer instance aligned to 32 bits
  *      - two shallow copies of the instance
- *      - *cy_hptr_free()* is called only for the source instance
+ *      - {{cy_hptr_free()}} is called only for the source instance
  *
  * __WHEN__
- *      - *ctx* == handle to heap pointer instance
+ *      - {{ctx}} == handle to heap pointer instance
  *
  * __THEN__
  *      - the instance is released and set to NULL
@@ -885,16 +885,16 @@ Test(cy_hptr_free, aligned_copies_preserved)
 
 /*                                 %test:cy_hptr_free:aligned_copies_all_release
  * __SCENARIO__
- *      *cy_hptr_free()* releases an aligned heap pointer instance and its
+ *      {{cy_hptr_free()}} releases an aligned heap pointer instance and its
  *      shallow copies when invoked for each of them.
  *
  * __GIVEN__
  *      - a heap pointer instance aligned to 32 bits
  *      - two shallow copies of the instance
- *      - *cy_hptr_free()* is called on the instance and its copies
+ *      - {{cy_hptr_free()}} is called on the instance and its copies
  *
  * __WHEN__
- *      - *ctx* == handle to heap pointer instance / shallow copy
+ *      - {{ctx}} == handle to heap pointer instance / shallow copy
  *
  * __THEN__
  *      - the instance is released and set to NULL

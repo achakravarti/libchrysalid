@@ -120,6 +120,16 @@ __test__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy_single_aligned>>>, __test_num__)
 __test__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy_multiple>>>, __test_num__)
 __test__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy_multiple_aligned>>>, __test_num__)
 
+dnl Tests for cy_hptr_free()
+__test_num_reset__
+__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_hnd_to_null_ptr>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_single>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_copies_preserved>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_copies_all_release>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_single_aligned>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_aligned_copies_preserved>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_aligned_copies_all_release>>>, __test_num__)
+
 
 __COPYRIGHT__
 
