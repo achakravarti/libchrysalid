@@ -1035,25 +1035,22 @@ Test(cy_hptr_str, desc)
 
 /*                                                        %func:hptr:test_t_free
  * __NAME__
- *      *test_t_free()* - releases test instance
+ *      {{test_t_free()}} - releases test instance
  *
  * __SYNOPSIS__
- *      `static void test_t_free(test_t *ctx[static 1]);`
+ *      static void test_t_free(test_t *ctx[static 1]);
  *
  * __DESCRIPTION__
- *      The *test_t_free()* function is a support function that releases the
- *      heap memory allocated to a *test_t* instance *ctx*. This function is
+ *      The {{test_t_free()}} function is a support function that releases the
+ *      heap memory allocated to a {{test_t}} instance {{ctx}}. This function is
  *      meant to be used only with the heap pointer tests and is **not** part of
  *      the heap pointer interface.
  *
- * __RETURN__
- *      This function does not return any value.
- *
  * __NOTES__
- *      The *test_t_free()* function is invoked automatically for any *test_t*
- *      instance declared with the *CY_AUTO()* macro when the instance goes out
- *      of scope.  The name of this function is as per the requirements of the
- *      *CY_AUTO()* macro.
+ *      The {{test_t_free()}} function is invoked automatically for any
+ *      {{test_t}} instance declared with the {{CY_AUTO()}} macro when the
+ *      instance goes out of scope.  The name of this function is as per the
+ *      requirements of the {{CY_AUTO()}} macro.
  */
 void test_t_free(test_t *ctx[static 1])
 {
@@ -1063,26 +1060,27 @@ void test_t_free(test_t *ctx[static 1])
 
 /*                                                           %func:hptr:test_yeq
  * __NAME__
- *      *test_yeq()* - equality comparison for *y* field of test instance
+ *      {{test_yeq()}} - equality comparison for {{y}} field of test instance
  *
  * __SYNOPSIS__
- *      `static void test_t_free(test_t *ctx[static 1]);`
+ *      static void test_t_free(test_t *ctx[static 1]);
  *
  * __DESCRIPTION__
- *      The *test_yeq()* helper function checks whether the *y* field of a test
- *      instance *ctx* is approximately equal to another floating point value
- *      *cmp*. This function is used by the heap pointer tests where required,
- *      and is **not** part of the heap pointer interface.
+ *      The {{test_yeq()}} helper function checks whether the {{y}} field of a
+ *      test instance {{ctx}} is approximately equal to another floating point
+ *      value *cmp*. This function is used by the heap pointer tests where
+ *      required, and is **not** part of the heap pointer interface.
  *
  * __RETURN__
- *      *test_yeq()* returns one of the following *bool* values depending on the
- *      result of the comparison:
- *        - *true* if the *y* field of *ctx* is approximately equal to *cmp*
- *        - *false* otherwise
+ *      {{test_yeq()}} returns one of the following {{bool}} values depending on
+ *      the result of the comparison:
+ *        - {{true}} if the {{y}} field of {{ctx}} is approximately equal to
+ *          {{cmp}}
+ *        - {{false}} otherwise
  *
  * __NOTES__
- *      The *test_yeq()* function uses Knuth's approximately equal algorithm for
- *      comparing floating point numbers.
+ *      The {{test_yeq()}} function uses Knuth's approximately equal algorithm
+ *      for comparing floating point numbers.
  */
 bool test_yeq(const test_t ctx[static 1], float cmp)
 {

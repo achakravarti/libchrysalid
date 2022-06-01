@@ -642,7 +642,7 @@ const char *cy_hptr_str(const cy_hptr_t ctx[static 1])
  *      valid alignment of {{aln}}.
  *
  * __NOTES__
- *      The {{align_fix() function returns an alignment that is rounded up to
+ *      The {{align_fix()}} function returns an alignment that is rounded up to
  *      the nearest power of two that is also a multiple of the native size of a
  *      {{void *}} pointer; this is as per the requirements of
  *      {{posix_memalign()}}.
