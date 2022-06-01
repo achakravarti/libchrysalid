@@ -296,13 +296,19 @@ ifdef(<<<MAN>>>, <<<define(__func__, <<<__func_man__($1, $2)>>>)>>>,
 
 
 dnl https://unix.stackexchange.com/questions/280532/
-define(<<<_counter>>>, <<<0>>>)dnl
-define(<<<_count>>>, <<<define(<<<_counter>>>, eval(_counter+1))_counter>>>)dnl
+define(<<<__test_counter__>>>, <<<0>>>)dnl
+
+define(<<<__test_num__>>>,
+<<<define(<<<__test_counter__>>>,
+eval(__test_counter__ + 1)) __test_counter__>>>)dnl
+
+define(<<<__test_num_reset__>>>,
+<<<define(<<<__test_counter__>>>, <<<0>>>)>>>)dnl
 
 dnl __test__
 
 define(<<<__test_man__>>>, <<<
-## Test #>>>_count <<<for $1()
+## Test #$3 for $1()
 
 sinclude(<<<test_$2.scenario.head>>>)
 : sinclude(<<<test_$2.scenario>>>)
@@ -325,6 +331,6 @@ define(<<<__test_html__>>>, <<<
 ## TODO FOR HTML: $1
 >>>)dnl
 
-ifdef(<<<MAN>>>, <<<define(__test__, <<<__test_man__($1, $2)>>>)>>>,
-<<<ifdef(<<<PDF>>>, <<<define(__test__, <<<__test_pdf__($1, $2)>>>)>>>,
-<<<define(__test__, <<<__test_html__($1, $2)>>>)>>>)>>>)dnl
+ifdef(<<<MAN>>>, <<<define(__test__, <<<__test_man__($1, $2, $3)>>>)>>>,
+<<<ifdef(<<<PDF>>>, <<<define(__test__, <<<__test_pdf__($1, $2, $3)>>>)>>>,
+<<<define(__test__, <<<__test_html__($1, $2, $3)>>>)>>>)>>>)dnl

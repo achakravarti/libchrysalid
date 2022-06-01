@@ -52,65 +52,57 @@ _FILES_(<<<hptr>>>)
 
 # TYPES
 
+dnl Interface types
 __type__(<<<cy_hptr_t>>>, <<<cy_hptr_t>>>)
 
+dnl Test types
 __type__(<<<test_t>>>, <<<hptr_test_t>>>)
 
 
 # CONSTANTS
 
+dnl Interface constants
 __const__(<<<CY_HPTR_REFC_MAX>>>, <<<CY_HPTR_REFC_MAX>>>)
 
+dnl Implementation constants
 __const__(<<<HEAD_INDEX>>>, <<<hptr_HEAD_INDEX>>>)
-
 __const__(<<<HEAD_OFFSET>>>, <<<hptr_HEAD_OFFSET>>>)
-
 __const__(<<<HEAD_SZ>>>, <<<hptr_HEAD_SZ>>>)
-
 __const__(<<<BODY_INDEX>>>, <<<hptr_BODY_INDEX>>>)
 
 
 # MACROS
 
+dnl Implementation macros
 __macro__(<<<REFC_INIT>>>, <<<hptr_REFC_INIT>>>)
-
 __macro__(<<<REFC_CURRENT>>>, <<<hptr_REFC_CURRENT>>>)
-
 __macro__(<<<REFC_INCREMENT>>>, <<<hptr_REFC_INCREMENT>>>)
-
 __macro__(<<<REFC_DECREMENT>>>, <<<hptr_REFC_DECREMENT>>>)
-
 __macro__(<<<CAST_HEAD>>>, <<<hptr_CAST_HEAD>>>)
-
 __macro__(<<<CAST_BODY>>>, <<<hptr_CAST_BODY>>>)
-
 __macro__(<<<ALIGN_VALID>>>, <<<hptr_ALIGN_VALID>>>)
 
 
 # FUNCTIONS
 
+dnl Factory functions
 __func__(<<<cy_hptr_new>>>, <<<cy_hptr_new>>>)
-
 __func__(<<<cy_hptr_new_aligned>>>, <<<cy_hptr_new_aligned>>>)
-
 __func__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy>>>)
-
 __func__(<<<cy_hptr_free>>>, <<<cy_hptr_free>>>)
 
+dnl Accessor functions
 __func__(<<<cy_hptr_aligned>>>, <<<cy_hptr_aligned>>>)
-
 __func__(<<<cy_hptr_refc>>>, <<<cy_hptr_refc>>>)
-
 __func__(<<<cy_hptr_sz>>>, <<<cy_hptr_sz>>>)
-
 __func__(<<<cy_hptr_str>>>, <<<cy_hptr_str>>>)
 
 
 # TESTS
 
-__test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_positive_size>>>)
-
-__test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_zero_size>>>)
+__test_num_reset__
+__test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_positive_size>>>, __test_num__)
+__test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_zero_size>>>, __test_num__)
 
 
 __COPYRIGHT__
