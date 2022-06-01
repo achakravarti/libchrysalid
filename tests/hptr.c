@@ -160,19 +160,19 @@ Test(cy_hptr_new, zero_size)
 
 /*                                               %test:cy_hptr_new:negative_size
  * __SCENARIO__
- *      *cy_hptr_new()* returns a valid heap pointer instance for a negative
+ *      {{cy_hptr_new()}} returns a valid heap pointer instance for a negative
  *      size value
  *
  * __GIVEN__
- *      - a sample test data structure *test_t*
- *      - *cy_hptr_new()* is called to create an instance of *test_t*
+ *      - a sample test data structure {{test_t}}
+ *      - {{cy_hptr_new()}} is called to create an instance of {{test_t}}
  *
  * __WHEN__
- *      - *sz* == 0
+ *      - {{sz}} == 0
  *
  * __THEN__
  *      - a non-null heap pointer instance is returned
- *      - the instance has a size at least that of `size_t`
+ *      - the instance has a size at least that of {{size_t}}
  *      - the instance has a reference count of 1
  *      - the instance has all its data bytes set to 0
  */
@@ -197,21 +197,22 @@ Test(cy_hptr_new, negative_size)
 
 /*                                        %test:cy_hptr_new_aligned:valid_params
  * __SCENARIO__
- *      *cy_hptr_new_aligned()* returns a valid aligned heap pointer instance
+ *      {{cy_hptr_new_aligned()}} returns a valid aligned heap pointer instance
  *      when passed valid parameters
  *
  * __GIVEN__
  *      - a 32-bit / 64-bit platform
- *      - a sample test data structure *test_t*
- *      - *cy_hptr_new_aligned()* is called to create an instance of *test_t*
+ *      - a sample test data structure {{test_t}}
+ *      - {{cy_hptr_new_aligned()}} is called to create an instance of
+ *        {{test_t}}
  *
  * __WHEN__
- *      - *sz* == size of *test_t*
- *      - *aln* == 32
+ *      - {{sz}} == size of {{test_t}}
+ *      - {{aln}} == 32
  *
  * __THEN__
  *      - a non-null heap pointer instance is returned
- *      - the instance has a size at least that of *test_t*
+ *      - the instance has a size at least that of {{test_t}}
  *      - the instance is aligned to the requested boundary
  *      - the instance has a reference count of 1
  *      - the instance has all its data bytes set to 0
@@ -240,21 +241,22 @@ Test(cy_hptr_new_aligned, valid_params)
 
 /*                                             %test:cy_hptr_new_aligned:zero_sz
  * __SCENARIO__
- *      *cy_hptr_new_aligned()* returns a valid aligned heap pointer instance
+ *      {{cy_hptr_new_aligned()}} returns a valid aligned heap pointer instance
  *      when passed a size of 0
  *
  * __GIVEN__
  *      - a 32-bit / 64-bit platform
- *      - a sample test data structure *test_t*
- *      - *cy_hptr_new_aligned()* is called to create an instance of *test_t*
+ *      - a sample test data structure {{test_t}}
+ *      - {{cy_hptr_new_aligned()}} is called to create an instance of
+ *        {{test_t}}
  *
  * __WHEN__
- *      - *sz* == 0
- *      - *aln* == 32
+ *      - {{sz}} == 0
+ *      - {{aln}} == 32
  *
  * __THEN__
  *      - a non-null heap pointer instance is returned
- *      - the instance has a size at least that of `size_t`
+ *      - the instance has a size at least that of {{size_t}}
  *      - the instance is aligned to the requested boundary
  *      - the instance has a reference count of 1
  *      - the instance has all its data bytes set to 0
@@ -326,22 +328,23 @@ Test(cy_hptr_new_aligned, negative_sz)
 
 /*                          %test:cy_hptr_new_aligned:invalid_positive_alignment
  * __SCENARIO__
- *      *cy_hptr_new_aligned()* returns a valid heap pointer instance aligned to
- *      the nearest rounded up valid boundary when passed an invalid positive
+ *      {{cy_hptr_new_aligned()}} returns a valid heap pointer instance aligned
+ *      to the nearest rounded up valid boundary when passed an invalid positive
  *      alignment
  *
  * __GIVEN__
  *      - a 32-bit / 64-bit platform
- *      - a sample test data structure *test_t*
- *      - *cy_hptr_new_aligned()* is called to create an instance of *test_t*
+ *      - a sample test data structure {{test_t}}
+ *      - {{cy_hptr_new_aligned()}} is called to create an instance of
+ *        {{test_t}}
  *
  * __WHEN__
- *      - *sz* == size of *test_t*
- *      - *aln* == 11
+ *      - {{sz}} == size of {{test_t}}
+ *      - {{aln}} == 11
  *
  * __THEN__
  *      - a non-null heap pointer instance is returned
- *      - the instance has a size at least that of *test_t*
+ *      - the instance has a size at least that of {{test_t}}
  *      - the instance is aligned to 16
  *      - the instance has a reference count of 1
  *      - the instance has all its data bytes set to 0
@@ -370,22 +373,23 @@ Test(cy_hptr_new_aligned, invalid_positive_alignment)
 
 /*                                      %test:cy_hptr_new_aligned:zero_alignment
  * __SCENARIO__
- *      *cy_hptr_new_aligned()* returns a valid heap pointer instance aligned to
- *      the size of `void *` when passed an alignment value of 0
+ *      {{cy_hptr_new_aligned()}} returns a valid heap pointer instance aligned
+ *      to the size of {{void *}} when passed an alignment value of 0
  *
  * __GIVEN__
  *      - a 32-bit / 64-bit platform
- *      - a sample test data structure *test_t*
- *      - *cy_hptr_new_aligned()* is called to create an instance of *test_t*
+ *      - a sample test data structure {{test_t}}
+ *      - {{cy_hptr_new_aligned()}} is called to create an instance of
+ *        {{test_t}}
  *
  * __WHEN__
- *      - *sz* == size of *test_t*
- *      - *aln* == 0
+ *      - {{sz}} == size of {{test_t}}
+ *      - {{aln}} == 0
  *
  * __THEN__
  *      - a non-null heap pointer instance is returned
- *      - the instance has a size at least that of *test_t*
- *      - the instance is aligned to the size of `void *`
+ *      - the instance has a size at least that of {{test_t}}
+ *      - the instance is aligned to the size of {{void *}}
  *      - the instance has a reference count of 1
  *      - the instance has all its data bytes set to 0
  */
@@ -413,22 +417,23 @@ Test(cy_hptr_new_aligned, zero_alignment)
 
 /*                                  %test:cy_hptr_new_aligned:negative_alignment
  * __SCENARIO__
- *      *cy_hptr_new_aligned()* returns a valid heap pointer instance aligned to
- *      the size of `void *` when passed a negative alignment value
+ *      {{cy_hptr_new_aligned()}} returns a valid heap pointer instance aligned
+ *      to the size of {{void *}} when passed a negative alignment value
  *
  * __GIVEN__
  *      - a 32-bit / 64-bit platform
- *      - a sample test data structure *test_t*
- *      - *cy_hptr_new_aligned()* is called to create an instance of *test_t*
+ *      - a sample test data structure {{test_t}}
+ *      - {{cy_hptr_new_aligned()}} is called to create an instance of
+ *        {{test_t}}
  *
  * __WHEN__
- *      - *sz* == size of *test_t*
- *      - *aln* == -3
+ *      - {{sz}} == size of {{test_t}}
+ *      - {{aln}} == -3
  *
  * __THEN__
  *      - a non-null heap pointer instance is returned
- *      - the instance has a size at least that of *test_t*
- *      - the instance is aligned to the size of `void *`
+ *      - the instance has a size at least that of {{test_t}}
+ *      - the instance is aligned to the size of {{void *}}
  *      - the instance has a reference count of 1
  *      - the instance has all its data bytes set to 0
  */
@@ -459,15 +464,15 @@ Test(cy_hptr_new_aligned, negative_alignment)
 
 /*                                                     %test:cy_hptr_copy:single
  * __SCENARIO__
- *      *cy_hptr_copy()* returns a shallow copy of an existing heap pointer
+ *      {{cy_hptr_copy()}} returns a shallow copy of an existing heap pointer
  *      instance
  *
  * __GIVEN__
- *      - an existing heap pointer instance of type *test_t*
- *      - *cy_hptr_copy()* is called to create a shallow copy of the instance
+ *      - an existing heap pointer instance of type {{test_t}}
+ *      - {{cy_hptr_copy()}} is called to create a shallow copy of the instance
  *
  * __WHEN__
- *      - *ctx* == instance of type *test_t*
+ *      - {{ctx}} == instance of type {{test_t}}
  *
  * __THEN__
  *      - a non-null heap pointer instance is returned
@@ -503,15 +508,15 @@ Test(cy_hptr_copy, single)
 
 /*                                             %test:cy_hptr_copy:single_aligned
  * __SCENARIO__
- *      *cy_hptr_copy()* returns a shallow copy of an existing aligned heap
+ *      {{cy_hptr_copy()}} returns a shallow copy of an existing aligned heap
  *      pointer instance
  *
  * __GIVEN__
- *      - an existing heap pointer instance of type *test_t* aligned to 32 bits
- *      - *cy_hptr_copy()* is called to create a shallow copy of the instance
+ *      - an existing 32-bit aligned heap pointer instance of type {{test_t}}
+ *      - {{cy_hptr_copy()}} is called to create a shallow copy of the instance
  *
  * __WHEN__
- *      - *ctx* == instance of type *test_t*
+ *      - {{ctx}} == instance of type {{test_t}}
  *
  * __THEN__
  *      - a non-null heap pointer instance is returned
@@ -551,15 +556,16 @@ Test(cy_hptr_copy, single_aligned)
 
 /*                                                   %test:cy_hptr_copy:multiple
  * __SCENARIO__
- *      *cy_hptr_copy()* creates the same shallow copy of an existing heap
+ *      {{cy_hptr_copy()}} creates the same shallow copy of an existing heap
  *      pointer instance when invoked multiple times
  *
  * __GIVEN__
- *      - an existing heap pointer instance of type *test_t*
- *      - *cy_hptr_copy()* is called to create 3 shallow copies of the instance
+ *      - an existing heap pointer instance of type {{test_t}}
+ *      - {{cy_hptr_copy()}} is called to create 3 shallow copies of the
+ *        instance
  *
  * __WHEN__
- *      - *ctx* == instance of type *test_t*
+ *      - {{ctx}} == instance of type {{test_t}}
  *
  * __THEN__
  *      - each copy is a non-null pointer
@@ -615,15 +621,16 @@ Test(cy_hptr_copy, multiple)
 
 /*                                           %test:cy_hptr_copy:multiple_aligned
  * __SCENARIO__
- *      *cy_hptr_copy()* creates the same shallow copy of an existing aligned
+ *      {{cy_hptr_copy()}} creates the same shallow copy of an existing aligned
  *      heap pointer instance when invoked multiple times
  *
  * __GIVEN__
- *      - an existing heap pointer instance of type *test_t* aligned to 16 bits
- *      - *cy_hptr_copy()* is called to create 2 shallow copies of the instance
+ *      - an existing 16-bit aligned heap pointer instance of type {{test_t}}
+ *      - {{cy_hptr_copy()}} is called to create 2 shallow copies of the
+ *        instance
  *
  * __WHEN__
- *      - *ctx* == instance of type *test_t*
+ *      - {{ctx}} == instance of type {{test_t}}
  *
  * __THEN__
  *      - each copy is a non-null pointer

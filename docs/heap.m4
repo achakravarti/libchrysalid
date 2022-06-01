@@ -100,9 +100,25 @@ __func__(<<<cy_hptr_str>>>, <<<cy_hptr_str>>>)
 
 # TESTS
 
+dnl Tests for cy_hptr_new()
 __test_num_reset__
 __test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_positive_size>>>, __test_num__)
 __test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_zero_size>>>, __test_num__)
+__test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_negative_size>>>, __test_num__)
+
+dnl Tests for cy_hptr_new_aligned()
+__test_num_reset__
+__test__(<<<cy_hptr_new_aligned>>>, <<<cy_hptr_new_aligned_valid_params>>>, __test_num__)
+__test__(<<<cy_hptr_new_aligned>>>, <<<cy_hptr_new_aligned_zero_sz>>>, __test_num__)
+__test__(<<<cy_hptr_new_aligned>>>, <<<cy_hptr_new_aligned_zero_alignment>>>, __test_num__)
+__test__(<<<cy_hptr_new_aligned>>>, <<<cy_hptr_new_aligned_negative_alignment>>>, __test_num__)
+
+dnl Tests for cy_hptr_copy()
+__test_num_reset__
+__test__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy_single>>>, __test_num__)
+__test__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy_single_aligned>>>, __test_num__)
+__test__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy_multiple>>>, __test_num__)
+__test__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy_multiple_aligned>>>, __test_num__)
 
 
 __COPYRIGHT__
