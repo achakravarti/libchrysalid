@@ -136,6 +136,10 @@ __test__(<<<cy_hptr_aligned>>>, <<<cy_hptr_aligned_true_valid>>>, __test_num__)
 __test__(<<<cy_hptr_aligned>>>, <<<cy_hptr_aligned_false_valid>>>, __test_num__)
 __test__(<<<cy_hptr_aligned>>>, <<<cy_hptr_aligned_false_invalid>>>, __test_num__)
 
+dnl Tests for cy_hptr_str()
+__test_num_reset__
+__test__(<<<cy_hptr_str>>>, <<<cy_hptr_str_desc>>>, __test_num__)
+
 
 __COPYRIGHT__
 

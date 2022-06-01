@@ -997,14 +997,14 @@ Test(cy_hptr_aligned, false_invalid)
 
 /*                                                        %test:cy_hptr_str:desc
  * __SCENARIO__
- *      *cy_hptr_str()* returns a string describing a heap pointer instance
+ *      {{cy_hptr_str()}} returns a string describing a heap pointer instance
  *
  * __GIVEN__
  *      - a heap pointer instance
- *      - *cy_hptr_str()* is called on the instance
+ *      - {{cy_hptr_str()}} is called on the instance
  *
  * __WHEN__
- *      - *ctx* == handle to heap pointer instance
+ *      - {{ctx}} == handle to heap pointer instance
  *
  * __THEN__
  *      - a non-empty string is returned
