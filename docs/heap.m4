@@ -102,43 +102,43 @@ __func__(<<<cy_hptr_str>>>, <<<cy_hptr_str>>>)
 
 dnl Tests for cy_hptr_new()
 __test_num_reset__
-__test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_positive_size>>>, __test_num__)
-__test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_zero_size>>>, __test_num__)
-__test__(<<<cy_hptr_new>>>, <<<cy_hptr_new_negative_size>>>, __test_num__)
+__test__(<<<cy_hptr_new>>>, <<<positive_size>>>, __test_num__)
+__test__(<<<cy_hptr_new>>>, <<<zero_size>>>, __test_num__)
+__test__(<<<cy_hptr_new>>>, <<<negative_size>>>, __test_num__)
 
 dnl Tests for cy_hptr_new_aligned()
 __test_num_reset__
-__test__(<<<cy_hptr_new_aligned>>>, <<<cy_hptr_new_aligned_valid_params>>>, __test_num__)
-__test__(<<<cy_hptr_new_aligned>>>, <<<cy_hptr_new_aligned_zero_sz>>>, __test_num__)
-__test__(<<<cy_hptr_new_aligned>>>, <<<cy_hptr_new_aligned_zero_alignment>>>, __test_num__)
-__test__(<<<cy_hptr_new_aligned>>>, <<<cy_hptr_new_aligned_negative_alignment>>>, __test_num__)
+__test__(<<<cy_hptr_new_aligned>>>, <<<valid_params>>>, __test_num__)
+__test__(<<<cy_hptr_new_aligned>>>, <<<zero_sz>>>, __test_num__)
+__test__(<<<cy_hptr_new_aligned>>>, <<<zero_alignment>>>, __test_num__)
+__test__(<<<cy_hptr_new_aligned>>>, <<<negative_alignment>>>, __test_num__)
 
 dnl Tests for cy_hptr_copy()
 __test_num_reset__
-__test__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy_single>>>, __test_num__)
-__test__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy_single_aligned>>>, __test_num__)
-__test__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy_multiple>>>, __test_num__)
-__test__(<<<cy_hptr_copy>>>, <<<cy_hptr_copy_multiple_aligned>>>, __test_num__)
+__test__(<<<cy_hptr_copy>>>, <<<single>>>, __test_num__)
+__test__(<<<cy_hptr_copy>>>, <<<single_aligned>>>, __test_num__)
+__test__(<<<cy_hptr_copy>>>, <<<multiple>>>, __test_num__)
+__test__(<<<cy_hptr_copy>>>, <<<multiple_aligned>>>, __test_num__)
 
 dnl Tests for cy_hptr_free()
 __test_num_reset__
-__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_hnd_to_null_ptr>>>, __test_num__)
-__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_single>>>, __test_num__)
-__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_copies_preserved>>>, __test_num__)
-__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_copies_all_release>>>, __test_num__)
-__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_single_aligned>>>, __test_num__)
-__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_aligned_copies_preserved>>>, __test_num__)
-__test__(<<<cy_hptr_free>>>, <<<cy_hptr_free_aligned_copies_all_release>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<hnd_to_null_ptr>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<single>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<copies_preserved>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<copies_all_release>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<single_aligned>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<copies_preserved>>>, __test_num__)
+__test__(<<<cy_hptr_free>>>, <<<copies_all_release>>>, __test_num__)
 
 dnl Tests for cy_hptr_aligned()
 __test_num_reset__
-__test__(<<<cy_hptr_aligned>>>, <<<cy_hptr_aligned_true_valid>>>, __test_num__)
-__test__(<<<cy_hptr_aligned>>>, <<<cy_hptr_aligned_false_valid>>>, __test_num__)
-__test__(<<<cy_hptr_aligned>>>, <<<cy_hptr_aligned_false_invalid>>>, __test_num__)
+__test__(<<<cy_hptr_aligned>>>, <<<true_valid>>>, __test_num__)
+__test__(<<<cy_hptr_aligned>>>, <<<false_valid>>>, __test_num__)
+__test__(<<<cy_hptr_aligned>>>, <<<false_invalid>>>, __test_num__)
 
 dnl Tests for cy_hptr_str()
 __test_num_reset__
-__test__(<<<cy_hptr_str>>>, <<<cy_hptr_str_desc>>>, __test_num__)
+__test__(<<<cy_hptr_str>>>, <<<desc>>>, __test_num__)
 
 
 __COPYRIGHT__
