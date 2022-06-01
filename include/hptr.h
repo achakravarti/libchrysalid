@@ -20,8 +20,8 @@
  *    without specific prior written permission.
  *
  * 4. Redistributions of any form whatsoever must retain the following
- *    acknowledgment: 'This product includes software developed by "Montão AB"
- *    (https://montao.github.io/).'
+ *    acknowledgment: "This product includes software developed by Abhishek
+ *    Chakravarti (abhishek@taranjali.org)."
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
