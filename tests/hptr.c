@@ -922,16 +922,16 @@ Test(cy_hptr_free, multiple_copies_aligned_all_release)
 
 /*                                              %test:cy_hptr_aligned:true_valid
  * __SCENARIO__
- *      *cy_hptr_aligned()* returns true if a heap pointer instance is aligned
+ *      {{cy_hptr_aligned()}} returns true if a heap pointer instance is aligned
  *      to a given boundary
  *
  * __GIVEN__
  *      - a heap pointer instance aligned to 32 bits
- *      - *cy_hptr_aligned()* is called on the instance
+ *      - {{cy_hptr_aligned()}} is called on the instance
  *
  * __WHEN__
- *      - *ctx* == handle to heap pointer instance
- *      - *aln* == 32
+ *      - {{ctx}} == handle to heap pointer instance
+ *      - {{aln}} == 32
  *
  * __THEN__
  *      - *true* is returned
@@ -947,19 +947,19 @@ Test(cy_hptr_aligned, true_valid)
 
 /*                                             %test:cy_hptr_aligned:false_valid
  * __SCENARIO__
- *      *cy_hptr_aligned()* returns false if a heap pointer instance is not
+ *      {{cy_hptr_aligned()}} returns false if a heap pointer instance is not
  *      aligned to a given boundary
  *
  * __GIVEN__
  *      - a heap pointer instance aligned to 16 bits
- *      - *cy_hptr_aligned()* is called on the instance
+ *      - {{cy_hptr_aligned()}} is called on the instance
  *
  * __WHEN__
- *      - *ctx* == handle to heap pointer instance
- *      - *aln* == 32
+ *      - {{ctx}} == handle to heap pointer instance
+ *      - {{aln}} == 32
  *
  * __THEN__
- *      - *false* is returned
+ *      - {{false}} is returned
  */
 Test(cy_hptr_aligned, false_valid)
 {
@@ -972,19 +972,19 @@ Test(cy_hptr_aligned, false_valid)
 
 /*                                           %test:cy_hptr_aligned:false_invalid
  * __SCENARIO__
- *      *cy_hptr_aligned()* returns false if an invalid alignment boundary is
+ *      {{cy_hptr_aligned()}} returns false if an invalid alignment boundary is
  *      passed
  *
  * __GIVEN__
  *      - a heap pointer instance aligned to 32 bits
- *      - *cy_hptr_aligned()* is called on the instance
+ *      - {{cy_hptr_aligned()}} is called on the instance
  *
  * __WHEN__
- *      - *ctx* == handle to heap pointer instance
- *      - *aln* == 11
+ *      - {{ctx}} == handle to heap pointer instance
+ *      - {{aln}} == 11
  *
  * __THEN__
- *      - *false* is returned
+ *      - {{false}} is returned
  */
 Test(cy_hptr_aligned, false_invalid)
 {
