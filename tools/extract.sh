@@ -17,6 +17,18 @@ extract_section()
                 echo '    ```' > "$EXTRACT_FILE"
                 sed -n "$EXTRACT_PAT" "$2" | cut -c 3- >> "$EXTRACT_FILE"
                 echo '    ```' >> "$EXTRACT_FILE"
+        elif [ "$1" = "GIVEN" ]; then
+                echo "    Given the following pre-conditions:" > "$EXTRACT_FILE"
+                echo "" >> "$EXTRACT_FILE"
+                sed -n "$EXTRACT_PAT" "$2" | cut -c 3- >> "$EXTRACT_FILE"
+        elif [ "$1" = "WHEN" ]; then
+                echo "    When the following occur:" > "$EXTRACT_FILE"
+                echo "" >> "$EXTRACT_FILE"
+                sed -n "$EXTRACT_PAT" "$2" | cut -c 3- >> "$EXTRACT_FILE"
+        elif [ "$1" = "THEN" ]; then
+                echo "    Then the following are expected:" > "$EXTRACT_FILE"
+                echo "" >> "$EXTRACT_FILE"
+                sed -n "$EXTRACT_PAT" "$2" | cut -c 3- >> "$EXTRACT_FILE"
         else
                 sed -n "$EXTRACT_PAT" "$2" | cut -c 3- > "$EXTRACT_FILE"
         fi

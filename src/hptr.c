@@ -500,6 +500,7 @@ void cy_hptr_free(cy_hptr_t *ctx[static 1])
  * __RETURN__
  *      This function returns one of the following {{bool}} values depending on
  *      the result of the alignment computation:
+ *
  *        - {{true}} if {{ctx}} is aligned to {{aln}}
  *        - {{false}} if {{ctx}} is not aligned to {{aln}}
  *
@@ -593,6 +594,7 @@ size_t cy_hptr_sz(const cy_hptr_t ctx[static 1])
  *      heap pointer instance {{ctx}}. This function has been providced mainly
  *      for debugging purporses, and includes the following information about
  *      {{ctx}}:
+ *
  *        - the address of its head segment,
  *        - the address of its body segment,
  *        - its usable size in bytes, and
