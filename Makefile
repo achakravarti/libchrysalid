@@ -23,9 +23,9 @@ MAN_NS=libchrysalid
 tests: build/test
 	build/test
 
-build/test: src/hptr.c tests/hptr.c
+build/test: src/hptr.c tests/hptr.c tests/utf8.c
 	mkdir -p build
-	clang src/hptr.c tests/hptr.c -lcriterion -o build/test
+	clang src/hptr.c tests/hptr.c tests/utf8.c -lcriterion -o build/test
 
 man:
 	tools/mandoc.sh
