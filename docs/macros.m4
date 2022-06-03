@@ -38,39 +38,39 @@ define(`__SWITCHMX__',
 ifdef(`MAN', $1, $2))dnl
 
 
-dnl __NAME__ - macro expanding to the name section heading
+dnl __NAME__ - macro expanding to the name subsection heading
 
 ifdef(`MAN',
-`define(__NAME__, `# NAME')',
+`define(__NAME__, `*NAME*')',
 `define(__NAME__, `## Name {sec:$1:name}')')dnl
 
 
-dnl __SYNOPSIS__ - macro expanding to the synopsis section heading
+dnl __SYNOPSIS__ - macro expanding to the synopsis subsection heading
 
 ifdef(`MAN',
-`define(__SYNOPSIS__, `# SYNOPSIS')',
+`define(__SYNOPSIS__, `*SYNOPSIS*$2')',
 `define(__SYNOPSIS__, `## Synopsis {sec:$1:synopsis}')')dnl
 
 
-dnl __DESCRIPTION__ - macro expanding to the Description section heading
+dnl __DESCRIPTION__ - macro expanding to the Description subsection heading
 
 ifdef(`MAN',
-`define(__DESCRIPTION__, `# DESCRIPTION')',
+`define(__DESCRIPTION__, `*DESCRIPTION*')',
 `define(__DESCRIPTION__, `## Description {sec:$1:description}')')dnl
 
 
-dnl __RETURN__ - macro expanding to the Return Value section heading
+dnl __RETURN__ - macro expanding to the Return Value subsection heading
 
 ifdef(`MAN',
-`define(__RETURN__, `# RETURN VALUE')',
+`define(__RETURN__, `*RETURN VALUE*')',
 `define(__RETURN__, `## Return Value {sec:$1:return-value}')')dnl
 
 
-dnl __FILES__ - macro expanding to the Files section heading
+dnl _FILES_ - macro expanding to the Files section heading
 
 ifdef(`MAN',
-`define(__FILES__, `# FILES')',
-`define(__FILES__, `## Files {sec:$1:files}')')dnl
+`define(_FILES_, `# FILES')',
+`define(_FILES_, `## Files {sec:$1:files}')')dnl
 
 
 dnl __EXAMPLES__ - macro expanding to the Examples section heading
@@ -90,7 +90,7 @@ ifdef(`MAN',
 dnl __NOTES__ - macro expanding to the Notes section heading
 
 ifdef(`MAN',
-`define(__NOTES__, `# NOTES')',
+`define(__NOTES__, `*NOTES*')',
 `define(__NOTES__, `## Notes {sec:$1:notes}')')dnl
 
 
@@ -99,6 +99,34 @@ dnl __SEEALSO__ - macro expanding to the See Also section heading
 ifdef(`MAN',
 `define(__SEEALSO__, `# SEE ALSO')',
 `define(__SEEALSO__, `## See Also {sec:$1:see-also}')')dnl
+
+
+dnl __SCENARIO__ - macro expanding to the Scenario section heading
+
+ifdef(`MAN',
+`define(__SCENARIO__, `# SCENARIO')',
+`define(__SCENARIO__, `## Scenario {sec:$1:scenario}')')dnl
+
+
+dnl __GIVEN__ - macro expanding to the Given section heading
+
+ifdef(`MAN',
+`define(__GIVEN__, `# GIVEN')',
+`define(__GIVEN__, `## Given {sec:$1:given}')')dnl
+
+
+dnl __WHEN__ - macro expanding to the When section heading
+
+ifdef(`MAN',
+`define(__WHEN__, `# WHEN')',
+`define(__WHEN__, `## When {sec:$1:when}')')dnl
+
+
+dnl __THEN__ - macro expanding to the Then section heading
+
+ifdef(`MAN',
+`define(__THEN__, `# THEN')',
+`define(__THEN__, `## Then {sec:$1:then}')')dnl
 
 
 dnl Override default quoting
@@ -139,3 +167,170 @@ ifdef(<<<MAN>>>,
 <<<# CITATIONS>>>)>>>,
 <<<define(__CITATIONS__, <<<>>>)>>>)dnl
 
+
+dnl __type__
+
+define(<<<__type_man__>>>, <<<
+## Type $1
+
+sinclude(<<<type_$2.name.head>>>)
+: sinclude(<<<type_$2.name>>>)
+
+sinclude(<<<type_$2.synopsis.head>>>)
+: sinclude(<<<type_$2.synopsis>>>)
+
+sinclude(<<<type_$2.description.head>>>)
+: sinclude(<<<type_$2.description>>>)
+
+sinclude(<<<type_$2.notes.head>>>)
+: sinclude(<<<type_$2.notes>>>)
+>>>)dnl
+
+define(<<<__type_pdf__>>>, <<<
+## TODO FOR PDF: $1
+>>>)dnl
+
+define(<<<__type_html__>>>, <<<
+## TODO FOR HTML: $1
+>>>)dnl
+
+ifdef(<<<MAN>>>, <<<define(__type__, <<<__type_man__($1, $2)>>>)>>>,
+<<<ifdef(<<<PDF>>>, <<<define(__type__, <<<__type_pdf__($1, $2)>>>)>>>,
+<<<define(__type__, <<<__type_html__($1, $2)>>>)>>>)>>>)dnl
+
+
+dnl __const__
+
+define(<<<__const_man__>>>, <<<
+## Constant $1
+
+sinclude(<<<const_$2.name.head>>>)
+: sinclude(<<<const_$2.name>>>)
+
+sinclude(<<<const_$2.synopsis.head>>>)
+: sinclude(<<<const_$2.synopsis>>>)
+
+sinclude(<<<const_$2.description.head>>>)
+: sinclude(<<<const_$2.description>>>)
+
+sinclude(<<<const_$2.notes.head>>>)
+: sinclude(<<<const_$2.notes>>>)
+>>>)dnl
+
+define(<<<__const_pdf__>>>, <<<
+## TODO FOR PDF: $1
+>>>)dnl
+
+define(<<<__const_html__>>>, <<<
+## TODO FOR HTML: $1
+>>>)dnl
+
+ifdef(<<<MAN>>>, <<<define(__const__, <<<__const_man__($1, $2)>>>)>>>,
+<<<ifdef(<<<PDF>>>, <<<define(__const__, <<<__const_pdf__($1, $2)>>>)>>>,
+<<<define(__const__, <<<__const_html__($1, $2)>>>)>>>)>>>)dnl
+
+
+dnl __macro__
+
+define(<<<__macro_man__>>>, <<<
+## Macro $1()
+
+sinclude(<<<macro_$2.name.head>>>)
+: sinclude(<<<macro_$2.name>>>)
+
+sinclude(<<<macro_$2.synopsis.head>>>)
+: sinclude(<<<macro_$2.synopsis>>>)
+
+sinclude(<<<macro_$2.description.head>>>)
+: sinclude(<<<macro_$2.description>>>)
+
+sinclude(<<<macro_$2.notes.head>>>)
+: sinclude(<<<macro_$2.notes>>>)
+>>>)dnl
+
+define(<<<__macro_pdf__>>>, <<<
+## TODO FOR PDF: $1
+>>>)dnl
+
+define(<<<__macro_html__>>>, <<<
+## TODO FOR HTML: $1
+>>>)dnl
+
+ifdef(<<<MAN>>>, <<<define(__macro__, <<<__macro_man__($1, $2)>>>)>>>,
+<<<ifdef(<<<PDF>>>, <<<define(__macro__, <<<__macro_pdf__($1, $2)>>>)>>>,
+<<<define(__macro__, <<<__macro_html__($1, $2)>>>)>>>)>>>)dnl
+
+
+dnl __func__
+
+define(<<<__func_man__>>>, <<<
+## Function $1()
+
+sinclude(<<<func_$2.name.head>>>)
+: sinclude(<<<func_$2.name>>>)
+
+sinclude(<<<func_$2.synopsis.head>>>)
+: sinclude(<<<func_$2.synopsis>>>)
+
+sinclude(<<<func_$2.description.head>>>)
+: sinclude(<<<func_$2.description>>>)
+
+sinclude(<<<func_$2.return.head>>>)
+: sinclude(<<<func_$2.return>>>)
+
+sinclude(<<<func_$2.notes.head>>>)
+: sinclude(<<<func_$2.notes>>>)
+>>>)dnl
+
+define(<<<__func_pdf__>>>, <<<
+## TODO FOR PDF: $1
+>>>)dnl
+
+define(<<<__func_html__>>>, <<<
+## TODO FOR HTML: $1
+>>>)dnl
+
+ifdef(<<<MAN>>>, <<<define(__func__, <<<__func_man__($1, $2)>>>)>>>,
+<<<ifdef(<<<PDF>>>, <<<define(__func__, <<<__func_pdf__($1, $2)>>>)>>>,
+<<<define(__func__, <<<__func_html__($1, $2)>>>)>>>)>>>)dnl
+
+
+dnl https://unix.stackexchange.com/questions/280532/
+define(<<<__test_counter__>>>, <<<0>>>)dnl
+
+define(<<<__test_num__>>>,
+<<<define(<<<__test_counter__>>>,
+eval(__test_counter__ + 1)) __test_counter__>>>)dnl
+
+define(<<<__test_num_reset__>>>,
+<<<define(<<<__test_counter__>>>, <<<0>>>)>>>)dnl
+
+dnl __test__
+
+define(<<<__test_man__>>>, <<<
+## Test #$3 for $1()
+
+sinclude(<<<test_$1_$2.scenario.head>>>)
+: sinclude(<<<test_$1_$2.scenario>>>)
+
+sinclude(<<<test_$1_$2.given.head>>>)
+: sinclude(<<<test_$1_$2.given>>>)
+
+sinclude(<<<test_$1_$2.when.head>>>)
+: sinclude(<<<test_$1_$2.when>>>)
+
+sinclude(<<<test_$1_$2.then.head>>>)
+: sinclude(<<<test_$1_$2.then>>>)
+>>>)dnl
+
+define(<<<__test_pdf__>>>, <<<
+## TODO FOR PDF: $1
+>>>)dnl
+
+define(<<<__test_html__>>>, <<<
+## TODO FOR HTML: $1
+>>>)dnl
+
+ifdef(<<<MAN>>>, <<<define(__test__, <<<__test_man__($1, $2, $3)>>>)>>>,
+<<<ifdef(<<<PDF>>>, <<<define(__test__, <<<__test_pdf__($1, $2, $3)>>>)>>>,
+<<<define(__test__, <<<__test_html__($1, $2, $3)>>>)>>>)>>>)dnl

@@ -27,6 +27,9 @@ build/test: src/hptr.c tests/hptr.c
 	mkdir -p build
 	clang src/hptr.c tests/hptr.c -lcriterion -o build/test
 
+man:
+	tools/mandoc.sh
+	tools/install-man.sh
 
 docs: $(MAN_PG)
 
