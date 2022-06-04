@@ -39,17 +39,19 @@
 Test(cy_utf8_new, empty)
 {
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+
       cr_expect(s);
+      cr_expect(cy_utf8_empty(s));
 
-      cr_expect(!*s);
       cr_expect(cy_utf8_eq(s, ""));
-
       cr_expect(!cy_utf8_eq(s, SAMPLE_EN_1));
       cr_expect(!cy_utf8_eq(s, SAMPLE_EL_1));
 
       cr_expect(!cy_utf8_len(s));
+      cr_expect(cy_utf8_sz(s) >= 1);
 
       cr_expect(cy_utf8_refc(s) == 1);
+
 }
 
 
@@ -66,16 +68,17 @@ Test(cy_utf8_new, empty)
 Test(cy_utf8_new, en)
 {
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+
       cr_expect(s);
+      cr_expect(!cy_utf8_empty(s));
 
-      cr_expect(*s);
       cr_expect(cy_utf8_eq(s, SAMPLE_EN_1));
-
       cr_expect(!cy_utf8_eq(s, ""));
       cr_expect(!cy_utf8_eq(s, SAMPLE_EN_2));
       cr_expect(!cy_utf8_eq(s, SAMPLE_EL_1));
 
       cr_expect(cy_utf8_len(s) == strlen(SAMPLE_EN_1));
+      cr_expect(cy_utf8_sz(s) >= strlen(SAMPLE_EN_1) + 1);
 
       cr_expect(cy_utf8_refc(s) == 1);
 }
@@ -94,16 +97,17 @@ Test(cy_utf8_new, en)
 Test(cy_utf8_new, el)
 {
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+
       cr_expect(s);
+      cr_expect(!cy_utf8_empty(s));
 
-      cr_expect(*s);
       cr_expect(cy_utf8_eq(s, SAMPLE_EL_1));
-
       cr_expect(!cy_utf8_eq(s, ""));
       cr_expect(!cy_utf8_eq(s, SAMPLE_EL_2));
       cr_expect(!cy_utf8_eq(s, SAMPLE_EN_1));
 
       cr_expect(cy_utf8_len(s) == 52);
+      cr_expect(cy_utf8_sz(s) >= 53);
 
       cr_expect(cy_utf8_refc(s) == 1);
 }

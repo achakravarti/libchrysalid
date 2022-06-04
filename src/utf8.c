@@ -126,6 +126,26 @@ cy_utf8_cmp(const cy_utf8_t ctx[static 1], const cy_utf8_t cmp[static 1])
 
 /* Accessor functions */
 
+
+/*
+ * __NAME__
+ *
+ * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *
+ * __DESCRIPTION__
+ *
+ * __RETURN__
+ *
+ * __NOTES__
+ */
+bool
+cy_utf8_empty(const cy_utf8_t ctx[static 1])
+{
+        return !*ctx;
+}
+
+
 /*
  * __NAME__
  *
@@ -161,6 +181,25 @@ size_t
 cy_utf8_refc(const cy_utf8_t ctx[static 1])
 {
         return cy_hptr_refc((const cy_hptr_t *) ctx);
+}
+
+
+/*
+ * __NAME__
+ *
+ * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *
+ * __DESCRIPTION__
+ *
+ * __RETURN__
+ *
+ * __NOTES__
+ */
+size_t
+cy_utf8_sz(const cy_utf8_t ctx[static 1])
+{
+        return cy_hptr_sz((const cy_hptr_t *) ctx);
 }
 
 

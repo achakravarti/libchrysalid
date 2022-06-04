@@ -33,8 +33,10 @@ extern CY_HOT enum cy_cmp   cy_utf8_cmp(const cy_utf8_t[static 1],
 
 
 /* Prototypes for accessor functions  */
+extern bool     cy_utf8_empty(const cy_utf8_t[static 1]);
 extern size_t   cy_utf8_len(const cy_utf8_t[static 1]);
 extern size_t   cy_utf8_refc(const cy_utf8_t[static 1]);
+extern size_t   cy_utf8_sz(const cy_utf8_t[static 1]);
 extern bool     cy_utf8_match(const cy_utf8_t[static 1], const char[static 1]);
 
 
