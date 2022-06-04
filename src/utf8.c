@@ -12,6 +12,18 @@
 /* Factory functions  */
 
 
+/*
+ * __NAME__
+ *
+ * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *
+ * __DESCRIPTION__
+ *
+ * __RETURN__
+ *
+ * __NOTES__
+ */
 cy_utf8_t *
 cy_utf8_new(const char src[static 1])
 {
@@ -25,6 +37,18 @@ cy_utf8_new(const char src[static 1])
 }
 
 
+/*
+ * __NAME__
+ *
+ * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *
+ * __DESCRIPTION__
+ *
+ * __RETURN__
+ *
+ * __NOTES__
+ */
 cy_utf8_t *
 cy_utf8_copy(cy_utf8_t ctx[static 1])
 {
@@ -32,6 +56,18 @@ cy_utf8_copy(cy_utf8_t ctx[static 1])
 }
 
 
+/*
+ * __NAME__
+ *
+ * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *
+ * __DESCRIPTION__
+ *
+ * __RETURN__
+ *
+ * __NOTES__
+ */
 cy_utf8_t *
 cy_utf8_clone(const cy_utf8_t ctx[static 1])
 {
@@ -39,6 +75,18 @@ cy_utf8_clone(const cy_utf8_t ctx[static 1])
 }
 
 
+/*
+ * __NAME__
+ *
+ * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *
+ * __DESCRIPTION__
+ *
+ * __RETURN__
+ *
+ * __NOTES__
+ */
 void
 cy_utf8_free(cy_utf8_t *ctx[static 1])
 {
@@ -49,6 +97,18 @@ cy_utf8_free(cy_utf8_t *ctx[static 1])
 /* Comparator function */
 
 
+/*
+ * __NAME__
+ *
+ * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *
+ * __DESCRIPTION__
+ *
+ * __RETURN__
+ *
+ * __NOTES__
+ */
 enum cy_cmp
 cy_utf8_cmp(const cy_utf8_t ctx[static 1], const cy_utf8_t cmp[static 1])
 {
@@ -66,6 +126,18 @@ cy_utf8_cmp(const cy_utf8_t ctx[static 1], const cy_utf8_t cmp[static 1])
 
 /* Accessor functions */
 
+/*
+ * __NAME__
+ *
+ * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *
+ * __DESCRIPTION__
+ *
+ * __RETURN__
+ *
+ * __NOTES__
+ */
 size_t
 cy_utf8_len(const cy_utf8_t ctx[static 1])
 {
@@ -73,6 +145,18 @@ cy_utf8_len(const cy_utf8_t ctx[static 1])
 }
 
 
+/*
+ * __NAME__
+ *
+ * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *
+ * __DESCRIPTION__
+ *
+ * __RETURN__
+ *
+ * __NOTES__
+ */
 size_t
 cy_utf8_refc(const cy_utf8_t ctx[static 1])
 {
@@ -80,6 +164,18 @@ cy_utf8_refc(const cy_utf8_t ctx[static 1])
 }
 
 
+/*
+ * __NAME__
+ *
+ * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *
+ * __DESCRIPTION__
+ *
+ * __RETURN__
+ *
+ * __NOTES__
+ */
 bool
 cy_utf8_match(const cy_utf8_t ctx[static 1], const char regex[static 1])
 {
@@ -88,8 +184,8 @@ cy_utf8_match(const cy_utf8_t ctx[static 1], const char regex[static 1])
 
         int eno;
         PCRE2_SIZE eoff;
-        pcre2_code *re = pcre2_compile(pat, PCRE2_ZERO_TERMINATED, 0, &eno,
-                                       &eoff, NULL);
+        pcre2_code *re = pcre2_compile(pat, PCRE2_ZERO_TERMINATED, PCRE2_UTF,
+                                       &eno, &eoff, NULL);
 
         if (CY_UNLIKELY(!re)) {
                PCRE2_UCHAR bfr[256];
