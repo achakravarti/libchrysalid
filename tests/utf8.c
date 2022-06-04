@@ -1,3 +1,4 @@
+#include "../include/utf8.h"
 
 /* Criterion testing framework */
 #include <criterion/criterion.h>
@@ -24,21 +25,6 @@
 /* Tests for cy_utf8_new() */
 
 
-/*                                                        %test:cy_utf8_new:null
- * __SCENARIO__
- *      {{cy_utf8_new()}} returns a valid empty string if passed null
- *
- * __GIVEN__
- *
- * __WHEN__
- *
- * __THEN__
- */
-Test(cy_utf8_new, null)
-{
-}
-
-
 /*                                                       %test:cy_utf8_new:empty
  * __SCENARIO__
  *      {{cy_utf8_new()}} returns a valid empty string if passed an empty
@@ -52,6 +38,18 @@ Test(cy_utf8_new, null)
  */
 Test(cy_utf8_new, empty)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+      cr_expect(s);
+
+      cr_expect(!*s);
+      cr_expect(cy_utf8_eq(s, ""));
+
+      cr_expect(!cy_utf8_eq(s, SAMPLE_EN_1));
+      cr_expect(!cy_utf8_eq(s, SAMPLE_EL_1));
+
+      cr_expect(!cy_utf8_len(s));
+
+      cr_expect(cy_utf8_refc(s) == 1);
 }
 
 
@@ -67,6 +65,19 @@ Test(cy_utf8_new, empty)
  */
 Test(cy_utf8_new, en)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+      cr_expect(s);
+
+      cr_expect(*s);
+      cr_expect(cy_utf8_eq(s, SAMPLE_EN_1));
+
+      cr_expect(!cy_utf8_eq(s, ""));
+      cr_expect(!cy_utf8_eq(s, SAMPLE_EN_2));
+      cr_expect(!cy_utf8_eq(s, SAMPLE_EL_1));
+
+      cr_expect(cy_utf8_len(s) == strlen(SAMPLE_EN_1));
+
+      cr_expect(cy_utf8_refc(s) == 1);
 }
 
 
@@ -82,6 +93,19 @@ Test(cy_utf8_new, en)
  */
 Test(cy_utf8_new, el)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+      cr_expect(s);
+
+      cr_expect(*s);
+      cr_expect(cy_utf8_eq(s, SAMPLE_EL_1));
+
+      cr_expect(!cy_utf8_eq(s, ""));
+      cr_expect(!cy_utf8_eq(s, SAMPLE_EL_2));
+      cr_expect(!cy_utf8_eq(s, SAMPLE_EN_1));
+
+      cr_expect(cy_utf8_len(s) == 52);
+
+      cr_expect(cy_utf8_refc(s) == 1);
 }
 
 

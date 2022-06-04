@@ -24,7 +24,7 @@ typedef char cy_utf8_t;
 extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_new(const char[static 1]);
 extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_copy(cy_utf8_t[static 1]);
 extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_clone(const cy_utf8_t[static 1]);
-extern CY_HOT void                   cy_utf8_free(cy_utf8_t *[static 1]);
+extern CY_HOT void                   cy_utf8_t_free(cy_utf8_t *[static 1]);
 
 
 /* Prototype for comparator function  */
