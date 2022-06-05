@@ -13,6 +13,11 @@
 #define SAMPLE_EN_2     "Jackie will budget for the most expensive" \
                         " zoology equipment."
 
+#define LEN_EN_1    strlen(SAMPLE_EN_1)
+
+#define LEN_EN_2    strlen(SAMPLE_EN_2)
+
+
 /* Greek sample strings */
 
 
@@ -20,6 +25,10 @@
 
 #define SAMPLE_EL_2     "Ο καλύμνιος σφουγγαράς ψιθύρισε πως θα βουτήξει" \
                         " χωρίς να διστάζει."
+
+#define LEN_EL_1    52
+
+#define LEN_EL_2    66
 
 
 /* Tests for cy_utf8_new() */
@@ -77,8 +86,8 @@ Test(cy_utf8_new, en)
       cr_expect(!cy_utf8_eq(s, SAMPLE_EN_2));
       cr_expect(!cy_utf8_eq(s, SAMPLE_EL_1));
 
-      cr_expect(cy_utf8_len(s) == strlen(SAMPLE_EN_1));
-      cr_expect(cy_utf8_sz(s) >= strlen(SAMPLE_EN_1) + 1);
+      cr_expect(cy_utf8_len(s) == LEN_EN_1);
+      cr_expect(cy_utf8_sz(s) >= LEN_EN_1 + 1);
 
       cr_expect(cy_utf8_refc(s) == 1);
 }
@@ -106,8 +115,8 @@ Test(cy_utf8_new, el)
       cr_expect(!cy_utf8_eq(s, SAMPLE_EL_2));
       cr_expect(!cy_utf8_eq(s, SAMPLE_EN_1));
 
-      cr_expect(cy_utf8_len(s) == 52);
-      cr_expect(cy_utf8_sz(s) >= 53);
+      cr_expect(cy_utf8_len(s) == LEN_EL_1);
+      cr_expect(cy_utf8_sz(s) >= LEN_EL_1 + 1);
 
       cr_expect(cy_utf8_refc(s) == 1);
 }
@@ -128,6 +137,22 @@ Test(cy_utf8_new, el)
  */
 Test(cy_utf8_copy, single_empty)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+
+      cr_expect(s == s1);
+      cr_expect(s1);
+      cr_expect(cy_utf8_empty(s1));
+
+      cr_expect(cy_utf8_eq(s1, ""));
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+
+      cr_expect(!cy_utf8_len(s1));
+      cr_expect(cy_utf8_sz(s1) >= 1);
+
+      cr_expect(cy_utf8_refc(s) == 2);
+      cr_expect(cy_utf8_refc(s1) == 2);
 }
 
 
@@ -143,6 +168,22 @@ Test(cy_utf8_copy, single_empty)
  */
 Test(cy_utf8_copy, single_en)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+
+      cr_expect(s == s1);
+      cr_expect(s1);
+      cr_expect(!cy_utf8_empty(s1));
+
+      cr_expect(cy_utf8_eq(s1, SAMPLE_EN_1));
+      cr_expect(!cy_utf8_eq(s1, ""));
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+
+      cr_expect(cy_utf8_len(s1) == LEN_EN_1);
+      cr_expect(cy_utf8_sz(s1) >= LEN_EN_1 + 1);
+
+      cr_expect(cy_utf8_refc(s) == 2);
+      cr_expect(cy_utf8_refc(s1) == 2);
 }
 
 
@@ -158,6 +199,22 @@ Test(cy_utf8_copy, single_en)
  */
 Test(cy_utf8_copy, single_el)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+
+      cr_expect(s == s1);
+      cr_expect(s1);
+      cr_expect(!cy_utf8_empty(s1));
+
+      cr_expect(cy_utf8_eq(s1, SAMPLE_EL_1));
+      cr_expect(!cy_utf8_eq(s1, ""));
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+
+      cr_expect(cy_utf8_len(s1) == LEN_EL_1);
+      cr_expect(cy_utf8_sz(s1) >= LEN_EL_1 + 1);
+
+      cr_expect(cy_utf8_refc(s) == 2);
+      cr_expect(cy_utf8_refc(s1) == 2);
 }
 
 
@@ -173,6 +230,37 @@ Test(cy_utf8_copy, single_el)
  */
 Test(cy_utf8_copy, multiple_empty)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+      CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s);
+
+      cr_expect(s == s1);
+      cr_expect(s1 == s2);
+
+      cr_expect(s1);
+      cr_expect(s2);
+
+      cr_expect(cy_utf8_empty(s1));
+      cr_expect(cy_utf8_empty(s2));
+
+      cr_expect(cy_utf8_eq(s1, ""));
+      cr_expect(cy_utf8_eq(s2, ""));
+
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+      cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_2));
+
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_2));
+
+      cr_expect(!cy_utf8_len(s1));
+      cr_expect(!cy_utf8_len(s2));
+
+      cr_expect(cy_utf8_sz(s1) >= 1);
+      cr_expect(cy_utf8_sz(s2) >= 1);
+
+      cr_expect(cy_utf8_refc(s) == 3);
+      cr_expect(cy_utf8_refc(s1) == 3);
+      cr_expect(cy_utf8_refc(s2) == 3);
 }
 
 
@@ -188,6 +276,40 @@ Test(cy_utf8_copy, multiple_empty)
  */
 Test(cy_utf8_copy, multiple_en)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_2);
+      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+      CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s1);
+
+      cr_expect(s == s1);
+      cr_expect(s1 == s2);
+
+      cr_expect(s1);
+      cr_expect(s2);
+
+      cr_expect(!cy_utf8_empty(s1));
+      cr_expect(!cy_utf8_empty(s2));
+
+      cr_expect(cy_utf8_eq(s1, SAMPLE_EN_2));
+      cr_expect(cy_utf8_eq(s2, SAMPLE_EN_2));
+
+      cr_expect(!cy_utf8_eq(s1, ""));
+      cr_expect(!cy_utf8_eq(s2, ""));
+
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+      cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_1));
+
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+
+      cr_expect(cy_utf8_len(s1) == LEN_EN_2);
+      cr_expect(cy_utf8_len(s2) == LEN_EN_2);
+
+      cr_expect(cy_utf8_sz(s1) >= LEN_EN_2 + 1);
+      cr_expect(cy_utf8_sz(s2) >= LEN_EN_2 + 1);
+
+      cr_expect(cy_utf8_refc(s) == 3);
+      cr_expect(cy_utf8_refc(s1) == 3);
+      cr_expect(cy_utf8_refc(s2) == 3);
 }
 
 
@@ -203,6 +325,40 @@ Test(cy_utf8_copy, multiple_en)
  */
 Test(cy_utf8_copy, multiple_el)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_2);
+      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+      CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s1);
+
+      cr_expect(s == s1);
+      cr_expect(s1 == s2);
+
+      cr_expect(s1);
+      cr_expect(s2);
+
+      cr_expect(!cy_utf8_empty(s1));
+      cr_expect(!cy_utf8_empty(s2));
+
+      cr_expect(cy_utf8_eq(s1, SAMPLE_EL_2));
+      cr_expect(cy_utf8_eq(s2, SAMPLE_EL_2));
+
+      cr_expect(!cy_utf8_eq(s1, ""));
+      cr_expect(!cy_utf8_eq(s2, ""));
+
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+      cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_1));
+
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+
+      cr_expect(cy_utf8_len(s1) == LEN_EL_2);
+      cr_expect(cy_utf8_len(s2) == LEN_EL_2);
+
+      cr_expect(cy_utf8_sz(s1) >= LEN_EL_2 + 1);
+      cr_expect(cy_utf8_sz(s2) >= LEN_EL_2 + 1);
+
+      cr_expect(cy_utf8_refc(s) == 3);
+      cr_expect(cy_utf8_refc(s1) == 3);
+      cr_expect(cy_utf8_refc(s2) == 3);
 }
 
 

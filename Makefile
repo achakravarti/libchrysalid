@@ -23,7 +23,7 @@ MAN_NS=libchrysalid
 tests: build/test
 	build/test
 
-build/test: src/hptr.c tests/hptr.c tests/utf8.c
+build/test: src/hptr.c src/utf8.c tests/hptr.c tests/utf8.c
 	mkdir -p build
 	clang src/hptr.c src/utf8.c tests/hptr.c tests/utf8.c -lpcre2-8 -lcriterion -o build/test
 
