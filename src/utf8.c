@@ -244,7 +244,7 @@ cy_utf8_match(const cy_utf8_t ctx[static 1], const char regex[static 1])
         pcre2_match_data_free(m);
         pcre2_code_free(re);
 
-        if (!rc)
+        if (rc > 0)
                 return true;
 
         if (rc == PCRE2_ERROR_NOMATCH)

@@ -35,7 +35,7 @@
 #define REGEX_EN    "^[a-zA-Z\\s.]*$"
 
 
-#define REGEX_EL    "^[α-ωΑ-Ω\\s]*$"
+#define REGEX_EL    "^[\\p{Greek}\\s.()]*$"
 
 
 #define REGEX_EMAIL     "^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6})*$"
@@ -1156,6 +1156,10 @@ Test(cy_utf8_match, en_nomatch)
  */
 Test(cy_utf8_match, el_empty)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+      bool m = cy_utf8_match(s, "");
+
+      cr_assert(!m);
 }
 
 
@@ -1171,6 +1175,10 @@ Test(cy_utf8_match, el_empty)
  */
 Test(cy_utf8_match, el_match)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+      bool m = cy_utf8_match(s, REGEX_EL);
+
+      cr_assert(m);
 }
 
 
@@ -1186,4 +1194,8 @@ Test(cy_utf8_match, el_match)
  */
 Test(cy_utf8_match, el_nomatch)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+      bool m = cy_utf8_match(s, REGEX_EMAIL);
+
+      cr_assert(!m);
 }
