@@ -137,7 +137,7 @@ extern "C" {
  * Ref: libchrysalid/docs/man/C_AUTO.3.md
  */
 #if (defined __GNUC__ || defined __clang__)
-#       define CY_AUTO(_T_) __attribute__((cleanup(_T_##_free))) _T_
+#       define CY_AUTO(_T_) __attribute__((cleanup(_T_##_free__))) _T_
 #else
 #       define CY_AUTO
 #       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
