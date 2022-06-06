@@ -88,9 +88,9 @@ cy_utf8_clone(const cy_utf8_t ctx[static 1])
  * __NOTES__
  */
 void
-cy_utf8_t_free(cy_utf8_t *ctx[static 1])
+cy_utf8_t_free__(cy_utf8_t *ctx[static 1])
 {
-        cy_hptr_free((cy_hptr_t **) &ctx);
+        cy_hptr_free((cy_hptr_t **) ctx);
 }
 
 

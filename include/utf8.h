@@ -24,7 +24,7 @@ typedef char cy_utf8_t;
 extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_new(const char[static 1]);
 extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_copy(cy_utf8_t[static 1]);
 extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_clone(const cy_utf8_t[static 1]);
-extern CY_HOT void                   cy_utf8_t_free(cy_utf8_t *[static 1]);
+extern CY_HOT void                   cy_utf8_t_free__(cy_utf8_t *[static 1]);
 
 
 /* Prototype for comparator function  */
@@ -38,6 +38,9 @@ extern size_t   cy_utf8_len(const cy_utf8_t[static 1]);
 extern size_t   cy_utf8_refc(const cy_utf8_t[static 1]);
 extern size_t   cy_utf8_sz(const cy_utf8_t[static 1]);
 extern bool     cy_utf8_match(const cy_utf8_t[static 1], const char[static 1]);
+
+
+#define cy_utf8_free(ctx)       cy_utf8_t_free__(ctx)
 
 
 #define cy_utf8_lt(lhs, rhs)    (cy_utf8_cmp(lhs, rhs) == CY_CMP_LT)
