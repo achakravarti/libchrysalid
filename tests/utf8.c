@@ -618,6 +618,8 @@ Test(cy_utf8_clone, multiple_el)
  */
 Test(cy_utf8_free, null)
 {
+      cy_utf8_t *s = NULL;
+      cy_utf8_free(&s);
 }
 
 
@@ -633,6 +635,9 @@ Test(cy_utf8_free, null)
  */
 Test(cy_utf8_free, single_empty)
 {
+      cy_utf8_t *s = cy_utf8_new("");
+      cy_utf8_free(&s);
+      cr_expect(!s);
 }
 
 
