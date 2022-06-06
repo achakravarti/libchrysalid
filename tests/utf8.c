@@ -28,7 +28,17 @@
 
 #define LEN_EL_1    52
 
+
 #define LEN_EL_2    66
+
+
+#define REGEX_EN    "^[a-zA-Z\\s.]*$"
+
+
+#define REGEX_EL    "^[α-ωΑ-Ω\\s]*$"
+
+
+#define REGEX_EMAIL     "^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6})*$"
 
 
 /* Tests for cy_utf8_new() */
@@ -1051,6 +1061,10 @@ Test(cy_utf8_free, multiple_clone_el)
  */
 Test(cy_utf8_match, empty_empty)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+      bool m = cy_utf8_match(s, "");
+
+      cr_assert(!m);
 }
 
 
@@ -1066,6 +1080,10 @@ Test(cy_utf8_match, empty_empty)
  */
 Test(cy_utf8_match, empty_nonempty)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+      bool m = cy_utf8_match(s, REGEX_EMAIL);
+
+      cr_assert(!m);
 }
 
 
@@ -1081,6 +1099,10 @@ Test(cy_utf8_match, empty_nonempty)
  */
 Test(cy_utf8_match, en_empty)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+      bool m = cy_utf8_match(s, "");
+
+      cr_assert(!m);
 }
 
 
@@ -1096,6 +1118,10 @@ Test(cy_utf8_match, en_empty)
  */
 Test(cy_utf8_match, en_match)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+      bool m = cy_utf8_match(s, REGEX_EN);
+
+      cr_assert(m);
 }
 
 
@@ -1111,6 +1137,10 @@ Test(cy_utf8_match, en_match)
  */
 Test(cy_utf8_match, en_nomatch)
 {
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+      bool m = cy_utf8_match(s, REGEX_EMAIL);
+
+      cr_assert(!m);
 }
 
 

@@ -218,6 +218,9 @@ cy_utf8_sz(const cy_utf8_t ctx[static 1])
 bool
 cy_utf8_match(const cy_utf8_t ctx[static 1], const char regex[static 1])
 {
+        if (CY_UNLIKELY(!*ctx || !*regex))
+                return false;
+
         PCRE2_SPTR sub = (PCRE2_SPTR) ctx;
         PCRE2_SPTR pat = (PCRE2_SPTR) regex;
 
