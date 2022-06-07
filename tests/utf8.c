@@ -1,43 +1,170 @@
+
+/* Libchrysalid dependencies */
 #include "../include/utf8.h"
 
 /* Criterion testing framework */
 #include <criterion/criterion.h>
 
 
-/* English sample strings */
+/* Sample strings */
 
 
-#define SAMPLE_EN_1     "Jim quickly realized that the beautiful gowns" \
-                        " are expensive."
-
-#define SAMPLE_EN_2     "Jackie will budget for the most expensive" \
+/*                                                       %const:utf8:SAMPLE_EN_1
+ * __NAME__
+ *      {{SAMPLE_EN_1}} - English sample string #1
+ *
+ * __SYNOPSIS__
+ *      #define SAMPLE_EN_1 "Jackie will budget for the most expensive" \
+ *                          " zoology equipment."
+ * __DESCRIPTION__
+ *      The {{SAMPLE_EN_1}} symbolic constant represents the first sample UTF-8
+ *      English string that is used for testing the {{cy_utf8_t}} interface. The
+ *      sample string is a panagram containing all the letters of the English
+ *      alphabet, and is lexicographically lower than the second English sample
+ *      string {{SAMPLE_EN_2}}.
+ *
+ * __NOTES__
+ *      We are using a panagram for {{SAMPLE_EN_1}} to ensure that we test all
+ *      letters in the English alphabet.
+ */
+#define SAMPLE_EN_1     "Jackie will budget for the most expensive" \
                         " zoology equipment."
 
-#define LEN_EN_1    strlen(SAMPLE_EN_1)
 
-#define LEN_EN_2    strlen(SAMPLE_EN_2)
+/*                                                       %const:utf8:SAMPLE_EN_2
+ * __NAME__
+ *      {{SAMPLE_EN_2}} - English sample string #2
+ *
+ * __SYNOPSIS__
+ *      #define SAMPLE_EN_2 "Jim quickly realized that the beautiful gowns" \
+ *                          " are expensive."
+ * __DESCRIPTION__
+ *      The {{SAMPLE_EN_2}} symbolic constant represents the second sample UTF-8
+ *      English string for testing the {{cy_utf8_t}} interface. This string is
+ *      a panagram just like the first sample English string {{SAMPLE_EN_1}},
+ *      but is lexicographically higher than the latter.
+ *
+ * __NOTES__
+ *      Just as in the case of {{SAMPLE_EN_1}}, we are using a panagram for
+ *      {{SAMPLE_EN_2}} to ensure that we test all letters in the English
+ *      alphabet.
+ */
+#define SAMPLE_EN_2     "Jim quickly realized that the beautiful gowns" \
+                        " are expensive."
 
 
-/* Greek sample strings */
-
-
+/*                                                       %const:utf8:SAMPLE_EL_1
+ * __NAME__
+ *      {{SAMPLE_EL_1}} - Greek sample string #1
+ *
+ * __SYNOPSIS__
+ *      #define SAMPLE_EL_1 "Θέλει αρετή και τόλμη η ελευθερία." \
+ *                          " (Ανδρέας Κάλβος)."
+ * __DESCRIPTION__
+ */
 #define SAMPLE_EL_1     "Θέλει αρετή και τόλμη η ελευθερία. (Ανδρέας Κάλβος)."
 
+
+/*                                                       %const:utf8:SAMPLE_EL_2
+ * __NAME__
+ *      {{SAMPLE_EL_2}} - Greek sample string #2
+ *
+ * __SYNOPSIS__
+ *      #define SAMPLE_EL_2 "Ο καλύμνιος σφουγγαράς ψιθύρισε πως θα βουτήξει" \
+ *                          " χωρίς να διστάζει."
+ * __DESCRIPTION__
+ */
 #define SAMPLE_EL_2     "Ο καλύμνιος σφουγγαράς ψιθύρισε πως θα βουτήξει" \
                         " χωρίς να διστάζει."
 
+
+/* SAMPLE STRING LENGTHS */
+
+
+/*                                                          %const:utf8:LEN_EN_1
+ * __NAME__
+ *      {{LEN_EN_1}} - length of {{SAMPLE_EN_1}}
+ *
+ * __SYNOPSIS__
+ *      #define LEN_EN_1 strlen(SAMPLE_EN_1)
+ *
+ * __DESCRIPTION__
+ */
+#define LEN_EN_1    strlen(SAMPLE_EN_1)
+
+
+/*                                                          %const:utf8:LEN_EN_2
+ * __NAME__
+ *      {{LEN_EN_2}} - length of {{SAMPLE_EN_2}}
+ *
+ * __SYNOPSIS__
+ *      #define LEN_EN_2 strlen(SAMPLE_EN_2)
+ *
+ * __DESCRIPTION__
+ */
+#define LEN_EN_2    strlen(SAMPLE_EN_2)
+
+
+/*                                                          %const:utf8:LEN_EL_1
+ * __NAME__
+ *      {{LEN_EL_1}} - length of {{SAMPLE_EL_1}}
+ *
+ * __SYNOPSIS__
+ *      #define LEN_EL_1 52
+ *
+ * __DESCRIPTION__
+ */
 #define LEN_EL_1    52
 
 
+/*                                                          %const:utf8:LEN_EL_2
+ * __NAME__
+ *      {{LEN_EL_2}} - length of {{SAMPLE_EL_2}}
+ *
+ * __SYNOPSIS__
+ *      #define LEN_EL_2 66
+ *
+ * __DESCRIPTION__
+ */
 #define LEN_EL_2    66
 
 
+/*                                                          %const:utf8:REGEX_EN
+ * __NAME__
+ *      {{REGEX_EN}} - regex to match English samples
+ *
+ * __SYNOPSIS__
+ *      #define REGEX_EN "^[a-zA-Z\\s.]*$"
+ *
+ * __DESCRIPTION__
+ */
 #define REGEX_EN    "^[a-zA-Z\\s.]*$"
 
 
+/* Regular expression patterns */
+
+
+/*                                                          %const:utf8:REGEX_EL
+ * __NAME__
+ *      {{REGEX_EL}} - regex to match Greek samples
+ *
+ * __SYNOPSIS__
+ *      #define REGEX_EL "^[\\p{Greek}\\s.()]*$"
+ *
+ * __DESCRIPTION__
+ */
 #define REGEX_EL    "^[\\p{Greek}\\s.()]*$"
 
 
+/*                                                       %const:utf8:REGEX_EMAIL
+ * __NAME__
+ *      {{REGEX_EMAIL}} - regex to match email
+ *
+ * __SYNOPSIS__
+ *      #define REGEX_EMAIL "^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+" \
+ *                          "\\.[a-zA-Z]{2,6})*$"
+ * __DESCRIPTION__
+ */
 #define REGEX_EMAIL     "^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6})*$"
 
 
