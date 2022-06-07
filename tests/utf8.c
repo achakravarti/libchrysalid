@@ -18,14 +18,14 @@
  *                          " zoology equipment."
  * __DESCRIPTION__
  *      The {{SAMPLE_EN_1}} symbolic constant represents the first sample UTF-8
- *      English string that is used for testing the {{cy_utf8_t}} interface. The
- *      sample string is a panagram containing all the letters of the English
- *      alphabet, and is lexicographically lower than the second English sample
- *      string {{SAMPLE_EN_2}}.
+ *      English (ISO 693-1 code *en*) string that is used for testing the
+ *      {{cy_utf8_t}} interface. The sample string is a panagram containing all
+ *      the letters of the English alphabet, and is lexicographically lower than
+ *      the second English sample string {{SAMPLE_EN_2}}.
  *
  * __NOTES__
- *      We are using a panagram for {{SAMPLE_EN_1}} to ensure that we test all
- *      letters in the English alphabet.
+ *      We are using a panagram for {{SAMPLE_EN_1}} to maximise the number of
+ *      letters in the English alphabet that we have available for testing.
  */
 #define SAMPLE_EN_1     "Jackie will budget for the most expensive" \
                         " zoology equipment."
@@ -40,14 +40,14 @@
  *                          " are expensive."
  * __DESCRIPTION__
  *      The {{SAMPLE_EN_2}} symbolic constant represents the second sample UTF-8
- *      English string for testing the {{cy_utf8_t}} interface. This string is
- *      a panagram just like the first sample English string {{SAMPLE_EN_1}},
- *      but is lexicographically higher than the latter.
+ *      English (ISO 693-1 code *en*) string for testing the {{cy_utf8_t}}
+ *      interface. This string is a panagram just like the first sample English
+ *      string {{SAMPLE_EN_1}}, but is lexicographically higher than the latter.
  *
  * __NOTES__
  *      Just as in the case of {{SAMPLE_EN_1}}, we are using a panagram for
- *      {{SAMPLE_EN_2}} to ensure that we test all letters in the English
- *      alphabet.
+ *      {{SAMPLE_EN_2}} to ensure that we test as many letters in the English
+ *      alphabet as possible.
  */
 #define SAMPLE_EN_2     "Jim quickly realized that the beautiful gowns" \
                         " are expensive."
@@ -61,8 +61,16 @@
  *      #define SAMPLE_EL_1 "Θέλει αρετή και τόλμη η ελευθερία." \
  *                          " (Ανδρέας Κάλβος)."
  * __DESCRIPTION__
+ *
+ * __NOTES__
+ *      The {{SAMPLE_EL_1}} string is a panagram in order to ensure that as many
+ *      letters as possible of the Greek alphabet are tested. Its
+ *      lexicographical order with respect to the secaond sample Greek string
+ *      {{SAMPLE_EL_2}} has been determined with the Online STRING Tools web
+ *      application.
  */
-#define SAMPLE_EL_1     "Θέλει αρετή και τόλμη η ελευθερία. (Ανδρέας Κάλβος)."
+#define SAMPLE_EL_1     "Ζαφείρι δέξου πάγκαλο βαθῶν ψυχῆς τὸ σῆμα"
+
 
 
 /*                                                       %const:utf8:SAMPLE_EL_2
@@ -73,6 +81,16 @@
  *      #define SAMPLE_EL_2 "Ο καλύμνιος σφουγγαράς ψιθύρισε πως θα βουτήξει" \
  *                          " χωρίς να διστάζει."
  * __DESCRIPTION__
+ *      The {{SAMPLE_EL_2}} symbolic constant represents the second Greek (ISO
+ *      639-1 code *el*) sample string that is used for testing the
+ *      {{cy_utf8_t}} interface.
+ *
+ * __NOTES__
+ *      The remarks for the first sample Greek string {{SAMPLE_EL_1}} are also
+ *      applicable to the {{SAMPLE_EL_2}} string. {{SAMPLE_EL_2}} is set to a
+ *      panagram because it maximises the number of tested letters, and its sort
+ *      order compared to {{SAMPLE_EL_1}} has been checked with the Online
+ *      STRING Tools web app.
  */
 #define SAMPLE_EL_2     "Ο καλύμνιος σφουγγαράς ψιθύρισε πως θα βουτήξει" \
                         " χωρίς να διστάζει."
@@ -110,11 +128,11 @@
  *      {{LEN_EL_1}} - length of {{SAMPLE_EL_1}}
  *
  * __SYNOPSIS__
- *      #define LEN_EL_1 52
+ *      #define LEN_EL_1 41
  *
  * __DESCRIPTION__
  */
-#define LEN_EL_1    52
+#define LEN_EL_1    41
 
 
 /*                                                          %const:utf8:LEN_EL_2
@@ -138,7 +156,7 @@
  *
  * __DESCRIPTION__
  */
-#define REGEX_EN    "^[a-zA-Z\\s.]*$"
+#define REGEX_EN    "^[a-zA-Z\\s]*$"
 
 
 /* Regular expression patterns */
@@ -153,7 +171,7 @@
  *
  * __DESCRIPTION__
  */
-#define REGEX_EL    "^[\\p{Greek}\\s.()]*$"
+#define REGEX_EL    "^[\\p{Greek}\\s.]*$"
 
 
 /*                                                       %const:utf8:REGEX_EMAIL
