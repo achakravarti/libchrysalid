@@ -28,7 +28,7 @@
  *      letters in the English alphabet that we have available for testing.
  */
 #define SAMPLE_EN_1     "Jackie will budget for the most expensive" \
-                        " zoology equipment."
+                        " zoology equipment"
 
 
 /*                                                       %const:utf8:SAMPLE_EN_2
@@ -50,7 +50,7 @@
  *      alphabet as possible.
  */
 #define SAMPLE_EN_2     "Jim quickly realized that the beautiful gowns" \
-                        " are expensive."
+                        " are expensive"
 
 
 /*                                                       %const:utf8:SAMPLE_EL_1
@@ -93,7 +93,7 @@
  *      STRING Tools web app.
  */
 #define SAMPLE_EL_2     "Ο καλύμνιος σφουγγαράς ψιθύρισε πως θα βουτήξει" \
-                        " χωρίς να διστάζει."
+                        " χωρίς να διστάζει"
 
 
 /* SAMPLE STRING LENGTHS */
@@ -140,11 +140,11 @@
  *      {{LEN_EL_2}} - length of {{SAMPLE_EL_2}}
  *
  * __SYNOPSIS__
- *      #define LEN_EL_2 66
+ *      #define LEN_EL_2 65
  *
  * __DESCRIPTION__
  */
-#define LEN_EL_2    66
+#define LEN_EL_2    65
 
 
 /*                                                          %const:utf8:REGEX_EN
@@ -171,7 +171,7 @@
  *
  * __DESCRIPTION__
  */
-#define REGEX_EL    "^[\\p{Greek}\\s.]*$"
+#define REGEX_EL    "^[\\p{Greek}\\s]*$"
 
 
 /*                                                       %const:utf8:REGEX_EMAIL
