@@ -19,9 +19,9 @@
  * __DESCRIPTION__
  *      The {{SAMPLE_EN_1}} symbolic constant represents the first sample UTF-8
  *      English (ISO 693-1 code *en*) string that is used for testing the
- *      {{cy_utf8_t}} interface. The sample string is a panagram containing all
- *      the letters of the English alphabet, and is lexicographically lower than
- *      the second English sample string {{SAMPLE_EN_2}}.
+ *      Libchrysalid UTF-8 interface. The sample string is a panagram containing
+ *      all the letters of the English alphabet, and is lexicographically lower
+ *      than the second English sample string {{SAMPLE_EN_2}}.
  *
  * __NOTES__
  *      We are using a panagram for {{SAMPLE_EN_1}} to maximise the number of
@@ -40,7 +40,7 @@
  *                          " are expensive."
  * __DESCRIPTION__
  *      The {{SAMPLE_EN_2}} symbolic constant represents the second sample UTF-8
- *      English (ISO 693-1 code *en*) string for testing the {{cy_utf8_t}}
+ *      English (ISO 693-1 code *en*) string for testing the Libchrysalid UTF-8
  *      interface. This string is a panagram just like the first sample English
  *      string {{SAMPLE_EN_1}}, but is lexicographically higher than the latter.
  *
@@ -58,14 +58,21 @@
  *      {{SAMPLE_EL_1}} - Greek sample string #1
  *
  * __SYNOPSIS__
- *      #define SAMPLE_EL_1 "Θέλει αρετή και τόλμη η ελευθερία." \
- *                          " (Ανδρέας Κάλβος)."
+ *      #define SAMPLE_EL_1 "Ζαφείρι δέξου πάγκαλο βαθῶν ψυχῆς τὸ σῆμα"
+ *
  * __DESCRIPTION__
+ *      The {{SAMPLE_EL_1}} symbolic constant represents the first Greek (ISO
+ *      693-1 code *el*) which is used for testing the Libchrysalid UTF-8
+ *      interface. This sample string is a panagram, which translated to English
+ *      means *"Receive an excellent sapphire denoting profundity of soul"*.
  *
  * __NOTES__
  *      The {{SAMPLE_EL_1}} string is a panagram in order to ensure that as many
- *      letters as possible of the Greek alphabet are tested. Its
- *      lexicographical order with respect to the secaond sample Greek string
+ *      letters as possible of the Greek alphabet are tested. We have skipped
+ *      punctuation characters in order to simplify the regular expression
+ *      pattern {{REGEX_EL}} which it matches.
+ *
+ *      Its lexicographical order with respect to the second sample Greek string
  *      {{SAMPLE_EL_2}} has been determined with the Online STRING Tools web
  *      application.
  */
@@ -78,22 +85,21 @@
  *      {{SAMPLE_EL_2}} - Greek sample string #2
  *
  * __SYNOPSIS__
- *      #define SAMPLE_EL_2 "Ο καλύμνιος σφουγγαράς ψιθύρισε πως θα βουτήξει" \
- *                          " χωρίς να διστάζει."
+ *      #define SAMPLE_EL_2 "διαφυλάξτε γενικά τη ζωή σας από βαθειά ψυχικά" \
+                            " τραύματα"
  * __DESCRIPTION__
  *      The {{SAMPLE_EL_2}} symbolic constant represents the second Greek (ISO
- *      639-1 code *el*) sample string that is used for testing the
- *      {{cy_utf8_t}} interface.
+ *      639-1 code *el*) sample string that is used for testing the Libchrysalid
+ *      UTF-8 interface. This string is a panagram translated to English as
+ *      *"protect in general your life from deep psychological wounds"*. It is
+ *      higher than {{SAMPLE_EL_1}} in lexicographical sort order.
  *
  * __NOTES__
  *      The remarks for the first sample Greek string {{SAMPLE_EL_1}} are also
- *      applicable to the {{SAMPLE_EL_2}} string. {{SAMPLE_EL_2}} is set to a
- *      panagram because it maximises the number of tested letters, and its sort
- *      order compared to {{SAMPLE_EL_1}} has been checked with the Online
- *      STRING Tools web app.
+ *      applicable to the {{SAMPLE_EL_2}} string.
  */
-#define SAMPLE_EL_2     "Ο καλύμνιος σφουγγαράς ψιθύρισε πως θα βουτήξει" \
-                        " χωρίς να διστάζει"
+#define SAMPLE_EL_2     "διαφυλάξτε γενικά τη ζωή σας από βαθειά ψυχικά" \
+                        " τραύματα"
 
 
 /* SAMPLE STRING LENGTHS */
@@ -140,11 +146,11 @@
  *      {{LEN_EL_2}} - length of {{SAMPLE_EL_2}}
  *
  * __SYNOPSIS__
- *      #define LEN_EL_2 65
+ *      #define LEN_EL_2 55
  *
  * __DESCRIPTION__
  */
-#define LEN_EL_2    65
+#define LEN_EL_2    55
 
 
 /*                                                          %const:utf8:REGEX_EN
