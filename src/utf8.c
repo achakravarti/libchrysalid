@@ -14,7 +14,7 @@
 
 /*
  * __NAME__
- *      cy_utf8_new() -
+ *      cy_utf8_new() - creates new UTF-8 string
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/api.h>
@@ -43,7 +43,7 @@ cy_utf8_new(const char src[static 1])
 
 /*
  * __NAME__
- *      cy_utf8_copy() -
+ *      cy_utf8_copy() - creates shallow copy of UTF-8 string
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/api.h>
@@ -66,7 +66,7 @@ cy_utf8_copy(cy_utf8_t ctx[static 1])
 
 /*
  * __NAME__
- *      cy_utf8_clone() -
+ *      cy_utf8_clone() - creates deep copy of UTF-8 string
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/api.h>
@@ -89,7 +89,7 @@ cy_utf8_clone(const cy_utf8_t ctx[static 1])
 
 /*
  * __NAME__
- *      cy_utf8_free__() -
+ *      cy_utf8_free__() - releases UTF-8 string
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/api.h>
@@ -115,7 +115,7 @@ cy_utf8_t_free__(cy_utf8_t *ctx[static 1])
 
 /*
  * __NAME__
- *      cy_utf8_cmp() -
+ *      cy_utf8_cmp() - compares two UTF-8 strings
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/api.h>
@@ -150,7 +150,7 @@ cy_utf8_cmp(const cy_utf8_t ctx[static 1], const cy_utf8_t cmp[static 1])
 
 /*
  * __NAME__
- *      cy_utf8_empty() -
+ *      cy_utf8_empty() - checks if UTF-8 string is empty
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/api.h>
@@ -173,7 +173,7 @@ cy_utf8_empty(const cy_utf8_t ctx[static 1])
 
 /*
  * __NAME__
- *      cy_utf8_len() -
+ *      cy_utf8_len() - gets length of UTF-8 string
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/api.h>
@@ -196,7 +196,7 @@ cy_utf8_len(const cy_utf8_t ctx[static 1])
 
 /*
  * __NAME__
- *      cy_utf8_refc() -
+ *      cy_utf8_refc() - gets reference count of UTF-8 string
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/api.h>
@@ -219,7 +219,7 @@ cy_utf8_refc(const cy_utf8_t ctx[static 1])
 
 /*
  * __NAME__
- *      cy_utf8_sz() -
+ *      cy_utf8_sz() - gets size of UTF-8 string
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/api.h>
@@ -242,7 +242,7 @@ cy_utf8_sz(const cy_utf8_t ctx[static 1])
 
 /*
  * __NAME__
- *      cy_utf8_match() -
+ *      cy_utf8_match() - checks if UTF-8 string matches regex
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/api.h>
