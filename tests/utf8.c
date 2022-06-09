@@ -208,7 +208,7 @@
  */
 Test(cy_utf8_new, empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
 
       cr_expect(s);
       cr_expect(cy_utf8_empty(s));
@@ -298,7 +298,7 @@ Test(cy_utf8_new, el)
  */
 Test(cy_utf8_copy, single_empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
 
       cr_expect(s == s1);
@@ -391,7 +391,7 @@ Test(cy_utf8_copy, single_el)
  */
 Test(cy_utf8_copy, multiple_empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
       CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s);
 
@@ -539,7 +539,7 @@ Test(cy_utf8_copy, multiple_el)
  */
 Test(cy_utf8_clone, single_empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
 
       cr_expect(s != s1);
@@ -632,7 +632,7 @@ Test(cy_utf8_clone, single_el)
  */
 Test(cy_utf8_clone, multiple_empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
       CY_AUTO(cy_utf8_t) *s2 = cy_utf8_clone(s);
 
@@ -798,7 +798,7 @@ Test(cy_utf8_free, null)
  */
 Test(cy_utf8_free, single_empty)
 {
-      cy_utf8_t *s = cy_utf8_new("");
+      cy_utf8_t *s = cy_utf8_new_empty();
       cy_utf8_free(&s);
 
       cr_expect(!s);
@@ -855,7 +855,7 @@ Test(cy_utf8_free, single_el)
  */
 Test(cy_utf8_free, single_copy_empty)
 {
-      cy_utf8_t *s = cy_utf8_new("");
+      cy_utf8_t *s = cy_utf8_new_empty();
       cy_utf8_t *s1 = cy_utf8_copy(s);
       cy_utf8_free(&s);
 
@@ -930,7 +930,7 @@ Test(cy_utf8_free, single_copy_el)
  */
 Test(cy_utf8_free, multiple_copy_empty)
 {
-      cy_utf8_t *s = cy_utf8_new("");
+      cy_utf8_t *s = cy_utf8_new_empty();
       cy_utf8_t *s1 = cy_utf8_copy(s);
       cy_utf8_t *s2 = cy_utf8_copy(s1);
       cy_utf8_free(&s);
@@ -1032,7 +1032,7 @@ Test(cy_utf8_free, multiple_copy_el)
  */
 Test(cy_utf8_free, single_clone_empty)
 {
-      cy_utf8_t *s = cy_utf8_new("");
+      cy_utf8_t *s = cy_utf8_new_empty();
       cy_utf8_t *s1 = cy_utf8_clone(s);
       cy_utf8_free(&s);
 
@@ -1107,7 +1107,7 @@ Test(cy_utf8_free, single_clone_el)
  */
 Test(cy_utf8_free, multiple_clone_empty)
 {
-      cy_utf8_t *s = cy_utf8_new("");
+      cy_utf8_t *s = cy_utf8_new_empty();
       cy_utf8_t *s1 = cy_utf8_clone(s);
       cy_utf8_t *s2 = cy_utf8_clone(s1);
       cy_utf8_free(&s);
@@ -1212,7 +1212,7 @@ Test(cy_utf8_free, multiple_clone_el)
  */
 Test(cy_utf8_match, empty_empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
       bool m = cy_utf8_match(s, "");
 
       cr_assert(!m);
@@ -1231,7 +1231,7 @@ Test(cy_utf8_match, empty_empty)
  */
 Test(cy_utf8_match, empty_nonempty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new("");
+      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
       bool m = cy_utf8_match(s, REGEX_EMAIL);
 
       cr_assert(!m);
