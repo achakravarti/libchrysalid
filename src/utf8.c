@@ -23,10 +23,20 @@
  *      cy_utf8_new(const char src[static 1]);
  *
  * __DESCRIPTION__
+ *      The {{cy_utf8_new()}} function creates a new {{cy_utf8_t}} instance from
+ *      a raw C-string literal {{src}}. The string literal may be an empty
+ *      string, an ASCII string, or a stream of bytes encoded in UTF-8.
  *
  * __RETURN__
+ *      {{cy_utf8_new()}} returns a pointer to a new {{cy_utf8_t}} created on
+ *      the heap that is lexicographically equal to {{src}}. This function is
+ *      guaranteed to return a valid pointer; in case of memory allocation
+ *      failure, its default behaviour is to abort.
  *
  * __NOTES__
+ *      The {{cy_utf8_new()}} function works by allocating a {{cy_hptr_t}}
+ *      buffer of the same size as {{src}} (along with one extra byte for the
+ *      terminating null character) and copying the contents {{src}}  into it.
  */
 cy_utf8_t *
 cy_utf8_new(const char src[static 1])
