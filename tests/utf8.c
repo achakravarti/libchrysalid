@@ -113,6 +113,14 @@
  *      #define LEN_EN_1 strlen(SAMPLE_EN_1)
  *
  * __DESCRIPTION__
+ *      The {{LEN_EN_1}} symbolic constant holds the lexicographic length of the
+ *      {{SAMPLE_EN_1}} sample string. This length is required in order to check
+ *      that that {{cy_utf8_len()}} function operates correctly on the sample
+ *      string.
+ *
+ * __NOTES__
+ *      Since this sample string contains only ASCII characters, using the
+ *      {{strlen()}} function is sufficient to dynamically determine its length.
  */
 #define LEN_EN_1    strlen(SAMPLE_EN_1)
 
@@ -125,6 +133,14 @@
  *      #define LEN_EN_2 strlen(SAMPLE_EN_2)
  *
  * __DESCRIPTION__
+ *      The {{LEN_EN_2}} symbolic constant holds the lexicographic length of the
+ *      {{SAMPLE_EN_2}} sample string. This length is required in order to check
+ *      that that {{cy_utf8_len()}} function operates correctly on the sample
+ *      string.
+ *
+ * __NOTES__
+ *      Since this sample string contains only ASCII characters, using the
+ *      {{strlen()}} function is sufficient to dynamically determine its length.
  */
 #define LEN_EN_2    strlen(SAMPLE_EN_2)
 
@@ -137,6 +153,16 @@
  *      #define LEN_EL_1 41
  *
  * __DESCRIPTION__
+ *      The {{LEN_EL_1}} symbolic constant holds the lexicographic length of the
+ *      {{SAMPLE_EL_1}} sample string. This length is required in order to check
+ *      that that {{cy_utf8_len()}} function operates correctly on the sample
+ *      string.
+ *
+ * __NOTES__
+ *      The actual length of the {{SAMPLE_EL_1}} string was determined using an
+ *      online tool that supports Unicode characters. Since this string does not
+ *      contain ASCII characters, {{strlen()}} will not report the correct
+ *      length.
  */
 #define LEN_EL_1    41
 
@@ -149,6 +175,16 @@
  *      #define LEN_EL_2 55
  *
  * __DESCRIPTION__
+ *      The {{LEN_EL_2}} symbolic constant holds the lexicographic length of the
+ *      {{SAMPLE_EL_1}} sample string. This length is required in order to check
+ *      that that {{cy_utf8_len()}} function operates correctly on the sample
+ *      string.
+ *
+ * __NOTES__
+ *      The actual length of the {{SAMPLE_EL_1}} string was determined using an
+ *      online tool that supports Unicode characters. Since this string does not
+ *      contain ASCII characters, {{strlen()}} will not report the correct
+ *      length.
  */
 #define LEN_EL_2    55
 
