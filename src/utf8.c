@@ -178,10 +178,27 @@ cy_utf8_t_free__(cy_utf8_t *ctx[static 1])
  *                  const cy_utf8_t cmp[static 1]);
  *
  * __DESCRIPTION__
+ *      The {{cyt_utf8_cmp()}} function compares a {{cy_utf8_t}} UTF-8 string
+ *      instance {{ctx}} with another instance {{cmp}} in order determine
+ *      determine for lexicographical order of the former relative to the
+ *      latter.
+ *
+ *      Both {{ctx}} and {{cmp}} are required to be valid pointers to
+ *      {{cy_utf8_t}} string instances; if not, then a compiler diagnostic is
+ *      issued.
  *
  * __RETURN__
+ *      The {{cy_utf8_cmp()}} function returns one of the following {{CY_CMP}}
+ *      enumerators:
+ *
+ *        - {{CY_CMP_LT}} if {{ctx}} is lexicographically lower than {{cmp}}
+ *        - {{CY_CMP_EQ}} if {{ctx}} is lexicographically equal to {{cmp}}
+ *        - {{CY_CMP_GT}} if {{ctx}} is lexicographically greater than {{cmp}}
  *
  * __NOTES__
+ *      The actual comparison is performed by the {{utf8cmp()}} function of the
+ *      external *utf8.h* single header library. The source code for this
+ *      library is available locally in the *external/utf8.h/utf8.h* file.
  */
 enum cy_cmp
 cy_utf8_cmp(const cy_utf8_t ctx[static 1], const cy_utf8_t cmp[static 1])
