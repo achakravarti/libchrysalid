@@ -145,8 +145,16 @@ cy_utf8_clone(const cy_utf8_t ctx[static 1])
  *      cy_utf8_t_free__(cy_utf8_t *ctx[static 1]);
  *
  * __DESCRIPTION__
+ *      The {{cy_utf8_t_free__()}} function is responsible for releasing the
+ *      heap memory allocated to a {{cy_utf8_t}} instance {{ctx}}. This is an
+ *      implementation-specific function and is **not** part of the UTF-8
+ *      interface.
  *
  * __NOTES__
+ *      The implementation of {{cy_utf8_t_free__()}} is quite straightforward
+ *      since we only need to pass a pointer to {{ctx}} to {{cy_hptr_free()}}.
+ *      This function is required to be named in this unusual manner so that it
+ *      can be invoked by the {{CY_AUTO()}} macro.
  */
 void
 cy_utf8_t_free__(cy_utf8_t *ctx[static 1])
