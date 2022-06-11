@@ -62,10 +62,27 @@ cy_utf8_new(const char src[static 1])
  *      cy_utf8_copy(cy_utf8_t ctx[static 1]);
  *
  * __DESCRIPTION__
+ *      The {{cy_utf8_copy()}} interface function creates a shallow copy of an
+ *      existing instance of a {{cy_utf8_t}} UTF-8 string {{ctx}}. {{ctx}} is
+ *      expected to be a valid pointer; if not a compiler diagnostic is issued.
+ *      Although the value of {{ctx}} does not change, its internal reference
+ *      count does; hence, {{ctx}} is not passed as a {{const}} parameter.
+ *
+ *      It is important to remember that shallow copies returned by
+ *      {{cy_utf8_copy()}} should only be used as immutable values in order to
+ *      prevent accidentally changing the original value (and other shallow
+ *      copies). Be warned that there are no compile-time or runtime checks to
+ *      ensure that the shallow copy is not used in a mutable context.
  *
  * __RETURN__
+ *      {{cy_utf8_copy()}} returns a pointer to the {{ctx}} instance with its
+ *      internal reference count state updated. This function is guaranteed to
+ *      return a valid pointer.
  *
  * __NOTES__
+ *      Since {{cy_utf8_t}} instances are allocated on the heap as {{cy_hptr_t}}
+ *      instances, their internal reference count is managed through by the
+ *      {{cy_hptr_copy()}} function.
  */
 cy_utf8_t *
 cy_utf8_copy(cy_utf8_t ctx[static 1])
