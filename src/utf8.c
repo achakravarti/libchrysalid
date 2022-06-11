@@ -72,7 +72,10 @@ cy_utf8_new(const char src[static 1])
  *      {{cy_utf8_copy()}} should only be used as immutable values in order to
  *      prevent accidentally changing the original value (and other shallow
  *      copies). Be warned that there are no compile-time or runtime checks to
- *      ensure that the shallow copy is not used in a mutable context.
+ *      ensure that the shallow copy is *not* used in a mutable context.
+ *
+ *      The benefit of using shallow copies is performance, since they do not
+ *      involve any new allocation on the heap memory.
  *
  * __RETURN__
  *      {{cy_utf8_copy()}} returns a pointer to the {{ctx}} instance with its
@@ -102,10 +105,27 @@ cy_utf8_copy(cy_utf8_t ctx[static 1])
  *      cy_utf8_clone(const cy_utf8_t ctx[static 1]);
  *
  * __DESCRIPTION__
+ *      The {{cy_utf8_clone()}} function creates a deep copy of a {{cy_utf8_t}}
+ *      instance {{ctx}}. {{ctx}} is expected to be a valid pointer to an
+ *      existing {{cy_utf8_t}} instance; if not, then a compiler diagnostic will
+ *      be issued.
+ *
+ *      The deep copy does not affect the reference count of {{ctx}} (as in the
+ *      case of {{cy_utf8_copy()}}), and its own reference count is one. The
+ *      deep copy contains the same data bytes as {{ctx}}. As a result, it is
+ *      safe to use the deep copy as a mutable value. However, this flexibility
+ *      comes at a performance cost since it entails memory allocation on the
+ *      heap (unlike the case of {{cy_utf8_copy()}}).
  *
  * __RETURN__
+ *      The {{cy_utf8_clone()}} function returns a pointer to a deep copy of
+ *      {{ctx}}.  This function is guaranteed to return a valid pointer. In case
+ *      of heap memory allocation failure, the default behaviour is to abort.
  *
  * __NOTES__
+ *      Cloning {{ctx}} is a simple operation---we simply need to create a new
+ *      {{cy_utf8_t}} instance on the heap through {{cy_utf8_new()}} with the
+ *      same data as {{ctx}}.
  */
 cy_utf8_t *
 cy_utf8_clone(const cy_utf8_t ctx[static 1])
@@ -125,8 +145,6 @@ cy_utf8_clone(const cy_utf8_t ctx[static 1])
  *      cy_utf8_t_free__(cy_utf8_t *ctx[static 1]);
  *
  * __DESCRIPTION__
- *
- * __RETURN__
  *
  * __NOTES__
  */
