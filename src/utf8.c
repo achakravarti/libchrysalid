@@ -229,10 +229,22 @@ cy_utf8_cmp(const cy_utf8_t ctx[static 1], const cy_utf8_t cmp[static 1])
  *      cy_utf8_empty(const cy_utf8_t ctx[static 1]);
  *
  * __DESCRIPTION__
+ *      The {{cy_utf8_empty()}} function checks whether a given {{cy_utf8_t}}
+ *      string instance {{ctx}} is an empty string. {{ctx}} is expected to be
+ *      a valid pointer to a {{cy_utf8_t}} instance; if not, then a compiler
+ *      diagnostic is issued.
  *
  * __RETURN__
+ *      The {{cy_utf8_empty()}} function returns one of the following Boolean
+ *      values:
+ *
+ *        - {{true}} if {{ctx}} is an empty string
+ *        - {{false}} if {{ctx}} is not an empty string
  *
  * __NOTES__
+ *      The implementationi of {{cy_utf8_empty()}} is straightforward, with it
+ *      just checking whether or not the first character of {{ctx}} is the null
+ *      character {{\0}}.
  */
 bool
 cy_utf8_empty(const cy_utf8_t ctx[static 1])
