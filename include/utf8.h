@@ -128,8 +128,10 @@ extern CY_HOT enum cy_cmp   cy_utf8_cmp(const cy_utf8_t[static 1],
  *      #define cy_utf8_lt(lhs, rhs) (cy_utf8_cmp(lhs, rhs) == CY_CMP_LT)
  *
  * __DESCRIPTION__
- *
- * __NOTES__
+ *      The {{cy_utf8_lt()}} macro checks whether a given {{cy_utf8_t}} UTF-8
+ *      string instance {{ctx}} is lexicographically lower than another instance
+ *      {{cmp}}. This macro is a convenience wrapper around {{cy_utf8_cmp()}};
+ *      see the documentation for {{cy_utf8_cmp()}} for more details.
  */
 #define cy_utf8_lt(lhs, rhs)    (cy_utf8_cmp(lhs, rhs) == CY_CMP_LT)
 
@@ -143,8 +145,10 @@ extern CY_HOT enum cy_cmp   cy_utf8_cmp(const cy_utf8_t[static 1],
  *      #define cy_utf8_gt(lhs, rhs) (cy_utf8_cmp(lhs, rhs) == CY_CMP_EQ)
  *
  * __DESCRIPTION__
- *
- * __NOTES__
+ *      The {{cy_utf8_eq()}} macro checks whether a given {{cy_utf8_t}} UTF-8
+ *      string instance {{ctx}} is lexicographically equal to another instance
+ *      {{cmp}}. This macro is a convenience wrapper around {{cy_utf8_cmp()}};
+ *      see the documentation for {{cy_utf8_cmp()}} for more details.
  */
 #define cy_utf8_eq(lhs, rhs)    (cy_utf8_cmp(lhs, rhs) == CY_CMP_EQ)
 
@@ -158,8 +162,11 @@ extern CY_HOT enum cy_cmp   cy_utf8_cmp(const cy_utf8_t[static 1],
  *      #define cy_utf8_gt(lhs, rhs) (cy_utf8_cmp(lhs, rhs) == CY_CMP_GT)
  *
  * __DESCRIPTION__
- *
- * __NOTES__
+ *      The {{cy_utf8_gt()}} macro checks whether a given {{cy_utf8_t}} UTF-8
+ *      string instance {{ctx}} is lexicographically higher than another string
+ *      instance {{cmp}}. This macro is a convenience wrapper around
+ *      {{cy_utf8_cmp()}}; see the documentation for {{cy_utf8_cmp()}} for more
+ *      details.
  */
 #define cy_utf8_gt(lhs, rhs)    (cy_utf8_cmp(lhs, rhs) == CY_CMP_GT)
 

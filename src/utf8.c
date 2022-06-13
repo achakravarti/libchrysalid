@@ -181,7 +181,8 @@ cy_utf8_t_free__(cy_utf8_t *ctx[static 1])
  *      The {{cyt_utf8_cmp()}} function compares a {{cy_utf8_t}} UTF-8 string
  *      instance {{ctx}} with another instance {{cmp}} in order determine
  *      determine for lexicographical order of the former relative to the
- *      latter.
+ *      latter. This comparison is case-sensitive, with lowercase glyphs being
+ *      considered higher than their uppercase equivalents (where applicable).
  *
  *      Both {{ctx}} and {{cmp}} are required to be valid pointers to
  *      {{cy_utf8_t}} string instances; if not, then a compiler diagnostic is
