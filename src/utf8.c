@@ -298,10 +298,22 @@ cy_utf8_len(const cy_utf8_t ctx[static 1])
  *      cy_utf8_refc(const cy_utf8_t ctx[static 1]);
  *
  * __DESCRIPTION__
+ *      The {{cy_utf8_refc()}} function computes the current reference count for
+ *      a given {{cy_utf8_t}} instance {{ctx}}. {{ctx}} is required to be a
+ *      valid pointer to an existing {{cy_utf8_t}} instance; if not, then a
+ *      compiler diagnostic is issued.
  *
  * __RETURN__
+ *      This function returns the current reference count of {{ctx}}, and is
+ *      guaranteed to be an integer >= 1. If {{ctx}} is an original copy (or a
+ *      deep copy), {{cy_utf8_refc()}} returns 1. If {{ctx}} is a shallow copy,
+ *      then {{cy_utf8_refc()}} returns a value > 1 indicating the total number
+ *      of copies (including the original) currently in existence.
  *
  * __NOTES__
+ *      {{cy_utf8_len()}} internallyy uses the {{cy_hptr_refc()}} function to
+ *      determine the reference count of {{ctx}}. See *libchrysalid:hptr(3)* for
+ *      more details on how {{cy_hptr_refc()}} works.
  */
 size_t
 cy_utf8_refc(const cy_utf8_t ctx[static 1])
