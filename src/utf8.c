@@ -264,10 +264,21 @@ cy_utf8_empty(const cy_utf8_t ctx[static 1])
  *      cy_utf8_len(const cy_utf8_t ctx[static 1]);
  *
  * __DESCRIPTION__
+ *      The {{cy_utf8_len()}} function computes the lexicographic length of a
+ *      given {{cy_utf8_t}} string instance {{ctx}}. {{ctx}} is expected to be a
+ *      valid pointer to an existing instance; if not, then a compiler
+ *      diagnostic is issued.
  *
  * __RETURN__
+ *      {{cy_utf8_len()}} returns 0 for an empty string, or else a positive
+ *      integer that is the lexicographic length of {{ctx}} (excluding the
+ *      trailing null character {{'\0'}}).
  *
  * __NOTES__
+ *      The {{cy_utf8_len()}} function internally uses the {{utf8len()}}
+ *      function of the external *utf8.h* library. The source code for this
+ *      function can be found in the *external/utf8.h/utf8.h* header file.
+ *
  */
 size_t
 cy_utf8_len(const cy_utf8_t ctx[static 1])
