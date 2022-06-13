@@ -369,10 +369,37 @@ cy_utf8_sz(const cy_utf8_t ctx[static 1])
  *                    const char regex[static 1]);
  *
  * __DESCRIPTION__
+ *      The {{cy_utf8_match()}} function checks whether a given {{cy_utf8_t}}
+ *      string instance matches a given UTF-8 regular expression {{regex}}. Both
+ *      {{{ctx}} and {{regex}} are required to be valid pointers to instances of
+ *      {{cy_utf8_t}}; if not, then a compiler diagnostic is issued. In case of
+ *      a regular expression processing exception, the default behaviour of this
+ *      function is to abort.
  *
  * __RETURN__
+ *      The {{cy_utf8_match()}} function is guaranteed to return either one of
+ *      the Boolean values {{true}} / {{false}} depending on whether or not
+ *      {{ctx}} matches the regular expression pattern {{regex}}. This function
+ *      always returns {{false}} if either {{{ctx}} or {{{regex}} is an empty
+ *      string.
  *
  * __NOTES__
+ *      The matching functionality provided by {{cy_utf8_match()}} is implemented
+ *      through the PCRE2 Library, adapting the demo code available at
+ *      *https://www.pcre.org/current/doc/html/pcre2demo.html*. The demo code is
+ *      documented extensively, and referring to it will make the implementation
+ *      of {{cy_utf8_match()}} obvious.
+ *
+ *      Since we need to support UTF-8 strings, we must use the UTF-8 version
+ *      for the PCRE2 Library. This is achieved with the following steps:
+ *
+ *        1. defining the {{PCRE2_CODE_UNIT_WIDTH}} macro as **8** before
+ *           including the *<pcre2.h>* header file,
+ *        2. passing the {{PCRE2_UTF}} option to {{pcre2_compile()}}, and
+ *        3. linking with the *-lpcre2-8* build flag.
+ *
+ *      Note that by ensuring we return {{false}} if either {{ctx}} or {{regex}}
+ *      is an empty string, we avoid raising an exception from the PCRE2 engine.
  */
 bool
 cy_utf8_match(const cy_utf8_t ctx[static 1], const char regex[static 1])
