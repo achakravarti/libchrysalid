@@ -333,10 +333,22 @@ cy_utf8_refc(const cy_utf8_t ctx[static 1])
  *      cy_utf8_sz(const cy_utf8_t ctx[static 1]);
  *
  * __DESCRIPTION__
+ *      The {{cy_utf8_sz()}} computes the size in bytes of the amount of heap
+ *      memory allocated to a {{cy_utf8_t}} instance {{ctx}}. {{ctx}} must be a
+ *      valid pointer to a {{cy_utf8_t}} instance; if not, a compiler diagnostic
+ *      is issued.
  *
  * __RETURN__
+ *      The {{cy_utf8_sz()}} function returns the total allocated size of
+ *      {{ctx}}, taking into consideration metadata and alignment
+ *      considerations. As a consequence, the size returned by {{cy_utf8_sz()}}
+ *      is guaranteed to be greater than the sum of the sizes of the component
+ *      UTF-8 glyphs stored in {{{ctx}}}.
  *
  * __NOTES__
+ *      The {{cy_utf8_sz()}} function internally works simply as a wrapper
+ *      around the {{cy_hptr_sz()}} function. See libchrysalid:hptr(3) for more
+ *      details on the implementation of {{cy_hptr_sz()}}.
  */
 size_t
 cy_utf8_sz(const cy_utf8_t ctx[static 1])
