@@ -19,14 +19,17 @@ extern "C" {
 
 /*
  * __NAME__
+ *      {{cy_utf8_t}} - UTF-8 string
  *
  * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *      typedef char cy_utf8_t;
  *
  * __DESCRIPTION__
  *
  * __NOTES__
  */
-typedef char cy_utf8_t;
+typedef char    cy_utf8_t;
 
 
 /* Prototypes for factory functions  */
@@ -38,8 +41,11 @@ extern CY_HOT void                   cy_utf8_t_free__(cy_utf8_t *[static 1]);
 
 /*
  * __NAME__
+ *      {{cy_utf8_new_empty()}} - creates a new empty UTF-8 string
  *
  * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *      #define cy_utf8_new_empty() cy_utf8_new("");
  *
  * __DESCRIPTION__
  *
@@ -50,8 +56,11 @@ extern CY_HOT void                   cy_utf8_t_free__(cy_utf8_t *[static 1]);
 
 /*
  * __NAME__
+ *      {{cy_utf8_free()}} - releases a UTF-8 string instance
  *
  * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *      #define cy_utf8_free(ctx) cy_utf8_t_free__(ctx)
  *
  * __DESCRIPTION__
  *
@@ -67,8 +76,11 @@ extern CY_HOT enum cy_cmp   cy_utf8_cmp(const cy_utf8_t[static 1],
 
 /*
  * __NAME__
+ *      {{cy_utf8_lt()}} - checks if a UTF-8 string is lexicographically lower
  *
  * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *      #define cy_utf8_lt(lhs, rhs) (cy_utf8_cmp(lhs, rhs) == CY_CMP_LT)
  *
  * __DESCRIPTION__
  *
@@ -79,8 +91,11 @@ extern CY_HOT enum cy_cmp   cy_utf8_cmp(const cy_utf8_t[static 1],
 
 /*
  * __NAME__
+ *      {{cy_utf8_eq()}} - checks if a UTF-8 string is lexicographically equal
  *
  * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *      #define cy_utf8_gt(lhs, rhs) (cy_utf8_cmp(lhs, rhs) == CY_CMP_EQ)
  *
  * __DESCRIPTION__
  *
@@ -91,8 +106,11 @@ extern CY_HOT enum cy_cmp   cy_utf8_cmp(const cy_utf8_t[static 1],
 
 /*
  * __NAME__
+ *      {{cy_utf8_gt()}} - checks if a UTF-8 string is lexicographically higher
  *
  * __SYNOPSIS__
+ *      #include <libchrysalid/api.h>
+ *      #define cy_utf8_gt(lhs, rhs) (cy_utf8_cmp(lhs, rhs) == CY_CMP_GT)
  *
  * __DESCRIPTION__
  *
