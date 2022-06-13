@@ -75,8 +75,10 @@ extern CY_HOT void                   cy_utf8_t_free__(cy_utf8_t *[static 1]);
  *      #define cy_utf8_new_empty() cy_utf8_new("");
  *
  * __DESCRIPTION__
- *
- * __NOTES__
+ *      The {{cy_utf8_new_empty()}} macro is a convenience wrapper around the
+ *      {{cy_utf8_new()}} function for creating an empty {{cy_utf8_t}} instance.
+ *      Use of this macro instead of {{cy_utf8_new()}} is preferred when
+ *      creating empty strings in order to make the code more explicit.
  */
 #define cy_utf8_new_empty()     cy_utf8_new("");
 
@@ -90,8 +92,24 @@ extern CY_HOT void                   cy_utf8_t_free__(cy_utf8_t *[static 1]);
  *      #define cy_utf8_free(ctx) cy_utf8_t_free__(ctx)
  *
  * __DESCRIPTION__
+ *      The {{cy_utf8_free()}} macro releases the heap memory allocated to a
+ *      UTF-8 {{cy_utf8_t}} string instance {{ctx}}. {{ctx}} is required to be a
+ *      valid handle to a {{cy_utf8_t}} instance; if not, a safe no-op occurs.
+ *      A call to {{cy_utf8_free()}} will result in the pointer to the instance
+ *      being set to {{NULL}} whether or not {{ctx}} is valid.
+ *
+ *      In case {{ctx}} is a shallow copy, then only its reference count is
+ *      decremented and actual deallocation is deferred, unlike the case of
+ *      original and deep copy instances. However, this processing is opaque to
+ *      the client code.
  *
  * __NOTES__
+ *      The {{cy_utf8_free()}} macro is a wrapper around {{cy_utf8_t_free__}},
+ *      which is a private implementation-specific function. {{cy_utf8_free()}}
+ *      has primarily been provided as a convenience macro, thereby avoiding the
+ *      need for the clumsy nomenclature necessitated by the {{CY_AUTO}} macro.
+ *      See the documentation for {{CY_AUTO}} in **libchrysalid:ext(3)** and for
+ *      {{cy_utf8_t_free()__}} for more details.
  */
 #define cy_utf8_free(ctx)   cy_utf8_t_free__(ctx)
 
