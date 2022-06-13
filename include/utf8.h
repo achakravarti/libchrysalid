@@ -26,8 +26,35 @@ extern "C" {
  *      typedef char cy_utf8_t;
  *
  * __DESCRIPTION__
+ *      The {{{cy_utf8_t}} abstract data type represents a dynamically allocated
+ *      UTF-8 string that is built from a literal UTF-8 string. It is the only
+ *      type of the UTF-8 interface, and must only be manipulated by the public
+ *      macros and functions provided by the interface.
+ *
+ *      The {{cy_utf8_t}} has been typedef'd to {{char}}; this means that
+ *      {{cy_utf8_t}} instances can be used in any context where a traditional
+ *      {{char *}} C string is required. However, we are using a *typdef* in
+ *      order to make it explicit that we are operating with UTF-8 strings, and
+ *      that the manipulation of these strings should only be through their
+ *      interface.
+ *
+ *      {{cy_utf8_t}} string instances are automatically reference-counted and
+ *      support both shallow and deep copying. Shallow copying is desirable from
+ *      a performance perspective, and should be considered wherever possible.
+ *      Additionally, {{cy_utf8_t}} instances may have auto-cleanup enabled by
+ *      declaring them with the {{CY_AUTO}} macro.
  *
  * __NOTES__
+ *      Internally, {{cy_utf8_t}} instances are allocated on the heap as
+ *      {{cy_hptr_t}} instances. This allows the {{cy_utf8_t}} interface to
+ *      receive reference counting and shallow copying for free, thereby
+ *      simplifying the implementation.
+ *
+ *      The interface relies on two external libraries: the single-header
+ *      *utf8.h* library and PCRE2. The *utf8.h* header library is available as
+ *      a Git submodule in the *external* directory, but PCRE2 needs to be
+ *      installed on the host system. The implementation documentation provides
+ *      more details on how these two libraries are used.
  */
 typedef char    cy_utf8_t;
 
