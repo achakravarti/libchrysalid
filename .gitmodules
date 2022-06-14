@@ -1,0 +1,4 @@
+[submodule "external/utf8.h"]
+	path = external/utf8.h
+	url = git@github.com:sheredom/utf8.h.git
+	branch = master

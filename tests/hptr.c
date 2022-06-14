@@ -83,7 +83,7 @@ typedef struct {
 
 
 /* Prototypes for test_t support functions */
-static void     test_t_free(test_t *[static 1]);
+static void     test_t_free__(test_t *[static 1]);
 static bool     test_yeq(const test_t[static 1], float);
 
 
@@ -1033,26 +1033,26 @@ Test(cy_hptr_str, desc)
 /* Support functions for test_t */
 
 
-/*                                                        %func:hptr:test_t_free
+/*                                                      %func:hptr:test_t_free__
  * __NAME__
- *      {{test_t_free()}} - releases test instance
+ *      {{test_t_free__()}} - releases test instance
  *
  * __SYNOPSIS__
- *      static void test_t_free(test_t *ctx[static 1]);
+ *      static void test_t_free__(test_t *ctx[static 1]);
  *
  * __DESCRIPTION__
- *      The {{test_t_free()}} function is a support function that releases the
+ *      The {{test_t_free__()}} function is a support function that releases the
  *      heap memory allocated to a {{test_t}} instance {{ctx}}. This function is
  *      meant to be used only with the heap pointer tests and is **not** part of
  *      the heap pointer interface.
  *
  * __NOTES__
- *      The {{test_t_free()}} function is invoked automatically for any
+ *      The {{test_t_free__()}} function is invoked automatically for any
  *      {{test_t}} instance declared with the {{CY_AUTO()}} macro when the
  *      instance goes out of scope.  The name of this function is as per the
  *      requirements of the {{CY_AUTO()}} macro.
  */
-void test_t_free(test_t *ctx[static 1])
+void test_t_free__(test_t *ctx[static 1])
 {
         cy_hptr_free((cy_hptr_t **) ctx);
 }

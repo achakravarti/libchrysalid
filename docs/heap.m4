@@ -145,7 +145,7 @@ __func__(<<<cy_hptr_str>>>, <<<cy_hptr_str>>>)
 
 dnl Support functions
 __func__(<<<align_fix>>>, <<<hptr_align_fix>>>)
-__func__(<<<test_t_free>>>, <<<hptr_test_t_free>>>)
+__func__(<<<test_t_free__>>>, <<<hptr_test_t_free__>>>)
 __func__(<<<test_yeq>>>, <<<hptr_test_yeq>>>)
 
 
