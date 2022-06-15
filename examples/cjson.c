@@ -4,6 +4,9 @@
 #include <stdlib.h>
 
 
+typedef void cy_json_t;
+
+
 const char *sample = "{"
           "\"name\": \"Awesome 4K\","
           "\"resolutions\": ["
@@ -23,8 +26,8 @@ const char *sample = "{"
         "}";
 
 
-static cJSON *
-json_new(void)
+static cy_json_t *
+cy_json_new(void)
 {
        cJSON *ctx = cJSON_Parse(sample);
 
@@ -38,7 +41,7 @@ json_new(void)
 
 
 static void
-json_free(cJSON **ctx)
+cy_json_t_free__(cy_json_t **ctx)
 {
         cJSON *j;
 
@@ -50,11 +53,18 @@ json_free(cJSON **ctx)
 
 
 static cy_utf8_t *
-json_print(cJSON *ctx, bool pretty)
+cy_json_print(const cy_json_t *ctx, bool pretty)
 {
         return cy_utf8_new(pretty
                            ? cJSON_Print(ctx)
                            : cJSON_PrintUnformatted(ctx));
+}
+
+
+static bool
+json_has(cJSON *ctx, const char *item)
+{
+        return cJSON_HasObjectItem(ctx, item);
 }
 
 
@@ -63,15 +73,15 @@ int main(int argc, char *argv[static 1])
         (void) argc;
         (void) argv;
 
-        cJSON *j = json_new();
+        CY_AUTO(cy_json_t) *j = cy_json_new();
 
-
-        CY_AUTO(cy_utf8_t) *pretty = json_print(j, true);
+        CY_AUTO(cy_utf8_t) *pretty = cy_json_print(j, true);
         printf("%s\n", pretty);
 
-        CY_AUTO(cy_utf8_t) *raw = json_print(j, false);
+        CY_AUTO(cy_utf8_t) *raw = cy_json_print(j, false);
         printf("%s\n", raw);
 
-        json_free(&j);
+        printf("%d\n", json_has(j, "resolution"));
+
         return EXIT_SUCCESS;
 }
