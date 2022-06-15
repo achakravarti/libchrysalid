@@ -1,5 +1,6 @@
 #include "../include/utf8.h"
 #include "../external/cJSON/cJSON.h"
+#include <float.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -111,15 +112,29 @@ cy_json_type(const cy_json_t *ctx)
         return CY_JSON_TYPE_NULL;
 }
 
-const char *
+cy_utf8_t *
 cy_json_string(const cy_json_t *ctx)
 {
         const cJSON *j = (cJSON *) ctx;
 
-        if (cJSON_IsString(ctx))
-                return j->valuestring;
+        if (CY_LIKELY(cJSON_IsString(ctx)))
+                return cy_utf8_new(j->valuestring);
 
-        return "not a string";
+        if (cJSON_IsNull(ctx))
+                return cy_utf8_new("(null)");
+
+        if (cJSON_IsBool(ctx))
+                return cy_utf8_new("false");
+
+        if (cJSON_IsNumber(ctx)) {
+                // https://stackoverflow.com/questions/1701055/
+                const size_t len = 3 + DBL_MANT_DIG - DBL_MIN_EXP;
+                char bfr[len + 1];
+                snprintf(bfr, len, "%f", j->valuedouble);
+                return cy_utf8_new(bfr);
+        }
+
+        return cy_utf8_new(cJSON_Print(ctx));
 }
 
 
@@ -145,9 +160,13 @@ int main(int argc, char *argv[static 1])
         printf("name type: %d\n", cy_json_type(name));
         printf("res type: %d\n", cy_json_type(res));
 
-        printf("Root string: %s\n", cy_json_string(j));
-        printf("name string: %s\n", cy_json_string(name));
-        printf("res string: %s\n", cy_json_string(res));
+        CY_AUTO(cy_utf8_t) *root_s = cy_json_string(j);
+        CY_AUTO(cy_utf8_t) *name_s = cy_json_string(name);
+        CY_AUTO(cy_utf8_t) *res_s = cy_json_string(res);
+
+        printf("Root string: %s\n", root_s);
+        printf("name string: %s\n", name_s);
+        printf("res string: %s\n", res_s);
 
         return EXIT_SUCCESS;
 }
