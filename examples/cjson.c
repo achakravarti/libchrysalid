@@ -1,6 +1,7 @@
 #include "../include/utf8.h"
 #include "../external/cJSON/cJSON.h"
 #include <float.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -137,6 +138,17 @@ cy_json_string(const cy_json_t *ctx)
         return cy_utf8_new(cJSON_Print(ctx));
 }
 
+double
+cy_json_number(const cy_json_t *ctx)
+{
+        cJSON *j = (cJSON *) ctx;
+
+        if (CY_LIKELY(cJSON_IsNumber(j)))
+                return j->valuedouble;
+
+        return NAN;
+}
+
 
 int main(int argc, char *argv[static 1])
 {
@@ -167,6 +179,10 @@ int main(int argc, char *argv[static 1])
         printf("Root string: %s\n", root_s);
         printf("name string: %s\n", name_s);
         printf("res string: %s\n", res_s);
+
+        printf("Root number: %f\n", cy_json_number(j));
+        printf("name number: %f\n", cy_json_number(name));
+        printf("res  number: %f\n", cy_json_number(res));
 
         return EXIT_SUCCESS;
 }
