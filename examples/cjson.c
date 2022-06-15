@@ -6,6 +6,15 @@
 
 typedef void cy_json_t;
 
+enum cy_json_type {
+        CY_JSON_TYPE_NULL,
+        CY_JSON_TYPE_BOOL,
+        CY_JSON_TYPE_NUMBER,
+        CY_JSON_TYPE_STRING,
+        CY_JSON_TYPE_OBJECT,
+        CY_JSON_TYPE_ARRAY
+};
+
 
 const char *sample = "{"
           "\"name\": \"Awesome 4K\","
@@ -62,11 +71,44 @@ cy_json_print(const cy_json_t *ctx, bool pretty)
 
 
 static bool
-json_has(cJSON *ctx, const char *item)
+cy_json_has(const cy_json_t *ctx, const char *key)
 {
-        return cJSON_HasObjectItem(ctx, item);
+        return cJSON_HasObjectItem(ctx, key);
 }
 
+
+static const cy_json_t *
+cy_json_node(const cy_json_t *ctx, const char *key)
+{
+        if (cJSON_HasObjectItem(ctx, key))
+                return cJSON_GetObjectItemCaseSensitive(ctx, key);
+
+        printf("Node not found!\n");
+        abort();
+}
+
+
+static enum cy_json_type
+cy_json_type(const cy_json_t *ctx)
+{
+
+        if (cJSON_IsArray(ctx))
+            return CY_JSON_TYPE_ARRAY;
+
+        if (cJSON_IsObject(ctx))
+            return CY_JSON_TYPE_OBJECT;
+
+        if (cJSON_IsString(ctx))
+            return CY_JSON_TYPE_STRING;
+
+        if (cJSON_IsNumber(ctx))
+            return CY_JSON_TYPE_NUMBER;
+
+        if (cJSON_IsBool(ctx))
+            return CY_JSON_TYPE_BOOL;
+
+        return CY_JSON_TYPE_NULL;
+}
 
 int main(int argc, char *argv[static 1])
 {
@@ -81,7 +123,14 @@ int main(int argc, char *argv[static 1])
         CY_AUTO(cy_utf8_t) *raw = cy_json_print(j, false);
         printf("%s\n", raw);
 
-        printf("%d\n", json_has(j, "resolution"));
+        printf("Node exists: %d\n", cy_json_has(j, "resolution"));
+
+        const cy_json_t *name = cy_json_node(j, "name");
+        const cy_json_t *res = cy_json_node(j, "resolutions");
+
+        printf("Root type: %d\n", cy_json_type(j));
+        printf("name type: %d\n", cy_json_type(name));
+        printf("res type: %d\n", cy_json_type(res));
 
         return EXIT_SUCCESS;
 }
