@@ -44,7 +44,7 @@ cy_json_new(const char *src)
        cJSON *ctx = cJSON_Parse(src);
 
        if (CY_UNLIKELY (!ctx)) {
-                ctx = cJSON_Parse("\"null\": null");
+                ctx = cJSON_CreateNull();
 
                 if (CY_UNLIKELY (!ctx)) {
                         printf("JSON parsing failed!\n");
@@ -210,6 +210,10 @@ int main(int argc, char *argv[static 1])
         printf("Root bool: %d\n", cy_json_bool(j));
         printf("name bool: %d\n", cy_json_bool(name));
         printf("res  bool: %d\n", cy_json_bool(res));
+
+        cJSON *n = cJSON_CreateNull();
+        printf("%s\n", cy_json_print(n, true));
+        printf("%d\n", cy_json_type(n));
 
         return EXIT_SUCCESS;
 }
