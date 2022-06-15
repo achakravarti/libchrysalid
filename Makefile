@@ -73,7 +73,7 @@ uninstall: $(MAN_3DIR) $(MAN_7DIR)
 examples: build/examples/cjson
 	$<
 
-build/examples/cjson: $(LIB_SRC) examples/cjson.c
+build/examples/cjson: $(LIB_SRC) external/cJSON/cJSON.c examples/cjson.c
 	mkdir -p build/examples
 	clang $^ -lpcre2-8 -o $@
 
