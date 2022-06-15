@@ -68,7 +68,7 @@ cy_json_t_free__(cy_json_t **ctx)
 }
 
 
-static cy_utf8_t *
+cy_utf8_t *
 cy_json_print(const cy_json_t *ctx, bool pretty)
 {
         const cJSON *j = (cJSON *) ctx;
@@ -77,23 +77,24 @@ cy_json_print(const cy_json_t *ctx, bool pretty)
 }
 
 
-static bool
+bool
 cy_json_has(const cy_json_t *ctx, const char *key)
 {
         return cJSON_HasObjectItem((cJSON *) ctx, key);
 }
 
 
-static const cy_json_t *
+cy_json_t *
 cy_json_node(const cy_json_t *ctx, const char *key)
 {
         const cJSON *j = (cJSON *) ctx;
 
-        if (CY_LIKELY (cJSON_HasObjectItem(j, key)))
-                return cJSON_GetObjectItemCaseSensitive(j, key);
+        if (CY_LIKELY (cJSON_HasObjectItem(j, key))) {
+                cJSON *node = cJSON_GetObjectItemCaseSensitive(j, key);
+                return cy_json_new(cJSON_PrintUnformatted(node));
+        }
 
-        printf("Node not found!\n");
-        abort();
+        return cJSON_CreateNull();
 }
 
 
@@ -188,8 +189,8 @@ int main(int argc, char *argv[static 1])
 
         printf("Node exists: %d\n", cy_json_has(j, "resolution"));
 
-        const cy_json_t *name = cy_json_node(j, "name");
-        const cy_json_t *res = cy_json_node(j, "resolutions");
+        CY_AUTO(cy_json_t) *name = cy_json_node(j, "name");
+        CY_AUTO(cy_json_t) *res = cy_json_node(j, "resolutions");
 
         printf("Root type: %d\n", cy_json_type(j));
         printf("name type: %d\n", cy_json_type(name));
