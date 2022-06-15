@@ -145,12 +145,24 @@ cy_json_string(const cy_json_t *ctx)
 double
 cy_json_number(const cy_json_t *ctx)
 {
-        cJSON *j = (cJSON *) ctx;
+        const cJSON *j = (cJSON *) ctx;
 
         if (CY_LIKELY(cJSON_IsNumber(j)))
                 return j->valuedouble;
 
         return NAN;
+}
+
+
+bool
+cy_json_bool(const cy_json_t *ctx)
+{
+        const cJSON *j = (cJSON *) ctx;
+
+        if (CY_LIKELY(cJSON_IsBool(j)))
+                return cJSON_IsTrue(j);
+
+        return false;
 }
 
 
@@ -174,7 +186,7 @@ int main(int argc, char *argv[static 1])
 
         printf("Root type: %d\n", cy_json_type(j));
         printf("name type: %d\n", cy_json_type(name));
-        printf("res type: %d\n", cy_json_type(res));
+        printf("res  type: %d\n", cy_json_type(res));
 
         CY_AUTO(cy_utf8_t) *root_s = cy_json_string(j);
         CY_AUTO(cy_utf8_t) *name_s = cy_json_string(name);
@@ -182,11 +194,15 @@ int main(int argc, char *argv[static 1])
 
         printf("Root string: %s\n", root_s);
         printf("name string: %s\n", name_s);
-        printf("res string: %s\n", res_s);
+        printf("res  string: %s\n", res_s);
 
         printf("Root number: %f\n", cy_json_number(j));
         printf("name number: %f\n", cy_json_number(name));
         printf("res  number: %f\n", cy_json_number(res));
+
+        printf("Root bool: %d\n", cy_json_bool(j));
+        printf("name bool: %d\n", cy_json_bool(name));
+        printf("res  bool: %d\n", cy_json_bool(res));
 
         return EXIT_SUCCESS;
 }
