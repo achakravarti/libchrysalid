@@ -91,24 +91,37 @@ cy_json_node(const cy_json_t *ctx, const char *key)
 static enum cy_json_type
 cy_json_type(const cy_json_t *ctx)
 {
+        const cJSON *j = (cJSON *) ctx;
 
-        if (cJSON_IsArray(ctx))
+        if (cJSON_IsArray(j))
             return CY_JSON_TYPE_ARRAY;
 
-        if (cJSON_IsObject(ctx))
+        if (cJSON_IsObject(j))
             return CY_JSON_TYPE_OBJECT;
 
-        if (cJSON_IsString(ctx))
+        if (cJSON_IsString(j))
             return CY_JSON_TYPE_STRING;
 
-        if (cJSON_IsNumber(ctx))
+        if (cJSON_IsNumber(j))
             return CY_JSON_TYPE_NUMBER;
 
-        if (cJSON_IsBool(ctx))
+        if (cJSON_IsBool(j))
             return CY_JSON_TYPE_BOOL;
 
         return CY_JSON_TYPE_NULL;
 }
+
+const char *
+cy_json_string(const cy_json_t *ctx)
+{
+        const cJSON *j = (cJSON *) ctx;
+
+        if (cJSON_IsString(ctx))
+                return j->valuestring;
+
+        return "not a string";
+}
+
 
 int main(int argc, char *argv[static 1])
 {
@@ -131,6 +144,10 @@ int main(int argc, char *argv[static 1])
         printf("Root type: %d\n", cy_json_type(j));
         printf("name type: %d\n", cy_json_type(name));
         printf("res type: %d\n", cy_json_type(res));
+
+        printf("Root string: %s\n", cy_json_string(j));
+        printf("name string: %s\n", cy_json_string(name));
+        printf("res string: %s\n", cy_json_string(res));
 
         return EXIT_SUCCESS;
 }
