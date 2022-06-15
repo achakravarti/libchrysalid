@@ -17,7 +17,8 @@ enum cy_json_type {
         CY_JSON_TYPE_ARRAY
 };
 
-static const cJSON *NULL_JSON = NULL;
+typedef void (cy_json_itr_f)(const cy_json_t *, void *);
+
 
 const char *sample = "{"
           "\"name\": \"Awesome 4K\","
@@ -173,6 +174,31 @@ cy_json_bool(const cy_json_t *ctx)
 }
 
 
+void
+cy_json_map(const cy_json_t *ctx, cy_json_itr_f *itr, void *opt)
+{
+        const cJSON *j = (const cJSON *) ctx;
+
+        if (CY_LIKELY(cJSON_IsArray(j))) {
+                const cJSON *i;
+                cJSON_ArrayForEach(i, j)
+                        itr(i, opt);
+        }
+}
+
+
+void
+mymap(const cy_json_t *ctx, void *opt)
+{
+        (void) opt;
+
+        printf("MAPPING...\n");
+
+        CY_AUTO(cy_utf8_t) * str = cy_json_print(ctx, true);
+        printf("%s\n", str);
+}
+
+
 int main(int argc, char *argv[static 1])
 {
         (void) argc;
@@ -214,6 +240,8 @@ int main(int argc, char *argv[static 1])
         cJSON *n = cJSON_CreateNull();
         printf("%s\n", cy_json_print(n, true));
         printf("%d\n", cy_json_type(n));
+
+        cy_json_map(res, mymap, NULL);
 
         return EXIT_SUCCESS;
 }
