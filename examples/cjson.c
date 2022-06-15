@@ -118,16 +118,20 @@ cy_json_string(const cy_json_t *ctx)
 {
         const cJSON *j = (cJSON *) ctx;
 
-        if (CY_LIKELY(cJSON_IsString(ctx)))
+        if (CY_LIKELY(cJSON_IsString(j)))
                 return cy_utf8_new(j->valuestring);
 
-        if (cJSON_IsNull(ctx))
+        if (cJSON_IsNull(j))
                 return cy_utf8_new("(null)");
 
-        if (cJSON_IsBool(ctx))
-                return cy_utf8_new("false");
+        if (cJSON_IsBool(j)) {
+                if (cJSON_IsFalse(j))
+                        return cy_utf8_new("false");
 
-        if (cJSON_IsNumber(ctx)) {
+                return "true";
+        }
+
+        if (cJSON_IsNumber(j)) {
                 // https://stackoverflow.com/questions/1701055/
                 const size_t len = 3 + DBL_MANT_DIG - DBL_MIN_EXP;
                 char bfr[len + 1];
@@ -135,7 +139,7 @@ cy_json_string(const cy_json_t *ctx)
                 return cy_utf8_new(bfr);
         }
 
-        return cy_utf8_new(cJSON_Print(ctx));
+        return cy_utf8_new(cJSON_Print(j));
 }
 
 double
