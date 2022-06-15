@@ -17,6 +17,7 @@ enum cy_json_type {
         CY_JSON_TYPE_ARRAY
 };
 
+static const cJSON *NULL_JSON = NULL;
 
 const char *sample = "{"
           "\"name\": \"Awesome 4K\","
@@ -37,21 +38,25 @@ const char *sample = "{"
         "}";
 
 
-static cy_json_t *
-cy_json_new(void)
+cy_json_t *
+cy_json_new(const char *src)
 {
-       cJSON *ctx = cJSON_Parse(sample);
+       cJSON *ctx = cJSON_Parse(src);
 
-       if (!ctx) {
-                printf("JSON parsing failed!\n");
-                abort();
-        }
+       if (CY_UNLIKELY (!ctx)) {
+                ctx = cJSON_Parse("\"null\": null");
+
+                if (CY_UNLIKELY (!ctx)) {
+                        printf("JSON parsing failed!\n");
+                        abort();
+                }
+       }
 
        return ctx;
 }
 
 
-static void
+void
 cy_json_t_free__(cy_json_t **ctx)
 {
         cJSON *j;
@@ -66,24 +71,26 @@ cy_json_t_free__(cy_json_t **ctx)
 static cy_utf8_t *
 cy_json_print(const cy_json_t *ctx, bool pretty)
 {
-        return cy_utf8_new(pretty
-                           ? cJSON_Print(ctx)
-                           : cJSON_PrintUnformatted(ctx));
+        const cJSON *j = (cJSON *) ctx;
+
+        return cy_utf8_new(pretty ? cJSON_Print(j) : cJSON_PrintUnformatted(j));
 }
 
 
 static bool
 cy_json_has(const cy_json_t *ctx, const char *key)
 {
-        return cJSON_HasObjectItem(ctx, key);
+        return cJSON_HasObjectItem((cJSON *) ctx, key);
 }
 
 
 static const cy_json_t *
 cy_json_node(const cy_json_t *ctx, const char *key)
 {
-        if (cJSON_HasObjectItem(ctx, key))
-                return cJSON_GetObjectItemCaseSensitive(ctx, key);
+        const cJSON *j = (cJSON *) ctx;
+
+        if (CY_LIKELY (cJSON_HasObjectItem(j, key)))
+                return cJSON_GetObjectItemCaseSensitive(j, key);
 
         printf("Node not found!\n");
         abort();
@@ -171,7 +178,7 @@ int main(int argc, char *argv[static 1])
         (void) argc;
         (void) argv;
 
-        CY_AUTO(cy_json_t) *j = cy_json_new();
+        CY_AUTO(cy_json_t) *j = cy_json_new(sample);
 
         CY_AUTO(cy_utf8_t) *pretty = cy_json_print(j, true);
         printf("%s\n", pretty);
