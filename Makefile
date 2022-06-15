@@ -68,6 +68,13 @@ uninstall: $(MAN_3DIR) $(MAN_7DIR)
 	sudo rm -f $(MAN_7DIR)/$(MAN_NS)*
 	sudo mandb
 
+examples: build/examples/cjson
+	build/examples/cjson
+
+build/examples/cjson: src/hptr.c src/utf8.c examples/cjson.c
+	mkdir -p build/examples
+	clang src/hptr.c src/utf8.c examples/cjson.c -lpcre2-8 -o build/examples/cjson
+
 .PHONY:
 	clean docs install uninstall
 
