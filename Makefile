@@ -19,13 +19,14 @@ MAN_PG=$(MAN_SRC:$(MAN_IDIR)/%.md=$(MAN_ODIR)/%)
 # Man page title namespace
 MAN_NS=libchrysalid
 
+LIB_SRC=src/hptr.c src/utf8.c src/json.c
 
 tests: build/test
-	build/test
+	$<
 
-build/test: src/hptr.c src/utf8.c tests/hptr.c tests/utf8.c
+build/test: $(LIB_SRC) tests/hptr.c tests/utf8.c
 	mkdir -p build
-	clang src/hptr.c src/utf8.c tests/hptr.c tests/utf8.c -lpcre2-8 -lcriterion -o build/test
+	clang $^ -lpcre2-8 -lcriterion -o $@
 
 man:
 	tools/mandoc.sh
@@ -41,6 +42,7 @@ $(MAN_ODIR)/%: $(MAN_IDIR)/%.md
 clean:
 	rm -f $(MAN_ODIR)/*
 	rm -f $(MAN_ODIR)/*
+	rm -f build/examples/*
 
 install: $(MAN_PG)
 	sudo mkdir -p $(MAN_3DIR)
@@ -67,6 +69,13 @@ uninstall: $(MAN_3DIR) $(MAN_7DIR)
 	sudo rm -f $(MAN_3DIR)/$(MAN_NS)*
 	sudo rm -f $(MAN_7DIR)/$(MAN_NS)*
 	sudo mandb
+
+examples: build/examples/cjson
+	$<
+
+build/examples/cjson: $(LIB_SRC) external/cJSON/cJSON.c examples/cjson.c
+	mkdir -p build/examples
+	clang $^ -lpcre2-8 -o $@
 
 .PHONY:
 	clean docs install uninstall
