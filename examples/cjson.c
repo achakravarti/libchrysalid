@@ -1,23 +1,9 @@
 #include "../include/utf8.h"
-#include "../external/cJSON/cJSON.h"
+#include "../include/json.h"
 #include <float.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-
-typedef void cy_json_t;
-
-enum cy_json_type {
-        CY_JSON_TYPE_NULL,
-        CY_JSON_TYPE_BOOL,
-        CY_JSON_TYPE_NUMBER,
-        CY_JSON_TYPE_STRING,
-        CY_JSON_TYPE_OBJECT,
-        CY_JSON_TYPE_ARRAY
-};
-
-typedef void (cy_json_itr_f)(const cy_json_t *, void *);
 
 
 const char *sample = "{"
@@ -37,154 +23,6 @@ const char *sample = "{"
           "  }"
           "]"
         "}";
-
-
-cy_json_t *
-cy_json_new(const char *src)
-{
-       cJSON *ctx = cJSON_Parse(src);
-
-       if (CY_UNLIKELY (!ctx)) {
-                ctx = cJSON_CreateNull();
-
-                if (CY_UNLIKELY (!ctx)) {
-                        printf("JSON parsing failed!\n");
-                        abort();
-                }
-       }
-
-       return ctx;
-}
-
-
-void
-cy_json_t_free__(cy_json_t **ctx)
-{
-        cJSON *j;
-
-        if (ctx && (j = *ctx))
-                cJSON_Delete(j);
-
-        *ctx = NULL;
-}
-
-
-cy_utf8_t *
-cy_json_print(const cy_json_t *ctx, bool pretty)
-{
-        const cJSON *j = (cJSON *) ctx;
-
-        return cy_utf8_new(pretty ? cJSON_Print(j) : cJSON_PrintUnformatted(j));
-}
-
-
-bool
-cy_json_has(const cy_json_t *ctx, const char *key)
-{
-        return cJSON_HasObjectItem((cJSON *) ctx, key);
-}
-
-
-const cy_json_t *
-cy_json_node(const cy_json_t *ctx, const char *key)
-{
-        const cJSON *j = (cJSON *) ctx;
-
-        if (CY_LIKELY(cJSON_HasObjectItem(j, key)))
-                return cJSON_GetObjectItemCaseSensitive(j, key);
-
-        printf("JSON key \"%s\" not found!\n", key);
-        abort();
-}
-
-
-static enum cy_json_type
-cy_json_type(const cy_json_t *ctx)
-{
-        const cJSON *j = (cJSON *) ctx;
-
-        if (cJSON_IsArray(j))
-            return CY_JSON_TYPE_ARRAY;
-
-        if (cJSON_IsObject(j))
-            return CY_JSON_TYPE_OBJECT;
-
-        if (cJSON_IsString(j))
-            return CY_JSON_TYPE_STRING;
-
-        if (cJSON_IsNumber(j))
-            return CY_JSON_TYPE_NUMBER;
-
-        if (cJSON_IsBool(j))
-            return CY_JSON_TYPE_BOOL;
-
-        return CY_JSON_TYPE_NULL;
-}
-
-cy_utf8_t *
-cy_json_string(const cy_json_t *ctx)
-{
-        const cJSON *j = (cJSON *) ctx;
-
-        if (CY_LIKELY(cJSON_IsString(j)))
-                return cy_utf8_new(j->valuestring);
-
-        if (cJSON_IsNull(j))
-                return cy_utf8_new("(null)");
-
-        if (cJSON_IsBool(j)) {
-                if (cJSON_IsFalse(j))
-                        return cy_utf8_new("false");
-
-                return "true";
-        }
-
-        if (cJSON_IsNumber(j)) {
-                // https://stackoverflow.com/questions/1701055/
-                const size_t len = 3 + DBL_MANT_DIG - DBL_MIN_EXP;
-                char bfr[len + 1];
-                snprintf(bfr, len, "%f", j->valuedouble);
-                return cy_utf8_new(bfr);
-        }
-
-        return cy_utf8_new(cJSON_Print(j));
-}
-
-double
-cy_json_number(const cy_json_t *ctx)
-{
-        const cJSON *j = (cJSON *) ctx;
-
-        if (CY_LIKELY(cJSON_IsNumber(j)))
-                return j->valuedouble;
-
-        return NAN;
-}
-
-
-bool
-cy_json_bool(const cy_json_t *ctx)
-{
-        const cJSON *j = (cJSON *) ctx;
-
-        if (CY_LIKELY(cJSON_IsBool(j)))
-                return cJSON_IsTrue(j);
-
-        return false;
-}
-
-
-void
-cy_json_map(const cy_json_t *ctx, cy_json_itr_f *itr, void *opt)
-{
-        const cJSON *j = (const cJSON *) ctx;
-
-        if (CY_LIKELY(cJSON_IsArray(j))) {
-                const cJSON *i;
-                cJSON_ArrayForEach(i, j)
-                        itr(i, opt);
-        }
-}
 
 
 void
@@ -214,8 +52,8 @@ int main(int argc, char *argv[static 1])
 
         printf("Node exists: %d\n", cy_json_has(j, "resolution"));
 
-        const cy_json_t *name = cy_json_node(j, "name");
-        const cy_json_t *res = cy_json_node(j, "resolutions");
+        const cy_json_t *name = cy_json_get(j, "name");
+        const cy_json_t *res = cy_json_get(j, "resolutions");
 
         printf("Root type: %d\n", cy_json_type(j));
         printf("name type: %d\n", cy_json_type(name));

@@ -7,6 +7,9 @@
 #include "ext.h"
 #include "utf8.h"
 
+/* Third-party external dependencies */
+#include "../external/cJSON/cJSON.h"
+
 /* Standard library dependencies */
 #include <stdint.h>
 
@@ -17,7 +20,7 @@ extern "C" {
 #endif
 
 
-typedef uintptr_t cy_json_t;
+typedef cJSON cy_json_t;
 
 enum cy_json_type {
         CY_JSON_TYPE_NULL,
@@ -34,7 +37,7 @@ typedef void (cy_json_itr_f)(const cy_json_t [static 1], void *);
 
 /* Prototypes for factory functions */
 extern CY_HOT CY_RSAFE cy_json_t    *cy_json_new(const char [static 1]);
-extern CY_HOT CY_RSAFE cy_json_t    *cy_json_copy(const cy_json_t [static 1]);
+extern CY_HOT CY_RSAFE cy_json_t    *cy_json_copy(cy_json_t [static 1]);
 extern CY_HOT CY_RSAFE cy_json_t    *cy_json_clone(const cy_json_t [static 1]);
 extern CY_HOT void                   cy_json_t_free__(cy_json_t *[static 1]);
 
