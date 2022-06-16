@@ -20,8 +20,20 @@ extern "C" {
 #endif
 
 
+/* Types */
+
+
+/*                                                               %type:cy_json_t
+ * __NAME__
+ *      {{cy_json_t}} - JSON node
+ */
 typedef cJSON cy_json_t;
 
+
+/*                                                            %type:cy_json_type
+ * __NAME__
+ *      {{cy_json_type}} - enumerates JSON data types
+ */
 enum cy_json_type {
         CY_JSON_TYPE_NULL,
         CY_JSON_TYPE_BOOL,
@@ -32,6 +44,10 @@ enum cy_json_type {
 };
 
 
+/*                                                           %type:cy_json_itr_f
+ * __NAME__
+ *      {{cy_json_itr_f}} - iterator for JSON arrays
+ */
 typedef void (cy_json_itr_f)(const cy_json_t [static 1], void *);
 
 
@@ -41,6 +57,11 @@ extern CY_HOT CY_RSAFE cy_json_t    *cy_json_copy(cy_json_t [static 1]);
 extern CY_HOT CY_RSAFE cy_json_t    *cy_json_clone(const cy_json_t [static 1]);
 extern CY_HOT void                   cy_json_t_free__(cy_json_t *[static 1]);
 
+
+/*                                                           %macro:cy_json_free
+ * __NAME__
+ *      {{cy_json_free()}} - releases JSON node
+ */
 #define cy_json_free(ctx)   cy_json_t_free__(ctx)
 
 
