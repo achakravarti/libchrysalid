@@ -244,20 +244,20 @@
  */
 Test(cy_utf8_new, empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
 
-      cr_expect(s);
-      cr_expect(cy_utf8_empty(s));
+        cr_expect(s);
+        cr_expect(cy_utf8_empty(s));
 
-      cr_expect(cy_utf8_eq(s, ""));
-      cr_expect(!cy_utf8_eq(s, SAMPLE_EN_1));
-      cr_expect(!cy_utf8_eq(s, SAMPLE_EL_1));
+        cr_expect(cy_utf8_eq(s, ""));
+        cr_expect(!cy_utf8_eq(s, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s, SAMPLE_EL_1));
 
-      cr_expect(!cy_utf8_len(s));
-      cr_expect(cy_utf8_sz(s) >= 1);
+        cr_expect(!cy_utf8_len(s));
+        cr_expect(cy_utf8_sz(s) >= 1);
 
-      cr_expect(cy_utf8_refc(s) == 1);
-
+        cr_expect(cy_utf8_refc(s) == 1);
 }
 
 
@@ -273,20 +273,21 @@ Test(cy_utf8_new, empty)
  */
 Test(cy_utf8_new, en)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
 
-      cr_expect(s);
-      cr_expect(!cy_utf8_empty(s));
+        cr_expect(s);
+        cr_expect(!cy_utf8_empty(s));
 
-      cr_expect(cy_utf8_eq(s, SAMPLE_EN_1));
-      cr_expect(!cy_utf8_eq(s, ""));
-      cr_expect(!cy_utf8_eq(s, SAMPLE_EN_2));
-      cr_expect(!cy_utf8_eq(s, SAMPLE_EL_1));
+        cr_expect(cy_utf8_eq(s, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s, ""));
+        cr_expect(!cy_utf8_eq(s, SAMPLE_EN_2));
+        cr_expect(!cy_utf8_eq(s, SAMPLE_EL_1));
 
-      cr_expect(cy_utf8_len(s) == LEN_EN_1);
-      cr_expect(cy_utf8_sz(s) >= LEN_EN_1 + 1);
+        cr_expect(cy_utf8_len(s) == LEN_EN_1);
+        cr_expect(cy_utf8_sz(s) >= LEN_EN_1 + 1);
 
-      cr_expect(cy_utf8_refc(s) == 1);
+        cr_expect(cy_utf8_refc(s) == 1);
 }
 
 
@@ -302,20 +303,21 @@ Test(cy_utf8_new, en)
  */
 Test(cy_utf8_new, el)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
 
-      cr_expect(s);
-      cr_expect(!cy_utf8_empty(s));
+        cr_expect(s);
+        cr_expect(!cy_utf8_empty(s));
 
-      cr_expect(cy_utf8_eq(s, SAMPLE_EL_1));
-      cr_expect(!cy_utf8_eq(s, ""));
-      cr_expect(!cy_utf8_eq(s, SAMPLE_EL_2));
-      cr_expect(!cy_utf8_eq(s, SAMPLE_EN_1));
+        cr_expect(cy_utf8_eq(s, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s, ""));
+        cr_expect(!cy_utf8_eq(s, SAMPLE_EL_2));
+        cr_expect(!cy_utf8_eq(s, SAMPLE_EN_1));
 
-      cr_expect(cy_utf8_len(s) == LEN_EL_1);
-      cr_expect(cy_utf8_sz(s) >= LEN_EL_1 + 1);
+        cr_expect(cy_utf8_len(s) == LEN_EL_1);
+        cr_expect(cy_utf8_sz(s) >= LEN_EL_1 + 1);
 
-      cr_expect(cy_utf8_refc(s) == 1);
+        cr_expect(cy_utf8_refc(s) == 1);
 }
 
 
@@ -334,22 +336,24 @@ Test(cy_utf8_new, el)
  */
 Test(cy_utf8_copy, single_empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
-      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
 
-      cr_expect(s == s1);
-      cr_expect(s1);
-      cr_expect(cy_utf8_empty(s1));
+        cr_expect(s == s1);
+        cr_expect(s1);
+        cr_expect(cy_utf8_empty(s1));
 
-      cr_expect(cy_utf8_eq(s1, ""));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(cy_utf8_eq(s1, ""));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
 
-      cr_expect(!cy_utf8_len(s1));
-      cr_expect(cy_utf8_sz(s1) >= 1);
+        cr_expect(!cy_utf8_len(s1));
+        cr_expect(cy_utf8_sz(s1) >= 1);
 
-      cr_expect(cy_utf8_refc(s) == 2);
-      cr_expect(cy_utf8_refc(s1) == 2);
+        cr_expect(cy_utf8_refc(s) == 2);
+        cr_expect(cy_utf8_refc(s1) == 2);
 }
 
 
@@ -365,22 +369,24 @@ Test(cy_utf8_copy, single_empty)
  */
 Test(cy_utf8_copy, single_en)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
-      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
 
-      cr_expect(s == s1);
-      cr_expect(s1);
-      cr_expect(!cy_utf8_empty(s1));
+        cr_expect(s == s1);
+        cr_expect(s1);
+        cr_expect(!cy_utf8_empty(s1));
 
-      cr_expect(cy_utf8_eq(s1, SAMPLE_EN_1));
-      cr_expect(!cy_utf8_eq(s1, ""));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(cy_utf8_eq(s1, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s1, ""));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
 
-      cr_expect(cy_utf8_len(s1) == LEN_EN_1);
-      cr_expect(cy_utf8_sz(s1) >= LEN_EN_1 + 1);
+        cr_expect(cy_utf8_len(s1) == LEN_EN_1);
+        cr_expect(cy_utf8_sz(s1) >= LEN_EN_1 + 1);
 
-      cr_expect(cy_utf8_refc(s) == 2);
-      cr_expect(cy_utf8_refc(s1) == 2);
+        cr_expect(cy_utf8_refc(s) == 2);
+        cr_expect(cy_utf8_refc(s1) == 2);
 }
 
 
@@ -396,22 +402,24 @@ Test(cy_utf8_copy, single_en)
  */
 Test(cy_utf8_copy, single_el)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
-      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
 
-      cr_expect(s == s1);
-      cr_expect(s1);
-      cr_expect(!cy_utf8_empty(s1));
+        cr_expect(s == s1);
+        cr_expect(s1);
+        cr_expect(!cy_utf8_empty(s1));
 
-      cr_expect(cy_utf8_eq(s1, SAMPLE_EL_1));
-      cr_expect(!cy_utf8_eq(s1, ""));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+        cr_expect(cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s1, ""));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
 
-      cr_expect(cy_utf8_len(s1) == LEN_EL_1);
-      cr_expect(cy_utf8_sz(s1) >= LEN_EL_1 + 1);
+        cr_expect(cy_utf8_len(s1) == LEN_EL_1);
+        cr_expect(cy_utf8_sz(s1) >= LEN_EL_1 + 1);
 
-      cr_expect(cy_utf8_refc(s) == 2);
-      cr_expect(cy_utf8_refc(s1) == 2);
+        cr_expect(cy_utf8_refc(s) == 2);
+        cr_expect(cy_utf8_refc(s1) == 2);
 }
 
 
@@ -427,37 +435,40 @@ Test(cy_utf8_copy, single_el)
  */
 Test(cy_utf8_copy, multiple_empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
-      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
-      CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s);
 
-      cr_expect(s == s1);
-      cr_expect(s1 == s2);
+        cr_expect(s == s1);
+        cr_expect(s1 == s2);
 
-      cr_expect(s1);
-      cr_expect(s2);
+        cr_expect(s1);
+        cr_expect(s2);
 
-      cr_expect(cy_utf8_empty(s1));
-      cr_expect(cy_utf8_empty(s2));
+        cr_expect(cy_utf8_empty(s1));
+        cr_expect(cy_utf8_empty(s2));
 
-      cr_expect(cy_utf8_eq(s1, ""));
-      cr_expect(cy_utf8_eq(s2, ""));
+        cr_expect(cy_utf8_eq(s1, ""));
+        cr_expect(cy_utf8_eq(s2, ""));
 
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
-      cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_2));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_2));
 
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_2));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_2));
 
-      cr_expect(!cy_utf8_len(s1));
-      cr_expect(!cy_utf8_len(s2));
+        cr_expect(!cy_utf8_len(s1));
+        cr_expect(!cy_utf8_len(s2));
 
-      cr_expect(cy_utf8_sz(s1) >= 1);
-      cr_expect(cy_utf8_sz(s2) >= 1);
+        cr_expect(cy_utf8_sz(s1) >= 1);
+        cr_expect(cy_utf8_sz(s2) >= 1);
 
-      cr_expect(cy_utf8_refc(s) == 3);
-      cr_expect(cy_utf8_refc(s1) == 3);
-      cr_expect(cy_utf8_refc(s2) == 3);
+        cr_expect(cy_utf8_refc(s) == 3);
+        cr_expect(cy_utf8_refc(s1) == 3);
+        cr_expect(cy_utf8_refc(s2) == 3);
 }
 
 
@@ -473,40 +484,43 @@ Test(cy_utf8_copy, multiple_empty)
  */
 Test(cy_utf8_copy, multiple_en)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_2);
-      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
-      CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s1);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_2);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s1);
 
-      cr_expect(s == s1);
-      cr_expect(s1 == s2);
+        cr_expect(s == s1);
+        cr_expect(s1 == s2);
 
-      cr_expect(s1);
-      cr_expect(s2);
+        cr_expect(s1);
+        cr_expect(s2);
 
-      cr_expect(!cy_utf8_empty(s1));
-      cr_expect(!cy_utf8_empty(s2));
+        cr_expect(!cy_utf8_empty(s1));
+        cr_expect(!cy_utf8_empty(s2));
 
-      cr_expect(cy_utf8_eq(s1, SAMPLE_EN_2));
-      cr_expect(cy_utf8_eq(s2, SAMPLE_EN_2));
+        cr_expect(cy_utf8_eq(s1, SAMPLE_EN_2));
+        cr_expect(cy_utf8_eq(s2, SAMPLE_EN_2));
 
-      cr_expect(!cy_utf8_eq(s1, ""));
-      cr_expect(!cy_utf8_eq(s2, ""));
+        cr_expect(!cy_utf8_eq(s1, ""));
+        cr_expect(!cy_utf8_eq(s2, ""));
 
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
-      cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_1));
 
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
 
-      cr_expect(cy_utf8_len(s1) == LEN_EN_2);
-      cr_expect(cy_utf8_len(s2) == LEN_EN_2);
+        cr_expect(cy_utf8_len(s1) == LEN_EN_2);
+        cr_expect(cy_utf8_len(s2) == LEN_EN_2);
 
-      cr_expect(cy_utf8_sz(s1) >= LEN_EN_2 + 1);
-      cr_expect(cy_utf8_sz(s2) >= LEN_EN_2 + 1);
+        cr_expect(cy_utf8_sz(s1) >= LEN_EN_2 + 1);
+        cr_expect(cy_utf8_sz(s2) >= LEN_EN_2 + 1);
 
-      cr_expect(cy_utf8_refc(s) == 3);
-      cr_expect(cy_utf8_refc(s1) == 3);
-      cr_expect(cy_utf8_refc(s2) == 3);
+        cr_expect(cy_utf8_refc(s) == 3);
+        cr_expect(cy_utf8_refc(s1) == 3);
+        cr_expect(cy_utf8_refc(s2) == 3);
 }
 
 
@@ -522,40 +536,43 @@ Test(cy_utf8_copy, multiple_en)
  */
 Test(cy_utf8_copy, multiple_el)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_2);
-      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
-      CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s1);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_2);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s1);
 
-      cr_expect(s == s1);
-      cr_expect(s1 == s2);
+        cr_expect(s == s1);
+        cr_expect(s1 == s2);
 
-      cr_expect(s1);
-      cr_expect(s2);
+        cr_expect(s1);
+        cr_expect(s2);
 
-      cr_expect(!cy_utf8_empty(s1));
-      cr_expect(!cy_utf8_empty(s2));
+        cr_expect(!cy_utf8_empty(s1));
+        cr_expect(!cy_utf8_empty(s2));
 
-      cr_expect(cy_utf8_eq(s1, SAMPLE_EL_2));
-      cr_expect(cy_utf8_eq(s2, SAMPLE_EL_2));
+        cr_expect(cy_utf8_eq(s1, SAMPLE_EL_2));
+        cr_expect(cy_utf8_eq(s2, SAMPLE_EL_2));
 
-      cr_expect(!cy_utf8_eq(s1, ""));
-      cr_expect(!cy_utf8_eq(s2, ""));
+        cr_expect(!cy_utf8_eq(s1, ""));
+        cr_expect(!cy_utf8_eq(s2, ""));
 
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
-      cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_1));
 
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
 
-      cr_expect(cy_utf8_len(s1) == LEN_EL_2);
-      cr_expect(cy_utf8_len(s2) == LEN_EL_2);
+        cr_expect(cy_utf8_len(s1) == LEN_EL_2);
+        cr_expect(cy_utf8_len(s2) == LEN_EL_2);
 
-      cr_expect(cy_utf8_sz(s1) >= LEN_EL_2 + 1);
-      cr_expect(cy_utf8_sz(s2) >= LEN_EL_2 + 1);
+        cr_expect(cy_utf8_sz(s1) >= LEN_EL_2 + 1);
+        cr_expect(cy_utf8_sz(s2) >= LEN_EL_2 + 1);
 
-      cr_expect(cy_utf8_refc(s) == 3);
-      cr_expect(cy_utf8_refc(s1) == 3);
-      cr_expect(cy_utf8_refc(s2) == 3);
+        cr_expect(cy_utf8_refc(s) == 3);
+        cr_expect(cy_utf8_refc(s1) == 3);
+        cr_expect(cy_utf8_refc(s2) == 3);
 }
 
 
@@ -575,22 +592,24 @@ Test(cy_utf8_copy, multiple_el)
  */
 Test(cy_utf8_clone, single_empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
-      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
 
-      cr_expect(s != s1);
-      cr_expect(s1);
-      cr_expect(cy_utf8_empty(s1));
+        cr_expect(s != s1);
+        cr_expect(s1);
+        cr_expect(cy_utf8_empty(s1));
 
-      cr_expect(cy_utf8_eq(s1, ""));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(cy_utf8_eq(s1, ""));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
 
-      cr_expect(!cy_utf8_len(s1));
-      cr_expect(cy_utf8_sz(s1) >= 1);
+        cr_expect(!cy_utf8_len(s1));
+        cr_expect(cy_utf8_sz(s1) >= 1);
 
-      cr_expect(cy_utf8_refc(s) == 1);
-      cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(cy_utf8_refc(s) == 1);
+        cr_expect(cy_utf8_refc(s1) == 1);
 }
 
 
@@ -606,22 +625,24 @@ Test(cy_utf8_clone, single_empty)
  */
 Test(cy_utf8_clone, single_en)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
-      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
 
-      cr_expect(s != s1);
-      cr_expect(s1);
-      cr_expect(!cy_utf8_empty(s1));
+        cr_expect(s != s1);
+        cr_expect(s1);
+        cr_expect(!cy_utf8_empty(s1));
 
-      cr_expect(cy_utf8_eq(s1, SAMPLE_EN_1));
-      cr_expect(!cy_utf8_eq(s1, ""));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(cy_utf8_eq(s1, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s1, ""));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
 
-      cr_expect(cy_utf8_len(s1) == LEN_EN_1);
-      cr_expect(cy_utf8_sz(s1) >= LEN_EN_1 + 1);
+        cr_expect(cy_utf8_len(s1) == LEN_EN_1);
+        cr_expect(cy_utf8_sz(s1) >= LEN_EN_1 + 1);
 
-      cr_expect(cy_utf8_refc(s) == 1);
-      cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(cy_utf8_refc(s) == 1);
+        cr_expect(cy_utf8_refc(s1) == 1);
 }
 
 
@@ -637,22 +658,24 @@ Test(cy_utf8_clone, single_en)
  */
 Test(cy_utf8_clone, single_el)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
-      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
 
-      cr_expect(s != s1);
-      cr_expect(s1);
-      cr_expect(!cy_utf8_empty(s1));
+        cr_expect(s != s1);
+        cr_expect(s1);
+        cr_expect(!cy_utf8_empty(s1));
 
-      cr_expect(cy_utf8_eq(s1, SAMPLE_EL_1));
-      cr_expect(!cy_utf8_eq(s1, ""));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+        cr_expect(cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s1, ""));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
 
-      cr_expect(cy_utf8_len(s1) == LEN_EL_1);
-      cr_expect(cy_utf8_sz(s1) >= LEN_EL_1 + 1);
+        cr_expect(cy_utf8_len(s1) == LEN_EL_1);
+        cr_expect(cy_utf8_sz(s1) >= LEN_EL_1 + 1);
 
-      cr_expect(cy_utf8_refc(s) == 1);
-      cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(cy_utf8_refc(s) == 1);
+        cr_expect(cy_utf8_refc(s1) == 1);
 }
 
 
@@ -668,37 +691,40 @@ Test(cy_utf8_clone, single_el)
  */
 Test(cy_utf8_clone, multiple_empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
-      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
-      CY_AUTO(cy_utf8_t) *s2 = cy_utf8_clone(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s2 = cy_utf8_clone(s);
 
-      cr_expect(s != s1);
-      cr_expect(s1 != s2);
+        cr_expect(s != s1);
+        cr_expect(s1 != s2);
 
-      cr_expect(s1);
-      cr_expect(s2);
+        cr_expect(s1);
+        cr_expect(s2);
 
-      cr_expect(cy_utf8_empty(s1));
-      cr_expect(cy_utf8_empty(s2));
+        cr_expect(cy_utf8_empty(s1));
+        cr_expect(cy_utf8_empty(s2));
 
-      cr_expect(cy_utf8_eq(s1, ""));
-      cr_expect(cy_utf8_eq(s2, ""));
+        cr_expect(cy_utf8_eq(s1, ""));
+        cr_expect(cy_utf8_eq(s2, ""));
 
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
-      cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_2));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_2));
 
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_2));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_2));
 
-      cr_expect(!cy_utf8_len(s1));
-      cr_expect(!cy_utf8_len(s2));
+        cr_expect(!cy_utf8_len(s1));
+        cr_expect(!cy_utf8_len(s2));
 
-      cr_expect(cy_utf8_sz(s1) >= 1);
-      cr_expect(cy_utf8_sz(s2) >= 1);
+        cr_expect(cy_utf8_sz(s1) >= 1);
+        cr_expect(cy_utf8_sz(s2) >= 1);
 
-      cr_expect(cy_utf8_refc(s) == 1);
-      cr_expect(cy_utf8_refc(s1) == 1);
-      cr_expect(cy_utf8_refc(s2) == 1);
+        cr_expect(cy_utf8_refc(s) == 1);
+        cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(cy_utf8_refc(s2) == 1);
 }
 
 
@@ -714,40 +740,43 @@ Test(cy_utf8_clone, multiple_empty)
  */
 Test(cy_utf8_clone, multiple_en)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_2);
-      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
-      CY_AUTO(cy_utf8_t) *s2 = cy_utf8_clone(s1);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_2);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s2 = cy_utf8_clone(s1);
 
-      cr_expect(s != s1);
-      cr_expect(s1 != s2);
+        cr_expect(s != s1);
+        cr_expect(s1 != s2);
 
-      cr_expect(s1);
-      cr_expect(s2);
+        cr_expect(s1);
+        cr_expect(s2);
 
-      cr_expect(!cy_utf8_empty(s1));
-      cr_expect(!cy_utf8_empty(s2));
+        cr_expect(!cy_utf8_empty(s1));
+        cr_expect(!cy_utf8_empty(s2));
 
-      cr_expect(cy_utf8_eq(s1, SAMPLE_EN_2));
-      cr_expect(cy_utf8_eq(s2, SAMPLE_EN_2));
+        cr_expect(cy_utf8_eq(s1, SAMPLE_EN_2));
+        cr_expect(cy_utf8_eq(s2, SAMPLE_EN_2));
 
-      cr_expect(!cy_utf8_eq(s1, ""));
-      cr_expect(!cy_utf8_eq(s2, ""));
+        cr_expect(!cy_utf8_eq(s1, ""));
+        cr_expect(!cy_utf8_eq(s2, ""));
 
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
-      cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_1));
 
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
 
-      cr_expect(cy_utf8_len(s1) == LEN_EN_2);
-      cr_expect(cy_utf8_len(s2) == LEN_EN_2);
+        cr_expect(cy_utf8_len(s1) == LEN_EN_2);
+        cr_expect(cy_utf8_len(s2) == LEN_EN_2);
 
-      cr_expect(cy_utf8_sz(s1) >= LEN_EN_2 + 1);
-      cr_expect(cy_utf8_sz(s2) >= LEN_EN_2 + 1);
+        cr_expect(cy_utf8_sz(s1) >= LEN_EN_2 + 1);
+        cr_expect(cy_utf8_sz(s2) >= LEN_EN_2 + 1);
 
-      cr_expect(cy_utf8_refc(s) == 1);
-      cr_expect(cy_utf8_refc(s1) == 1);
-      cr_expect(cy_utf8_refc(s2) == 1);
+        cr_expect(cy_utf8_refc(s) == 1);
+        cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(cy_utf8_refc(s2) == 1);
 }
 
 
@@ -763,40 +792,43 @@ Test(cy_utf8_clone, multiple_en)
  */
 Test(cy_utf8_clone, multiple_el)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_2);
-      CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
-      CY_AUTO(cy_utf8_t) *s2 = cy_utf8_clone(s1);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_2);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s2 = cy_utf8_clone(s1);
 
-      cr_expect(s != s1);
-      cr_expect(s1 != s2);
+        cr_expect(s != s1);
+        cr_expect(s1 != s2);
 
-      cr_expect(s1);
-      cr_expect(s2);
+        cr_expect(s1);
+        cr_expect(s2);
 
-      cr_expect(!cy_utf8_empty(s1));
-      cr_expect(!cy_utf8_empty(s2));
+        cr_expect(!cy_utf8_empty(s1));
+        cr_expect(!cy_utf8_empty(s2));
 
-      cr_expect(cy_utf8_eq(s1, SAMPLE_EL_2));
-      cr_expect(cy_utf8_eq(s2, SAMPLE_EL_2));
+        cr_expect(cy_utf8_eq(s1, SAMPLE_EL_2));
+        cr_expect(cy_utf8_eq(s2, SAMPLE_EL_2));
 
-      cr_expect(!cy_utf8_eq(s1, ""));
-      cr_expect(!cy_utf8_eq(s2, ""));
+        cr_expect(!cy_utf8_eq(s1, ""));
+        cr_expect(!cy_utf8_eq(s2, ""));
 
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
-      cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EN_1));
+        cr_expect(!cy_utf8_eq(s2, SAMPLE_EN_1));
 
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
-      cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
+        cr_expect(!cy_utf8_eq(s1, SAMPLE_EL_1));
 
-      cr_expect(cy_utf8_len(s1) == LEN_EL_2);
-      cr_expect(cy_utf8_len(s2) == LEN_EL_2);
+        cr_expect(cy_utf8_len(s1) == LEN_EL_2);
+        cr_expect(cy_utf8_len(s2) == LEN_EL_2);
 
-      cr_expect(cy_utf8_sz(s1) >= LEN_EL_2 + 1);
-      cr_expect(cy_utf8_sz(s2) >= LEN_EL_2 + 1);
+        cr_expect(cy_utf8_sz(s1) >= LEN_EL_2 + 1);
+        cr_expect(cy_utf8_sz(s2) >= LEN_EL_2 + 1);
 
-      cr_expect(cy_utf8_refc(s) == 1);
-      cr_expect(cy_utf8_refc(s1) == 1);
-      cr_expect(cy_utf8_refc(s2) == 1);
+        cr_expect(cy_utf8_refc(s) == 1);
+        cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(cy_utf8_refc(s2) == 1);
 }
 
 
@@ -815,10 +847,10 @@ Test(cy_utf8_clone, multiple_el)
  */
 Test(cy_utf8_free, null)
 {
-      cy_utf8_t *s = NULL;
-      cy_utf8_free(&s);
+        cy_utf8_t *s = NULL;
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
+        cr_expect(!s);
 }
 
 
@@ -834,10 +866,10 @@ Test(cy_utf8_free, null)
  */
 Test(cy_utf8_free, single_empty)
 {
-      cy_utf8_t *s = cy_utf8_new_empty();
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new_empty();
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
+        cr_expect(!s);
 }
 
 
@@ -853,10 +885,10 @@ Test(cy_utf8_free, single_empty)
  */
 Test(cy_utf8_free, single_en)
 {
-      cy_utf8_t *s = cy_utf8_new(SAMPLE_EN_1);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new(SAMPLE_EN_1);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
+        cr_expect(!s);
 }
 
 
@@ -872,10 +904,10 @@ Test(cy_utf8_free, single_en)
  */
 Test(cy_utf8_free, single_el)
 {
-      cy_utf8_t *s = cy_utf8_new(SAMPLE_EL_1);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new(SAMPLE_EL_1);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
+        cr_expect(!s);
 }
 
 
@@ -891,16 +923,16 @@ Test(cy_utf8_free, single_el)
  */
 Test(cy_utf8_free, single_copy_empty)
 {
-      cy_utf8_t *s = cy_utf8_new_empty();
-      cy_utf8_t *s1 = cy_utf8_copy(s);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new_empty();
+        cy_utf8_t *s1 = cy_utf8_copy(s);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
-      cr_expect(s1);
-      cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(!s);
+        cr_expect(s1);
+        cr_expect(cy_utf8_refc(s1) == 1);
 
-      cy_utf8_free(&s1);
-      cr_expect(!s1);
+        cy_utf8_free(&s1);
+        cr_expect(!s1);
 }
 
 
@@ -916,16 +948,16 @@ Test(cy_utf8_free, single_copy_empty)
  */
 Test(cy_utf8_free, single_copy_en)
 {
-      cy_utf8_t *s = cy_utf8_new(SAMPLE_EN_1);
-      cy_utf8_t *s1 = cy_utf8_copy(s);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new(SAMPLE_EN_1);
+        cy_utf8_t *s1 = cy_utf8_copy(s);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
-      cr_expect(s1);
-      cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(!s);
+        cr_expect(s1);
+        cr_expect(cy_utf8_refc(s1) == 1);
 
-      cy_utf8_free(&s1);
-      cr_expect(!s1);
+        cy_utf8_free(&s1);
+        cr_expect(!s1);
 }
 
 
@@ -941,16 +973,16 @@ Test(cy_utf8_free, single_copy_en)
  */
 Test(cy_utf8_free, single_copy_el)
 {
-      cy_utf8_t *s = cy_utf8_new(SAMPLE_EL_1);
-      cy_utf8_t *s1 = cy_utf8_copy(s);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new(SAMPLE_EL_1);
+        cy_utf8_t *s1 = cy_utf8_copy(s);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
-      cr_expect(s1);
-      cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(!s);
+        cr_expect(s1);
+        cr_expect(cy_utf8_refc(s1) == 1);
 
-      cy_utf8_free(&s1);
-      cr_expect(!s1);
+        cy_utf8_free(&s1);
+        cr_expect(!s1);
 }
 
 
@@ -966,25 +998,25 @@ Test(cy_utf8_free, single_copy_el)
  */
 Test(cy_utf8_free, multiple_copy_empty)
 {
-      cy_utf8_t *s = cy_utf8_new_empty();
-      cy_utf8_t *s1 = cy_utf8_copy(s);
-      cy_utf8_t *s2 = cy_utf8_copy(s1);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new_empty();
+        cy_utf8_t *s1 = cy_utf8_copy(s);
+        cy_utf8_t *s2 = cy_utf8_copy(s1);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
-      cr_expect(s1);
-      cr_expect(s2);
-      cr_expect(cy_utf8_refc(s1) == 2);
-      cr_expect(cy_utf8_refc(s2) == 2);
+        cr_expect(!s);
+        cr_expect(s1);
+        cr_expect(s2);
+        cr_expect(cy_utf8_refc(s1) == 2);
+        cr_expect(cy_utf8_refc(s2) == 2);
 
-      cy_utf8_free(&s1);
+        cy_utf8_free(&s1);
 
-      cr_expect(!s1);
-      cr_expect(s2);
-      cr_expect(cy_utf8_refc(s2) == 1);
+        cr_expect(!s1);
+        cr_expect(s2);
+        cr_expect(cy_utf8_refc(s2) == 1);
 
-      cy_utf8_free(&s2);
-      cr_expect(!s2);
+        cy_utf8_free(&s2);
+        cr_expect(!s2);
 }
 
 
@@ -1000,25 +1032,25 @@ Test(cy_utf8_free, multiple_copy_empty)
  */
 Test(cy_utf8_free, multiple_copy_en)
 {
-      cy_utf8_t *s = cy_utf8_new(SAMPLE_EN_1);
-      cy_utf8_t *s1 = cy_utf8_copy(s);
-      cy_utf8_t *s2 = cy_utf8_copy(s1);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new(SAMPLE_EN_1);
+        cy_utf8_t *s1 = cy_utf8_copy(s);
+        cy_utf8_t *s2 = cy_utf8_copy(s1);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
-      cr_expect(s1);
-      cr_expect(s2);
-      cr_expect(cy_utf8_refc(s1) == 2);
-      cr_expect(cy_utf8_refc(s2) == 2);
+        cr_expect(!s);
+        cr_expect(s1);
+        cr_expect(s2);
+        cr_expect(cy_utf8_refc(s1) == 2);
+        cr_expect(cy_utf8_refc(s2) == 2);
 
-      cy_utf8_free(&s1);
+        cy_utf8_free(&s1);
 
-      cr_expect(!s1);
-      cr_expect(s2);
-      cr_expect(cy_utf8_refc(s2) == 1);
+        cr_expect(!s1);
+        cr_expect(s2);
+        cr_expect(cy_utf8_refc(s2) == 1);
 
-      cy_utf8_free(&s2);
-      cr_expect(!s2);
+        cy_utf8_free(&s2);
+        cr_expect(!s2);
 }
 
 
@@ -1034,25 +1066,25 @@ Test(cy_utf8_free, multiple_copy_en)
  */
 Test(cy_utf8_free, multiple_copy_el)
 {
-      cy_utf8_t *s = cy_utf8_new(SAMPLE_EL_1);
-      cy_utf8_t *s1 = cy_utf8_copy(s);
-      cy_utf8_t *s2 = cy_utf8_copy(s1);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new(SAMPLE_EL_1);
+        cy_utf8_t *s1 = cy_utf8_copy(s);
+        cy_utf8_t *s2 = cy_utf8_copy(s1);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
-      cr_expect(s1);
-      cr_expect(s2);
-      cr_expect(cy_utf8_refc(s1) == 2);
-      cr_expect(cy_utf8_refc(s2) == 2);
+        cr_expect(!s);
+        cr_expect(s1);
+        cr_expect(s2);
+        cr_expect(cy_utf8_refc(s1) == 2);
+        cr_expect(cy_utf8_refc(s2) == 2);
 
-      cy_utf8_free(&s1);
+        cy_utf8_free(&s1);
 
-      cr_expect(!s1);
-      cr_expect(s2);
-      cr_expect(cy_utf8_refc(s2) == 1);
+        cr_expect(!s1);
+        cr_expect(s2);
+        cr_expect(cy_utf8_refc(s2) == 1);
 
-      cy_utf8_free(&s2);
-      cr_expect(!s2);
+        cy_utf8_free(&s2);
+        cr_expect(!s2);
 }
 
 
@@ -1068,16 +1100,16 @@ Test(cy_utf8_free, multiple_copy_el)
  */
 Test(cy_utf8_free, single_clone_empty)
 {
-      cy_utf8_t *s = cy_utf8_new_empty();
-      cy_utf8_t *s1 = cy_utf8_clone(s);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new_empty();
+        cy_utf8_t *s1 = cy_utf8_clone(s);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
-      cr_expect(s1);
-      cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(!s);
+        cr_expect(s1);
+        cr_expect(cy_utf8_refc(s1) == 1);
 
-      cy_utf8_free(&s1);
-      cr_expect(!s1);
+        cy_utf8_free(&s1);
+        cr_expect(!s1);
 }
 
 
@@ -1093,16 +1125,16 @@ Test(cy_utf8_free, single_clone_empty)
  */
 Test(cy_utf8_free, single_clone_en)
 {
-      cy_utf8_t *s = cy_utf8_new(SAMPLE_EN_2);
-      cy_utf8_t *s1 = cy_utf8_clone(s);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new(SAMPLE_EN_2);
+        cy_utf8_t *s1 = cy_utf8_clone(s);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
-      cr_expect(s1);
-      cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(!s);
+        cr_expect(s1);
+        cr_expect(cy_utf8_refc(s1) == 1);
 
-      cy_utf8_free(&s1);
-      cr_expect(!s1);
+        cy_utf8_free(&s1);
+        cr_expect(!s1);
 }
 
 
@@ -1118,16 +1150,16 @@ Test(cy_utf8_free, single_clone_en)
  */
 Test(cy_utf8_free, single_clone_el)
 {
-      cy_utf8_t *s = cy_utf8_new(SAMPLE_EL_2);
-      cy_utf8_t *s1 = cy_utf8_clone(s);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new(SAMPLE_EL_2);
+        cy_utf8_t *s1 = cy_utf8_clone(s);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
-      cr_expect(s1);
-      cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(!s);
+        cr_expect(s1);
+        cr_expect(cy_utf8_refc(s1) == 1);
 
-      cy_utf8_free(&s1);
-      cr_expect(!s1);
+        cy_utf8_free(&s1);
+        cr_expect(!s1);
 }
 
 
@@ -1143,25 +1175,25 @@ Test(cy_utf8_free, single_clone_el)
  */
 Test(cy_utf8_free, multiple_clone_empty)
 {
-      cy_utf8_t *s = cy_utf8_new_empty();
-      cy_utf8_t *s1 = cy_utf8_clone(s);
-      cy_utf8_t *s2 = cy_utf8_clone(s1);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new_empty();
+        cy_utf8_t *s1 = cy_utf8_clone(s);
+        cy_utf8_t *s2 = cy_utf8_clone(s1);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
-      cr_expect(s1);
-      cr_expect(s2);
-      cr_expect(cy_utf8_refc(s1) == 1);
-      cr_expect(cy_utf8_refc(s2) == 1);
+        cr_expect(!s);
+        cr_expect(s1);
+        cr_expect(s2);
+        cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(cy_utf8_refc(s2) == 1);
 
-      cy_utf8_free(&s1);
+        cy_utf8_free(&s1);
 
-      cr_expect(!s1);
-      cr_expect(s2);
-      cr_expect(cy_utf8_refc(s2) == 1);
+        cr_expect(!s1);
+        cr_expect(s2);
+        cr_expect(cy_utf8_refc(s2) == 1);
 
-      cy_utf8_free(&s2);
-      cr_expect(!s2);
+        cy_utf8_free(&s2);
+        cr_expect(!s2);
 }
 
 
@@ -1177,25 +1209,25 @@ Test(cy_utf8_free, multiple_clone_empty)
  */
 Test(cy_utf8_free, multiple_clone_en)
 {
-      cy_utf8_t *s = cy_utf8_new(SAMPLE_EN_1);
-      cy_utf8_t *s1 = cy_utf8_clone(s);
-      cy_utf8_t *s2 = cy_utf8_clone(s1);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new(SAMPLE_EN_1);
+        cy_utf8_t *s1 = cy_utf8_clone(s);
+        cy_utf8_t *s2 = cy_utf8_clone(s1);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
-      cr_expect(s1);
-      cr_expect(s2);
-      cr_expect(cy_utf8_refc(s1) == 1);
-      cr_expect(cy_utf8_refc(s2) == 1);
+        cr_expect(!s);
+        cr_expect(s1);
+        cr_expect(s2);
+        cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(cy_utf8_refc(s2) == 1);
 
-      cy_utf8_free(&s1);
+        cy_utf8_free(&s1);
 
-      cr_expect(!s1);
-      cr_expect(s2);
-      cr_expect(cy_utf8_refc(s2) == 1);
+        cr_expect(!s1);
+        cr_expect(s2);
+        cr_expect(cy_utf8_refc(s2) == 1);
 
-      cy_utf8_free(&s2);
-      cr_expect(!s2);
+        cy_utf8_free(&s2);
+        cr_expect(!s2);
 }
 
 
@@ -1211,25 +1243,25 @@ Test(cy_utf8_free, multiple_clone_en)
  */
 Test(cy_utf8_free, multiple_clone_el)
 {
-      cy_utf8_t *s = cy_utf8_new(SAMPLE_EL_1);
-      cy_utf8_t *s1 = cy_utf8_clone(s);
-      cy_utf8_t *s2 = cy_utf8_clone(s1);
-      cy_utf8_free(&s);
+        cy_utf8_t *s = cy_utf8_new(SAMPLE_EL_1);
+        cy_utf8_t *s1 = cy_utf8_clone(s);
+        cy_utf8_t *s2 = cy_utf8_clone(s1);
+        cy_utf8_free(&s);
 
-      cr_expect(!s);
-      cr_expect(s1);
-      cr_expect(s2);
-      cr_expect(cy_utf8_refc(s1) == 1);
-      cr_expect(cy_utf8_refc(s2) == 1);
+        cr_expect(!s);
+        cr_expect(s1);
+        cr_expect(s2);
+        cr_expect(cy_utf8_refc(s1) == 1);
+        cr_expect(cy_utf8_refc(s2) == 1);
 
-      cy_utf8_free(&s1);
+        cy_utf8_free(&s1);
 
-      cr_expect(!s1);
-      cr_expect(s2);
-      cr_expect(cy_utf8_refc(s2) == 1);
+        cr_expect(!s1);
+        cr_expect(s2);
+        cr_expect(cy_utf8_refc(s2) == 1);
 
-      cy_utf8_free(&s2);
-      cr_expect(!s2);
+        cy_utf8_free(&s2);
+        cr_expect(!s2);
 }
 
 
@@ -1248,10 +1280,11 @@ Test(cy_utf8_free, multiple_clone_el)
  */
 Test(cy_utf8_match, empty_empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
-      bool m = cy_utf8_match(s, "");
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
+        bool m = cy_utf8_match(s, "");
 
-      cr_assert(!m);
+        cr_assert(!m);
 }
 
 
@@ -1267,10 +1300,11 @@ Test(cy_utf8_match, empty_empty)
  */
 Test(cy_utf8_match, empty_nonempty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
-      bool m = cy_utf8_match(s, REGEX_EMAIL);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
+        bool m = cy_utf8_match(s, REGEX_EMAIL);
 
-      cr_assert(!m);
+        cr_assert(!m);
 }
 
 
@@ -1286,10 +1320,11 @@ Test(cy_utf8_match, empty_nonempty)
  */
 Test(cy_utf8_match, en_empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
-      bool m = cy_utf8_match(s, "");
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+        bool m = cy_utf8_match(s, "");
 
-      cr_assert(!m);
+        cr_assert(!m);
 }
 
 
@@ -1305,10 +1340,11 @@ Test(cy_utf8_match, en_empty)
  */
 Test(cy_utf8_match, en_match)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
-      bool m = cy_utf8_match(s, REGEX_EN);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+        bool m = cy_utf8_match(s, REGEX_EN);
 
-      cr_assert(m);
+        cr_assert(m);
 }
 
 
@@ -1324,10 +1360,11 @@ Test(cy_utf8_match, en_match)
  */
 Test(cy_utf8_match, en_nomatch)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
-      bool m = cy_utf8_match(s, REGEX_EMAIL);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+        bool m = cy_utf8_match(s, REGEX_EMAIL);
 
-      cr_assert(!m);
+        cr_assert(!m);
 }
 
 
@@ -1343,10 +1380,11 @@ Test(cy_utf8_match, en_nomatch)
  */
 Test(cy_utf8_match, el_empty)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
-      bool m = cy_utf8_match(s, "");
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+        bool m = cy_utf8_match(s, "");
 
-      cr_assert(!m);
+        cr_assert(!m);
 }
 
 
@@ -1362,10 +1400,11 @@ Test(cy_utf8_match, el_empty)
  */
 Test(cy_utf8_match, el_match)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
-      bool m = cy_utf8_match(s, REGEX_EL);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+        bool m = cy_utf8_match(s, REGEX_EL);
 
-      cr_assert(m);
+        cr_assert(m);
 }
 
 
@@ -1381,8 +1420,9 @@ Test(cy_utf8_match, el_match)
  */
 Test(cy_utf8_match, el_nomatch)
 {
-      CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
-      bool m = cy_utf8_match(s, REGEX_EMAIL);
+        /* cppcheck-suppress AssignmentAddressToInteger */
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+        bool m = cy_utf8_match(s, REGEX_EMAIL);
 
-      cr_assert(!m);
+        cr_assert(!m);
 }

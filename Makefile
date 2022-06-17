@@ -19,7 +19,7 @@ MAN_PG=$(MAN_SRC:$(MAN_IDIR)/%.md=$(MAN_ODIR)/%)
 # Man page title namespace
 MAN_NS=libchrysalid
 
-LIB_SRC=src/hptr.c src/utf8.c src/json.c
+LIB_SRC=src/hptr.c src/utf8.c src/json.c external/cJSON/cJSON.c
 
 tests: build/test
 	$<
@@ -73,7 +73,7 @@ uninstall: $(MAN_3DIR) $(MAN_7DIR)
 examples: build/examples/cjson
 	$<
 
-build/examples/cjson: $(LIB_SRC) external/cJSON/cJSON.c examples/cjson.c
+build/examples/cjson: $(LIB_SRC) examples/cjson.c
 	mkdir -p build/examples
 	clang $^ -lpcre2-8 -o $@
 
