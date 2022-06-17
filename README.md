@@ -10,6 +10,7 @@ libchrysalid
 Aims to be portable, well-tested and documented.
 </p>
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/910a3b79e57842788226170cc93183ea)](https://www.codacy.com/gh/achakravarti/libchrysalid/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=achakravarti/libchrysalid&amp;utm_campaign=Badge_Grade)
 
 ## ⚡️ Quick Start
 
