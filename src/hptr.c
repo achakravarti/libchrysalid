@@ -337,6 +337,10 @@ static size_t   align_fix(size_t);
  *      count of the instanct at initialisation. In case of an allocation
  *      failure, the behaviour is to abort with a failure message, but this may
  *      change in future.
+ *
+ *      The *cppcheck* tool encounters a false positive for memory leak checks
+ *      in the implementation of this function; these are disabled through the
+ *      inline suppression comment {{cppcheck-suppress memleak}}.
  */
 void *cy_hptr_new(size_t sz)
 {
@@ -349,7 +353,7 @@ void *cy_hptr_new(size_t sz)
         }
 
         REFC_INIT(ctx);
-        return CAST_BODY(ctx);
+        return CAST_BODY(ctx); /* cppcheck-suppress memleak */
 }
 
 
@@ -432,15 +436,21 @@ void *cy_hptr_new_aligned(size_t sz, size_t aln)
  *      {{ctx}} and returns a copy of the pointer. A check is made to ensure
  *      that the maximum number of reference counts has not been reached, the
  *      current behaviour being to abort in such a case.
+ *
+ *      The *cppcheck* tool encounters a false positive for negative index
+ *      checks in the implementation of this function; these are disabled
+ *      through the inline suppression comment {{cppcheck-suppress
+ *      negativeIndex}}.
  */
 void *cy_hptr_copy(cy_hptr_t ctx[static 1])
 {
+	/* cppcheck-suppress negativeIndex */
         if (CY_UNLIKELY(REFC_CURRENT(ctx) == CY_HPTR_REFC_MAX)) {
                 printf("PANIC: maximum number of reference counts reached!\n");
                 abort();
         }
 
-        REFC_INCREMENT(ctx);
+        REFC_INCREMENT(ctx); /* cppcheck-suppress negativeIndex */
         return ctx;
 }
 
@@ -508,10 +518,16 @@ void cy_hptr_free(cy_hptr_t *ctx[static 1])
  *      Since {{ctx}} points to the body segment, we need to first determine the
  *      address of its segment before performing the bitwise operation that
  *      checks for alignment.
+ *
+ *      The *cppcheck* tool encounters false positives for negative index
+ *      checks in the implementation of this function; these are disabled
+ *      through the inline suppression comment {{cppcheck-suppress
+ *      negativeIndex}}.
  */
 bool cy_hptr_aligned(const cy_hptr_t ctx[static 1], size_t aln)
 {
-        if (CY_LIKELY(ALIGN_VALID(aln)))
+        if (CY_LIKELY(ALIGN_VALID(aln))) /* cppcheck-suppress negativeIndex */
+ 		/* cppcheck-suppress negativeIndex */
                 return !((uintptr_t) CAST_HEAD(ctx) & (aln - 1));
 
         return false;
@@ -535,10 +551,16 @@ bool cy_hptr_aligned(const cy_hptr_t ctx[static 1], size_t aln)
  * __RETURN__
  *      This function returns the current reference count of {{ctx}}, which is
  *      guaranteed to be greater than or equal to 1.
+ *
+ * __NOTES__
+ *      The *cppcheck* tool encounters a false positive for negative index
+ *      checks in the implementation of this function; these are disabled
+ *      through the inline suppression comment {{cppcheck-suppress
+ *      negativeIndex}}.
  */
 size_t cy_hptr_refc(const cy_hptr_t ctx[static 1])
 {
-        return REFC_CURRENT(ctx);
+        return REFC_CURRENT(ctx); /* cppcheck-suppress negativeIndex */
 }
 
 
@@ -570,12 +592,19 @@ size_t cy_hptr_refc(const cy_hptr_t ctx[static 1])
  *      greater than the requested size by {{HEAD_SZ}}, and more so if alignment
  *      and CPU byte ordering issues are taken into consideration by the
  *      underlying {{malloc()}} implementation.
+ *
+ *      The *cppcheck* tool encounters false positives for negative index
+ *      checks in the implementation of this function; these are disabled
+ *      through the inline suppression comment {{cppcheck-suppress
+ *      negativeIndex}}.
  */
 size_t cy_hptr_sz(const cy_hptr_t ctx[static 1])
 {
 #ifdef __APPLE__
+	/* cppcheck-suppress negativeIndex */
         return malloc_size(CAST_HEAD(ctx));
 #else
+	/* cppcheck-suppress negativeIndex */
         return malloc_usable_size(CAST_HEAD(ctx));
 #endif
 }
@@ -608,16 +637,21 @@ size_t cy_hptr_sz(const cy_hptr_t ctx[static 1])
  *      The returned string does not contain information regarding alignment
  *      since there is currently no way to determine it without storing it as
  *      additional metadata.
+ *
+ *      The *cppcheck* tool encounters false positives for negative index
+ *      checks in the implementation of this function; these are disabled
+ *      through the inline suppression comment {{cppcheck-suppress
+ *      negativeIndex}}.
  */
 const char *cy_hptr_str(const cy_hptr_t ctx[static 1])
 {
         static char bfr[1024];
         sprintf(bfr,
                 "head addr: %p, body addr: %p, usable size: %zu, refc: %zu\n",
-                CAST_HEAD(ctx),
+                CAST_HEAD(ctx), /* cppcheck-suppress negativeIndex */
                 (void *) ctx,
                 cy_hptr_sz(ctx),
-                REFC_CURRENT(ctx));
+                REFC_CURRENT(ctx)); /* cppcheck-suppress negativeIndex */
 
         return bfr;
 }
