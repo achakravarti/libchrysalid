@@ -244,6 +244,7 @@
  */
 Test(cy_utf8_new, empty)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
 
       cr_expect(s);
@@ -273,6 +274,7 @@ Test(cy_utf8_new, empty)
  */
 Test(cy_utf8_new, en)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
 
       cr_expect(s);
@@ -302,6 +304,7 @@ Test(cy_utf8_new, en)
  */
 Test(cy_utf8_new, el)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
 
       cr_expect(s);
@@ -334,7 +337,9 @@ Test(cy_utf8_new, el)
  */
 Test(cy_utf8_copy, single_empty)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
 
       cr_expect(s == s1);
@@ -365,7 +370,9 @@ Test(cy_utf8_copy, single_empty)
  */
 Test(cy_utf8_copy, single_en)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
 
       cr_expect(s == s1);
@@ -396,7 +403,9 @@ Test(cy_utf8_copy, single_en)
  */
 Test(cy_utf8_copy, single_el)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
 
       cr_expect(s == s1);
@@ -427,8 +436,11 @@ Test(cy_utf8_copy, single_el)
  */
 Test(cy_utf8_copy, multiple_empty)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s);
 
       cr_expect(s == s1);
@@ -473,8 +485,11 @@ Test(cy_utf8_copy, multiple_empty)
  */
 Test(cy_utf8_copy, multiple_en)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_2);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s1);
 
       cr_expect(s == s1);
@@ -522,8 +537,11 @@ Test(cy_utf8_copy, multiple_en)
  */
 Test(cy_utf8_copy, multiple_el)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_2);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_copy(s);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s2 = cy_utf8_copy(s1);
 
       cr_expect(s == s1);
@@ -575,7 +593,9 @@ Test(cy_utf8_copy, multiple_el)
  */
 Test(cy_utf8_clone, single_empty)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
 
       cr_expect(s != s1);
@@ -606,7 +626,9 @@ Test(cy_utf8_clone, single_empty)
  */
 Test(cy_utf8_clone, single_en)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
 
       cr_expect(s != s1);
@@ -637,7 +659,9 @@ Test(cy_utf8_clone, single_en)
  */
 Test(cy_utf8_clone, single_el)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
 
       cr_expect(s != s1);
@@ -668,8 +692,11 @@ Test(cy_utf8_clone, single_el)
  */
 Test(cy_utf8_clone, multiple_empty)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s2 = cy_utf8_clone(s);
 
       cr_expect(s != s1);
@@ -714,8 +741,11 @@ Test(cy_utf8_clone, multiple_empty)
  */
 Test(cy_utf8_clone, multiple_en)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_2);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s2 = cy_utf8_clone(s1);
 
       cr_expect(s != s1);
@@ -763,8 +793,11 @@ Test(cy_utf8_clone, multiple_en)
  */
 Test(cy_utf8_clone, multiple_el)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_2);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s1 = cy_utf8_clone(s);
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s2 = cy_utf8_clone(s1);
 
       cr_expect(s != s1);
@@ -1248,6 +1281,7 @@ Test(cy_utf8_free, multiple_clone_el)
  */
 Test(cy_utf8_match, empty_empty)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
       bool m = cy_utf8_match(s, "");
 
@@ -1267,6 +1301,7 @@ Test(cy_utf8_match, empty_empty)
  */
 Test(cy_utf8_match, empty_nonempty)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new_empty();
       bool m = cy_utf8_match(s, REGEX_EMAIL);
 
@@ -1286,6 +1321,7 @@ Test(cy_utf8_match, empty_nonempty)
  */
 Test(cy_utf8_match, en_empty)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
       bool m = cy_utf8_match(s, "");
 
@@ -1305,6 +1341,7 @@ Test(cy_utf8_match, en_empty)
  */
 Test(cy_utf8_match, en_match)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
       bool m = cy_utf8_match(s, REGEX_EN);
 
@@ -1324,6 +1361,7 @@ Test(cy_utf8_match, en_match)
  */
 Test(cy_utf8_match, en_nomatch)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EN_1);
       bool m = cy_utf8_match(s, REGEX_EMAIL);
 
@@ -1343,6 +1381,7 @@ Test(cy_utf8_match, en_nomatch)
  */
 Test(cy_utf8_match, el_empty)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
       bool m = cy_utf8_match(s, "");
 
@@ -1362,6 +1401,7 @@ Test(cy_utf8_match, el_empty)
  */
 Test(cy_utf8_match, el_match)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
       bool m = cy_utf8_match(s, REGEX_EL);
 
@@ -1381,6 +1421,7 @@ Test(cy_utf8_match, el_match)
  */
 Test(cy_utf8_match, el_nomatch)
 {
+      /* cppcheck-suppress AssignmentAddressToInteger */
       CY_AUTO(cy_utf8_t) *s = cy_utf8_new(SAMPLE_EL_1);
       bool m = cy_utf8_match(s, REGEX_EMAIL);
 

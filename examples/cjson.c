@@ -32,6 +32,7 @@ mymap(const cy_json_t *ctx, void *opt)
 
         printf("MAPPING...\n");
 
+        /* cppcheck-suppress AssignmentAddressToInteger */
         CY_AUTO(cy_utf8_t) * str = cy_json_print(ctx, true);
         printf("%s\n", str);
 }
@@ -44,9 +45,11 @@ int main(int argc, char *argv[static 1])
 
         CY_AUTO(cy_json_t) *j = cy_json_new(sample);
 
+        /* cppcheck-suppress AssignmentAddressToInteger */
         CY_AUTO(cy_utf8_t) *pretty = cy_json_print(j, true);
         printf("%s\n", pretty);
 
+        /* cppcheck-suppress AssignmentAddressToInteger */
         CY_AUTO(cy_utf8_t) *raw = cy_json_print(j, false);
         printf("%s\n", raw);
 
@@ -59,8 +62,11 @@ int main(int argc, char *argv[static 1])
         printf("name type: %d\n", cy_json_type(name));
         printf("res  type: %d\n", cy_json_type(res));
 
+        /* cppcheck-suppress AssignmentAddressToInteger */
         CY_AUTO(cy_utf8_t) *root_s = cy_json_string(j);
+        /* cppcheck-suppress AssignmentAddressToInteger */
         CY_AUTO(cy_utf8_t) *name_s = cy_json_string(name);
+        /* cppcheck-suppress AssignmentAddressToInteger */
         CY_AUTO(cy_utf8_t) *res_s = cy_json_string(res);
 
         printf("Root string: %s\n", root_s);
