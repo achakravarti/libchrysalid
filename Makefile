@@ -70,10 +70,14 @@ uninstall: $(MAN_3DIR) $(MAN_7DIR)
 	sudo rm -f $(MAN_7DIR)/$(MAN_NS)*
 	sudo mandb
 
-examples: build/examples/cjson
-	$<
+examples: build/examples/cjson build/examples/log
+	$^
 
 build/examples/cjson: $(LIB_SRC) examples/cjson.c
+	mkdir -p build/examples
+	clang $^ -lpcre2-8 -o $@
+
+build/examples/log: $(LIB_SRC) examples/log.c
 	mkdir -p build/examples
 	clang $^ -lpcre2-8 -o $@
 

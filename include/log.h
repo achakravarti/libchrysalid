@@ -45,8 +45,8 @@ extern CY_HOT void      cy_log_write__(const char [static 1],
  * __NAME__
  *      cy_log_critical() - logs critical message
  */
-#define cy_log_critical(msg, ...)       cy_log_write__(__func__, __FILE__,   \
-                                                   __LINE__ LOG_CRIT, msg,   \
+#define cy_log_critical(msg, ...)   cy_log_write__(__func__, __FILE__,     \
+                                                   __LINE__, LOG_CRIT, msg,\
                                                    ##__VA_ARGS__)
 
 
