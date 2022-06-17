@@ -19,7 +19,7 @@ MAN_PG=$(MAN_SRC:$(MAN_IDIR)/%.md=$(MAN_ODIR)/%)
 # Man page title namespace
 MAN_NS=libchrysalid
 
-LIB_SRC=src/hptr.c src/utf8.c src/json.c external/cJSON/cJSON.c
+LIB_SRC=src/hptr.c src/utf8.c src/json.c src/log.c external/cJSON/cJSON.c
 
 tests: build/test
 	$<
