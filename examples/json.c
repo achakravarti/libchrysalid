@@ -81,10 +81,6 @@ int main(int argc, char *argv[static 1])
         printf("name bool: %d\n", cy_json_bool(name));
         printf("res  bool: %d\n", cy_json_bool(res));
 
-        cJSON *n = cJSON_CreateNull();
-        printf("%s\n", cy_json_print(n, true));
-        printf("%d\n", cy_json_type(n));
-
         cy_json_map(res, mymap, NULL);
 
         return EXIT_SUCCESS;

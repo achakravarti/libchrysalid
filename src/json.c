@@ -77,7 +77,7 @@ cy_json_t_free__(cy_json_t *ctx[static 1])
 {
         cJSON *j;
 
-        if (ctx && (j = *ctx))
+        if (CY_LIKELY(ctx && (j = *ctx)))
                 cJSON_Delete(j);
 
         *ctx = NULL;
@@ -176,7 +176,7 @@ cy_json_string(const cy_json_t ctx[static 1])
                 return cy_utf8_new(bfr);
         }
 
-        return cy_utf8_new(cJSON_Print(ctx));
+        return cy_json_print(ctx, true);
 }
 
 
@@ -224,8 +224,11 @@ cy_json_bool(const cy_json_t ctx[static 1])
 cy_utf8_t *
 cy_json_print(const cy_json_t ctx[static 1], bool pretty)
 {
-        return cy_utf8_new(pretty
-                           ? cJSON_Print(ctx) : cJSON_PrintUnformatted(ctx));
+        char *tmp = pretty ? cJSON_Print(ctx) : cJSON_PrintUnformatted(ctx);
+        cy_utf8_t * bfr = cy_utf8_new(tmp);
+        free(tmp);
+
+        return bfr;
 }
 
 
