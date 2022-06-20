@@ -19,7 +19,8 @@ MAN_PG=$(MAN_SRC:$(MAN_IDIR)/%.md=$(MAN_ODIR)/%)
 # Man page title namespace
 MAN_NS=libchrysalid
 
-LIB_SRC=src/hptr.c src/utf8.c src/json.c src/log.c external/cJSON/cJSON.c
+LIB_SRC=src/hptr.c src/utf8.c src/json.c src/log.c external/cJSON/cJSON.c \
+	external/iniparser/src/dictionary.c external/iniparser/src/iniparser.c
 
 tests: build/test
 	$<
@@ -70,10 +71,10 @@ uninstall: $(MAN_3DIR) $(MAN_7DIR)
 	sudo rm -f $(MAN_7DIR)/$(MAN_NS)*
 	sudo mandb
 
-examples: build/examples/cjson build/examples/log
+examples: build/examples/json build/examples/log
 	$^
 
-build/examples/cjson: $(LIB_SRC) examples/cjson.c
+build/examples/json: $(LIB_SRC) examples/json.c
 	mkdir -p build/examples
 	clang $^ -lpcre2-8 -o $@
 
