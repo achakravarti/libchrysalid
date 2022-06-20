@@ -75,6 +75,15 @@ extern "C" {
 #       endif
 #endif
 
+#if (defined __GNUC__ || defined __clang__)
+#      define CY_SAFE CY_RSAFE CY_PSAFE
+#else
+#       define CY_SAFE
+#       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "CY_SAFE has no effect in current compiler"
+#       endif
+#endif
+
 
 /*
  * C_HOT - hints a function as hot
