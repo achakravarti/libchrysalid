@@ -49,6 +49,7 @@ cy_json_copy(cy_json_t ctx[static 1])
 cy_json_t *
 cy_json_clone(const cy_json_t ctx[static 1])
 {
+        /* cppcheck-suppress AssignmentAddressToInteger */
         CY_AUTO(cy_utf8_t) *str = cy_json_print(ctx, false);
 
         return cy_json_new(str);
