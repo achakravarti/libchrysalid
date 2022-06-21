@@ -38,16 +38,16 @@ cy_cfg_free__(cy_cfg_t **);
 /* Prototypes for accessor functions */
 
 extern CY_PSAFE bool
-cy_cfg_bool(const cy_cfg_t *);
+cy_cfg_bool(const cy_cfg_t *, const char *);
 
 extern CY_PSAFE long
-cy_cfg_int(const cy_cfg_t *);
+cy_cfg_int(const cy_cfg_t *, const char *);
 
 extern CY_PSAFE double
-cy_cfg_flt(const cy_cfg_t *t);
+cy_cfg_flt(const cy_cfg_t *t, const char *);
 
-extern CY_SAFE const char *
-cy_cfg_str(const cy_cfg_t *);
+extern CY_SAFE cy_utf8_t *
+cy_cfg_str(const cy_cfg_t *, const char *);
 
 extern CY_SAFE cy_utf8_t *
 cy_cfg_print(const cy_cfg_t *);

@@ -7,11 +7,14 @@
 
 /* Standard library dependencies */
 #include <assert.h>
+#include <math.h>
+#include <stdio.h>
+#include <malloc.h>
 
 
 struct cy_cfg__ {
-        cy_utf8_t       *path;
-        dictionary      *hnd;
+        cy_utf8_t   *path;
+        dictionary  *hnd;
 };
 
 
@@ -71,30 +74,44 @@ cy_cfg_free__(cy_cfg_t **ctx)
 
 
 bool
-cy_cfg_bool(const cy_cfg_t *ctx)
+cy_cfg_bool(const cy_cfg_t *ctx, const char *key)
 {
         assert(ctx);
+        assert(key);
+        assert(*key);
+
+        return iniparser_getboolean(ctx->hnd, key, 0);
 }
 
 
 long
-cy_cfg_int(const cy_cfg_t *ctx)
+cy_cfg_int(const cy_cfg_t *ctx, const char *key)
 {
         assert(ctx);
+        assert(key);
+        assert(*key);
+
+        return iniparser_getlongint(ctx->hnd, key, 0);
 }
 
 
 double
-cy_cfg_flt(const cy_cfg_t *ctx)
+cy_cfg_flt(const cy_cfg_t *ctx, const char *key)
 {
         assert(ctx);
+        assert(key);
+        assert(*key);
+
+        return iniparser_getdouble(ctx->hnd, key, NAN);
 }
 
 
-const char *
-cy_cfg_str(const cy_cfg_t *ctx)
+cy_utf8_t *
+cy_cfg_str(const cy_cfg_t *ctx, const char *key)
 {
         assert(ctx);
+
+        return cy_utf8_new(iniparser_getstring(ctx->hnd, key, ""));
 }
 
 
@@ -102,4 +119,37 @@ cy_utf8_t *
 cy_cfg_print(const cy_cfg_t *ctx)
 {
         assert(ctx);
+
+        /* https://stackoverflow.com/questions/3747086/ */
+
+        FILE *f = fopen(ctx->path, "rb");
+
+        if (CY_UNLIKELY(!f)) {
+                printf("Failed to open configuration file!\n");
+                abort();
+        }
+
+        fseek(f, 0, SEEK_END);
+        long sz = ftell(f);
+        rewind(f);
+
+        char *bfr = calloc(1, sz + 1);
+
+        if (CY_UNLIKELY(!bfr)) {
+                fclose(f);
+                printf("Failed to allocate memory for buffer!\n");
+                abort();
+        }
+
+        if (CY_UNLIKELY(fread(bfr, sz, 1, f) != 1)) {
+                fclose(f);
+                fputs("Failed to read entire file to buffer!\n", stderr);
+                abort();
+        }
+
+        cy_utf8_t *s = cy_utf8_new(bfr);
+        fclose(f);
+        free(bfr);
+
+        return s;
 }
