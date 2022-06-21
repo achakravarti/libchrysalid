@@ -15,6 +15,9 @@
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrsalid.h>
+ *
+ *      extern CY_HOT CY_RSAFE cy_json_t *
+ *      cy_json_new(const char src[static 1]);
  */
 cy_json_t *
 cy_json_new(const char src[static 1])
@@ -40,6 +43,9 @@ cy_json_new(const char src[static 1])
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrsalid.h>
+ *
+ *      extern CY_HOT CY_RSAFE cy_json_t *
+ *      cy_json_copy(cy_json_t ctx[static 1]);
  */
 cy_json_t *
 cy_json_copy(cy_json_t ctx[static 1])
@@ -54,6 +60,9 @@ cy_json_copy(cy_json_t ctx[static 1])
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrsalid.h>
+ *
+ *      extern CY_HOT CY_RSAFE cy_json_t *
+ *      cy_json_clone(const cy_json_t ctx[static 1]);
  */
 cy_json_t *
 cy_json_clone(const cy_json_t ctx[static 1])
@@ -71,6 +80,9 @@ cy_json_clone(const cy_json_t ctx[static 1])
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrsalid.h>
+ *
+ *      extern CY_HOT void
+ *      cy_json_t_free__(cy_json_t *ctx[static 1]);
  */
 void
 cy_json_t_free__(cy_json_t *ctx[static 1])
@@ -90,6 +102,9 @@ cy_json_t_free__(cy_json_t *ctx[static 1])
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrsalid.h>
+ *
+ *      extern bool
+ *      cy_json_has(const cy_json_t ctx[static 1], const char key[static 1]);
  */
 bool
 cy_json_has(const cy_json_t ctx[static 1], const char key[static 1])
@@ -104,6 +119,9 @@ cy_json_has(const cy_json_t ctx[static 1], const char key[static 1])
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrsalid.h>
+ *
+ *      extern CY_RSAFE const cy_json_t *
+ *      cy_json_get(const cy_json_t ctx[static 1], const char key[static 1]);
  */
 const cy_json_t *
 cy_json_get(const cy_json_t ctx[static 1], const char key[static 1])
@@ -118,10 +136,13 @@ cy_json_get(const cy_json_t ctx[static 1], const char key[static 1])
 
 /*                                                            %func:cy_json_type
  * __NAME__
- *      {{cy_json_get()}} - gets data type of JSON node
+ *      {{cy_json_type()}} - gets data type of JSON node
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrsalid.h>
+ *
+ *      extern enum cy_json_type
+ *      cy_json_type(const cy_json_t ctx[static 1]);
  */
 enum cy_json_type
 cy_json_type(const cy_json_t ctx[static 1])
@@ -151,6 +172,9 @@ cy_json_type(const cy_json_t ctx[static 1])
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrsalid.h>
+ *
+ *      extern CY_RSAFE cy_utf8_t *
+ *      cy_json_string(const cy_json_t ctx[static 1]);
  */
 cy_utf8_t *
 cy_json_string(const cy_json_t ctx[static 1])
@@ -186,6 +210,9 @@ cy_json_string(const cy_json_t ctx[static 1])
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrsalid.h>
+ *
+ *      extern double
+ *      cy_json_number(const cy_json_t ctx[static 1]);
  */
 double
 cy_json_number(const cy_json_t ctx[static 1])
@@ -203,6 +230,9 @@ cy_json_number(const cy_json_t ctx[static 1])
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrsalid.h>
+ *
+ *      extern bool
+ *      cy_json_bool(const cy_json_t ctx[static 1]);
  */
 bool
 cy_json_bool(const cy_json_t ctx[static 1])
@@ -220,6 +250,9 @@ cy_json_bool(const cy_json_t ctx[static 1])
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrsalid.h>
+ *
+ *      extern CY_RSAFE cy_utf8_t *
+ *      cy_json_print(const cy_json_t ctx[static 1], bool pretty);
  */
 cy_utf8_t *
 cy_json_print(const cy_json_t ctx[static 1], bool pretty)
@@ -238,6 +271,10 @@ cy_json_print(const cy_json_t ctx[static 1], bool pretty)
  *
  * __SYNOPSIS__
  *      #include <libchrysalid/libchrsalid.h>
+ *
+ *      extern void
+ *      cy_json_map(const cy_json_t ctx[static 1], cy_json_itr_f *itr,
+ *                  void *opt);
  */
 void
 cy_json_map(const cy_json_t ctx[static 1], cy_json_itr_f *itr, void *opt)
