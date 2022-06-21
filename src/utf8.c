@@ -419,9 +419,8 @@ cy_utf8_match(const cy_utf8_t ctx[static 1], const char regex[static 1])
         if (CY_UNLIKELY(!re)) {
                PCRE2_UCHAR bfr[256];
                pcre2_get_error_message(eno, bfr, sizeof (bfr));
-               printf("PCRE2 compilation failed at offset %d: %s\n",
-                      (int) eoff, bfr);
-
+               fprintf(stderr, "PCRE2 compilation failed at offset %d: %s\n",
+                       (int) eoff, bfr);
                abort();
         }
 

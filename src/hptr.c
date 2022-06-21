@@ -348,7 +348,8 @@ void *cy_hptr_new(size_t sz)
         cy_hptr_t *ctx = calloc(1, tsz);
 
         if (CY_UNLIKELY(!ctx)) {
-                printf("PANIC: Failed to allocate memory of size %zu!\n", sz);
+                fprintf(stderr,
+                        "PANIC: Failed to allocate memory of size %zu!\n", sz);
                 abort();
         }
 
@@ -399,7 +400,7 @@ void *cy_hptr_new_aligned(size_t sz, size_t aln)
         cy_hptr_t *ctx;
 
         if (CY_UNLIKELY(posix_memalign((void **) &ctx, aln, sz))) {
-                printf("PANIC: Failed to allocate memory of size %zu"
+                fprintf(stderr, "PANIC: Failed to allocate memory of size %zu"
                        " and alignment %zu!\n", sz, aln);
                 abort();
         }
@@ -446,7 +447,8 @@ void *cy_hptr_copy(cy_hptr_t ctx[static 1])
 {
 	/* cppcheck-suppress negativeIndex */
         if (CY_UNLIKELY(REFC_CURRENT(ctx) == CY_HPTR_REFC_MAX)) {
-                printf("PANIC: maximum number of reference counts reached!\n");
+                fputs("PANIC: maximum number of reference counts reached!\n",
+                      stderr);
                 abort();
         }
 

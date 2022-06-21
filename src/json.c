@@ -25,7 +25,7 @@ cy_json_new(const char src[static 1])
                 ctx = cJSON_CreateNull();
 
                 if (CY_UNLIKELY (!ctx)) {
-                        printf("JSON parsing failed!\n");
+                        fputs("JSON parsing failed!\n", stderr);
                         abort();
                 }
        }
@@ -111,7 +111,7 @@ cy_json_get(const cy_json_t ctx[static 1], const char key[static 1])
         if (CY_LIKELY(cJSON_HasObjectItem(ctx, key)))
                 return cJSON_GetObjectItemCaseSensitive(ctx, key);
 
-        printf("JSON key \"%s\" not found!\n", key);
+        fprintf(stderr, "JSON key \"%s\" not found!\n", key);
         abort();
 }
 

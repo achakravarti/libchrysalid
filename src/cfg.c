@@ -29,7 +29,7 @@ cy_cfg_new(const char *path)
         ctx->hnd = iniparser_load(path);
 
         if (CY_UNLIKELY(!ctx->hnd)) {
-                printf("Failed to load config file \"%s\"!\n", path);
+                fprintf(stderr, "Failed to load config file \"%s\"!\n", path);
                 abort();
         }
 
@@ -125,7 +125,7 @@ cy_cfg_print(const cy_cfg_t *ctx)
         FILE *f = fopen(ctx->path, "rb");
 
         if (CY_UNLIKELY(!f)) {
-                printf("Failed to open configuration file!\n");
+                fputs("Failed to open configuration file!\n", stderr);
                 abort();
         }
 
@@ -137,7 +137,7 @@ cy_cfg_print(const cy_cfg_t *ctx)
 
         if (CY_UNLIKELY(!bfr)) {
                 fclose(f);
-                printf("Failed to allocate memory for buffer!\n");
+                fputs("Failed to allocate memory for buffer!\n", stderr);
                 abort();
         }
 
