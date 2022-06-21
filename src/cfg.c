@@ -7,7 +7,6 @@
 
 /* Standard library dependencies */
 #include <assert.h>
-#include <math.h>
 #include <stdio.h>
 #include <malloc.h>
 
@@ -56,7 +55,7 @@ cy_cfg_clone(const cy_cfg_t *ctx)
 
 
 void
-cy_cfg_free__(cy_cfg_t **ctx)
+cy_cfg_t_free__(cy_cfg_t **ctx)
 {
         cy_cfg_t *c;
 
@@ -102,16 +101,16 @@ cy_cfg_flt(const cy_cfg_t *ctx, const char *key)
         assert(key);
         assert(*key);
 
-        return iniparser_getdouble(ctx->hnd, key, NAN);
+        return iniparser_getdouble(ctx->hnd, key, 0.0);
 }
 
 
-cy_utf8_t *
+const char *
 cy_cfg_str(const cy_cfg_t *ctx, const char *key)
 {
         assert(ctx);
 
-        return cy_utf8_new(iniparser_getstring(ctx->hnd, key, ""));
+        return iniparser_getstring(ctx->hnd, key, "");
 }
 
 
