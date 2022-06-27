@@ -31,13 +31,16 @@ LIB_SRC!=find src/ -type f -name '*.c' | sort
 LIB_OBJ=$(LIB_SRC:src/%.c=build/%.o)
 LIB_BIN=build/libchrysalid.so
 
+# Rule to build libchrysalid objects
 build/%.o: src/%.c
 	$(CC) -fPIC -Wall -c $< -o $@
 
+# Rule to build cJSON objects
 build/external/cJSON/%.o: external/cJSON/%.c
 	mkdir -p build/external/cJSON
 	$(CC) -fPIC -Wall -c $< -o $@
 
+# Rule to build iniparser objects
 build/external/iniparser/src/%.o: external/iniparser/src/%.c
 	mkdir -p build/external/iniparser/src
 	$(CC) -fPIC -Wall -c $< -o $@
@@ -51,7 +54,7 @@ lib: $(LIB_BIN)
 tests: build/test
 	$<
 
-build/test: $(LIB_SRC) $(EXT_SRC) tests/hptr.c tests/utf8.c
+build/test: tests/hptr.c tests/utf8.c $(LIB_BIN)
 	mkdir -p build
 	$(CC) $^ -lpcre2-8 -lcriterion -o $@
 
@@ -104,15 +107,15 @@ examples: build/examples/json build/examples/log build/examples/cfg
 	build/examples/log
 	build/examples/cfg
 
-build/examples/json: $(LIB_SRC) $(EXT_SRC) examples/json.c
+build/examples/json: examples/json.c $(LIB_BIN)
 	mkdir -p build/examples
 	$(CC) $^ -lpcre2-8 -o $@
 
-build/examples/log: $(LIB_SRC) $(EXT_SRC) examples/log.c
+build/examples/log: examples/log.c $(LIB_BIN)
 	mkdir -p build/examples
 	$(CC) $^ -lpcre2-8 -o $@
 
-build/examples/cfg: $(LIB_SRC) $(EXT_SRC) examples/cfg.c
+build/examples/cfg: examples/cfg.c $(LIB_BIN)
 	mkdir -p build/examples
 	$(CC) $^ -lpcre2-8 -o $@
 
