@@ -76,6 +76,12 @@ clean:
 	rm -f build/test
 	rm -f build/*.o
 
+lib-install: $(LIB_BIN)
+	sudo mkdir -p /usr/local/include/libchrysalid
+	sudo cp include/* /usr/local/include/libchrysalid
+	sudo cp $(LIB_BIN) /usr/local/lib
+	sudo ldconfig
+
 install: $(MAN_PG)
 	sudo mkdir -p $(MAN_3DIR)
 	sudo mkdir -p $(MAN_7DIR)
