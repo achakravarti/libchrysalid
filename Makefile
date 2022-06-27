@@ -23,15 +23,27 @@ MAN_NS=libchrysalid
 EXT_SRC=external/cJSON/cJSON.c external/cJSON/cJSON_Utils.c \
 	external/iniparser/src/dictionary.c external/iniparser/src/iniparser.c
 
+CC=gcc
+
 # Libchrysalid library sources
 LIB_SRC!=find src/ -type f -name '*.c' | sort
+LIB_OBJ=$(LIB_SRC:src/%.c=build/%.o)
+LIB_BIN=build/libchrysalid.so
+
+build/%.o: src/%.c
+	$(CC) -fPIC -Wall -c $< -o $@
+
+$(LIB_BIN): $(LIB_OBJ)
+	$(CC) -rdynamic -lpcre2-8 -shared $< -o $@
+
+lib: $(LIB_BIN)
 
 tests: build/test
 	$<
 
 build/test: $(LIB_SRC) $(EXT_SRC) tests/hptr.c tests/utf8.c
 	mkdir -p build
-	clang $^ -lpcre2-8 -lcriterion -o $@
+	$(CC) $^ -lpcre2-8 -lcriterion -o $@
 
 man:
 	tools/mandoc.sh
@@ -49,6 +61,7 @@ clean:
 	rm -f $(MAN_ODIR)/*
 	rm -f build/examples/*
 	rm -f build/test
+	rm -f build/*.o
 
 install: $(MAN_PG)
 	sudo mkdir -p $(MAN_3DIR)
@@ -83,15 +96,15 @@ examples: build/examples/json build/examples/log build/examples/cfg
 
 build/examples/json: $(LIB_SRC) $(EXT_SRC) examples/json.c
 	mkdir -p build/examples
-	clang $^ -lpcre2-8 -o $@
+	$(CC) $^ -lpcre2-8 -o $@
 
 build/examples/log: $(LIB_SRC) $(EXT_SRC) examples/log.c
 	mkdir -p build/examples
-	clang $^ -lpcre2-8 -o $@
+	$(CC) $^ -lpcre2-8 -o $@
 
 build/examples/cfg: $(LIB_SRC) $(EXT_SRC) examples/cfg.c
 	mkdir -p build/examples
-	clang $^ -lpcre2-8 -o $@
+	$(CC) $^ -lpcre2-8 -o $@
 
 .PHONY:
 	clean docs install uninstall
