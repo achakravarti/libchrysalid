@@ -19,13 +19,17 @@ MAN_PG=$(MAN_SRC:$(MAN_IDIR)/%.md=$(MAN_ODIR)/%)
 # Man page title namespace
 MAN_NS=libchrysalid
 
-LIB_SRC=src/hptr.c src/utf8.c src/json.c src/log.c src/cfg.c external/cJSON/cJSON.c \
+# External sources
+EXT_SRC=external/cJSON/cJSON.c external/cJSON/cJSON_Utils.c \
 	external/iniparser/src/dictionary.c external/iniparser/src/iniparser.c
+
+# Libchrysalid library sources
+LIB_SRC!=find src/ -type f -name '*.c' | sort
 
 tests: build/test
 	$<
 
-build/test: $(LIB_SRC) tests/hptr.c tests/utf8.c
+build/test: $(LIB_SRC) $(EXT_SRC) tests/hptr.c tests/utf8.c
 	mkdir -p build
 	clang $^ -lpcre2-8 -lcriterion -o $@
 
@@ -76,15 +80,15 @@ examples: build/examples/json build/examples/log build/examples/cfg
 	build/examples/log
 	build/examples/cfg
 
-build/examples/json: $(LIB_SRC) examples/json.c
+build/examples/json: $(LIB_SRC) $(EXT_SRC) examples/json.c
 	mkdir -p build/examples
 	clang $^ -lpcre2-8 -o $@
 
-build/examples/log: $(LIB_SRC) examples/log.c
+build/examples/log: $(LIB_SRC) $(EXT_SRC) examples/log.c
 	mkdir -p build/examples
 	clang $^ -lpcre2-8 -o $@
 
-build/examples/cfg: $(LIB_SRC) examples/cfg.c
+build/examples/cfg: $(LIB_SRC) $(EXT_SRC) examples/cfg.c
 	mkdir -p build/examples
 	clang $^ -lpcre2-8 -o $@
 
