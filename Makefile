@@ -22,8 +22,9 @@ MAN_NS=libchrysalid
 # External sources
 EXT_SRC=external/cJSON/cJSON.c external/cJSON/cJSON_Utils.c \
 	external/iniparser/src/dictionary.c external/iniparser/src/iniparser.c
+EXT_OBJ=$(EXT_SRC:%.c=build/%.o)
 
-CC=gcc
+CC=clang
 
 # Libchrysalid library sources
 LIB_SRC!=find src/ -type f -name '*.c' | sort
@@ -33,8 +34,17 @@ LIB_BIN=build/libchrysalid.so
 build/%.o: src/%.c
 	$(CC) -fPIC -Wall -c $< -o $@
 
-$(LIB_BIN): $(LIB_OBJ)
-	$(CC) -rdynamic -lpcre2-8 -shared $< -o $@
+build/external/cJSON/%.o: external/cJSON/%.c
+	mkdir -p build/external/cJSON
+	$(CC) -fPIC -Wall -c $< -o $@
+
+build/external/iniparser/src/%.o: external/iniparser/src/%.c
+	mkdir -p build/external/iniparser/src
+	$(CC) -fPIC -Wall -c $< -o $@
+
+$(LIB_BIN): $(LIB_OBJ) $(EXT_OBJ)
+	mkdir -p build/external/iniparser/src
+	$(CC) -rdynamic -lpcre2-8 -shared $^ -o $@
 
 lib: $(LIB_BIN)
 
