@@ -1,9 +1,14 @@
+/* Header guard */
 #ifndef __LIBCHRYSALID_INCLUDE_LOG_H__
 #define __LIBCHRYSALID_INCLUDE_LOG_H__
 
+/* Libchrysalid dependencies */
 #include "ext.h"
+
+/* Other dependenices */
 #include <syslog.h>
 
+/* C++ compatiblity */
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -99,8 +104,10 @@ extern CY_HOT void      cy_log_write__(const char [static 1],
 #endif
 
 
+/* C++ compatiblity */
 #ifdef __cplusplus
 }
 #endif
 
+/* Header guard */
 #endif /* !__LIBCHRYSALID_INCLUDE_LOG_H__ */

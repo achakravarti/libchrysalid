@@ -41,7 +41,6 @@
 #ifndef __LIBCHRYSALID_INCLUDE_EXT_H_INCLUDED__
 #define __LIBCHRYSALID_INCLUDE_EXT_H_INCLUDED__
 
-
 /* C++ compatibility */
 #ifdef __cplusplus
 extern "C" {
@@ -188,6 +187,5 @@ extern "C" {
 }
 #endif
 
-
 /* Header guard */
-#endif
+#endif /* !__LIBCHRYSALID_INCLUDE_EXT_H_INCLUDED__ */

@@ -2,10 +2,7 @@
 #ifndef __LIBCHRYSALID_INCLUDE_CFG_H__
 #define __LIBCHRYSALID_INCLUDE_CFG_H__
 
-
 #include "utf8.h"
-
-
 
 /* C++ compatiblity */
 #ifdef __cplusplus
@@ -50,7 +47,6 @@ cy_cfg_print(const cy_cfg_t *);
 #ifdef __cplusplus
 }
 #endif
-
 
 /* Header guard */
 #endif /* !__LIBCHRYSALID_INCLUDE_CFG_H__ */

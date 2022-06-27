@@ -2,7 +2,6 @@
 #ifndef __LIBCHRYSALID_INCLUDE_JSON_H__
 #define __LIBCHRYSALID_INCLUDE_JSON_H__
 
-
 /* Libchrysalid dependencies */
 #include "ext.h"
 #include "utf8.h"
@@ -12,7 +11,6 @@
 
 /* Standard library dependencies */
 #include <stdint.h>
-
 
 /* C++ compatiblity */
 #ifdef __cplusplus
@@ -97,6 +95,5 @@ extern void                          cy_json_map(const cy_json_t [static 1],
 }
 #endif
 
-
 /* Header guard */
-#endif
+#endif /* !__LIBCHRYSALID_INCLUDE_JSON_H__ */

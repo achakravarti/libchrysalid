@@ -10,7 +10,6 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-
 /* C++ compatiblity */
 #ifdef __cplusplus
 extern "C" {
@@ -184,6 +183,5 @@ extern bool     cy_utf8_match(const cy_utf8_t[static 1], const char[static 1]);
 }
 #endif
 
-
 /* Header guard */
-#endif
+#endif /* !__LIBCHRYSALID_INCLUDE_UTF8_H__ */
