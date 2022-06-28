@@ -181,6 +181,12 @@ extern "C" {
 #       endif
 #endif
 
+#if (defined __GNUC__ || defined __clang__)
+#       define CY_WEAK __attribute__((weak))
+#else
+#       define CY_WEAK
+#endif
+
 
 /* C++ compatibility */
 #ifdef __cplusplus
