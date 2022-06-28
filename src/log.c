@@ -1,5 +1,8 @@
 #include "../include/log.h"
 
+#include <syslog.h>
+
+#include <assert.h>
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -9,10 +12,12 @@
  * __NAME__
  *      cy_log_init() - initialises log manager
  */
-void
-cy_log_init(const char id[static 1])
+void cy_log_init(enum cy_log_facility facility, const char *tag)
 {
-        openlog(id, LOG_CONS | LOG_PID | LOG_NDELAY, LOG_USER);
+        assert(tag);
+        assert(*tag);
+
+        openlog(tag, LOG_CONS | LOG_PID | LOG_NDELAY, facility);
         cy_log_info("Log manager started");
 }
 
@@ -21,22 +26,27 @@ cy_log_init(const char id[static 1])
  * __NAME__
  *      cy_log_exit() - shuts down log manager
  */
-void
-cy_log_exit(void)
+void cy_log_exit(void)
 {
         cy_log_info("Stopping log manager");
         closelog();
 }
 
 
-/*                                                          %func:cy_log_write__
+/*                                                            %func:cy_log_write
  * __NAME__
- *      cy_log_write__() - writes log message
+ *      cy_log_write() - writes log message
  */
-void
-cy_log_write__(const char func[static 1], const char file[static 1], int line,
-               int priority, const char msg[static 1], ...)
+void cy_log_write(const char *func, const char *file, int line,
+                  enum cy_log_severity severity, const char *msg, ...)
 {
+        assert(func);
+        assert(*func);
+        assert(file);
+        assert(*file);
+        assert(msg);
+        assert(*msg);
+
         const size_t MAXLEN = 1024;
         char meta[MAXLEN];
         snprintf(meta, MAXLEN, "[%s() @ %s:%d]", func, file, line);
@@ -47,5 +57,5 @@ cy_log_write__(const char func[static 1], const char file[static 1], int line,
         vsnprintf(body, MAXLEN, msg, ap);
         va_end(ap);
 
-        syslog(priority, "%s %s", body, meta);
+        syslog(severity, "%s %s", body, meta);
 }
