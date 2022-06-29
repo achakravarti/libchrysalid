@@ -51,6 +51,24 @@ cy_utf8_new(const char src[static 1])
 }
 
 
+cy_utf8_t *
+cy_utf8_new_fmt(const char *fmt, ...)
+{
+        va_list args;
+        va_start(args, fmt);
+        char *bfr = cy_hptr_new(vsnprintf(NULL, 0, fmt, args) + 1);
+        va_end(args);
+
+        va_start(args, fmt);
+        (void) vsprintf(bfr, fmt, args);
+        va_end(args);
+
+        cy_utf8_t *s = cy_utf8_new(bfr);
+        cy_hptr_free((cy_hptr_t **) &bfr);
+        return s;
+}
+
+
 /*
  * __NAME__
  *      cy_utf8_copy() - creates shallow copy of UTF-8 string

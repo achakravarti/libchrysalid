@@ -60,6 +60,7 @@ typedef char    cy_utf8_t;
 
 /* Prototypes for factory functions  */
 extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_new(const char[static 1]);
+extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_new_fmt(const char *, ...);
 extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_copy(cy_utf8_t[static 1]);
 extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_clone(const cy_utf8_t[static 1]);
 extern CY_HOT void                   cy_utf8_t_free__(cy_utf8_t *[static 1]);
