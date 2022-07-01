@@ -1,10 +1,12 @@
 #include "../include/hptr.h"
 #include "../include/utf8.h"
 
+#include "../external/repl_str.h"
 #include "../external/utf8.h/utf8.h"
 #define PCRE2_CODE_UNIT_WIDTH 8
 #include <pcre2.h>
 
+#include <assert.h>
 #include <string.h>
 #include <stdio.h>
 
@@ -456,4 +458,23 @@ cy_utf8_match(const cy_utf8_t ctx[static 1], const char regex[static 1])
 
         printf("PCRE2 matching error: %d\n", rc);
         abort();
+}
+
+
+// https://stackoverflow.com/questions/779875/
+cy_utf8_t *
+cy_utf8_replace(const char *ctx, const char *pat, const char *rep)
+{
+        assert(ctx != NULL);
+        assert(pat != NULL && *pat != '\0');
+        assert(rep != NULL && *rep != '\0');
+
+        if (CY_UNLIKELY(!*ctx))
+                return cy_utf8_new_empty();
+
+        char *bfr = repl_str(ctx, pat, rep);
+        cy_utf8_t *ret = cy_utf8_new(bfr);
+        free(bfr);
+
+        return ret;
 }

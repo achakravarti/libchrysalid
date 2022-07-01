@@ -179,6 +179,12 @@ extern size_t   cy_utf8_sz(const cy_utf8_t[static 1]);
 extern bool     cy_utf8_match(const cy_utf8_t[static 1], const char[static 1]);
 
 
+/* Prototypes for mutator functions  */
+
+extern CY_SAFE cy_utf8_t *
+cy_utf8_replace(const char *, const char *, const char *);
+
+
 /* C++ compatibility */
 #ifdef __cplusplus
 }
