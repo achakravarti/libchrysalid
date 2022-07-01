@@ -478,3 +478,19 @@ cy_utf8_replace(const char *ctx, const char *pat, const char *rep)
 
         return ret;
 }
+
+
+cy_utf8_t *
+cy_utf8_escape_json(const char *ctx)
+{
+        assert(ctx != NULL);
+
+        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_replace(ctx, "\"", "\\\"");
+        CY_AUTO(cy_utf8_t) *s2 = cy_utf8_replace(s1, "\\", "\\\\");
+        CY_AUTO(cy_utf8_t) *s3 = cy_utf8_replace(s2, "\b", "\\b");
+        CY_AUTO(cy_utf8_t) *s4 = cy_utf8_replace(s3, "\f", "\\f");
+        CY_AUTO(cy_utf8_t) *s5 = cy_utf8_replace(s4, "\n", "\\n");
+        CY_AUTO(cy_utf8_t) *s6 = cy_utf8_replace(s5, "\r", "\\r");
+
+        return cy_utf8_replace(s6, "\t", "\\t");
+}
