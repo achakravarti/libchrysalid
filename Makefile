@@ -77,8 +77,10 @@ clean:
 	rm -f build/*.o
 
 lib-install: $(LIB_BIN)
-	sudo mkdir -p /usr/local/include/libchrysalid
-	sudo cp include/* /usr/local/include/libchrysalid
+	sudo mkdir -p /usr/local/include/libchrysalid/include
+	sudo mkdir -p /usr/local/include/libchrysalid/external/cJSON
+	sudo cp include/* /usr/local/include/libchrysalid/include
+	sudo cp external/cJSON/cJSON.h /usr/local/include/libchrysalid/external/cJSON
 	sudo cp $(LIB_BIN) /usr/local/lib
 	sudo ldconfig
 
