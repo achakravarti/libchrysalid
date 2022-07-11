@@ -22,9 +22,9 @@
 cy_json_t *
 cy_json_new(const char src[static 1])
 {
-       cJSON *ctx = cJSON_Parse(src);
+        cJSON *ctx = cJSON_Parse(src);
 
-       if (CY_UNLIKELY (!ctx)) {
+        if (CY_UNLIKELY (!ctx)) {
                 ctx = cJSON_CreateNull();
 
                 if (CY_UNLIKELY (!ctx)) {
