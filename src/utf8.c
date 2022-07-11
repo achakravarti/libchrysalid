@@ -480,17 +480,60 @@ cy_utf8_replace(const char *ctx, const char *pat, const char *rep)
 }
 
 
+// https://stackoverflow.com/questions/7724448/
 cy_utf8_t *
 cy_utf8_escape_json(const char *ctx)
 {
-        assert(ctx != NULL);
+        char *bfr = cy_hptr_new((cy_utf8_sz(ctx) * 3) + 1);
+        register char *b = bfr;
 
-        CY_AUTO(cy_utf8_t) *s1 = cy_utf8_replace(ctx, "\"", "\\\"");
-        CY_AUTO(cy_utf8_t) *s2 = cy_utf8_replace(s1, "\\", "\\\\");
-        CY_AUTO(cy_utf8_t) *s3 = cy_utf8_replace(s2, "\b", "\\b");
-        CY_AUTO(cy_utf8_t) *s4 = cy_utf8_replace(s3, "\f", "\\f");
-        CY_AUTO(cy_utf8_t) *s5 = cy_utf8_replace(s4, "\n", "\\n");
-        CY_AUTO(cy_utf8_t) *s6 = cy_utf8_replace(s5, "\r", "\\r");
+        for (register size_t i = 0, len = strlen(ctx); i < len; i++) {
+                switch (ctx[i]) {
+                case '"':
+                        strncpy(b, "\\\"", 2);
+                        b += 2;
+                        break;
 
-        return cy_utf8_replace(s6, "\t", "\\t");
+                case '\\':
+                        strncpy(b, "\\\\", 2);
+                        b += 2;
+                        break;
+
+                case '\b':
+                        strncpy(b, "\\b", 2);
+                        b += 2;
+                        break;
+
+                case '\f':
+                        strncpy(b, "\\f", 2);
+                        b += 2;
+                        break;
+
+                case '\n':
+                        strncpy(b, "\\n", 2);
+                        b += 2;
+                        break;
+
+                case '\r':
+                        strncpy(b, "\\r", 2);
+                        b += 2;
+                        break;
+
+                case '\t':
+                        strncpy(b, "\\t", 2);
+                        b += 2;
+                        break;
+
+                default:
+                        /* TODO: Incomplete: \x00 -- \x1f */
+                        *b++ = ctx[i];
+                        break;
+                }
+        }
+
+        *b = '\0';
+        cy_utf8_t *ret = cy_utf8_new(bfr);
+        cy_hptr_free((cy_hptr_t **) &bfr);
+
+        return ret;
 }
