@@ -35,7 +35,8 @@ enum cy_log_facility {
         CY_LOG_FACILITY_LOCAL4,
         CY_LOG_FACILITY_LOCAL5,
         CY_LOG_FACILITY_LOCAL6,
-        CY_LOG_FACILITY_LOCAL7
+        CY_LOG_FACILITY_LOCAL7,
+        __CY_LOG_FACILITY_LEN__
 };
 
 enum cy_log_severity {
@@ -46,7 +47,8 @@ enum cy_log_severity {
         CY_LOG_SEVERITY_WARNING,
         CY_LOG_SEVERITY_NOTICE,
         CY_LOG_SEVERITY_INFO,
-        CY_LOG_SEVERITY_DEBUG
+        CY_LOG_SEVERITY_DEBUG,
+        __CY_LOG_SEVERITY_LEN__
 };
 
 
