@@ -41,7 +41,6 @@
 #ifndef __LIBCHRYSALID_INCLUDE_HPTR_H__
 #define __LIBCHRYSALID_INCLUDE_HPTR_H__
 
-
 /* Libchrysalid dependencies */
 #include "ext.h"
 
@@ -49,7 +48,6 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-
 
 /* C++ compatiblity */
 #ifdef __cplusplus
@@ -149,6 +147,5 @@ extern const char   *cy_hptr_str(const cy_hptr_t [static 1]);
 }
 #endif
 
-
 /* Header guard */
-#endif
+#endif /* !__LIBCHRYSALID_INCLUDE_HPTR_H__ */

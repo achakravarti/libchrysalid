@@ -1426,3 +1426,39 @@ Test(cy_utf8_match, el_nomatch)
 
         cr_assert(!m);
 }
+
+
+Test(cy_utf8_replace, en_match)
+{
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_replace(SAMPLE_EN_1, "zoo", "bio");
+        const char *exp = "Jackie will budget for the most expensive biology"
+                          " equipment";
+
+        cr_expect(cy_utf8_eq(s, exp));
+}
+
+
+Test(cy_utf8_replace, en_nomatch)
+{
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_replace(SAMPLE_EN_1, "foo", "bar");
+
+        cr_expect(cy_utf8_eq(s, SAMPLE_EN_1));
+}
+
+
+
+Test(cy_utf8_replace, el_match)
+{
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_replace(SAMPLE_EL_1, "δέξου", "γενικά");
+        const char *exp=  "Ζαφείρι γενικά πάγκαλο βαθῶν ψυχῆς τὸ σῆμα";
+
+        cr_expect(cy_utf8_eq(s, exp));
+}
+
+
+Test(cy_utf8_replace, el_nomatch)
+{
+        CY_AUTO(cy_utf8_t) *s = cy_utf8_replace(SAMPLE_EL_1, "foo", "bar");
+
+        cr_expect(cy_utf8_eq(s, SAMPLE_EL_1));
+}

@@ -41,7 +41,6 @@
 #ifndef __LIBCHRYSALID_INCLUDE_EXT_H_INCLUDED__
 #define __LIBCHRYSALID_INCLUDE_EXT_H_INCLUDED__
 
-
 /* C++ compatibility */
 #ifdef __cplusplus
 extern "C" {
@@ -72,6 +71,15 @@ extern "C" {
 #       define CY_RSAFE
 #       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
 #               warning "CY_RSAFE has no effect in current compiler"
+#       endif
+#endif
+
+#if (defined __GNUC__ || defined __clang__)
+#      define CY_SAFE CY_RSAFE CY_PSAFE
+#else
+#       define CY_SAFE
+#       if (!defined CY_SUPPRESS_EXTENSION_WARNINGS)
+#               warning "CY_SAFE has no effect in current compiler"
 #       endif
 #endif
 
@@ -173,12 +181,17 @@ extern "C" {
 #       endif
 #endif
 
+#if (defined __GNUC__ || defined __clang__)
+#       define CY_WEAK __attribute__((weak))
+#else
+#       define CY_WEAK
+#endif
+
 
 /* C++ compatibility */
 #ifdef __cplusplus
 }
 #endif
 
-
 /* Header guard */
-#endif
+#endif /* !__LIBCHRYSALID_INCLUDE_EXT_H_INCLUDED__ */

@@ -19,14 +19,44 @@ MAN_PG=$(MAN_SRC:$(MAN_IDIR)/%.md=$(MAN_ODIR)/%)
 # Man page title namespace
 MAN_NS=libchrysalid
 
-LIB_SRC=src/hptr.c src/utf8.c src/json.c src/log.c external/cJSON/cJSON.c
+# External sources
+EXT_SRC=external/cJSON/cJSON.c external/cJSON/cJSON_Utils.c \
+	external/iniparser/src/dictionary.c external/iniparser/src/iniparser.c
+EXT_OBJ=$(EXT_SRC:%.c=build/%.o)
+
+CC=clang
+
+# Libchrysalid library sources
+LIB_SRC!=find src/ -type f -name '*.c' | sort
+LIB_OBJ=$(LIB_SRC:src/%.c=build/%.o)
+LIB_BIN=build/libchrysalid.so
+
+# Rule to build libchrysalid objects
+build/%.o: src/%.c
+	$(CC) -fPIC -Wall -c $< -o $@
+
+# Rule to build cJSON objects
+build/external/cJSON/%.o: external/cJSON/%.c
+	mkdir -p build/external/cJSON
+	$(CC) -fPIC -Wall -c $< -o $@
+
+# Rule to build iniparser objects
+build/external/iniparser/src/%.o: external/iniparser/src/%.c
+	mkdir -p build/external/iniparser/src
+	$(CC) -fPIC -Wall -c $< -o $@
+
+$(LIB_BIN): $(LIB_OBJ) $(EXT_OBJ)
+	mkdir -p build/external/iniparser/src
+	$(CC) -rdynamic -lpcre2-8 -shared $^ -o $@
+
+lib: $(LIB_BIN)
 
 tests: build/test
 	$<
 
-build/test: $(LIB_SRC) tests/hptr.c tests/utf8.c
+build/test: tests/hptr.c tests/utf8.c $(LIB_BIN)
 	mkdir -p build
-	clang $^ -lpcre2-8 -lcriterion -o $@
+	$(CC) $^ -lpcre2-8 -lcriterion -o $@
 
 man:
 	tools/mandoc.sh
@@ -43,6 +73,16 @@ clean:
 	rm -f $(MAN_ODIR)/*
 	rm -f $(MAN_ODIR)/*
 	rm -f build/examples/*
+	rm -f build/test
+	rm -f build/*.o
+
+lib-install: $(LIB_BIN)
+	sudo mkdir -p /usr/local/include/libchrysalid/include
+	sudo mkdir -p /usr/local/include/libchrysalid/external/cJSON
+	sudo cp include/* /usr/local/include/libchrysalid/include
+	sudo cp external/cJSON/cJSON.h /usr/local/include/libchrysalid/external/cJSON
+	sudo cp $(LIB_BIN) /usr/local/lib
+	sudo ldconfig
 
 install: $(MAN_PG)
 	sudo mkdir -p $(MAN_3DIR)
@@ -70,16 +110,22 @@ uninstall: $(MAN_3DIR) $(MAN_7DIR)
 	sudo rm -f $(MAN_7DIR)/$(MAN_NS)*
 	sudo mandb
 
-examples: build/examples/cjson build/examples/log
-	$^
+examples: build/examples/json build/examples/log build/examples/cfg
+	build/examples/json
+	build/examples/log
+	build/examples/cfg
 
-build/examples/cjson: $(LIB_SRC) examples/cjson.c
+build/examples/json: examples/json.c $(LIB_BIN)
 	mkdir -p build/examples
-	clang $^ -lpcre2-8 -o $@
+	$(CC) $^ -lpcre2-8 -o $@
 
-build/examples/log: $(LIB_SRC) examples/log.c
+build/examples/log: examples/log.c $(LIB_BIN)
 	mkdir -p build/examples
-	clang $^ -lpcre2-8 -o $@
+	$(CC) $^ -lpcre2-8 -o $@
+
+build/examples/cfg: examples/cfg.c $(LIB_BIN)
+	mkdir -p build/examples
+	$(CC) $^ -lpcre2-8 -o $@
 
 .PHONY:
 	clean docs install uninstall

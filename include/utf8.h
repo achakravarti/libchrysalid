@@ -10,7 +10,6 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-
 /* C++ compatiblity */
 #ifdef __cplusplus
 extern "C" {
@@ -61,6 +60,7 @@ typedef char    cy_utf8_t;
 
 /* Prototypes for factory functions  */
 extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_new(const char[static 1]);
+extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_new_fmt(const char *, ...);
 extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_copy(cy_utf8_t[static 1]);
 extern CY_HOT CY_RSAFE cy_utf8_t    *cy_utf8_clone(const cy_utf8_t[static 1]);
 extern CY_HOT void                   cy_utf8_t_free__(cy_utf8_t *[static 1]);
@@ -179,11 +179,19 @@ extern size_t   cy_utf8_sz(const cy_utf8_t[static 1]);
 extern bool     cy_utf8_match(const cy_utf8_t[static 1], const char[static 1]);
 
 
+/* Prototypes for mutator functions  */
+
+extern CY_SAFE cy_utf8_t *
+cy_utf8_replace(const char *, const char *, const char *);
+
+extern CY_SAFE cy_utf8_t *
+cy_utf8_escape_json(const char *ctx);
+
+
 /* C++ compatibility */
 #ifdef __cplusplus
 }
 #endif
 
-
 /* Header guard */
-#endif
+#endif /* !__LIBCHRYSALID_INCLUDE_UTF8_H__ */

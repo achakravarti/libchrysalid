@@ -1,10 +1,12 @@
 #include "../include/hptr.h"
 #include "../include/utf8.h"
 
+#include "../external/repl_str.h"
 #include "../external/utf8.h/utf8.h"
 #define PCRE2_CODE_UNIT_WIDTH 8
 #include <pcre2.h>
 
+#include <assert.h>
 #include <string.h>
 #include <stdio.h>
 
@@ -48,6 +50,24 @@ cy_utf8_new(const char src[static 1])
         ctx[len] = '\0';
 
         return ctx;
+}
+
+
+cy_utf8_t *
+cy_utf8_new_fmt(const char *fmt, ...)
+{
+        va_list args;
+        va_start(args, fmt);
+        char *bfr = cy_hptr_new(vsnprintf(NULL, 0, fmt, args) + 1);
+        va_end(args);
+
+        va_start(args, fmt);
+        (void) vsprintf(bfr, fmt, args);
+        va_end(args);
+
+        cy_utf8_t *s = cy_utf8_new(bfr);
+        cy_hptr_free((cy_hptr_t **) &bfr);
+        return s;
 }
 
 
@@ -419,9 +439,8 @@ cy_utf8_match(const cy_utf8_t ctx[static 1], const char regex[static 1])
         if (CY_UNLIKELY(!re)) {
                PCRE2_UCHAR bfr[256];
                pcre2_get_error_message(eno, bfr, sizeof (bfr));
-               printf("PCRE2 compilation failed at offset %d: %s\n",
-                      (int) eoff, bfr);
-
+               fprintf(stderr, "PCRE2 compilation failed at offset %d: %s\n",
+                       (int) eoff, bfr);
                abort();
         }
 
@@ -439,4 +458,82 @@ cy_utf8_match(const cy_utf8_t ctx[static 1], const char regex[static 1])
 
         printf("PCRE2 matching error: %d\n", rc);
         abort();
+}
+
+
+// https://stackoverflow.com/questions/779875/
+cy_utf8_t *
+cy_utf8_replace(const char *ctx, const char *pat, const char *rep)
+{
+        assert(ctx != NULL);
+        assert(pat != NULL && *pat != '\0');
+        assert(rep != NULL && *rep != '\0');
+
+        if (CY_UNLIKELY(!*ctx))
+                return cy_utf8_new_empty();
+
+        char *bfr = repl_str(ctx, pat, rep);
+        cy_utf8_t *ret = cy_utf8_new(bfr);
+        free(bfr);
+
+        return ret;
+}
+
+
+// https://stackoverflow.com/questions/7724448/
+cy_utf8_t *
+cy_utf8_escape_json(const char *ctx)
+{
+        char *bfr = cy_hptr_new((cy_utf8_sz(ctx) * 3) + 1);
+        register char *b = bfr;
+
+        for (register size_t i = 0, len = strlen(ctx); i < len; i++) {
+                switch (ctx[i]) {
+                case '"':
+                        strncpy(b, "\\\"", 2);
+                        b += 2;
+                        break;
+
+                case '\\':
+                        strncpy(b, "\\\\", 2);
+                        b += 2;
+                        break;
+
+                case '\b':
+                        strncpy(b, "\\b", 2);
+                        b += 2;
+                        break;
+
+                case '\f':
+                        strncpy(b, "\\f", 2);
+                        b += 2;
+                        break;
+
+                case '\n':
+                        strncpy(b, "\\n", 2);
+                        b += 2;
+                        break;
+
+                case '\r':
+                        strncpy(b, "\\r", 2);
+                        b += 2;
+                        break;
+
+                case '\t':
+                        strncpy(b, "\\t", 2);
+                        b += 2;
+                        break;
+
+                default:
+                        /* TODO: Incomplete: \x00 -- \x1f */
+                        *b++ = ctx[i];
+                        break;
+                }
+        }
+
+        *b = '\0';
+        cy_utf8_t *ret = cy_utf8_new(bfr);
+        cy_hptr_free((cy_hptr_t **) &bfr);
+
+        return ret;
 }
